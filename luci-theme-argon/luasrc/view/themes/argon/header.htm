@@ -40,6 +40,7 @@
 	local mode = 'normal'
 	local font_weight = '600'
 	local dark_css = fs.readfile('/www/luci-static/argon/css/dark.css')
+	local fluent_dark_css = fs.readfile('/www/luci-static/argon/css/fluent-dark.css')
 	local bar_color = '#5e72e4'
 	local primary, dark_primary, blur_radius, blur_radius_dark, blur_opacity
 	if fs.access('/etc/config/argon') then
@@ -111,13 +112,16 @@
     <meta name="theme-color" content="<%=bar_color%>">
     <% end -%>
     <link rel="stylesheet" href="<%=media%>/css/cascade.css<%# ?v=PKG_VERSION %>">
+	<link rel="stylesheet" href="<%=media%>/css/fluent.css<%# ?v=PKG_VERSION %>">
     <style title="text/css">
         <% if mode == 'normal' then %>
             @media (prefers-color-scheme: dark) {
                 <%=dark_css%>
+				<%=fluent_dark_css%>
             }
         <% elseif mode == 'dark' then %>
             <%=dark_css%>
+			<%=fluent_dark_css%>
         <% end -%>
         <% if fs.access('/etc/config/argon') then %>
         :root {

@@ -38,10 +38,7 @@
   --success: var(--fluent-success);
   --warning: var(--fluent-warning);
   --danger: var(--fluent-error);
-
-  /* Typography */
-  --font-family-sans-serif: "Segoe UI", -apple-system, BlinkMacSystemFont,
-    "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif;
+ 
 }
 
 /* Base styling */

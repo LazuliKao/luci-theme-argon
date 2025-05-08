@@ -1,43 +1,90 @@
-/**
- *  FluentUI Dark Theme extension for LuCI based on Argon
- *
- *  This stylesheet adds Windows 11 FluentUI dark mode design elements
- *  to the existing Argon theme.
- */
 
 /* FluentUI dark mode variables */
 :root {
   /* FluentUI dark colors */
-  --fluent-background: #202020;
-  --fluent-card-bg: rgba(45, 45, 45, 0.7);
-  --fluent-text: #ffffff;
-  --fluent-text-secondary: #cccccc;
-  --fluent-border: rgba(255, 255, 255, 0.1);
+  --fluent-background: #202020 !important;
+  --fluent-card-bg: rgba(45, 45, 45, 0.7) !important;
+  --fluent-text: #ffffff !important;
+  --fluent-text-secondary: #cccccc !important;
+  --fluent-border: rgba(255, 255, 255, 0.1) !important;
   
   /* FluentUI accent colors - dark theme */
-  --fluent-primary: #60cdff;
-  --fluent-accent: #60cdff;
-  --fluent-primary-dark: #0078d4;
-  --fluent-success: #6ccf6c;
-  --fluent-warning: #fcce76;
-  --fluent-error: #ff99a4;
-
+  --fluent-primary: var(--primary) !important;
+  --fluent-accent: #60cdff !important;
+  --fluent-primary-dark: var(--dark-primary) !important;
+  --fluent-success: #6ccf6c !important;
+  --fluent-warning: #fcce76 !important;
+  --fluent-error: #ff99a4 !important;
+  
   /* Override theme variables with FluentUI dark values */
-  --primary: var(--fluent-primary);
-  --dark-primary: var(--fluent-primary-dark);
-  --main-color: var(--fluent-primary);
-  --header-bg: var(--fluent-primary-dark);
-  --background-color: var(--fluent-background);
-  --success: var(--fluent-success);
-  --warning: var(--fluent-warning);
-  --danger: var(--fluent-error);
+  /* --primary: var(--fluent-primary) !important;
+  --dark-primary: var(--fluent-primary-dark) !important;
+  --main-color: var(--fluent-primary) !important;
+  --header-bg: var(--fluent-primary-dark) !important;
+  --background-color: var(--fluent-background) !important;
+  --success: var(--fluent-success) !important;
+  --warning: var(--fluent-warning) !important;
+  --danger: var(--fluent-error) !important; */
+  
+  /* Dark theme shadow adjustments */
+  --fluent-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  --fluent-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
 }
 
 /* Base styling */
 html,
 body {
-  background-color: var(--fluent-background);
-  color: var(--fluent-text);
+  background-color: var(--fluent-background) !important;
+  color: var(--fluent-text) !important;
+}
+
+/* Buttons get dark FluentUI styling */
+.btn,
+.cbi-button,
+.item::after,
+button,
+select,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  background-color: rgba(80, 80, 80, 0.8) !important;
+  color: var(--fluent-text) !important;
+  border: 1px solid var(--fluent-border) !important;
+  box-shadow: var(--fluent-shadow) !important;
+}
+
+.btn:hover,
+.cbi-button:hover,
+.item:hover::after,
+button:hover {
+  background-color: rgba(100, 100, 100, 0.8) !important;
+  box-shadow: var(--fluent-shadow-hover) !important;
+}
+
+.btn.primary,
+.cbi-button-save,
+.cbi-button-add,
+.cbi-button-apply,
+.cbi-button-positive {
+  background-color: var(--fluent-primary-dark) !important;
+  border-color: var(--fluent-primary-dark) !important;
+  color: #ffffff !important;
+}
+
+.btn.primary:hover,
+.cbi-button-save:hover,
+.cbi-button-add:hover,
+.cbi-button-apply:hover,
+.cbi-button-positive:hover {
+  background-color: var(--fluent-primary) !important;
+  border-color: var(--fluent-primary) !important;
+}
+
+.btn.danger,
+.cbi-button-remove,
+.cbi-button-negative {
+  background-color: #d13438 !important;
+  border-color: #d13438 !important;
 }
 
 /* Form elements */
@@ -48,11 +95,9 @@ textarea,
 .cbi-input-text,
 .cbi-input-password,
 .cbi-dropdown {
-  background-color: rgba(30, 30, 30, 0.7);
-  color: var(--fluent-text);
-  border-color: var(--fluent-border);
-  transition: all 0.2s ease-in-out;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  background-color: rgba(60, 60, 60, 0.8) !important;
+  color: var(--fluent-text) !important;
+  border: 1px solid var(--fluent-border) !important;
 }
 
 input[type="text"]:focus,
@@ -62,63 +107,8 @@ textarea:focus,
 .cbi-input-text:focus,
 .cbi-input-password:focus,
 .cbi-dropdown:focus {
-  border-color: var(--fluent-primary);
-  box-shadow: 0 0 0 2px rgba(96, 205, 255, 0.25);
-  outline: none;
-}
-
-/* Buttons get FluentUI styling */
-.btn,
-.cbi-button,
-.item::after,
-button,
-select,
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  transition: var(--fluent-transition);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: rgba(45, 45, 45, 0.8);
-  color: var(--fluent-text);
-}
-
-.btn:hover,
-.cbi-button:hover,
-.item:hover::after,
-button:hover {
-  transform: translateY(-1px);
-  background-color: rgba(60, 60, 60, 0.8);
-}
-
-.btn.primary,
-.cbi-button-save,
-.cbi-button-add,
-.cbi-button-apply,
-.cbi-button-positive {
-  background-color: var(--fluent-primary-dark);
-  border-color: var(--fluent-primary-dark);
-  color: white;
-}
-
-.btn.primary:hover,
-.cbi-button-save:hover,
-.cbi-button-add:hover,
-.cbi-button-apply:hover,
-.cbi-button-positive:hover {
-  background-color: rgba(0, 120, 212, 0.8);
-}
-
-.btn.danger,
-.cbi-button-remove,
-.cbi-button-negative {
-  background-color: rgba(209, 52, 56, 0.8);
-  border-color: rgba(209, 52, 56, 0.5);
-}
-
-.btn.danger:hover,
-.cbi-button-remove:hover,
-.cbi-button-negative:hover {
-  background-color: rgba(209, 52, 56, 0.9);
+  border-color: var(--fluent-primary) !important;
+  box-shadow: 0 0 0 2px rgba(96, 205, 255, 0.25) !important;
 }
 
 /* Cards and sections */
@@ -132,12 +122,9 @@ button:hover {
 [data-tab-title],
 [data-page^="admin-system-admin"]:not(.node-main-login) .cbi-map:not(#cbi-dropbear),
 [data-page="admin-system-opkg"] #maincontent > .container {
-  background-color: var(--fluent-card-bg);
-  backdrop-filter: var(--fluent-backdrop-filter);
-  -webkit-backdrop-filter: var(--fluent-backdrop-filter);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  transition: all 0.2s ease-in-out;
+  background-color: var(--fluent-card-bg) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
 .cbi-section:hover,
@@ -150,381 +137,205 @@ button:hover {
 [data-tab-title]:hover,
 [data-page^="admin-system-admin"]:not(.node-main-login) .cbi-map:not(#cbi-dropbear):hover,
 [data-page="admin-system-opkg"] #maincontent > .container:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Modal dialogs */
-.modal {
-  background-color: var(--fluent-card-bg);
-  backdrop-filter: var(--fluent-backdrop-filter);
-  -webkit-backdrop-filter: var(--fluent-backdrop-filter);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+/* Tabs */
+.cbi-tabmenu > li,
+.tabs > li {
+  background-color: rgba(60, 60, 60, 0.5) !important;
+  color: var(--fluent-text-secondary) !important;
 }
 
-#modal_overlay {
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  background-color: rgba(0, 0, 0, 0.5);
+.cbi-tabmenu > li[class~="cbi-tab"],
+.tabs > li[class~="active"] {
+  background-color: rgba(96, 205, 255, 0.2) !important;
+  color: var(--fluent-primary) !important;
 }
 
-/* Dropdowns */
-.cbi-dropdown[open] > ul.dropdown {
-  background-color: var(--fluent-card-bg);
-  backdrop-filter: var(--fluent-backdrop-filter);
-  -webkit-backdrop-filter: var(--fluent-backdrop-filter);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+.cbi-tabmenu::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05) !important;
 }
 
-.cbi-dropdown[open] > ul.dropdown > li:hover {
-  background-color: rgba(96, 205, 255, 0.1);
-}
-
-.cbi-dropdown[open] > ul.dropdown > li[selected],
-.cbi-dropdown[open] > ul.dropdown > li.focus {
-  background-color: rgba(96, 205, 255, 0.2);
-}
-
-/* Acrylic header */
-header {
-  background-color: rgba(0, 120, 212, 0.8) !important;
-  backdrop-filter: var(--fluent-backdrop-filter);
-  -webkit-backdrop-filter: var(--fluent-backdrop-filter);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* Main left navigation */
-.main-left {
-  background-color: rgba(35, 35, 35, 0.7);
-  backdrop-filter: var(--fluent-backdrop-filter);
-  -webkit-backdrop-filter: var(--fluent-backdrop-filter);
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.main-left .nav > li > a:first-child {
-  border-radius: var(--fluent-radius);
-  margin: 0.2rem 0.7rem;
-}
-
-.main-left .nav > li > a:first-child:hover {
-  background-color: rgba(96, 205, 255, 0.1);
-  color: var(--fluent-primary);
-}
-
-.main-left .nav > li > a:first-child.active {
-  background-color: var(--fluent-primary-dark);
-  color: white;
+.cbi-tabmenu::-webkit-scrollbar-thumb {
+  background-color: rgba(96, 205, 255, 0.4) !important;
 }
 
 /* Tables */
 .table,
 .cbi-section-table {
-  background-color: rgba(30, 30, 30, 0.5);
+  background-color: var(--fluent-card-bg) !important;
+  color: var(--fluent-text) !important;
 }
 
-.table > .tr:nth-child(2n),
-.cbi-section-table > .tr:nth-child(2n) {
-  background-color: rgba(40, 40, 40, 0.3);
+.tr.placeholder {
+  background-color: rgba(60, 60, 60, 0.7) !important;
 }
 
-.table > .tr:hover,
-.cbi-section-table > .tr:hover {
-  background-color: rgba(96, 205, 255, 0.1);
+.tr.cbi-section-table-row {
+  background-color: rgba(70, 70, 70, 0.4) !important;
 }
 
-/* Alerts and messages */
-.alert-message,
-.alert {
-  border-radius: var(--fluent-radius);
-  border: none;
-  background-color: rgba(40, 40, 40, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: var(--fluent-text);
+.tr.cbi-section-table-row:hover {
+  background-color: rgba(96, 205, 255, 0.1) !important;
 }
 
-.alert.error,
-.alert-message.error {
-  background-color: rgba(209, 52, 56, 0.1);
-  color: var(--fluent-error);
+.table .th,
+.cbi-section-table .th {
+  background-color: rgba(50, 50, 50, 0.8) !important;
+  color: var(--fluent-text) !important;
 }
 
-.alert.success,
-.alert-message.success {
-  background-color: rgba(108, 207, 108, 0.1);
-  color: var(--fluent-success);
+/* Acrylic header */
+header {
+  background-color: var(--fluent-primary-dark) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
 }
 
-.alert.warning,
-.alert-message.warning {
-  background-color: rgba(252, 206, 118, 0.1);
-  color: var(--fluent-warning);
+/* Main left navigation */
+.main-left {
+  background-color: rgba(40, 40, 40, 0.8) !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Progress bars */
-.cbi-progressbar {
-  border-radius: var(--fluent-radius);
-  background-color: rgba(255, 255, 255, 0.1);
+.main-left .nav > li > a {
+  color: var(--fluent-text) !important;
 }
 
-.cbi-progressbar > div {
-  border-radius: var(--fluent-radius);
-  background-color: var(--fluent-primary);
+.main-left .nav > li > a:first-child:hover {
+  background-color: rgba(96, 205, 255, 0.1) !important;
+  color: var(--fluent-primary) !important;
 }
 
-.cbi-progressbar::after {
-  font-family: system-ui;
-  font-size: 14px;
-  line-height: normal;
-  color: var(--fluent-text);
-}
-
-/* Login page styling */
-.login-page .login-container .login-form {
-  border-radius: var(--fluent-radius-large);
-  background-color: var(--fluent-card-bg);
-  backdrop-filter: var(--fluent-backdrop-filter);
-  -webkit-backdrop-filter: var(--fluent-backdrop-filter);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-}
-
-.login-page .login-container .login-form .form-login .input-group input {
-  border-radius: var(--fluent-radius);
-  background-color: rgba(30, 30, 30, 0.7);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--fluent-text);
-}
-
-/* Checkboxes and radio buttons */
-input[type="checkbox"] {
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background-color: rgba(30, 30, 30, 0.7);
-  width: 18px;
-  height: 18px;
-  transition: background-color 0.2s, border-color 0.2s;
-}
-
-input[type="checkbox"]:checked {
-  background-color: var(--fluent-primary);
-  border-color: var(--fluent-primary);
-}
-
-/* Scrollbars - webkit only */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-/* Custom dark scrollbar - Firefox */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.05);
-}
-
-/* Tab menus */
-.cbi-tabmenu {
-  overflow-x: auto;
-  white-space: nowrap;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(96, 205, 255, 0.4) transparent;
-}
-
-.cbi-tabmenu::-webkit-scrollbar {
-  height: 6px;
-  width: auto;
-  display: block;
-  overflow: scroll !important;
-}
-
-.cbi-tabmenu::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 6px;
-  display: block;
-}
-
-.cbi-tabmenu::-webkit-scrollbar-thumb {
-  background-color: rgba(96, 205, 255, 0.4);
-  border-radius: 6px;
-  border: 2px solid transparent;
-  min-height: 6px;
-}
-
-.cbi-tabmenu::-webkit-scrollbar-thumb:hover {
-  background-color: var(--fluent-primary);
-}
-
-.cbi-tabmenu > li,
-.tabs > li {
-  border-radius: var(--fluent-radius) var(--fluent-radius) 0 0;
-  transition: all 0.2s ease-in-out;
-}
-
-.cbi-tabmenu > li[class~="cbi-tab"],
-.tabs > li[class~="active"] {
-  border-bottom: 2px solid var(--fluent-primary);
-  background-color: rgba(96, 205, 255, 0.1);
+.main-left .nav > li > a:first-child.active {
+  background-color: var(--fluent-primary-dark) !important;
+  color: white !important;
 }
 
 /* Badges and indicators */
 .ifacebadge {
-  border-radius: var(--fluent-radius);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: rgba(45, 45, 45, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(60, 60, 60, 0.7) !important;
+  border: 1px solid var(--fluent-border) !important;
+  color: var(--fluent-text) !important;
 }
 
-/* Add subtle animations */
-@keyframes fluent-fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Progress bars */
+.cbi-progressbar {
+  background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-.cbi-section,
-.modal,
-.login-page .login-container .login-form,
-.cbi-section-node {
-  animation: fluent-fadeIn 0.3s ease-out forwards;
+.cbi-progressbar::after {
+  color: var(--fluent-text) !important;
 }
 
-/* Modern FluentUI-style spinner animation */
-@keyframes fluent-spin-swing {
-  0% {
-    transform: translateY(-50%) rotate(-135deg);
-  }
-  50% {
-    transform: translateY(-50%) rotate(0deg);
-  }
-  100% {
-    transform: translateY(-50%) rotate(225deg);
-  }
+/* Modal dialogs */
+.modal {
+  background-color: var(--fluent-card-bg) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* Spinner styling */
-div:not([id='view']) > .spinning {
-  position: relative;
-  padding-left: 40px !important;
+/* Login page styling */
+.login-page .login-container .login-form {
+  background-color: var(--fluent-card-bg) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
 }
 
-div:not([id='view']) > .spinning::before {
-  position: absolute;
-  background: none;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  content: "";
-  --duration: 1.5s;
-  --indicatorSize: 3px;
-  --size: 24px;
-  height: var(--size);
-  width: var(--size);
-  border-radius: 50%;
-  box-sizing: border-box;
-  border: var(--indicatorSize) solid rgba(255, 255, 255, 0.2);
-  border-top-color: var(--fluent-accent);
-  border-right-color: var(--fluent-accent);
-  animation: fluent-spin-swing var(--duration) infinite ease;
+.login-page .login-container .login-form .form-login .input-group input {
+  background-color: rgba(60, 60, 60, 0.8) !important;
+  color: var(--fluent-text) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-div[id='view'] > .spinning {
-  position: relative;
-  --spinner-size: 48px;
-  padding-top: calc(var(--spinner-size) + 20px) !important;
-  font-size: large;
+/* Alerts and notifications */
+.alert-message,
+.alert {
+  background-color: rgba(60, 60, 60, 0.7) !important;
+  color: var(--fluent-text) !important;
 }
 
-div[id='view'] > .spinning::before {
-  position: absolute;
-  left: calc(50% - var(--spinner-size) / 2);
-  top: calc(50% - var(--spinner-size) / 2 + 10px);
-  content: "";
-  --duration: 1.5s;
-  --indicatorSize: 6px;
-  height: var(--spinner-size);
-  width: var(--spinner-size);
-  border-radius: 50%;
-  box-sizing: border-box;
-  border: var(--indicatorSize) solid rgba(255, 255, 255, 0.2);
-  border-top-color: var(--fluent-accent);
-  border-right-color: var(--fluent-accent);
-  animation: fluent-spin-swing var(--duration) infinite ease;
-  background: none;
+.alert.error,
+.alert-message.error {
+  background-color: rgba(209, 52, 56, 0.2) !important;
+  color: var(--fluent-error) !important;
 }
 
-/* FluentUI dark select styles */
+.alert.success,
+.alert-message.success {
+  background-color: rgba(108, 207, 108, 0.2) !important;
+  color: var(--fluent-success) !important;
+}
+
+.alert.warning,
+.alert-message.warning {
+  background-color: rgba(252, 206, 118, 0.2) !important;
+  color: var(--fluent-warning) !important;
+}
+
+/* Dropdowns */
+.cbi-dropdown[open] > ul.dropdown {
+  background-color: rgba(50, 50, 50, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: var(--fluent-text) !important;
+}
+
+.cbi-dropdown[open] > ul.dropdown > li:hover {
+  background-color: rgba(96, 205, 255, 0.2) !important;
+}
+
+.cbi-dropdown[open] > ul.dropdown > li[selected],
+.cbi-dropdown[open] > ul.dropdown > li.focus {
+  background-color: rgba(96, 205, 255, 0.3) !important;
+}
+
+/* Checkboxes and radio buttons */
+input[type="checkbox"] {
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  background-color: rgba(60, 60, 60, 0.8) !important;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--fluent-primary) !important;
+  border-color: var(--fluent-primary) !important;
+}
+
+/* Scrollbars - webkit only */
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Select dropdown styling */
 select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-color: rgba(35, 35, 35, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  padding: 8px 36px 8px 12px;
-  font-size: 14px;
-  color: var(--fluent-text);
-  cursor: pointer;
-  transition: border-color 0.2s ease;
+  background-color: rgba(60, 60, 60, 0.8) !important;
+  border: 1px solid var(--fluent-border) !important;
+  color: var(--fluent-text) !important;
 }
 
 select:focus {
-  outline: none;
-  border-color: var(--fluent-primary);
-  box-shadow: 0 0 0 2px rgba(96, 205, 255, 0.2);
+  border-color: var(--fluent-primary) !important;
+  box-shadow: 0 0 0 2px rgba(96, 205, 255, 0.25) !important;
 }
 
 select:disabled {
-  background-color: rgba(30, 30, 30, 0.5);
-  color: rgba(255, 255, 255, 0.4);
-  cursor: not-allowed;
+  background-color: rgba(40, 40, 40, 0.8) !important;
+  color: rgba(255, 255, 255, 0.5) !important;
 }
 
-/* Add a style for active links */
-a.active {
-  color: var(--fluent-primary);
+/* Spinner in dark mode */
+div:not([id='view']) > .spinning::before,
+div[id='view'] > .spinning::before {
+  border-color: rgba(96, 205, 255, 0.2) !important;
+  border-top-color: var(--fluent-primary) !important;
+  border-right-color: var(--fluent-primary) !important;
 }
 
-/* Add mica effect to main content */
-#maincontent {
-  background-color: rgba(32, 32, 32, 0.4);
-  backdrop-filter: blur(30px) saturate(120%);
-  -webkit-backdrop-filter: blur(30px) saturate(120%);
-}
 
-/* Add subtle glow effect to active elements */
-.btn.primary:focus,
-.cbi-button-save:focus,
-.cbi-button-add:focus,
-.cbi-button-apply:focus,
-.cbi-button-positive:focus,
-input[type="text"]:focus,
-input[type="password"]:focus,
-select:focus,
-textarea:focus {
-  box-shadow: 0 0 0 2px rgba(96, 205, 255, 0.3), 0 0 10px rgba(96, 205, 255, 0.2);
-}

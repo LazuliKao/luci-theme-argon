@@ -546,3 +546,21 @@ select:disabled {
   color: #a19f9d;
   cursor: not-allowed;
 }
+
+
+table>tbody>tr>td,
+table>tbody>tr>th,
+table>tfoot>tr>td,
+table>tfoot>tr>th,
+table>thead>tr>td,
+table>thead>tr>th,
+.table>.tbody>.tr>.td,
+.table>.tbody>.tr>.th,
+.table>.tfoot>.tr>.td,
+.table>.tfoot>.tr>.th,
+.table>.thead>.tr>.td,
+.table>.thead>.tr>.th,
+.table>.tr>.td.cbi-value-field,
+.table>.tr>.th.cbi-section-table-cell {
+  padding: 3px !important;
+}

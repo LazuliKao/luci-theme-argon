@@ -6,15 +6,13 @@
   --fluent-text: #ffffff !important;
   --fluent-text-secondary: #cccccc !important;
   --fluent-border: rgba(255, 255, 255, 0.1) !important;
-  
+
   /* FluentUI accent colors - dark theme */
-  --fluent-primary: var(--primary) !important;
   --fluent-accent: #60cdff !important;
-  --fluent-primary-dark: var(--dark-primary) !important;
   --fluent-success: #6ccf6c !important;
   --fluent-warning: #fcce76 !important;
   --fluent-error: #ff99a4 !important;
-  
+
   /* Enhanced Fluent UI Dark Mode Color Palette */
   --fluent-neutral-background: #202020; /* Dark background */
   --fluent-neutral-background-subtle: #2d2d2d; /* Slightly lighter background for elements */
@@ -27,7 +25,35 @@
   --fluent-brand-stroke: #5e4fa2; /* Slightly lighter brand for borders */
   --fluent-brand-background: #5e4fa2; /* Slightly lighter brand for backgrounds */
   --fluent-status-success: darkolivegreen; /* Using provided success color */
-  --fluent-status-danger: var(--red, #d13438); /* Using provided red or a Fluent red */
+  --fluent-status-danger: var(
+    --red,
+    #d13438
+  ); /* Using provided red or a Fluent red */
+
+  /* Derived theme colors */
+  --fluent-accent: color-mix(in srgb, var(--primary) 70%, #a2eaff) !important;
+  --fluent-success: color-mix(in srgb, var(--primary) 20%, #6ccf6c) !important;
+  --fluent-warning: color-mix(in srgb, var(--primary) 10%, #fcce76) !important;
+  --fluent-error: color-mix(in srgb, var(--primary) 5%, #ff99a4) !important;
+
+  /* Neutral colors for dark mode */
+  --fluent-neutral-background: #202020;
+  --fluent-neutral-background-subtle: #2d2d2d;
+  --fluent-neutral-stroke: #424242;
+
+  --fluent-neutral-foreground: #ffffff;
+  --fluent-neutral-foreground-S: #f5f5f5;
+  --fluent-neutral-foreground-M: #cccccc;
+  --fluent-neutral-foreground-L: #a6a6a6;
+
+  /* Brand variants */
+  --fluent-brand-default: var(--dark-primary);
+  --fluent-brand-stroke: color-mix(in srgb, var(--dark-primary) 80%, white);
+  --fluent-brand-background: color-mix(in srgb, var(--dark-primary) 80%, white);
+
+  /* Status colors */
+  --fluent-status-success: color-mix(in srgb, var(--fluent-success) 90%, black);
+  --fluent-status-danger: var(--red, #d13438);
 
   /* Fluent UI Corner Radius */
   --fluent-corner-radius: 4px; /* Small radius for controls */
@@ -39,7 +65,7 @@
 
   /* Define RGB for focus ring */
   --fluent-brand-default-rgb: 72, 61, 139; /* RGB for #483d8b */
-  
+
   /* Override theme variables with FluentUI dark values */
   /* --primary: var(--fluent-primary) !important;
   --dark-primary: var(--fluent-primary-dark) !important;
@@ -49,7 +75,7 @@
   --success: var(--fluent-success) !important;
   --warning: var(--fluent-warning) !important;
   --danger: var(--fluent-error) !important; */
-  
+
   /* Dark theme shadow adjustments */
   --fluent-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
   --fluent-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
@@ -140,7 +166,9 @@ select,
 input:not([type="checkbox"]):not([type="radio"]),
 .cbi-dropdown {
   color: var(--fluent-neutral-foreground); /* Primary text color */
-  background-color: var(--fluent-neutral-background) !important; /* Darker background for inputs */
+  background-color: var(
+    --fluent-neutral-background
+  ) !important; /* Darker background for inputs */
   border: 1px solid var(--fluent-neutral-stroke); /* Fluent border */
   box-shadow: none;
   border-radius: var(--fluent-corner-radius); /* Small rounded corners */
@@ -149,7 +177,9 @@ input:not([type="checkbox"]):not([type="radio"]),
 
 select:not([multiple="multiple"]):focus,
 input:focus:not([type="checkbox"]):not([type="radio"]) {
-  border-color: var(--fluent-brand-default) !important; /* Brand color on focus */
+  border-color: var(
+    --fluent-brand-default
+  ) !important; /* Brand color on focus */
   outline: none; /* Remove default outline */
   box-shadow: 0 0 0 2px rgba(var(--fluent-brand-default-rgb), 0.3); /* Subtle focus ring */
 }
@@ -163,7 +193,8 @@ input:focus:not([type="checkbox"]):not([type="radio"]) {
 #cbi-wireless > .cbi-section-node,
 #cbi-wireless > #wifi_assoclist_table,
 [data-tab-title],
-[data-page^="admin-system-admin"]:not(.node-main-login) .cbi-map:not(#cbi-dropbear),
+[data-page^="admin-system-admin"]:not(.node-main-login)
+  .cbi-map:not(#cbi-dropbear),
 [data-page="admin-system-opkg"] #maincontent > .container {
   background-color: var(--fluent-card-bg) !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
@@ -178,7 +209,8 @@ input:focus:not([type="checkbox"]):not([type="radio"]) {
 #cbi-wireless > .cbi-section-node:hover,
 #cbi-wireless > #wifi_assoclist_table:hover,
 [data-tab-title]:hover,
-[data-page^="admin-system-admin"]:not(.node-main-login) .cbi-map:not(#cbi-dropbear):hover,
+[data-page^="admin-system-admin"]:not(.node-main-login)
+  .cbi-map:not(#cbi-dropbear):hover,
 [data-page="admin-system-opkg"] #maincontent > .container:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
 }
@@ -374,8 +406,8 @@ select:disabled {
 }
 
 /* Spinner in dark mode */
-div:not([id='view']) > .spinning::before,
-div[id='view'] > .spinning::before {
+div:not([id="view"]) > .spinning::before,
+div[id="view"] > .spinning::before {
   border-color: rgba(96, 205, 255, 0.2) !important;
   border-top-color: var(--fluent-primary) !important;
   border-right-color: var(--fluent-primary) !important;
@@ -386,7 +418,9 @@ select,
 input:not([type="checkbox"]):not([type="radio"]),
 .cbi-dropdown {
   color: var(--fluent-neutral-foreground); /* Primary text color */
-  background-color: var(--fluent-neutral-background) !important; /* Darker background for inputs */
+  background-color: var(
+    --fluent-neutral-background
+  ) !important; /* Darker background for inputs */
   border: 1px solid var(--fluent-neutral-stroke); /* Fluent border */
   box-shadow: none;
   border-radius: var(--fluent-corner-radius); /* Small rounded corners */
@@ -395,7 +429,9 @@ input:not([type="checkbox"]):not([type="radio"]),
 
 select:not([multiple="multiple"]):focus,
 input:focus:not([type="checkbox"]):not([type="radio"]) {
-  border-color: var(--fluent-brand-default) !important; /* Brand color on focus */
+  border-color: var(
+    --fluent-brand-default
+  ) !important; /* Brand color on focus */
   outline: none; /* Remove default outline */
   box-shadow: 0 0 0 2px rgba(var(--fluent-brand-default-rgb), 0.3); /* Subtle focus ring */
 }
@@ -412,22 +448,30 @@ input:focus:not([type="checkbox"]):not([type="radio"]) {
 #cbi-customfeedconf .cbi-map-descr,
 #cbi-download h2,
 #cbi-filelist h2 {
-  color: var(--fluent-neutral-foreground) !important; /* Primary text for specific headers/descriptions */
+  color: var(
+    --fluent-neutral-foreground
+  ) !important; /* Primary text for specific headers/descriptions */
 }
 
-.cbi-value-field>ul>li .ifacebadge {
-  background-color: var(--fluent-neutral-background); /* Darker background for badges */
+.cbi-value-field > ul > li .ifacebadge {
+  background-color: var(
+    --fluent-neutral-background
+  ); /* Darker background for badges */
   color: var(--fluent-neutral-foreground); /* Primary text for badges */
   border-radius: var(--fluent-corner-radius); /* Rounded corners */
   padding: 4px 8px; /* Adjust padding */
 }
 
 .cbi-section-descr {
-  color: var(--fluent-neutral-foreground-M); /* Medium emphasis for section descriptions */
+  color: var(
+    --fluent-neutral-foreground-M
+  ); /* Medium emphasis for section descriptions */
 }
 
 .cbi-input-textarea {
-  background-color: var(--fluent-neutral-background) !important; /* Darker background for textarea */
+  background-color: var(
+    --fluent-neutral-background
+  ) !important; /* Darker background for textarea */
   color: var(--fluent-neutral-foreground) !important; /* Primary text color */
   border: 1px solid var(--fluent-neutral-stroke) !important; /* Fluent border */
   border-radius: var(--fluent-corner-radius) !important; /* Rounded corners */
@@ -435,8 +479,10 @@ input:focus:not([type="checkbox"]):not([type="radio"]) {
 }
 
 /* Package Management Table */
-.node-system-packages>.main table tr td:nth-last-child(1) {
-  color: var(--fluent-neutral-foreground-M); /* Medium emphasis for the last column */
+.node-system-packages > .main table tr td:nth-last-child(1) {
+  color: var(
+    --fluent-neutral-foreground-M
+  ); /* Medium emphasis for the last column */
 }
 
 /* Section Value Styling */
@@ -451,7 +497,9 @@ input:focus:not([type="checkbox"]):not([type="radio"]) {
 
 /* Interface Boxes Styling */
 .ifacebox {
-  background-color: var(--fluent-neutral-background-subtle); /* Subtle background for interface boxes */
+  background-color: var(
+    --fluent-neutral-background-subtle
+  ); /* Subtle background for interface boxes */
   border: 1px solid var(--fluent-neutral-stroke); /* Fluent border */
   box-shadow: 0 1px 3px var(--fluent-shadow-ambient); /* Subtle shadow */
   border-radius: var(--fluent-corner-radius-M); /* Rounded corners */
@@ -460,8 +508,12 @@ input:focus:not([type="checkbox"]):not([type="radio"]) {
 }
 
 .ifacebox-head {
-  color: var(--fluent-neutral-foreground); /* Primary text for interface box headers */
-  background-color: var(--fluent-neutral-background); /* Darker background for header */
+  color: var(
+    --fluent-neutral-foreground
+  ); /* Primary text for interface box headers */
+  background-color: var(
+    --fluent-neutral-background
+  ); /* Darker background for header */
   border-radius: var(--fluent-corner-radius-M) var(--fluent-corner-radius-M) 0 0; /* Rounded top corners */
   padding: 10px 16px; /* Add padding */
   border-bottom: 1px solid var(--fluent-neutral-stroke); /* Separator below header */
@@ -474,22 +526,30 @@ input:focus:not([type="checkbox"]):not([type="radio"]) {
 }
 
 .ifacebox-head.active {
-  background-color: var(--fluent-brand-default) !important; /* Brand color when active */
+  background-color: var(
+    --fluent-brand-default
+  ) !important; /* Brand color when active */
   color: var(--fluent-neutral-foreground) !important; /* White text */
 }
 
 .ifacebox-head:not(#cbi-network-interface .ifacebox-head) {
-  background: var(--fluent-brand-default) !important; /* Brand color for specific headers */
+  background: var(
+    --fluent-brand-default
+  ) !important; /* Brand color for specific headers */
   color: var(--fluent-neutral-foreground) !important; /* White text */
 }
 
 /* Zone Badges */
 .zonebadge strong {
-  color: var(--fluent-neutral-foreground); /* Primary text for strong text in badges */
+  color: var(
+    --fluent-neutral-foreground
+  ); /* Primary text for strong text in badges */
 }
 
-.zonebadge>.ifacebadge {
-  background-color: var(--fluent-neutral-background); /* Darker background for nested badges */
+.zonebadge > .ifacebadge {
+  background-color: var(
+    --fluent-neutral-background
+  ); /* Darker background for nested badges */
 }
 
 /* Variable Styling */
@@ -499,30 +559,15 @@ td.cbi-value-field var {
 }
 
 /* Diagnostic Output */
-#diag-rc-output>pre {
-  color: var(--fluent-neutral-foreground-M); /* Medium emphasis text for preformatted output */
-  background-color: var(--fluent-neutral-background); /* Darker background for code blocks */
+#diag-rc-output > pre {
+  color: var(
+    --fluent-neutral-foreground-M
+  ); /* Medium emphasis text for preformatted output */
+  background-color: var(
+    --fluent-neutral-background
+  ); /* Darker background for code blocks */
   border-radius: var(--fluent-corner-radius); /* Rounded corners */
   padding: 12px; /* Add padding */
   overflow-x: auto; /* Add scroll if needed */
   border: 1px solid var(--fluent-neutral-stroke); /* Add border */
-}
-
-
- 
-.cbi-button-up {
-  background-color: var(--fluent-primary) !important;
-  color: var(--fluent-text) !important;
-  border: 1px solid var(--fluent-border) !important;
-  box-shadow: var(--fluent-shadow) !important;
-  content: '' !important;
-  font-size: 0 !important;
-}
-.cbi-button-down {
-  background-color: var(--fluent-primary) !important;
-  color: var(--fluent-text) !important;
-  border: 1px solid var(--fluent-border) !important;
-  box-shadow: var(--fluent-shadow) !important;
-  content: '' !important;
-  font-size: 0 !important;
 }

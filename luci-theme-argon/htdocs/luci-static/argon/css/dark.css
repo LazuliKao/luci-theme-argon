@@ -32,6 +32,17 @@ body {
   color: #cccccc;
 }
 
+.spinning::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: .2em;
+  width: 32px;
+  content: "";
+  background: url(/luci-static/argon/icon/loading-dark.svg) no-repeat center;
+  background-size: 16px
+}
+
 .login-page .login-container .login-form {
   background-color: #444950;
 }
@@ -368,11 +379,15 @@ div>.table>.tbody>.tr:nth-of-type(2n) {
 
 .cbi-tabmenu li[class~="cbi-tab"] a {
   color: #ccc;
+  background-color: #444950;
+  border-radius: 6px 6px 0 0;
+  border-bottom: .18751rem solid var(--dark-primary);
 }
 
 .cbi-tabmenu>li:hover {
   color: #ccc;
-  background: #2d2d2d;
+  background: #444950;
+  border-bottom: .18751rem solid var(--dark-primary);
 }
 
 .cbi-tabmenu>li[class~="cbi-tab"] {
@@ -962,6 +977,12 @@ table,
   background-color: #2c323c
 }
 
+/* admin/status/channel_analysis */
+div#channel_graph {
+  border: 1px solid #292c31 !important;
+  background: #2c323c !important;
+}
+
 /* luci-app-filemanager */
 #file-manager-container button#go-button {
   background-color: #2c323c !important;
@@ -1024,4 +1045,48 @@ table,
 
 .Dashboard .cbi-rowstyle-1 {
   background-color: #1b212a;
+}
+
+/* admin/system/crontab */
+[data-page="admin-system-crontab"] #view p textarea {
+  background: #2c323c;
+  border: unset;
+}
+
+/* admin/network/diagnostics */
+[data-page="admin-network-diagnostics"] .tr>.td {
+  background-color: #2c323c !important;
+  border-bottom: unset !important;
+}
+
+[data-page="admin-network-diagnostics"] .cbi-section {
+  background: #2c323c !important;
+}
+
+[data-page="admin-network-diagnostics"] textarea {
+  border: 1px solid #3d424b;
+}
+
+/* admin/system/admin/repokeys */
+[data-page="admin-system-admin-repokeys"] .cbi-section-node {
+  background: #23272e;
+  color: #f3f6f8;
+}
+[data-page="admin-system-admin-repokeys"] .cbi-dynlist .item {
+  background: #2f3742;
+  border-color: #444a5a;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.22);
+}
+[data-page="admin-system-admin-repokeys"] .cbi-dynlist .item code {
+  background: #1e2229;
+  color: #95caff;
+}
+[data-page="admin-system-admin-repokeys"] .cbi-dynlist .add-item textarea.cbi-input-text {
+  background: #22242a;
+  border-color: #444a5a;
+  color: #e6eaf3;
+}
+[data-page="admin-system-admin-repokeys"] .cbi-dynlist .add-item textarea.cbi-input-text:focus {
+  background: #24304a;
+  border-color: #276ef1;
 }

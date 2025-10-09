@@ -123,28 +123,28 @@ input[type="url"],
   box-sizing: border-box !important;
   vertical-align: middle !important;
   position: relative !important;
-  
+
   /* Size: medium (default) */
   min-height: 32px !important;
   padding: 0 12px !important;
-  
+
   /* Appearance: outline (default) */
   background-color: #ffffff !important;
   border: 1px solid #8a8886 !important;
   border-bottom-color: #201f1e !important;
   border-radius: 4px !important;
-  
+
   /* Typography */
   font-family: var(--font-family-sans-serif) !important;
   font-size: 14px !important;
   font-weight: 400 !important;
   line-height: 20px !important;
   color: #323130 !important;
-  
+
   /* Transition */
   transition: border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
   outline-style: none !important;
-  
+
   /* Placeholder */
   ::placeholder {
     color: #a19f9d !important;
@@ -172,7 +172,7 @@ input[type="url"],
   background-size: 0 2px !important;
   background-repeat: no-repeat !important;
   transition: background-size 0.2s cubic-bezier(0.4, 0, 0.23, 1),
-              border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+    border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
 }
 
 input[type="text"]:hover:not(:disabled):not(:focus),
@@ -240,28 +240,28 @@ textarea,
   box-sizing: border-box !important;
   position: relative !important;
   vertical-align: top !important;
-  
+
   /* Size: medium (default) */
   min-height: 52px !important;
   max-height: 260px !important;
   padding: 10px 12px !important;
-  
+
   /* Appearance: outline */
   background-color: #ffffff !important;
   border: 1px solid #8a8886 !important;
   border-bottom-color: #201f1e !important;
   border-radius: 4px !important;
-  
+
   /* Typography */
   font-family: var(--font-family-sans-serif) !important;
   font-size: 14px !important;
   font-weight: 400 !important;
   line-height: 20px !important;
   color: #323130 !important;
-  
+
   /* Resize */
   resize: vertical !important;
-  
+
   /* Transition */
   transition: border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
   outline-style: none !important;
@@ -285,7 +285,7 @@ textarea,
   background-size: 0 2px !important;
   background-repeat: no-repeat !important;
   transition: background-size 0.2s cubic-bezier(0.4, 0, 0.23, 1),
-              border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+    border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
 }
 
 textarea:hover:not(:disabled):not(:focus),
@@ -590,25 +590,24 @@ header {
   box-sizing: border-box !important;
   position: relative !important;
   vertical-align: middle !important;
-  min-width: 17rem !important;
 
   /* Size: medium (default) - 与 Input 保持一致 */
   padding: 0 8px 0 8px !important;
   gap: 4px !important;
-  
+
   /* Appearance: outline */
   background-color: #ffffff !important;
   border: 1px solid #8a8886 !important;
   border-bottom-color: #201f1e !important;
   border-radius: 4px !important;
-  
+
   /* Typography */
   font-family: var(--font-family-sans-serif) !important;
   font-size: 14px !important;
   font-weight: 400 !important;
   line-height: 20px !important;
   color: #323130 !important;
-  
+
   /* Transition */
   transition: border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
   outline-style: none !important;
@@ -778,31 +777,31 @@ header {
   min-width: 100% !important;
   max-width: 400px !important;
   overflow-y: auto !important;
-  
+
   /* Appearance */
   background-color: #ffffff !important;
   border: 1px solid #8a8886 !important;
   border-radius: 4px !important;
   outline: 1px solid transparent !important;
-  
+
   /* Shadow */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14),
-              0 0 2px rgba(0, 0, 0, 0.12) !important;
-  
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14), 0 0 2px rgba(0, 0, 0, 0.12) !important;
+
   /* Position */
   position: absolute !important;
   left: 0 !important;
   right: 0 !important;
   z-index: 1000 !important;
-  
+
   /* Padding */
   padding: 4px !important;
   margin: 0 !important;
   margin-top: 4px !important;
   list-style: none !important;
-  
+
   /* Animation */
-  animation: fluent-dropdown-slide-in 0.2s cubic-bezier(0.4, 0, 0.23, 1) forwards !important;
+  animation: fluent-dropdown-slide-in 0.2s cubic-bezier(0.4, 0, 0.23, 1)
+    forwards !important;
   transform-origin: top !important;
 }
 
@@ -824,31 +823,31 @@ header {
   box-sizing: border-box !important;
   position: relative !important;
   width: 100% !important;
-  
+
   /* Size */
   min-height: 32px !important;
   padding: 5px 8px !important;
-  
+
   /* Appearance */
   border-radius: 4px !important;
   color: #323130 !important;
   cursor: pointer !important;
   user-select: none !important;
-  
+
   /* Typography */
   font-family: var(--font-family-sans-serif) !important;
   font-size: 14px !important;
   font-weight: 400 !important;
   line-height: 20px !important;
-  
+
   /* Text overflow */
   overflow: hidden !important;
   text-overflow: ellipsis !important;
   white-space: nowrap !important;
-  
+
   /* Transition */
   transition: background-color 0.05s cubic-bezier(0.33, 0, 0.67, 1),
-              color 0.05s cubic-bezier(0.33, 0, 0.67, 1) !important;
+    color 0.05s cubic-bezier(0.33, 0, 0.67, 1) !important;
 }
 
 /* Option placeholder */
@@ -906,17 +905,161 @@ header {
   min-height: 24px !important;
   padding: 2px 8px !important;
   box-sizing: border-box !important;
-  
+
   background-color: #ffffff !important;
   border: 1px solid #8a8886 !important;
   border-radius: 3px !important;
-  
+
   font-family: var(--font-family-sans-serif) !important;
   font-size: 14px !important;
   color: #323130 !important;
-  
+
   outline: none !important;
   transition: border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+}
+
+/* ============================================
+   Fluent UI Native Select Dropdown
+   ============================================ */
+
+/* Native select element */
+select.cbi-input-select {
+  display: inline-block !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  vertical-align: middle !important;
+
+  /* Size: medium (default) - 与 Input 保持一致 */
+  min-height: 32px !important;
+  padding: 0 32px 0 12px !important;
+  min-width: 17rem !important;
+
+  /* Appearance: outline */
+  background-color: #ffffff !important;
+  border: 1px solid #8a8886 !important;
+  border-bottom-color: #201f1e !important;
+  border-radius: 4px !important;
+
+  /* Typography */
+  font-family: var(--font-family-sans-serif) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  color: #323130 !important;
+
+  /* Custom arrow - Remove default */
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+
+  /* Fluent UI Chevron Down - 使用 border 绘制，与 .cbi-dropdown 完全一致 */
+  /* 6x6px 的正方形，旋转45度，只显示右边和底边 */
+  background-image: linear-gradient(
+      to top right,
+      transparent calc(50% - 0.75px),
+      #605e5c calc(50% - 0.75px),
+      #605e5c calc(50% + 0.75px),
+      transparent calc(50% + 0.75px)
+    ),
+    linear-gradient(
+      to top left,
+      transparent calc(50% - 0.75px),
+      #605e5c calc(50% - 0.75px),
+      #605e5c calc(50% + 0.75px),
+      transparent calc(50% + 0.75px)
+    ) !important;
+  background-position: calc(100% - 14px) calc(50% - 1px),
+    calc(100% - 11px) calc(50% - 1px) !important;
+  background-size: 6px 6px, 6px 6px !important;
+  background-repeat: no-repeat !important;
+
+  /* Transition */
+  transition: border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
+    background-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+  outline-style: none !important;
+  cursor: pointer !important;
+}
+
+/* Select hover state */
+select.cbi-input-select:hover:not(:disabled) {
+  border-color: #605e5c !important;
+  border-bottom-color: #201f1e !important;
+
+  /* Darker chevron on hover */
+  background-image: linear-gradient(
+      to top right,
+      transparent calc(50% - 0.75px),
+      #323130 calc(50% - 0.75px),
+      #323130 calc(50% + 0.75px),
+      transparent calc(50% + 0.75px)
+    ),
+    linear-gradient(
+      to top left,
+      transparent calc(50% - 0.75px),
+      #323130 calc(50% - 0.75px),
+      #323130 calc(50% + 0.75px),
+      transparent calc(50% + 0.75px)
+    ) !important;
+}
+
+/* Select focus state */
+select.cbi-input-select:focus {
+  border-color: #8a8886 !important;
+  border-bottom-color: var(--fluent-primary) !important;
+  border-bottom-width: 2px !important;
+  padding-bottom: 0 !important;
+  outline: none !important;
+}
+
+/* Select active state */
+select.cbi-input-select:active:not(:disabled) {
+  border-color: #8a8886 !important;
+  border-bottom-color: #201f1e !important;
+}
+
+/* Select disabled state */
+select.cbi-input-select:disabled {
+  cursor: not-allowed !important;
+  background-color: transparent !important;
+  border-color: #c8c6c4 !important;
+  color: #a19f9d !important;
+  opacity: 1 !important;
+
+  /* Disabled chevron */
+  background-image: linear-gradient(
+      to top right,
+      transparent calc(50% - 0.75px),
+      #c8c6c4 calc(50% - 0.75px),
+      #c8c6c4 calc(50% + 0.75px),
+      transparent calc(50% + 0.75px)
+    ),
+    linear-gradient(
+      to top left,
+      transparent calc(50% - 0.75px),
+      #c8c6c4 calc(50% - 0.75px),
+      #c8c6c4 calc(50% + 0.75px),
+      transparent calc(50% + 0.75px)
+    ) !important;
+}
+
+/* Option styling (works in some browsers) */
+select.cbi-input-select option {
+  padding: 5px 8px !important;
+  background-color: #ffffff !important;
+  color: #323130 !important;
+  font-family: var(--font-family-sans-serif) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+}
+
+select.cbi-input-select option:checked {
+  background-color: #e8f4fd !important;
+  font-weight: 600 !important;
+}
+
+select.cbi-input-select option:disabled {
+  color: #a19f9d !important;
 }
 
 .cbi-dropdown[open] > ul.dropdown > li .create-item-input::placeholder {
@@ -970,7 +1113,7 @@ input[type="checkbox"] {
   background-position: center !important;
   cursor: pointer !important;
   transition: background-color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
-              border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+    border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
   outline: none !important;
   vertical-align: middle !important;
   flex-shrink: 0 !important;
@@ -996,7 +1139,7 @@ input[type="checkbox"]::before {
   background-color: #605e5c !important;
   background-image: none !important;
   transition: transform 0.1s cubic-bezier(0.33, 0, 0.67, 1),
-              background-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+    background-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.14) !important;
   box-sizing: border-box !important;
 }
@@ -1025,7 +1168,11 @@ input[type="checkbox"]:hover:not(:disabled) {
 }
 
 input[type="checkbox"]:checked:hover:not(:disabled) {
-  background-color: color-mix(in srgb, var(--fluent-primary) 90%, black) !important;
+  background-color: color-mix(
+    in srgb,
+    var(--fluent-primary) 90%,
+    black
+  ) !important;
   border-color: color-mix(in srgb, var(--fluent-primary) 90%, black) !important;
   background-image: none !important;
 }
@@ -1173,7 +1320,11 @@ td input[type="checkbox"]:checked:hover:not(:disabled),
 th input[type="checkbox"]:checked:hover:not(:disabled),
 .tr .td input[type="checkbox"]:checked:hover:not(:disabled),
 .tr .th input[type="checkbox"]:checked:hover:not(:disabled) {
-  background-color: color-mix(in srgb, var(--fluent-primary) 90%, black) !important;
+  background-color: color-mix(
+    in srgb,
+    var(--fluent-primary) 90%,
+    black
+  ) !important;
   border-color: color-mix(in srgb, var(--fluent-primary) 90%, black) !important;
   background-image: url('data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3e%3cpath fill="white" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/%3e%3c/svg%3e') !important;
 }
@@ -1487,12 +1638,15 @@ td.td.cbi-section-table-cell.nowrap.cbi-section-actions
   transform-origin: top left;
 } */
 
-
 /* 隐藏network_guide */
 a[href*="/admin/network_guide"] {
   display: none !important;
 }
 
-.cbi-section .cbi-dropdown, .cbi-page-actions .cbi-dropdown{
+.cbi-dropdown {
   min-height: 2rem !important;
+  min-width: 17rem !important;
+}
+.cbi-button {
+  min-width: auto !important;
 }

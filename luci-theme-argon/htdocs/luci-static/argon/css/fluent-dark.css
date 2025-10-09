@@ -286,7 +286,8 @@ input[type="url"]:disabled,
 
 /* Password input focus state - adjust border */
 .control-group:has(> input.cbi-input-password) > .password-input:focus,
-.control-group:has(> input.cbi-input-password) > input.cbi-input-password:focus {
+.control-group:has(> input.cbi-input-password)
+  > input.cbi-input-password:focus {
   border-right: none !important;
   z-index: 1 !important;
 }
@@ -299,31 +300,31 @@ input[type="url"]:disabled,
   align-items: center !important;
   justify-content: center !important;
   flex-shrink: 0 !important;
-  
+
   /* Size to match input height */
   min-width: 32px !important;
   width: 32px !important;
   height: 32px !important;
   padding: 0 !important;
   margin: 0 !important;
-  
+
   /* Appearance - subtle button style (dark mode) */
   background-color: #292929 !important;
   border: 1px solid #5c5c5c !important;
   border-bottom-color: #dadada !important;
   border-left: none !important;
   border-radius: 0 4px 4px 0 !important;
-  
+
   /* Typography */
   font-size: 16px !important;
   line-height: 1 !important;
   color: #c8c6c4 !important;
-  
+
   /* Interaction */
   cursor: pointer !important;
   transition: background-color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
-              color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
-              border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+    color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
+    border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
   outline: none !important;
 }
 
@@ -345,10 +346,18 @@ input[type="url"]:disabled,
 }
 
 /* Toggle button when input is focused */
-.control-group:has(> input.cbi-input-password) > .password-input:focus ~ .cbi-button-neutral,
-.control-group:has(> input.cbi-input-password) > .password-input:focus ~ button.cbi-button,
-.control-group:has(> input.cbi-input-password) > input.cbi-input-password:focus ~ .cbi-button-neutral,
-.control-group:has(> input.cbi-input-password) > input.cbi-input-password:focus ~ button.cbi-button {
+.control-group:has(> input.cbi-input-password)
+  > .password-input:focus
+  ~ .cbi-button-neutral,
+.control-group:has(> input.cbi-input-password)
+  > .password-input:focus
+  ~ button.cbi-button,
+.control-group:has(> input.cbi-input-password)
+  > input.cbi-input-password:focus
+  ~ .cbi-button-neutral,
+.control-group:has(> input.cbi-input-password)
+  > input.cbi-input-password:focus
+  ~ button.cbi-button {
   border-color: #5c5c5c !important;
   border-bottom-color: var(--fluent-primary) !important;
   border-left: none !important;
@@ -1148,16 +1157,16 @@ ul.cbi-tabmenu {
   align-items: stretch !important;
   box-sizing: border-box !important;
   position: relative !important;
-  
+
   /* Spacing */
   padding: 0 !important;
   margin: 0 0 16px 0 !important;
   gap: 0 !important;
   list-style: none !important;
-  
+
   /* Border - 底部分隔线 (深色主题) */
   border-bottom: 1px solid #484644 !important;
-  
+
   /* Typography */
   font-family: var(--font-family-sans-serif) !important;
   font-size: 14px !important;
@@ -1171,7 +1180,7 @@ ul.cbi-tabmenu > li {
   align-items: center !important;
   box-sizing: border-box !important;
   position: relative !important;
-  
+
   /* Remove default styles */
   list-style: none !important;
   margin: 0 !important;
@@ -1184,16 +1193,16 @@ ul.cbi-tabmenu > li > a {
   justify-content: center !important;
   box-sizing: border-box !important;
   position: relative !important;
-  
+
   /* Size: medium */
   min-height: 32px !important;
   padding: 8px 16px !important;
-  
+
   /* Appearance */
   background-color: transparent !important;
   border: none !important;
   margin-bottom: -1px !important;
-  
+
   /* Typography */
   font-family: var(--font-family-sans-serif) !important;
   font-size: 14px !important;
@@ -1201,15 +1210,15 @@ ul.cbi-tabmenu > li > a {
   line-height: 20px !important;
   color: #a19f9d !important;
   text-decoration: none !important;
-  
+
   /* Interaction */
   cursor: pointer !important;
   user-select: none !important;
   white-space: nowrap !important;
-  
+
   /* Transition for text color and background */
   transition: color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
-              background-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+    background-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
 }
 
 /* Tab底部指示器 - 使用伪元素实现波纹效果 (深色主题) */
@@ -1280,22 +1289,22 @@ ul.cbi-tabmenu > li[class="cbi-tab-disabled"] > a:hover {
   align-items: stretch !important;
   box-sizing: border-box !important;
   position: relative !important;
-  
+
   /* Spacing */
   padding: 0 !important;
   margin: 0 !important;
   gap: 0 !important;
   list-style: none !important;
-  
+
   /* Border - 底部分隔线 (深色主题) */
   border-bottom: 2px solid #3d3d3d !important;
-  
+
   /* Typography */
   font-family: var(--font-family-sans-serif) !important;
   font-size: 14px !important;
   font-weight: 400 !important;
   line-height: 20px !important;
-  
+
   /* Horizontal scrolling */
   overflow-x: auto !important;
   overflow-y: hidden !important;
@@ -1346,7 +1355,7 @@ ul.cbi-tabmenu > li[class="cbi-tab-disabled"] > a:hover {
   align-items: center !important;
   box-sizing: border-box !important;
   position: relative !important;
-  
+
   /* Remove default styles */
   list-style: none !important;
   margin: 0 !important;
@@ -1360,16 +1369,16 @@ ul.cbi-tabmenu > li[class="cbi-tab-disabled"] > a:hover {
   justify-content: center !important;
   box-sizing: border-box !important;
   position: relative !important;
-  
+
   /* Size: medium */
   min-height: 32px !important;
   padding: 6px 12px !important;
-  
+
   /* Appearance */
   background-color: transparent !important;
   border: none !important;
   border-bottom: 2px solid transparent !important;
-  
+
   /* Typography */
   font-family: var(--font-family-sans-serif) !important;
   font-size: 14px !important;
@@ -1377,16 +1386,16 @@ ul.cbi-tabmenu > li[class="cbi-tab-disabled"] > a:hover {
   line-height: 20px !important;
   color: #8a8886 !important;
   text-decoration: none !important;
-  
+
   /* Interaction */
   cursor: pointer !important;
   user-select: none !important;
   white-space: nowrap !important;
-  
+
   /* Transition */
   transition: color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
-              border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
-              background-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+    border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
+    background-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
 }
 
 /* Tab Hover State */

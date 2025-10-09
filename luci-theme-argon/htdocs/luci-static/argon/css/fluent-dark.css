@@ -375,12 +375,18 @@ input[type="checkbox"] {
   border-radius: 10px !important;
   border: 1px solid #8a8886 !important;
   background-color: rgba(60, 60, 60, 0.8) !important;
+  background-image: none !important;
+  background-size: auto !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
   cursor: pointer !important;
   transition: background-color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
               border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
   outline: none !important;
   vertical-align: middle !important;
   flex-shrink: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* Switch thumb (indicator) - Dark Mode */
@@ -393,6 +399,7 @@ input[type="checkbox"]::before {
   height: 12px !important;
   border-radius: 50% !important;
   background-color: #c8c6c4 !important;
+  background-image: none !important;
   transition: transform 0.1s cubic-bezier(0.33, 0, 0.67, 1),
               background-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.28) !important;
@@ -402,22 +409,27 @@ input[type="checkbox"]::before {
 input[type="checkbox"]:checked {
   background-color: var(--fluent-primary) !important;
   border-color: var(--fluent-primary) !important;
+  background-image: none !important;
+  background-size: auto !important;
 }
 
 input[type="checkbox"]:checked::before {
   transform: translateX(20px) !important;
   background-color: #ffffff !important;
+  background-image: none !important;
 }
 
 /* Hover states - Dark Mode */
 input[type="checkbox"]:hover:not(:disabled) {
   background-color: rgba(70, 70, 70, 0.9) !important;
   border-color: #a19f9d !important;
+  background-image: none !important;
 }
 
 input[type="checkbox"]:checked:hover:not(:disabled) {
   background-color: color-mix(in srgb, var(--fluent-primary) 85%, black) !important;
   border-color: color-mix(in srgb, var(--fluent-primary) 85%, black) !important;
+  background-image: none !important;
 }
 
 /* Focus state - Dark Mode */
@@ -429,10 +441,12 @@ input[type="checkbox"]:focus-visible {
 /* Active/Pressed state - Dark Mode */
 input[type="checkbox"]:active:not(:disabled)::before {
   width: 14px !important;
+  background-image: none !important;
 }
 
 input[type="checkbox"]:checked:active:not(:disabled)::before {
   transform: translateX(18px) !important;
+  background-image: none !important;
 }
 
 /* Disabled state - Dark Mode */
@@ -441,19 +455,122 @@ input[type="checkbox"]:disabled {
   background-color: rgba(40, 40, 40, 0.6) !important;
   border-color: #605e5c !important;
   opacity: 0.5 !important;
+  background-image: none !important;
 }
 
 input[type="checkbox"]:disabled::before {
   background-color: #605e5c !important;
+  background-image: none !important;
 }
 
 input[type="checkbox"]:checked:disabled {
   background-color: rgba(96, 94, 92, 0.4) !important;
   border-color: #605e5c !important;
+  background-image: none !important;
 }
 
 input[type="checkbox"]:checked:disabled::before {
   background-color: #8a8886 !important;
+  background-image: none !important;
+}
+
+/* Fluent UI Checkbox for tables and special contexts - Dark Mode */
+.table input[type="checkbox"],
+.cbi-section-table input[type="checkbox"],
+.modal input[type="checkbox"],
+.cbi-dropdown input[type="checkbox"],
+td input[type="checkbox"],
+th input[type="checkbox"],
+.tr .td input[type="checkbox"],
+.tr .th input[type="checkbox"] {
+  /* Reset to checkbox style */
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 4px !important;
+  border: 1px solid #8a8886 !important;
+  background-color: rgba(60, 60, 60, 0.8) !important;
+  background-image: none !important;
+  margin: 0 auto !important;
+  margin-right: 3px !important;
+  vertical-align: middle !important;
+}
+
+.table input[type="checkbox"]::before,
+.cbi-section-table input[type="checkbox"]::before,
+.modal input[type="checkbox"]::before,
+.cbi-dropdown input[type="checkbox"]::before,
+td input[type="checkbox"]::before,
+th input[type="checkbox"]::before,
+.tr .td input[type="checkbox"]::before,
+.tr .th input[type="checkbox"]::before {
+  content: none !important;
+  display: none !important;
+}
+
+.table input[type="checkbox"]:checked,
+.cbi-section-table input[type="checkbox"]:checked,
+.modal input[type="checkbox"]:checked,
+.cbi-dropdown input[type="checkbox"]:checked,
+td input[type="checkbox"]:checked,
+th input[type="checkbox"]:checked,
+.tr .td input[type="checkbox"]:checked,
+.tr .th input[type="checkbox"]:checked {
+  background-color: var(--fluent-primary) !important;
+  border-color: var(--fluent-primary) !important;
+  background-image: url('data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3e%3cpath fill="white" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/%3e%3c/svg%3e') !important;
+  background-size: 12px 12px !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+.table input[type="checkbox"]:checked::before,
+.cbi-section-table input[type="checkbox"]:checked::before,
+.modal input[type="checkbox"]:checked::before,
+.cbi-dropdown input[type="checkbox"]:checked::before,
+td input[type="checkbox"]:checked::before,
+th input[type="checkbox"]:checked::before,
+.tr .td input[type="checkbox"]:checked::before,
+.tr .th input[type="checkbox"]:checked::before {
+  transform: none !important;
+}
+
+/* Hover state for checkbox in tables - Dark Mode */
+.table input[type="checkbox"]:hover:not(:disabled),
+.cbi-section-table input[type="checkbox"]:hover:not(:disabled),
+.modal input[type="checkbox"]:hover:not(:disabled),
+.cbi-dropdown input[type="checkbox"]:hover:not(:disabled),
+td input[type="checkbox"]:hover:not(:disabled),
+th input[type="checkbox"]:hover:not(:disabled),
+.tr .td input[type="checkbox"]:hover:not(:disabled),
+.tr .th input[type="checkbox"]:hover:not(:disabled) {
+  background-color: rgba(70, 70, 70, 0.9) !important;
+  border-color: #a19f9d !important;
+}
+
+.table input[type="checkbox"]:checked:hover:not(:disabled),
+.cbi-section-table input[type="checkbox"]:checked:hover:not(:disabled),
+.modal input[type="checkbox"]:checked:hover:not(:disabled),
+.cbi-dropdown input[type="checkbox"]:checked:hover:not(:disabled),
+td input[type="checkbox"]:checked:hover:not(:disabled),
+th input[type="checkbox"]:checked:hover:not(:disabled),
+.tr .td input[type="checkbox"]:checked:hover:not(:disabled),
+.tr .th input[type="checkbox"]:checked:hover:not(:disabled) {
+  background-color: color-mix(in srgb, var(--fluent-primary) 85%, black) !important;
+  border-color: color-mix(in srgb, var(--fluent-primary) 85%, black) !important;
+}
+
+/* Disabled state for checkbox in tables - Dark Mode */
+.table input[type="checkbox"]:disabled,
+.cbi-section-table input[type="checkbox"]:disabled,
+.modal input[type="checkbox"]:disabled,
+.cbi-dropdown input[type="checkbox"]:disabled,
+td input[type="checkbox"]:disabled,
+th input[type="checkbox"]:disabled,
+.tr .td input[type="checkbox"]:disabled,
+.tr .th input[type="checkbox"]:disabled {
+  background-color: rgba(40, 40, 40, 0.6) !important;
+  border-color: #605e5c !important;
+  opacity: 0.5 !important;
 }
 
 /* Scrollbars - webkit only */

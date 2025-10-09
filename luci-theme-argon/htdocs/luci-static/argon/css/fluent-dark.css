@@ -364,15 +364,96 @@ header {
   background-color: rgba(96, 205, 255, 0.3) !important;
 }
 
-/* Checkboxes and radio buttons */
+/* Checkboxes as Fluent UI Switch - Dark Mode */
 input[type="checkbox"] {
-  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  position: relative !important;
+  width: 40px !important;
+  height: 20px !important;
+  border-radius: 10px !important;
+  border: 1px solid #8a8886 !important;
   background-color: rgba(60, 60, 60, 0.8) !important;
+  cursor: pointer !important;
+  transition: background-color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
+              border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+  outline: none !important;
+  vertical-align: middle !important;
+  flex-shrink: 0 !important;
 }
 
+/* Switch thumb (indicator) - Dark Mode */
+input[type="checkbox"]::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 3px !important;
+  left: 3px !important;
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  background-color: #c8c6c4 !important;
+  transition: transform 0.1s cubic-bezier(0.33, 0, 0.67, 1),
+              background-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.28) !important;
+}
+
+/* Checked state - Dark Mode */
 input[type="checkbox"]:checked {
   background-color: var(--fluent-primary) !important;
   border-color: var(--fluent-primary) !important;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: translateX(20px) !important;
+  background-color: #ffffff !important;
+}
+
+/* Hover states - Dark Mode */
+input[type="checkbox"]:hover:not(:disabled) {
+  background-color: rgba(70, 70, 70, 0.9) !important;
+  border-color: #a19f9d !important;
+}
+
+input[type="checkbox"]:checked:hover:not(:disabled) {
+  background-color: color-mix(in srgb, var(--fluent-primary) 85%, black) !important;
+  border-color: color-mix(in srgb, var(--fluent-primary) 85%, black) !important;
+}
+
+/* Focus state - Dark Mode */
+input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--fluent-primary) !important;
+  outline-offset: 2px !important;
+}
+
+/* Active/Pressed state - Dark Mode */
+input[type="checkbox"]:active:not(:disabled)::before {
+  width: 14px !important;
+}
+
+input[type="checkbox"]:checked:active:not(:disabled)::before {
+  transform: translateX(18px) !important;
+}
+
+/* Disabled state - Dark Mode */
+input[type="checkbox"]:disabled {
+  cursor: not-allowed !important;
+  background-color: rgba(40, 40, 40, 0.6) !important;
+  border-color: #605e5c !important;
+  opacity: 0.5 !important;
+}
+
+input[type="checkbox"]:disabled::before {
+  background-color: #605e5c !important;
+}
+
+input[type="checkbox"]:checked:disabled {
+  background-color: rgba(96, 94, 92, 0.4) !important;
+  border-color: #605e5c !important;
+}
+
+input[type="checkbox"]:checked:disabled::before {
+  background-color: #8a8886 !important;
 }
 
 /* Scrollbars - webkit only */

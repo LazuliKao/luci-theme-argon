@@ -627,9 +627,9 @@ header {
   /* Layout */
   display: flex !important;
   flex-direction: column !important;
-  max-width: 440px !important;
+  max-width: 420px !important;
   width: 100% !important;
-  padding: 48px 40px !important;
+  padding: 32px 28px 28px 28px !important;
   box-sizing: border-box !important;
   
   /* Fluent Design - Acrylic Material (Dark) */
@@ -682,14 +682,14 @@ header {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  margin-bottom: 32px !important;
-  gap: 12px !important;
+  margin-bottom: 20px !important;
+  gap: 10px !important;
   text-decoration: none !important;
 }
 
 .login-page .login-container .login-form .brand .icon {
-  width: 56px !important;
-  height: 56px !important;
+  width: 48px !important;
+  height: 48px !important;
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4)) !important;
 }
@@ -702,9 +702,9 @@ header {
 .login-page .login-container .login-form .brand .brand-text {
   /* Fluent Typography - Display (Dark) */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif !important;
-  font-size: 28px !important;
+  font-size: 24px !important;
   font-weight: 600 !important;
-  line-height: 36px !important;
+  line-height: 32px !important;
   color: #f5f5f5 !important;
   letter-spacing: -0.01em !important;
   margin: 0 !important;
@@ -714,8 +714,8 @@ header {
 /* Error box - Fluent Design System (Dark) */
 .login-page .login-container .login-form .form-login .errorbox {
   /* Layout */
-  padding: 12px 16px !important;
-  margin-bottom: 24px !important;
+  padding: 10px 14px !important;
+  margin-bottom: 16px !important;
   border-radius: 4px !important;
   
   /* Fluent Semantic Colors - Error (Dark) */
@@ -745,8 +745,8 @@ header {
 .login-page .login-container .login-form .form-login .input-container {
   display: flex !important;
   flex-direction: column !important;
-  gap: 16px !important;
-  margin-bottom: 24px !important;
+  gap: 10px !important;
+  margin-bottom: 14px !important;
 }
 
 /* Input group - Dark Mode */
@@ -801,8 +801,8 @@ header {
   width: 100% !important;
   
   /* Size - Fluent Design touch-friendly */
-  min-height: 48px !important;
-  padding: 11px 16px 11px 48px !important;
+  min-height: 44px !important;
+  padding: 10px 16px 10px 44px !important;
   
   /* Fluent Appearance - Outline style (Dark) */
   background-color: #292929 !important;
@@ -905,8 +905,8 @@ header {
   box-sizing: border-box !important;
   
   /* Size - Fluent touch-friendly */
-  min-height: 52px !important;
-  padding: 14px 24px !important;
+  min-height: 48px !important;
+  padding: 12px 24px !important;
   
   /* Fluent Primary Button Appearance (Dark Mode) */
   background: var(--fluent-primary, #60cdff) !important;
@@ -931,7 +931,7 @@ header {
   outline: none !important;
   
   /* Spacing */
-  margin: 8px 0 0 0 !important;
+  margin: 6px 0 0 0 !important;
   
   /* Fluent animation */
   transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -1001,16 +1001,163 @@ header {
   transform: none !important;
 }
 
-.login-page .login-container .login-form .cbi-button-apply:active {
-  background-color: #3da5d1 !important;
-  border-color: #3da5d1 !important;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-  transform: translateY(0) !important;
+/* Login page footer - Version info (Dark) */
+.login-page .login-container footer {
+  position: relative !important;
+  margin-top: 16px !important;
+  padding: 0 !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  text-align: center !important;
 }
 
-.login-page .login-container .login-form .cbi-button-apply:focus {
-  box-shadow: 0 0 0 2px #2d2d2d,
-              0 0 0 4px var(--fluent-accent, #60cdff) !important;
+.login-page .login-container footer .ftc {
+  position: relative !important;
+  bottom: auto !important;
+  width: 100% !important;
+}
+
+.login-page .login-container footer a {
+  color: rgba(255, 255, 255, 0.6) !important;
+  text-decoration: none !important;
+  transition: color 0.2s !important;
+}
+
+.login-page .login-container footer a:hover {
+  color: var(--fluent-primary, #60cdff) !important;
+  text-decoration: underline !important;
+}
+
+/* ============================================
+   Login Page - Desktop Center Layout (Dark Mode)
+   ============================================ */
+
+/* Desktop: Center the login container */
+@media screen and (min-width: 992px) {
+  .login-page .login-container {
+    /* Center horizontally and vertically */
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    
+    /* Reset margins */
+    margin: 0 !important;
+    
+    /* Layout adjustments */
+    height: auto !important;
+    min-height: auto !important;
+    width: auto !important;
+    
+    /* Remove side shadow */
+    box-shadow: none !important;
+    
+    /* Flexbox centering fallback */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  
+  .login-page .login-container .login-form {
+    position: relative !important;
+  }
+}
+
+/* Large Desktop: Slightly increase form size (Dark) */
+@media screen and (min-width: 1440px) {
+  .login-page .login-container .login-form {
+    max-width: 480px !important;
+    padding: 56px 48px !important;
+  }
+  
+  .login-page .login-container .login-form .brand .icon {
+    width: 64px !important;
+    height: 64px !important;
+  }
+  
+  .login-page .login-container .login-form .brand .brand-text {
+    font-size: 32px !important;
+    line-height: 40px !important;
+  }
+}
+
+/* Tablet: Adjust for medium screens (Dark) */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .login-page .login-container {
+    margin-left: 10% !important;
+  }
+}
+
+/* Mobile: Full width on small screens (Dark) */
+@media screen and (max-width: 767px) {
+  .login-page .login-container {
+    /* Full screen layout */
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    
+    /* Center content */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  
+  .login-page .login-container .login-form {
+    position: relative !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 24px 20px !important;
+    margin: 0 !important;
+    
+    /* Remove or reduce backdrop blur for better mobile performance */
+    backdrop-filter: blur(20px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  }
+  
+  /* Adjust brand section for mobile */
+  .login-page .login-container .login-form .brand {
+    margin-bottom: 20px !important;
+  }
+  
+  .login-page .login-container .login-form .brand .icon {
+    width: 56px !important;
+    height: 56px !important;
+  }
+  
+  .login-page .login-container .login-form .brand .brand-text {
+    font-size: 26px !important;
+    line-height: 34px !important;
+  }
+  
+  /* Adjust input spacing for mobile */
+  .login-page .login-container .login-form .form-login .input-container {
+    gap: 14px !important;
+    margin-bottom: 20px !important;
+  }
+  
+  /* Larger touch targets for mobile */
+  .login-page .login-container .login-form .form-login .input-group input,
+  .login-page .login-container .login-form .form-login .input-group .cbi-input-user,
+  .login-page .login-container .login-form .form-login .input-group .cbi-input-password {
+    min-height: 48px !important;
+    font-size: 16px !important;
+  }
+  
+  /* Larger button for mobile */
+  .login-page .login-container .login-form .cbi-button-apply {
+    min-height: 52px !important;
+    font-size: 17px !important;
+  }
 }
 
 /* Alerts and notifications */

@@ -373,7 +373,7 @@ input[type="url"]:disabled,
    ============================================ */
 
 /* Control group container for password input + button */
-.control-group {
+.control-group:has(> input.cbi-input-password) {
   display: inline-flex !important;
   align-items: center !important;
   position: relative !important;
@@ -382,8 +382,8 @@ input[type="url"]:disabled,
 }
 
 /* Password input inside control group */
-.control-group > .password-input,
-.control-group > input.cbi-input-password {
+.control-group:has(> input.cbi-input-password) > .password-input,
+.control-group:has(> input.cbi-input-password) > input.cbi-input-password {
   flex: 1 !important;
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
@@ -392,15 +392,15 @@ input[type="url"]:disabled,
 }
 
 /* Password input focus state - adjust border */
-.control-group > .password-input:focus,
-.control-group > input.cbi-input-password:focus {
+.control-group:has(> input.cbi-input-password) > .password-input:focus,
+.control-group:has(> input.cbi-input-password) > input.cbi-input-password:focus {
   border-right: none !important;
   z-index: 1 !important;
 }
 
-/* Toggle button styling */
-.control-group > .cbi-button-neutral,
-.control-group > button.cbi-button {
+/* Toggle button styling - only for password inputs */
+.control-group:has(> input.cbi-input-password) > .cbi-button-neutral,
+.control-group:has(> input.cbi-input-password) > button.cbi-button {
   /* Reset cbi-button styles for this specific case */
   display: inline-flex !important;
   align-items: center !important;
@@ -435,8 +435,8 @@ input[type="url"]:disabled,
 }
 
 /* Toggle button hover state */
-.control-group > .cbi-button-neutral:hover,
-.control-group > button.cbi-button:hover {
+.control-group:has(> input.cbi-input-password) > .cbi-button-neutral:hover,
+.control-group:has(> input.cbi-input-password) > button.cbi-button:hover {
   background-color: #f3f2f1 !important;
   color: #323130 !important;
   border-color: #605e5c !important;
@@ -445,25 +445,25 @@ input[type="url"]:disabled,
 }
 
 /* Toggle button active state */
-.control-group > .cbi-button-neutral:active,
-.control-group > button.cbi-button:active {
+.control-group:has(> input.cbi-input-password) > .cbi-button-neutral:active,
+.control-group:has(> input.cbi-input-password) > button.cbi-button:active {
   background-color: #edebe9 !important;
   color: #201f1e !important;
 }
 
 /* Toggle button when input is focused */
-.control-group > .password-input:focus ~ .cbi-button-neutral,
-.control-group > .password-input:focus ~ button.cbi-button,
-.control-group > input.cbi-input-password:focus ~ .cbi-button-neutral,
-.control-group > input.cbi-input-password:focus ~ button.cbi-button {
+.control-group:has(> input.cbi-input-password) > .password-input:focus ~ .cbi-button-neutral,
+.control-group:has(> input.cbi-input-password) > .password-input:focus ~ button.cbi-button,
+.control-group:has(> input.cbi-input-password) > input.cbi-input-password:focus ~ .cbi-button-neutral,
+.control-group:has(> input.cbi-input-password) > input.cbi-input-password:focus ~ button.cbi-button {
   border-color: #8a8886 !important;
   border-bottom-color: var(--fluent-primary) !important;
   border-left: none !important;
 }
 
 /* Disabled state */
-.control-group > .cbi-button-neutral:disabled,
-.control-group > button.cbi-button:disabled {
+.control-group:has(> input.cbi-input-password) > .cbi-button-neutral:disabled,
+.control-group:has(> input.cbi-input-password) > button.cbi-button:disabled {
   background-color: #f3f2f1 !important;
   border-color: #c8c6c4 !important;
   border-bottom-color: #c8c6c4 !important;
@@ -1155,25 +1155,11 @@ select.cbi-input-select {
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
 
-  /* Fluent UI Chevron Down - 使用 border 绘制，与 .cbi-dropdown 完全一致 */
-  /* 6x6px 的正方形，旋转45度，只显示右边和底边 */
-  background-image: linear-gradient(
-      to top right,
-      transparent calc(50% - 0.75px),
-      #605e5c calc(50% - 0.75px),
-      #605e5c calc(50% + 0.75px),
-      transparent calc(50% + 0.75px)
-    ),
-    linear-gradient(
-      to top left,
-      transparent calc(50% - 0.75px),
-      #605e5c calc(50% - 0.75px),
-      #605e5c calc(50% + 0.75px),
-      transparent calc(50% + 0.75px)
-    ) !important;
-  background-position: calc(100% - 14px) calc(50% - 1px),
-    calc(100% - 11px) calc(50% - 1px) !important;
-  background-size: 6px 6px, 6px 6px !important;
+  /* Fluent UI Chevron Down - 使用与 .cbi-dropdown 一致的箭头 */
+  /* 使用 SVG 绘制 6x6px 箭头，border-right 和 border-bottom 各 1.5px */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path d="M 3,4.5 L 6,7.5 L 9,4.5" fill="none" stroke="%23605e5c" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/></svg>') !important;
+  background-position: right 13px center !important;
+  background-size: 12px 12px !important;
   background-repeat: no-repeat !important;
 
   /* Transition */
@@ -1189,20 +1175,7 @@ select.cbi-input-select:hover:not(:disabled) {
   border-bottom-color: #201f1e !important;
 
   /* Darker chevron on hover */
-  background-image: linear-gradient(
-      to top right,
-      transparent calc(50% - 0.75px),
-      #323130 calc(50% - 0.75px),
-      #323130 calc(50% + 0.75px),
-      transparent calc(50% + 0.75px)
-    ),
-    linear-gradient(
-      to top left,
-      transparent calc(50% - 0.75px),
-      #323130 calc(50% - 0.75px),
-      #323130 calc(50% + 0.75px),
-      transparent calc(50% + 0.75px)
-    ) !important;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path d="M 3,4.5 L 6,7.5 L 9,4.5" fill="none" stroke="%23323130" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/></svg>') !important;
 }
 
 /* Select focus state */
@@ -1229,20 +1202,7 @@ select.cbi-input-select:disabled {
   opacity: 1 !important;
 
   /* Disabled chevron */
-  background-image: linear-gradient(
-      to top right,
-      transparent calc(50% - 0.75px),
-      #c8c6c4 calc(50% - 0.75px),
-      #c8c6c4 calc(50% + 0.75px),
-      transparent calc(50% + 0.75px)
-    ),
-    linear-gradient(
-      to top left,
-      transparent calc(50% - 0.75px),
-      #c8c6c4 calc(50% - 0.75px),
-      #c8c6c4 calc(50% + 0.75px),
-      transparent calc(50% + 0.75px)
-    ) !important;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path d="M 3,4.5 L 6,7.5 L 9,4.5" fill="none" stroke="%23c8c6c4" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/></svg>') !important;
 }
 
 /* Option styling (works in some browsers) */
@@ -1294,7 +1254,7 @@ ul.cbi-tabmenu {
 
 /* Tab Item */
 ul.cbi-tabmenu > li {
-  display: flex !important;
+  display: flex;
   align-items: center !important;
   box-sizing: border-box !important;
   position: relative !important;

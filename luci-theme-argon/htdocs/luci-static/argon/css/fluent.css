@@ -2338,3 +2338,7 @@ a[href*="/admin/network_guide"] {
 }
 
 /* End of FluentUI Sidebar Navigation Styles */
+
+.tabs li[class~="active"] {
+  border-bottom: none !important;
+}

@@ -582,23 +582,327 @@ header {
   color: var(--fluent-warning);
 }
 
-/* Dropdowns */
+/* Fluent UI Dropdown / Combobox */
+.cbi-dropdown {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  vertical-align: middle !important;
+  min-width: 250px !important;
+  
+  /* Size: medium (default) */
+  min-height: 32px !important;
+  padding: 5px 10px !important;
+  gap: 4px !important;
+  
+  /* Appearance: outline */
+  background-color: #ffffff !important;
+  border: 1px solid #8a8886 !important;
+  border-bottom-color: #201f1e !important;
+  border-radius: 4px !important;
+  
+  /* Typography */
+  font-family: var(--font-family-sans-serif) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  color: #323130 !important;
+  
+  /* Transition */
+  transition: border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+  outline-style: none !important;
+  cursor: pointer !important;
+}
+
+/* Dropdown focus state with bottom indicator */
+.cbi-dropdown::after {
+  box-sizing: border-box !important;
+  content: "" !important;
+  position: absolute !important;
+  left: -1px !important;
+  bottom: -1px !important;
+  right: -1px !important;
+  height: max(2px, 4px) !important;
+  border-bottom-left-radius: 4px !important;
+  border-bottom-right-radius: 4px !important;
+  border-bottom: 2px solid var(--fluent-primary) !important;
+  clip-path: inset(calc(100% - 2px) 0 0 0) !important;
+  transform: scaleX(0) !important;
+  transition-property: transform !important;
+  transition-duration: 0.1s !important;
+  transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1) !important;
+}
+
+.cbi-dropdown:hover:not([disabled]) {
+  border-color: #605e5c !important;
+  border-bottom-color: #201f1e !important;
+}
+
+.cbi-dropdown:focus,
+.cbi-dropdown.focus,
+.cbi-dropdown[open] {
+  border-color: #8a8886 !important;
+  border-bottom-color: #201f1e !important;
+  outline: none !important;
+}
+
+.cbi-dropdown:focus::after,
+.cbi-dropdown.focus::after,
+.cbi-dropdown[open]::after {
+  transform: scaleX(1) !important;
+  transition-duration: 0.2s !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.23, 1) !important;
+}
+
+.cbi-dropdown:active:not([disabled]) {
+  border-color: #8a8886 !important;
+  border-bottom-color: #201f1e !important;
+}
+
+/* Dropdown disabled state */
+.cbi-dropdown[disabled] {
+  cursor: not-allowed !important;
+  background-color: transparent !important;
+  border-color: #c8c6c4 !important;
+  color: #a19f9d !important;
+  opacity: 1 !important;
+}
+
+.cbi-dropdown[disabled]::after {
+  content: none !important;
+}
+
+/* Dropdown preview area (selected items display) */
+.cbi-dropdown > ul.preview {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  flex: 1 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+  gap: 4px !important;
+  pointer-events: none !important;
+}
+
+.cbi-dropdown > ul.preview > li {
+  display: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+/* Only show selected or placeholder items in preview */
+.cbi-dropdown > ul.preview > li[selected],
+.cbi-dropdown > ul.preview > li[placeholder] {
+  display: inline !important;
+}
+
+.cbi-dropdown > ul.preview > li[placeholder] {
+  color: #a19f9d !important;
+}
+
+/* Hide placeholder when there's a selection */
+.cbi-dropdown > ul.preview > li[selected] ~ li[placeholder] {
+  display: none !important;
+}
+
+/* Dropdown expand/more indicators */
+.cbi-dropdown > span.open,
+.cbi-dropdown > span.more {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  color: #605e5c !important;
+  font-size: 16px !important;
+  width: 20px !important;
+  height: 20px !important;
+  cursor: pointer !important;
+  margin-left: 4px !important;
+}
+
+.cbi-dropdown > span.open {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.23, 1) !important;
+}
+
+.cbi-dropdown[open] > span.open {
+  transform: rotate(180deg) !important;
+}
+
+/* Fluent UI Listbox (dropdown menu) */
 .cbi-dropdown[open] > ul.dropdown {
-  border-radius: var(--fluent-radius);
-  background-color: var(--fluent-card-bg);
-  backdrop-filter: var(--fluent-backdrop-filter);
-  -webkit-backdrop-filter: var(--fluent-backdrop-filter);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  display: flex !important;
+  flex-direction: column !important;
+  box-sizing: border-box !important;
+  min-width: 100% !important;
+  max-width: 400px !important;
+  overflow-y: auto !important;
+  
+  /* Appearance */
+  background-color: #ffffff !important;
+  border: 1px solid #8a8886 !important;
+  border-radius: 4px !important;
+  outline: 1px solid transparent !important;
+  
+  /* Shadow */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14),
+              0 0 2px rgba(0, 0, 0, 0.12) !important;
+  
+  /* Position */
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  
+  /* Padding */
+  padding: 4px !important;
+  margin: 0 !important;
+  margin-top: 4px !important;
+  list-style: none !important;
+  
+  /* Animation */
+  animation: fluent-dropdown-slide-in 0.2s cubic-bezier(0.4, 0, 0.23, 1) forwards !important;
+  transform-origin: top !important;
 }
 
+@keyframes fluent-dropdown-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scaleY(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+/* Fluent UI Option (list item) */
+.cbi-dropdown[open] > ul.dropdown > li {
+  display: flex !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  
+  /* Size */
+  min-height: 32px !important;
+  padding: 5px 8px !important;
+  
+  /* Appearance */
+  border-radius: 4px !important;
+  color: #323130 !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  
+  /* Typography */
+  font-family: var(--font-family-sans-serif) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  
+  /* Transition */
+  transition: background-color 0.05s cubic-bezier(0.33, 0, 0.67, 1),
+              color 0.05s cubic-bezier(0.33, 0, 0.67, 1) !important;
+}
+
+/* Option placeholder */
+.cbi-dropdown[open] > ul.dropdown > li[placeholder] {
+  color: #a19f9d !important;
+}
+
+/* Option hover state */
 .cbi-dropdown[open] > ul.dropdown > li:hover {
-  background-color: rgba(0, 120, 212, 0.1);
+  background-color: #f5f5f5 !important;
+  color: #201f1e !important;
 }
 
-.cbi-dropdown[open] > ul.dropdown > li[selected],
-.cbi-dropdown[open] > ul.dropdown > li.focus {
-  background-color: rgba(0, 120, 212, 0.2);
+/* Option selected state */
+.cbi-dropdown[open] > ul.dropdown > li[selected] {
+  background-color: #e8f4fd !important;
+  color: #323130 !important;
+  font-weight: 600 !important;
+}
+
+/* Option focus/active state */
+.cbi-dropdown[open] > ul.dropdown > li.focus,
+.cbi-dropdown[open] > ul.dropdown > li:active {
+  background-color: #e1dfdd !important;
+  color: #201f1e !important;
+}
+
+.cbi-dropdown[open] > ul.dropdown > li[selected]:hover {
+  background-color: #d3e8f8 !important;
+}
+
+/* Option disabled state */
+.cbi-dropdown[open] > ul.dropdown > li[disabled],
+.cbi-dropdown[open] > ul.dropdown > li[unselectable] {
+  color: #a19f9d !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+/* Custom input in dropdown */
+.cbi-dropdown[open] > ul.dropdown > li[data-value="-"] {
+  padding: 4px !important;
+  background-color: transparent !important;
+  cursor: default !important;
+  pointer-events: all !important;
+}
+
+.cbi-dropdown[open] > ul.dropdown > li .create-item-input {
+  width: 100% !important;
+  min-height: 24px !important;
+  padding: 2px 8px !important;
+  box-sizing: border-box !important;
+  
+  background-color: #ffffff !important;
+  border: 1px solid #8a8886 !important;
+  border-radius: 3px !important;
+  
+  font-family: var(--font-family-sans-serif) !important;
+  font-size: 14px !important;
+  color: #323130 !important;
+  
+  outline: none !important;
+  transition: border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+}
+
+.cbi-dropdown[open] > ul.dropdown > li .create-item-input::placeholder {
+  color: #a19f9d !important;
+  font-style: italic !important;
+}
+
+.cbi-dropdown[open] > ul.dropdown > li .create-item-input:focus {
+  border-color: var(--fluent-primary) !important;
+  box-shadow: 0 0 0 1px var(--fluent-primary) !important;
+}
+
+/* Scrollbar for dropdown list */
+.cbi-dropdown[open] > ul.dropdown::-webkit-scrollbar {
+  width: 8px !important;
+}
+
+.cbi-dropdown[open] > ul.dropdown::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.cbi-dropdown[open] > ul.dropdown::-webkit-scrollbar-thumb {
+  background-color: #d1d1d1 !important;
+  border-radius: 4px !important;
+  border: 2px solid transparent !important;
+  background-clip: padding-box !important;
+}
+
+.cbi-dropdown[open] > ul.dropdown::-webkit-scrollbar-thumb:hover {
+  background-color: #a6a6a6 !important;
 }
 
 /* Checkboxes as Fluent UI Switch */

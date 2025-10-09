@@ -2025,11 +2025,7 @@ a[href*="/admin/network_guide"] {
   color: var(--fluent-primary) !important;
 }
 
-/* Remove active state arrow rotation */
-.main .main-left .nav > li > a:first-child.active::after {
-  transform: none !important;
-  color: var(--fluent-text-secondary) !important;
-}
+
 
 /* Icon before menu items */
 .main .main-left .nav > li > a:first-child::before {
@@ -2086,7 +2082,7 @@ a[href*="/admin/network_guide"] {
 
 /* Submenu container */
 .main .main-left .nav li.slide .slide-menu {
-  margin: 0 0.5rem 0.2rem 2.5rem !important;
+  margin: 0 0.5rem 0.2rem 20px !important;
   padding: 0.3rem 0.5rem !important;
   padding-left: 0 !important;
   background: rgba(0, 0, 0, 0.02) !important;
@@ -2217,10 +2213,10 @@ a[href*="/admin/network_guide"] {
   color: var(--fluent-primary) !important;
 }
 
-/* Remove arrow rotation on active expandable menu */
+/* Arrow rotation on active expandable menu - rotate down when expanded */
 .main .main-left .nav li .menu.active::after {
   transform: rotate(90deg) !important;
-  color: var(--fluent-text-secondary) !important;
+  color: var(--fluent-primary) !important;
 }
 
 /* Menu hover state */

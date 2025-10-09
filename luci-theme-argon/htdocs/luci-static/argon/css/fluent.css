@@ -371,50 +371,6 @@ select:focus,
 }
 
 /* Tabs */
-.cbi-tabmenu {
-  --tabmenu-scrollbar-width: 12px;
-  overflow-x: auto;
-  white-space: nowrap;
-  scrollbar-width: thin; /* For Firefox */
-  scrollbar-color: rgba(0, 120, 212, 0.4) transparent; /* For Firefox */
-}
-
-.cbi-tabmenu::-webkit-scrollbar {
-  height: var(--tabmenu-scrollbar-width); /* Height of the scrollbar */
-  width: auto;
-  display: block; /* Always show scrollbar */
-  overflow: scroll !important;
-}
-
-.cbi-tabmenu::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05); /* Slight background to make it visible */
-  border-radius: var(--tabmenu-scrollbar-width);
-  display: block; /* Always show track */
-}
-
-.cbi-tabmenu::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 120, 212, 0.4);
-  border-radius: var(--tabmenu-scrollbar-width);
-  border: 3px solid transparent;
-  min-height: var(--tabmenu-scrollbar-width); /* Ensure minimum height */
-}
-
-.cbi-tabmenu::-webkit-scrollbar-thumb:hover {
-  background-color: var(--fluent-primary);
-}
-
-.cbi-tabmenu > li,
-.tabs > li {
-  border-radius: var(--fluent-radius) var(--fluent-radius) 0 0;
-  transition: var(--fluent-transition);
-}
-
-.cbi-tabmenu > li[class~="cbi-tab"],
-.tabs > li[class~="active"] {
-  border-bottom: 2px solid var(--fluent-primary);
-  background-color: rgba(0, 120, 212, 0.1);
-}
-
 /* Tables */
 .table,
 .cbi-section-table,
@@ -1060,6 +1016,229 @@ select.cbi-input-select option:checked {
 
 select.cbi-input-select option:disabled {
   color: #a19f9d !important;
+}
+
+/* ============================================
+   Fluent UI Tabs
+   ============================================ */
+
+/* TabList - 第一种结构 (cbi-tabmenu) */
+ul.cbi-tabmenu {
+  display: flex !important;
+  align-items: stretch !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  
+  /* Spacing */
+  padding: 0 !important;
+  margin: 0 0 16px 0 !important;
+  gap: 0 !important;
+  list-style: none !important;
+  
+  /* Border - 底部分隔线（加深对比） */
+  border-bottom: 1px solid #d2d0ce !important;
+  
+  /* Typography */
+  font-family: var(--font-family-sans-serif) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+}
+
+/* Tab Item */
+ul.cbi-tabmenu > li {
+  display: flex !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  
+  /* Remove default styles */
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+ul.cbi-tabmenu > li > a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  
+  /* Size: medium */
+  min-height: 32px !important;
+  padding: 8px 16px !important;
+  
+  /* Appearance */
+  background-color: transparent !important;
+  border: none !important;
+  border-bottom: 3px solid transparent !important;
+  margin-bottom: -1px !important;
+  
+  /* Typography */
+  font-family: var(--font-family-sans-serif) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  color: #8a8886 !important;
+  text-decoration: none !important;
+  
+  /* Interaction */
+  cursor: pointer !important;
+  user-select: none !important;
+  white-space: nowrap !important;
+  
+  /* Transition */
+  transition: color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
+              border-color 0.15s cubic-bezier(0.4, 0, 0.23, 1),
+              background-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+}
+
+/* Tab Hover State */
+ul.cbi-tabmenu > li > a:hover {
+  color: #323130 !important;
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Tab Active/Selected State - .cbi-tab (已选中) */
+ul.cbi-tabmenu > li.cbi-tab > a,
+ul.cbi-tabmenu > li[class="cbi-tab"] > a {
+  color: var(--fluent-primary) !important;
+  font-weight: 600 !important;
+  border-bottom-color: var(--fluent-primary) !important;
+  background-color: transparent !important;
+}
+
+ul.cbi-tabmenu > li.cbi-tab > a:hover,
+ul.cbi-tabmenu > li[class="cbi-tab"] > a:hover {
+  color: var(--fluent-primary) !important;
+  background-color: rgba(0, 120, 212, 0.05) !important;
+}
+
+/* Tab Unselected State - .cbi-tab-disabled (未选中，但可以点击) */
+ul.cbi-tabmenu > li.cbi-tab-disabled > a,
+ul.cbi-tabmenu > li[class="cbi-tab-disabled"] > a {
+  color: #8a8886 !important;
+  cursor: pointer !important;
+  /* 可以点击，不阻止事件 */
+}
+
+ul.cbi-tabmenu > li.cbi-tab-disabled > a:hover,
+ul.cbi-tabmenu > li[class="cbi-tab-disabled"] > a:hover {
+  color: #323130 !important;
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+/* TabList - 第二种结构 (#tabmenu .tabs) */
+#tabmenu,
+.tabmenu {
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#tabmenu > ul.tabs,
+.tabmenu > ul.tabs {
+  display: flex !important;
+  align-items: stretch !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  
+  /* Spacing */
+  padding: 0 !important;
+  margin: 0 !important;
+  gap: 0 !important;
+  list-style: none !important;
+  
+  /* Border - 底部分隔线 */
+  border-bottom: 2px solid #e1dfdd !important;
+  
+  /* Typography */
+  font-family: var(--font-family-sans-serif) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+}
+
+/* Tab Item */
+#tabmenu > ul.tabs > li,
+.tabmenu > ul.tabs > li {
+  display: flex !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  
+  /* Remove default styles */
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#tabmenu > ul.tabs > li > a,
+.tabmenu > ul.tabs > li > a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  
+  /* Size: medium */
+  min-height: 32px !important;
+  padding: 6px 12px !important;
+  
+  /* Appearance */
+  background-color: transparent !important;
+  border: none !important;
+  border-bottom: 2px solid transparent !important;
+  margin-bottom: -2px !important;
+  
+  /* Typography */
+  font-family: var(--font-family-sans-serif) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  color: #605e5c !important;
+  text-decoration: none !important;
+  
+  /* Interaction */
+  cursor: pointer !important;
+  user-select: none !important;
+  white-space: nowrap !important;
+  
+  /* Transition */
+  transition: color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
+              border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
+              background-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+}
+
+/* Tab Hover State */
+#tabmenu > ul.tabs > li > a:hover,
+.tabmenu > ul.tabs > li > a:hover {
+  color: #323130 !important;
+  background-color: transparent !important;
+}
+
+/* Tab Active/Selected State - .active */
+#tabmenu > ul.tabs > li.active > a,
+.tabmenu > ul.tabs > li.active > a {
+  color: var(--fluent-primary) !important;
+  font-weight: 600 !important;
+  border-bottom-color: var(--fluent-primary) !important;
+}
+
+#tabmenu > ul.tabs > li.active > a:hover,
+.tabmenu > ul.tabs > li.active > a:hover {
+  color: var(--fluent-primary) !important;
+}
+
+/* Tab Disabled State */
+#tabmenu > ul.tabs > li.disabled > a,
+.tabmenu > ul.tabs > li.disabled > a,
+#tabmenu > ul.tabs > li[disabled] > a,
+.tabmenu > ul.tabs > li[disabled] > a {
+  color: #a19f9d !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
 }
 
 .cbi-dropdown[open] > ul.dropdown > li .create-item-input::placeholder {

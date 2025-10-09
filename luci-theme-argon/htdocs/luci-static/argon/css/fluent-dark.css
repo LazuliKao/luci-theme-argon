@@ -1300,35 +1300,43 @@ ul.cbi-tabmenu > li[class="cbi-tab-disabled"] > a:hover {
   overflow-x: auto !important;
   overflow-y: hidden !important;
   scrollbar-width: thin !important;
-  scrollbar-color: rgba(255, 255, 255, 0.3) transparent !important;
+  scrollbar-color: rgba(200, 198, 196, 0.5) transparent !important;
 }
 
 /* Horizontal scrollbar styling - Webkit (Dark Mode) */
 #tabmenu > ul.tabs::-webkit-scrollbar,
 .tabmenu > ul.tabs::-webkit-scrollbar {
-  height: 8px !important;
+  height: 16px !important;
 }
 
 #tabmenu > ul.tabs::-webkit-scrollbar-track,
 .tabmenu > ul.tabs::-webkit-scrollbar-track {
   background: transparent !important;
+  margin: 0 6px !important;
 }
 
 #tabmenu > ul.tabs::-webkit-scrollbar-thumb,
 .tabmenu > ul.tabs::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.3) !important;
-  border-radius: 4px !important;
-  transition: background-color 0.2s ease !important;
+  background-color: rgba(200, 198, 196, 0.5) !important;
+  border-radius: 8px !important;
+  border: 3px solid transparent !important;
+  background-clip: padding-box !important;
+  transition: background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 #tabmenu > ul.tabs::-webkit-scrollbar-thumb:hover,
 .tabmenu > ul.tabs::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(255, 255, 255, 0.5) !important;
+  background-color: rgba(200, 198, 196, 0.8) !important;
 }
 
 #tabmenu > ul.tabs:hover::-webkit-scrollbar-thumb,
 .tabmenu > ul.tabs:hover::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.5) !important;
+  background-color: rgba(200, 198, 196, 0.65) !important;
+}
+
+#tabmenu > ul.tabs:hover::-webkit-scrollbar-thumb:hover,
+.tabmenu > ul.tabs:hover::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(200, 198, 196, 0.9) !important;
 }
 
 /* Tab Item */

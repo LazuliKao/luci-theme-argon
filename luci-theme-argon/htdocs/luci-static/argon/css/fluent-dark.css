@@ -1082,7 +1082,6 @@ ul.cbi-tabmenu > li > a {
   /* Appearance */
   background-color: transparent !important;
   border: none !important;
-  border-bottom: 3px solid transparent !important;
   margin-bottom: -1px !important;
   
   /* Typography */
@@ -1098,10 +1097,23 @@ ul.cbi-tabmenu > li > a {
   user-select: none !important;
   white-space: nowrap !important;
   
-  /* Transition */
+  /* Transition for text color and background */
   transition: color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
-              border-color 0.15s cubic-bezier(0.4, 0, 0.23, 1),
               background-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+}
+
+/* Tab底部指示器 - 使用伪元素实现波纹效果 (深色主题) */
+ul.cbi-tabmenu > li > a::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: -1px !important;
+  height: 3px !important;
+  background-color: var(--fluent-primary) !important;
+  transform: scaleX(0) !important;
+  transform-origin: center !important;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.23, 1) !important;
 }
 
 /* Tab Hover State */
@@ -1115,8 +1127,13 @@ ul.cbi-tabmenu > li.cbi-tab > a,
 ul.cbi-tabmenu > li[class="cbi-tab"] > a {
   color: var(--fluent-primary) !important;
   font-weight: 600 !important;
-  border-bottom-color: var(--fluent-primary) !important;
   background-color: transparent !important;
+}
+
+/* 激活tab的底部指示器 - 展开波纹效果 (深色主题) */
+ul.cbi-tabmenu > li.cbi-tab > a::after,
+ul.cbi-tabmenu > li[class="cbi-tab"] > a::after {
+  transform: scaleX(1) !important;
 }
 
 ul.cbi-tabmenu > li.cbi-tab > a:hover,

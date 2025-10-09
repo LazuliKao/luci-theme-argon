@@ -388,6 +388,107 @@ input[type="url"]:disabled,
   cursor: not-allowed !important;
 }
 
+/* ============================================
+   Dynlist Add Item Button Optimization
+   ============================================ */
+
+/* Dynlist add-item container with input and button */
+.cbi-dynlist > .add-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  max-width: 25rem !important;
+  width: 100% !important;
+}
+
+/* Dynlist input field - ensure consistent height */
+.cbi-dynlist > .add-item > input.cbi-input-text {
+  flex: 1 !important;
+  height: 32px !important;
+  padding: 6px 12px !important;
+  line-height: 18px !important;
+  box-sizing: border-box !important;
+  border-radius: 4px 0 0 4px !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+  width: auto !important;
+}
+
+/* Dynlist add button - ensure 32px height and proper alignment */
+.cbi-dynlist > .add-item > .cbi-button-add,
+.cbi-dynlist > .add-item > .btn.cbi-button-add {
+  height: 30px !important;
+  min-height: 30px !important;
+  max-height: 30px !important;
+  width: 30px !important;
+  min-width: 30px !important;
+  max-width: 30px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+  border-radius: 0 4px 4px 0 !important;
+  font-size: 1.2rem !important;
+  line-height: 1 !important;
+  vertical-align: middle !important;
+  text-align: center !important;
+}
+
+/* Dynlist item container */
+.cbi-dynlist > .item {
+  display: flex !important;
+  align-items: center !important;
+  position: relative !important;
+  max-width: 25rem !important;
+  width: 100% !important;
+}
+
+/* Dynlist item span (content area) */
+.cbi-dynlist > .item > span {
+  flex: 1 !important;
+  height: 32px !important;
+  line-height: 18px !important;
+  padding: 6px 12px !important;
+  margin: 0.25rem 0 !important;
+  margin-right: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  border-radius: 4px 0 0 4px !important;
+  min-width: 0 !important;
+  width: auto !important;
+}
+
+/* Dynlist delete button (X) - ensure 32px height and proper alignment */
+.cbi-dynlist > .item::after {
+  position: relative !important;
+  height: 30px !important;
+  min-height: 30px !important;
+  max-height: 30px !important;
+  width: 30px !important;
+  min-width: 30px !important;
+  max-width: 30px !important;
+  padding: 0 !important;
+  margin: 0.25rem 0 !important;
+  margin-left: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+  border-radius: 0 4px 4px 0 !important;
+  font-size: 1.2rem !important;
+  line-height: 1 !important;
+  vertical-align: middle !important;
+  text-align: center !important;
+  bottom: auto !important;
+  right: auto !important;
+  top: auto !important;
+  left: auto !important;
+}
+
 /* Fluent UI Textarea - Dark Mode */
 textarea,
 .cbi-input-textarea {

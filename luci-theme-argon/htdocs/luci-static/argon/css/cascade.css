@@ -1872,9 +1872,9 @@ td>table>tbody>tr>td,
   content: attr(data-errors);
   background: #c43c35;
   color: #fff;
-  height: 16px;
-  min-width: 16px;
-  border-radius: 8px;
+  height: 1rem;
+  min-width: 1rem;
+  border-radius: 1rem;
   text-align: center;
   margin: 0 5px 0 0;
   padding: 2px 2px 2px 2px;
@@ -1954,6 +1954,10 @@ td>table>tbody>tr>td,
 
 .cbi-section-node {
   padding: 0
+}
+
+.cbi-section em {
+  margin: .5rem
 }
 
 .cbi-section .cbi-section-remove:nth-of-type(2n),
@@ -2139,6 +2143,32 @@ td>table>tbody>tr>td,
 .td.cbi-section-actions {
   text-align: right !important;
   vertical-align: middle;
+}
+
+.cbi-section.fade-in {
+    .cbi-title {
+        position: relative;
+        >div:last-child {
+            position: absolute;
+            right: 1.25rem;
+            top: 0;
+            span {
+                font-size: 0;
+                &:after {
+                    transition: all .3s;
+                    font-family: 'argon' !important;
+                    content: '\e90f';
+                    font-size: 1.1rem;
+                    padding: .8755rem 0;
+                    position: absolute;
+                    right: 0;
+                }
+                &[data-style=inactive]:after {
+                    transform: rotate(90deg);
+                }
+            }
+        }
+    }
 }
 
 @media screen and (min-width: 1280px) {
@@ -2337,7 +2367,7 @@ td>table>tbody>tr>td,
 
 [id^="cbid."][id$=".interface"].cbi-dropdown,
 [id^="cbid."][id$=".listen_interfaces"].cbi-dropdown {
-  max-height: 2.569rem;
+  max-height: 2.6rem;
 }
 
 [id^="cbid.natmap."][id$=".interface"].cbi-dropdown {
@@ -2453,7 +2483,7 @@ td>table>tbody>tr>td,
 
 .cbi-section .cbi-dropdown,
 .cbi-page-actions .cbi-dropdown {
-  min-height: 2.495rem !important
+  min-height: 2.5rem !important
 }
 
 .cbi-dropdown>ul>li>form>input[type="checkbox"] {
@@ -3226,7 +3256,7 @@ span[data-tooltip] .label {
   padding: 2px 5px;
   opacity: 0;
   transition: opacity .25s ease-in;
-  transform: translate(-50%, 10%);
+  transform: translate(0%, 60%);
 }
 
 .cbi-tooltip-container:hover .cbi-tooltip:not(:empty) {

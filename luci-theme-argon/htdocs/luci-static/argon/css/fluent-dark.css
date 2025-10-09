@@ -618,17 +618,217 @@ header {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* Login page styling */
+/* ============================================
+   Login Page Styling - Fluent Design Dark Mode
+   ============================================ */
+
+/* Login form container with acrylic effect - Dark Mode */
 .login-page .login-container .login-form {
-  background-color: var(--fluent-card-bg) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+  border-radius: 8px !important;
+  background-color: rgba(45, 45, 45, 0.85) !important;
+  backdrop-filter: blur(30px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(150%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5),
+              0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  padding: 2.5rem !important;
+  max-width: 420px !important;
+  width: 100% !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.23, 1) !important;
 }
 
-.login-page .login-container .login-form .form-login .input-group input {
-  background-color: rgba(60, 60, 60, 0.8) !important;
-  color: var(--fluent-text) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+.login-page .login-container .login-form:hover {
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6),
+              0 4px 12px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Login form brand/logo section - Dark Mode */
+.login-page .login-container .login-form .brand {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 2rem !important;
+  gap: 0.75rem !important;
+}
+
+.login-page .login-container .login-form .brand .icon {
+  width: 48px !important;
+  height: 48px !important;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.23, 1) !important;
+}
+
+.login-page .login-container .login-form .brand:hover .icon {
+  transform: scale(1.05) !important;
+}
+
+.login-page .login-container .login-form .brand .brand-text {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* Error box styling - Dark Mode */
+.login-page .login-container .login-form .form-login .errorbox {
+  background-color: rgba(209, 52, 56, 0.2) !important;
+  border: 1px solid rgba(209, 52, 56, 0.4) !important;
+  color: #ff99a4 !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 4px !important;
+  margin-bottom: 1.5rem !important;
+  font-size: 0.875rem !important;
+  line-height: 1.4 !important;
+}
+
+/* Input container - Dark Mode */
+.login-page .login-container .login-form .form-login .input-container {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Input group styling - Dark Mode */
+.login-page .login-container .login-form .form-login .input-group {
+  position: relative !important;
+  margin-bottom: 0 !important;
+}
+
+/* Icon styling for input groups - Dark Mode */
+.login-page .login-container .login-form .form-login .input-group::before {
+  position: absolute !important;
+  left: 12px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  font-size: 1.25rem !important;
+  color: #c8c6c4 !important;
+  z-index: 10 !important;
+  transition: color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+  pointer-events: none !important;
+}
+
+.login-page .login-container .login-form .form-login .input-group:has(input:focus)::before {
+  color: var(--fluent-accent, #60cdff) !important;
+}
+
+/* Fluent Design Input Fields - Dark Mode */
+.login-page .login-container .login-form .form-login .input-group input,
+.login-page .login-container .login-form .form-login .input-group .cbi-input-user,
+.login-page .login-container .login-form .form-login .input-group .cbi-input-password {
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  
+  /* Size */
+  min-height: 44px !important;
+  padding: 10px 12px 10px 44px !important;
+  
+  /* Appearance - Dark Mode */
+  background-color: #292929 !important;
+  border: 1px solid #5c5c5c !important;
+  border-bottom: 2px solid #dadada !important;
+  border-radius: 4px !important;
+  
+  /* Typography */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  color: #f5f5f5 !important;
+  
+  /* Transition */
+  transition: border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
+              background-color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
+              box-shadow 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+  outline: none !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+}
+
+.login-page .login-container .login-form .form-login .input-group input::placeholder,
+.login-page .login-container .login-form .form-login .input-group .cbi-input-user::placeholder,
+.login-page .login-container .login-form .form-login .input-group .cbi-input-password::placeholder {
+  color: #8a8886 !important;
+  opacity: 1 !important;
+}
+
+/* Input hover state - Dark Mode */
+.login-page .login-container .login-form .form-login .input-group input:hover:not(:focus):not(:disabled),
+.login-page .login-container .login-form .form-login .input-group .cbi-input-user:hover:not(:focus):not(:disabled),
+.login-page .login-container .login-form .form-login .input-group .cbi-input-password:hover:not(:focus):not(:disabled) {
+  background-color: #3d3d3d !important;
+  border-color: #707070 !important;
+  border-bottom-color: #dadada !important;
+}
+
+/* Input focus state with Fluent reveal effect - Dark Mode */
+.login-page .login-container .login-form .form-login .input-group input:focus,
+.login-page .login-container .login-form .form-login .input-group .cbi-input-user:focus,
+.login-page .login-container .login-form .form-login .input-group .cbi-input-password:focus {
+  background-color: #323130 !important;
+  border-color: var(--fluent-accent, #60cdff) !important;
+  border-bottom-color: var(--fluent-accent, #60cdff) !important;
+  box-shadow: 0 0 0 1px var(--fluent-accent, #60cdff) !important;
+}
+
+/* Remove the bottom border animation element - Dark Mode */
+.login-page .login-container .login-form .form-login .input-group .border {
+  display: none !important;
+}
+
+/* Login button with Fluent Design - Dark Mode */
+.login-page .login-container .login-form .cbi-button-apply {
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  
+  /* Size */
+  min-height: 48px !important;
+  padding: 12px 24px !important;
+  
+  /* Appearance - Dark Mode */
+  background-color: var(--fluent-accent, #60cdff) !important;
+  border: 1px solid var(--fluent-accent, #60cdff) !important;
+  border-radius: 4px !important;
+  
+  /* Typography */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 20px !important;
+  color: #000000 !important;
+  text-align: center !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+  
+  /* Effects */
+  cursor: pointer !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3),
+              0 0 2px rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.23, 1) !important;
+  margin: 0 !important;
+  margin-top: 0.5rem !important;
+  outline: none !important;
+}
+
+.login-page .login-container .login-form .cbi-button-apply:hover {
+  background-color: #4db8e8 !important;
+  border-color: #4db8e8 !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4),
+              0 0 4px rgba(0, 0, 0, 0.3) !important;
+  transform: translateY(-1px) !important;
+}
+
+.login-page .login-container .login-form .cbi-button-apply:active {
+  background-color: #3da5d1 !important;
+  border-color: #3da5d1 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  transform: translateY(0) !important;
+}
+
+.login-page .login-container .login-form .cbi-button-apply:focus {
+  box-shadow: 0 0 0 2px #2d2d2d,
+              0 0 0 4px var(--fluent-accent, #60cdff) !important;
 }
 
 /* Alerts and notifications */

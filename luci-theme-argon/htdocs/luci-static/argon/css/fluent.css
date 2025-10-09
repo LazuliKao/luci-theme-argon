@@ -699,38 +699,67 @@ header {
   white-space: nowrap !important;
 }
 
-/* Only show selected or placeholder items in preview */
-.cbi-dropdown > ul.preview > li[selected],
-.cbi-dropdown > ul.preview > li[placeholder] {
+/* Only show selected items in preview */
+.cbi-dropdown > ul.preview > li[selected] {
   display: inline !important;
 }
 
-.cbi-dropdown > ul.preview > li[placeholder] {
+/* Show placeholder only when no selection exists */
+.cbi-dropdown > ul.preview:not(:has(li[selected])) > li[placeholder] {
+  display: inline !important;
   color: #a19f9d !important;
 }
 
-/* Hide placeholder when there's a selection */
-.cbi-dropdown > ul.preview > li[selected] ~ li[placeholder] {
+/* Fallback for browsers without :has() support */
+.cbi-dropdown > ul.preview > li[placeholder]:only-of-type {
+  display: inline !important;
+  color: #a19f9d !important;
+}
+
+/* Hide placeholder when there's any selection */
+.cbi-dropdown:has(ul.preview > li[selected]) > ul.preview > li[placeholder] {
   display: none !important;
 }
 
 /* Dropdown expand/more indicators */
-.cbi-dropdown > span.open,
-.cbi-dropdown > span.more {
+.cbi-dropdown > span.open {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-shrink: 0 !important;
-  color: #605e5c !important;
-  font-size: 16px !important;
   width: 20px !important;
   height: 20px !important;
   cursor: pointer !important;
   margin-left: 4px !important;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.23, 1) !important;
+  position: relative !important;
+  font-size: 0 !important;
+  color: transparent !important;
 }
 
-.cbi-dropdown > span.open {
-  transition: transform 0.2s cubic-bezier(0.4, 0, 0.23, 1) !important;
+/* Fluent UI Chevron Down Icon */
+.cbi-dropdown > span.open::before {
+  content: "" !important;
+  display: block !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-right: 2px solid #605e5c !important;
+  border-bottom: 2px solid #605e5c !important;
+  transform: rotate(45deg) !important;
+  transition: border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+}
+
+.cbi-dropdown:hover > span.open::before {
+  border-color: #323130 !important;
+}
+
+.cbi-dropdown[disabled] > span.open::before {
+  border-color: #c8c6c4 !important;
+}
+
+/* Hide the more indicator */
+.cbi-dropdown > span.more {
+  display: none !important;
 }
 
 .cbi-dropdown[open] > span.open {
@@ -790,6 +819,7 @@ header {
   align-items: center !important;
   box-sizing: border-box !important;
   position: relative !important;
+  width: 100% !important;
   
   /* Size */
   min-height: 32px !important;
@@ -807,6 +837,11 @@ header {
   font-weight: 400 !important;
   line-height: 20px !important;
   
+  /* Text overflow */
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  
   /* Transition */
   transition: background-color 0.05s cubic-bezier(0.33, 0, 0.67, 1),
               color 0.05s cubic-bezier(0.33, 0, 0.67, 1) !important;
@@ -815,6 +850,11 @@ header {
 /* Option placeholder */
 .cbi-dropdown[open] > ul.dropdown > li[placeholder] {
   color: #a19f9d !important;
+}
+
+/* Hide placeholder in dropdown when something is selected */
+.cbi-dropdown[open] > ul.dropdown > li[placeholder]:not(:only-child) {
+  display: none !important;
 }
 
 /* Option hover state */

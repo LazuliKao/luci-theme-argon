@@ -137,25 +137,226 @@ button:hover {
   border-color: #d13438 !important;
 }
 
-/* Form elements */
+/* Fluent UI Input Fields - Dark Mode */
 input[type="text"],
 input[type="password"],
-select,
-textarea,
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
 .cbi-input-text,
-.cbi-input-password,
-.cbi-dropdown {
-  background-color: rgba(60, 60, 60, 0.8) !important;
-  color: var(--fluent-text) !important;
-  border: 1px solid var(--fluent-border) !important;
+.cbi-input-password {
+  display: inline-block !important;
+  box-sizing: border-box !important;
+  vertical-align: middle !important;
+  position: relative !important;
+  
+  /* Size: medium (default) */
+  min-height: 32px !important;
+  padding: 0 12px !important;
+  
+  /* Appearance: outline (dark mode) */
+  background-color: #292929 !important;
+  border: 1px solid #5c5c5c !important;
+  border-bottom-color: #dadada !important;
+  border-radius: 4px !important;
+  
+  /* Typography */
+  font-family: var(--font-family-sans-serif) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  color: #f5f5f5 !important;
+  
+  /* Transition */
+  transition: border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+  outline-style: none !important;
+  
+  /* Placeholder */
+  ::placeholder {
+    color: #8a8886 !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Input focus state with bottom indicator animation */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+.cbi-input-text,
+.cbi-input-password {
+  /* Focus indicator background element */
+  background-image: linear-gradient(
+    0deg,
+    var(--fluent-primary) 0%,
+    var(--fluent-primary) 100%
+  ) !important;
+  background-position: bottom !important;
+  background-size: 0 2px !important;
+  background-repeat: no-repeat !important;
+  transition: background-size 0.2s cubic-bezier(0.4, 0, 0.23, 1),
+              border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+}
+
+input[type="text"]:hover:not(:disabled):not(:focus),
+input[type="password"]:hover:not(:disabled):not(:focus),
+input[type="email"]:hover:not(:disabled):not(:focus),
+input[type="number"]:hover:not(:disabled):not(:focus),
+input[type="search"]:hover:not(:disabled):not(:focus),
+input[type="tel"]:hover:not(:disabled):not(:focus),
+input[type="url"]:hover:not(:disabled):not(:focus),
+.cbi-input-text:hover:not(:disabled):not(:focus),
+.cbi-input-password:hover:not(:disabled):not(:focus) {
+  border-color: #707070 !important;
+  border-bottom-color: #dadada !important;
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus,
-select:focus,
-textarea:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
 .cbi-input-text:focus,
-.cbi-input-password:focus,
+.cbi-input-password:focus {
+  border-color: #5c5c5c !important;
+  border-bottom-color: var(--fluent-primary) !important;
+  background-size: 100% 2px !important;
+  outline: none !important;
+}
+
+input[type="text"]:active:not(:disabled),
+input[type="password"]:active:not(:disabled),
+input[type="email"]:active:not(:disabled),
+input[type="number"]:active:not(:disabled),
+input[type="search"]:active:not(:disabled),
+input[type="tel"]:active:not(:disabled),
+input[type="url"]:active:not(:disabled),
+.cbi-input-text:active:not(:disabled),
+.cbi-input-password:active:not(:disabled) {
+  border-color: #5c5c5c !important;
+  border-bottom-color: #dadada !important;
+}
+
+input[type="text"]:disabled,
+input[type="password"]:disabled,
+input[type="email"]:disabled,
+input[type="number"]:disabled,
+input[type="search"]:disabled,
+input[type="tel"]:disabled,
+input[type="url"]:disabled,
+.cbi-input-text:disabled,
+.cbi-input-password:disabled {
+  cursor: not-allowed !important;
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  background-image: none !important;
+  border-color: #424242 !important;
+  color: #707070 !important;
+  opacity: 1 !important;
+}
+
+/* Fluent UI Textarea - Dark Mode */
+textarea,
+.cbi-input-textarea {
+  display: inline-flex !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  vertical-align: top !important;
+  
+  /* Size: medium (default) */
+  min-height: 52px !important;
+  max-height: 260px !important;
+  padding: 10px 12px !important;
+  
+  /* Appearance: outline (dark mode) */
+  background-color: #292929 !important;
+  border: 1px solid #5c5c5c !important;
+  border-bottom-color: #dadada !important;
+  border-radius: 4px !important;
+  
+  /* Typography */
+  font-family: var(--font-family-sans-serif) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  color: #f5f5f5 !important;
+  
+  /* Resize */
+  resize: vertical !important;
+  
+  /* Transition */
+  transition: border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+  outline-style: none !important;
+}
+
+textarea::placeholder,
+.cbi-input-textarea::placeholder {
+  color: #8a8886 !important;
+  opacity: 1 !important;
+}
+
+/* Textarea focus state with bottom indicator */
+textarea,
+.cbi-input-textarea {
+  background-image: linear-gradient(
+    0deg,
+    var(--fluent-primary) 0%,
+    var(--fluent-primary) 100%
+  ) !important;
+  background-position: bottom !important;
+  background-size: 0 2px !important;
+  background-repeat: no-repeat !important;
+  transition: background-size 0.2s cubic-bezier(0.4, 0, 0.23, 1),
+              border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+}
+
+textarea:hover:not(:disabled):not(:focus),
+.cbi-input-textarea:hover:not(:disabled):not(:focus) {
+  border-color: #707070 !important;
+  border-bottom-color: #dadada !important;
+}
+
+textarea:focus,
+.cbi-input-textarea:focus {
+  border-color: #5c5c5c !important;
+  border-bottom-color: var(--fluent-primary) !important;
+  background-size: 100% 2px !important;
+  outline: none !important;
+}
+
+textarea:active:not(:disabled),
+.cbi-input-textarea:active:not(:disabled) {
+  border-color: #5c5c5c !important;
+  border-bottom-color: #dadada !important;
+}
+
+textarea:disabled,
+.cbi-input-textarea:disabled {
+  cursor: not-allowed !important;
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  background-image: none !important;
+  border-color: #424242 !important;
+  color: #707070 !important;
+  opacity: 1 !important;
+}
+
+/* Select styling - Dark Mode */
+select,
+.cbi-dropdown {
+  background-color: rgba(60, 60, 60, 0.8) !important;
+  color: var(--fluent-text) !important;
+  border: 1px solid var(--fluent-border) !important;
+  transition: var(--fluent-transition);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+select:focus,
 .cbi-dropdown:focus {
   border-color: var(--fluent-primary) !important;
   box-shadow: 0 0 0 2px rgba(96, 205, 255, 0.25) !important;

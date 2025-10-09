@@ -786,6 +786,15 @@ header {
     color 0.05s cubic-bezier(0.33, 0, 0.67, 1) !important;
 }
 
+/* 确保内部的 span 和其他元素也占满宽度 - Dark Mode */
+.cbi-dropdown[open] > ul.dropdown > li > span,
+.cbi-dropdown[open] > ul.dropdown > li > .ifacebadge {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  gap: 4px !important;
+}
+
 /* Option placeholder */
 .cbi-dropdown[open] > ul.dropdown > li[placeholder] {
   color: #8a8886 !important;

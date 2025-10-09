@@ -2035,7 +2035,7 @@ a[href*="/admin/network_guide"] {
 }
 
 /* Icon before menu items */
-.main .main-left .nav > li > a:first-child::before {
+/* .main .main-left .nav > li > a:first-child::before {
   font-family: "argon" !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -2050,7 +2050,7 @@ a[href*="/admin/network_guide"] {
   transition: all 0.3s !important;
   content: "\e915" !important;
   color: var(--fluent-text-secondary) !important;
-}
+} */
 
 /* Hover state icon color */
 .main .main-left .nav > li > a:first-child:hover::before {
@@ -2237,7 +2237,7 @@ a[href*="/admin/network_guide"] {
 }
 
 /* Menu icon */
-.main .main-left .nav li .menu::before {
+/* .main .main-left .nav li .menu::before {
   font-family: "argon" !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -2252,7 +2252,7 @@ a[href*="/admin/network_guide"] {
   transition: all 0.3s !important;
   content: "\e915" !important;
   color: var(--fluent-text-secondary) !important;
-}
+} */
 
 /* Expand/collapse arrow for expandable menus */
 .main .main-left .nav li .menu::after {
@@ -2275,7 +2275,7 @@ a[href*="/admin/network_guide"] {
 }
 
 /* Keep specific menu icon colors */
-.main .main-left .nav li .menu[data-title="Status"]:before {
+/* .main .main-left .nav li .menu[data-title="Status"]:before {
   content: "\e906" !important;
 }
 
@@ -2325,7 +2325,7 @@ a[href*="/admin/network_guide"] {
 .main .main-left .nav > li > a[data-title="Log_out"]:before,
 .main .main-left .nav > li > a.food[data-title="Log_out"]:before {
   content: "\e904" !important;
-}
+} */
 
 /* Remove any box-shadow from navigation items */
 .main .main-left .nav li a,

@@ -726,10 +726,11 @@ header {
   align-items: center !important;
   justify-content: center !important;
   flex-shrink: 0 !important;
-  width: 20px !important;
-  height: 20px !important;
+  width: 16px !important;
+  height: 16px !important;
   cursor: pointer !important;
-  margin-left: 4px !important;
+  margin-left: 8px !important;
+  margin-right: 0 !important;
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.23, 1) !important;
   position: relative !important;
   font-size: 0 !important;
@@ -740,11 +741,11 @@ header {
 .cbi-dropdown > span.open::before {
   content: "" !important;
   display: block !important;
-  width: 8px !important;
-  height: 8px !important;
-  border-right: 2px solid #605e5c !important;
-  border-bottom: 2px solid #605e5c !important;
-  transform: rotate(45deg) !important;
+  width: 6px !important;
+  height: 6px !important;
+  border-right: 1.5px solid #605e5c !important;
+  border-bottom: 1.5px solid #605e5c !important;
+  transform: rotate(45deg) translateY(-1px) !important;
   transition: border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
 }
 

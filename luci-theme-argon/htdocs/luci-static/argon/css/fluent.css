@@ -1979,3 +1979,365 @@ a[href*="/admin/network_guide"] {
 .cbi-button {
   min-width: auto !important;
 }
+
+/* ============================================
+   FluentUI Sidebar Navigation Styles
+   ============================================ */
+
+/* Navigation container */
+.main .main-left .nav {
+  margin-top: 0.5rem !important;
+  padding: 0 !important;
+}
+
+/* Top-level menu items (both direct links and expandable menus) */
+.main .main-left .nav > li > a:first-child {
+  display: block !important;
+  margin: 0.1rem 0.5rem !important;
+  padding: 0.675rem 0 0.675rem 2.5rem !important;
+  border-radius: var(--fluent-radius) !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  font-size: 1rem !important;
+  transition: var(--fluent-transition) !important;
+  position: relative !important;
+  color: var(--fluent-text) !important;
+  background: transparent !important;
+  font-weight: 400 !important;
+}
+
+/* Top-level menu items hover state - FluentUI subtle hover */
+.main .main-left .nav > li > a:first-child:hover {
+  background: rgba(0, 0, 0, 0.03) !important;
+  color: var(--fluent-text) !important;
+}
+
+/* Top-level menu items active state - FluentUI accent background */
+.main .main-left .nav > li > a:first-child.active {
+  color: var(--fluent-text) !important;
+  background: rgba(0, 120, 212, 0.08) !important;
+  border-left: 3px solid var(--fluent-primary) !important;
+  padding-left: calc(2.5rem - 3px) !important;
+}
+
+/* Active state icon color */
+.main .main-left .nav > li > a:first-child.active::before {
+  color: var(--fluent-primary) !important;
+}
+
+/* Remove active state arrow rotation */
+.main .main-left .nav > li > a:first-child.active::after {
+  transform: none !important;
+  color: var(--fluent-text-secondary) !important;
+}
+
+/* Icon before menu items */
+.main .main-left .nav > li > a:first-child::before {
+  font-family: 'argon' !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  line-height: 1 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  position: absolute !important;
+  left: 0.8rem !important;
+  padding-top: 3px !important;
+  transition: all 0.3s !important;
+  content: "\e915" !important;
+  color: var(--fluent-text-secondary) !important;
+}
+
+/* Hover state icon color */
+.main .main-left .nav > li > a:first-child:hover::before {
+  color: var(--fluent-primary) !important;
+}
+
+/* List items base styling */
+.main .main-left .nav li {
+  padding: 0 !important;
+  cursor: pointer !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+.main .main-left .nav li a {
+  display: block !important;
+  color: var(--fluent-text) !important;
+  font-weight: 400 !important;
+}
+
+/* Slide (expandable) menu container */
+.main .main-left .nav li.slide {
+  padding: 0 !important;
+}
+
+.main .main-left .nav li.slide ul {
+  display: none !important;
+  overflow: hidden !important;
+}
+
+.main .main-left .nav li.slide:hover {
+  background: none !important;
+}
+
+/* Submenu container */
+.main .main-left .nav li.slide .slide-menu {
+  margin: 0 0.5rem 0.2rem 2.5rem !important;
+  padding: 0.3rem 0.5rem !important;
+  background: rgba(0, 0, 0, 0.02) !important;
+  border-radius: var(--fluent-radius) !important;
+}
+
+.main .main-left .nav li.slide .slide-menu.active {
+  display: block !important;
+}
+
+/* Submenu items */
+.main .main-left .nav li.slide .slide-menu li {
+  position: relative !important;
+  border-radius: var(--fluent-radius) !important;
+  margin: 0.1rem 0 !important;
+  background: none !important;
+  list-style: none !important;
+  transition: var(--fluent-transition) !important;
+  padding-left: 0 !important;
+}
+
+/* Left indicator using ::before pseudo-element for better control */
+.main .main-left .nav li.slide .slide-menu li::before {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 15% !important;
+  height: 70% !important;
+  width: 3px !important;
+  background-color: transparent !important;
+  transition: var(--fluent-transition) !important;
+  border-radius: 0 2px 2px 0 !important;
+}
+
+.main .main-left .nav li.slide .slide-menu li a {
+  text-decoration: none !important;
+  padding: 0.5rem 0.8rem !important;
+  padding-left: 0.6rem !important;
+  border-radius: var(--fluent-radius) !important;
+  transition: var(--fluent-transition) !important;
+  display: block !important;
+}
+
+/* Remove underline animation from submenu items */
+.main .main-left .nav li.slide .slide-menu li::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Submenu item hover state - FluentUI subtle background */
+.main .main-left .nav li.slide .slide-menu li:hover {
+  background: rgba(0, 0, 0, 0.03) !important;
+}
+
+.main .main-left .nav li.slide .slide-menu li:hover::before {
+  background-color: rgba(0, 120, 212, 0.3) !important;
+}
+
+.main .main-left .nav li.slide .slide-menu li:hover a {
+  color: var(--fluent-text) !important;
+}
+
+.main .main-left .nav li.slide .slide-menu li:hover::after {
+  width: 0 !important;
+  display: none !important;
+}
+
+/* Active submenu item - Win11 style with thin left border indicator */
+.main .main-left .nav li.slide .slide-menu .active {
+  background: rgba(0, 120, 212, 0.06) !important;
+  color: var(--fluent-text) !important;
+  padding-left: 0 !important;
+}
+
+.main .main-left .nav li.slide .slide-menu .active::before {
+  background-color: var(--fluent-primary) !important;
+}
+
+.main .main-left .nav li.slide .slide-menu .active a {
+  color: var(--fluent-primary) !important;
+  font-weight: 500 !important;
+  padding-left: 0.6rem !important;
+}
+
+.main .main-left .nav li.slide .slide-menu .active::after {
+  content: none !important;
+  display: none !important;
+}
+
+.main .main-left .nav li.slide .slide-menu .active:hover {
+  background: rgba(0, 120, 212, 0.1) !important;
+}
+
+.main .main-left .nav li.slide .slide-menu .active:hover::before {
+  background-color: var(--fluent-primary) !important;
+}
+
+.main .main-left .nav li.slide .slide-menu .active:hover::after {
+  width: 0 !important;
+  display: none !important;
+}
+
+/* Expandable menu styling (parent items with children) */
+.main .main-left .nav li .menu {
+  display: block !important;
+  margin: 0.1rem 0.5rem !important;
+  padding: 0.675rem 0 0.675rem 2.5rem !important;
+  border-radius: var(--fluent-radius) !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  font-size: 1rem !important;
+  transition: var(--fluent-transition) !important;
+  position: relative !important;
+  color: var(--fluent-text) !important;
+  background: transparent !important;
+  font-weight: 400 !important;
+}
+
+/* Menu active state */
+.main .main-left .nav li .menu.active {
+  color: var(--fluent-text) !important;
+  background: rgba(0, 120, 212, 0.08) !important;
+  border-left: 3px solid var(--fluent-primary) !important;
+  padding-left: calc(2.5rem - 3px) !important;
+}
+
+.main .main-left .nav li .menu.active::before {
+  color: var(--fluent-primary) !important;
+}
+
+/* Remove arrow rotation on active expandable menu */
+.main .main-left .nav li .menu.active::after {
+  transform: rotate(90deg) !important;
+  color: var(--fluent-text-secondary) !important;
+}
+
+/* Menu hover state */
+.main .main-left .nav li .menu:hover {
+  cursor: pointer !important;
+  color: var(--fluent-text) !important;
+  background: rgba(0, 0, 0, 0.03) !important;
+}
+
+.main .main-left .nav li .menu:hover::before {
+  color: var(--fluent-primary) !important;
+}
+
+/* Menu icon */
+.main .main-left .nav li .menu::before {
+  font-family: 'argon' !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  line-height: 1 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  position: absolute !important;
+  left: 0.8rem !important;
+  padding-top: 3px !important;
+  transition: all 0.3s !important;
+  content: "\e915" !important;
+  color: var(--fluent-text-secondary) !important;
+}
+
+/* Expand/collapse arrow for expandable menus */
+.main .main-left .nav li .menu::after {
+  position: absolute !important;
+  right: 0.8rem !important;
+  top: 0.8rem !important;
+  font-family: 'argon' !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  line-height: 1 !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  content: '\e90f' !important;
+  transition: all 0.2s ease !important;
+  color: var(--fluent-text-secondary) !important;
+  text-rendering: auto !important;
+  -webkit-font-smoothing: antialiased !important;
+  font-size: 0.875rem !important;
+}
+
+/* Keep specific menu icon colors */
+.main .main-left .nav li .menu[data-title="Status"]:before {
+  content: "\e906" !important;
+}
+
+.main .main-left .nav li .menu[data-title="System"]:before {
+  content: "\e90a" !important;
+}
+
+.main .main-left .nav li .menu[data-title="Services"]:before {
+  content: "\e909" !important;
+}
+
+.main .main-left .nav li .menu[data-title="NAS"]:before {
+  content: "\e90c" !important;
+}
+
+.main .main-left .nav li .menu[data-title="VPN"]:before {
+  content: "\e90e" !important;
+}
+
+.main .main-left .nav li .menu[data-title="Network"]:before {
+  content: "\e903" !important;
+}
+
+.main .main-left .nav li .menu[data-title="Bandwidth_Monitor"]:before {
+  content: "\e911" !important;
+}
+
+.main .main-left .nav li .menu[data-title="Docker"]:before {
+  content: "\e900" !important;
+}
+
+.main .main-left .nav li .menu[data-title="Statistics"]:before {
+  content: "\e911" !important;
+}
+
+/* Specific icon for direct menu items */
+.main .main-left .nav > li > a[data-title="Dashboard"]:before,
+.main .main-left .nav > li > a.food[data-title="Dashboard"]:before {
+  content: "\e902" !important;
+}
+
+.main .main-left .nav > li > a[data-title="NetworkGuide"]:before,
+.main .main-left .nav > li > a.food[data-title="NetworkGuide"]:before {
+  content: "\e903" !important;
+}
+
+.main .main-left .nav > li > a[data-title="Log_out"]:before,
+.main .main-left .nav > li > a.food[data-title="Log_out"]:before {
+  content: "\e904" !important;
+}
+
+/* Remove any box-shadow from navigation items */
+.main .main-left .nav li a,
+.main .main-left .nav > li > a:first-child,
+.main .main-left .nav li .menu,
+.main .main-left .nav li.slide .slide-menu li a {
+  box-shadow: none !important;
+}
+
+/* Smooth transitions for all navigation elements */
+.main .main-left .nav,
+.main .main-left .nav li,
+.main .main-left .nav li a,
+.main .main-left .nav li.slide .slide-menu {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* End of FluentUI Sidebar Navigation Styles */

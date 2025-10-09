@@ -391,6 +391,109 @@ input[type="url"]:disabled,
   opacity: 1 !important;
 }
 
+/* ============================================
+   Password Input with Toggle Button - Dark Mode
+   ============================================ */
+
+/* Control group container for password input + button */
+.control-group {
+  display: inline-flex !important;
+  align-items: center !important;
+  position: relative !important;
+  width: 100% !important;
+  max-width: 400px !important;
+}
+
+/* Password input inside control group */
+.control-group > .password-input,
+.control-group > input.cbi-input-password {
+  flex: 1 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-right: none !important;
+  min-width: 0 !important;
+}
+
+/* Password input focus state - adjust border */
+.control-group > .password-input:focus,
+.control-group > input.cbi-input-password:focus {
+  border-right: none !important;
+  z-index: 1 !important;
+}
+
+/* Toggle button styling - Dark Mode */
+.control-group > .cbi-button-neutral,
+.control-group > button.cbi-button {
+  /* Reset cbi-button styles for this specific case */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  
+  /* Size to match input height */
+  min-width: 32px !important;
+  width: 32px !important;
+  height: 32px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  
+  /* Appearance - subtle button style (dark mode) */
+  background-color: #292929 !important;
+  border: 1px solid #5c5c5c !important;
+  border-bottom-color: #dadada !important;
+  border-left: none !important;
+  border-radius: 0 4px 4px 0 !important;
+  
+  /* Typography */
+  font-size: 16px !important;
+  line-height: 1 !important;
+  color: #c8c6c4 !important;
+  
+  /* Interaction */
+  cursor: pointer !important;
+  transition: background-color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
+              color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
+              border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
+  outline: none !important;
+}
+
+/* Toggle button hover state */
+.control-group > .cbi-button-neutral:hover,
+.control-group > button.cbi-button:hover {
+  background-color: #3d3d3d !important;
+  color: #f5f5f5 !important;
+  border-color: #707070 !important;
+  border-bottom-color: #dadada !important;
+  border-left: none !important;
+}
+
+/* Toggle button active state */
+.control-group > .cbi-button-neutral:active,
+.control-group > button.cbi-button:active {
+  background-color: #323130 !important;
+  color: #ffffff !important;
+}
+
+/* Toggle button when input is focused */
+.control-group > .password-input:focus ~ .cbi-button-neutral,
+.control-group > .password-input:focus ~ button.cbi-button,
+.control-group > input.cbi-input-password:focus ~ .cbi-button-neutral,
+.control-group > input.cbi-input-password:focus ~ button.cbi-button {
+  border-color: #5c5c5c !important;
+  border-bottom-color: var(--fluent-primary) !important;
+  border-left: none !important;
+}
+
+/* Disabled state */
+.control-group > .cbi-button-neutral:disabled,
+.control-group > button.cbi-button:disabled {
+  background-color: #3d3d3d !important;
+  border-color: #424242 !important;
+  border-bottom-color: #424242 !important;
+  color: #5c5c5c !important;
+  cursor: not-allowed !important;
+}
+
 /* Fluent UI Textarea - Dark Mode */
 textarea,
 .cbi-input-textarea {

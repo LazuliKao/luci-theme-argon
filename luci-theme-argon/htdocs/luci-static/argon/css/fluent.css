@@ -593,7 +593,7 @@ header {
   min-width: 17rem !important;
 
   /* Size: medium (default) - 与 Input 保持一致 */
-  padding: 0 8px 0 12px !important;
+  padding: 0 8px 0 8px !important;
   gap: 4px !important;
   
   /* Appearance: outline */
@@ -682,11 +682,13 @@ header {
   text-overflow: ellipsis !important;
   white-space: nowrap !important;
   flex: 1 !important;
-  padding: 0 !important;
+  padding: 0 0 0 3.5px !important;
   margin: 0 !important;
   list-style: none !important;
   gap: 4px !important;
   pointer-events: none !important;
+  height: 100% !important;
+  min-height: 32px !important;
 }
 
 .cbi-dropdown > ul.preview > li {
@@ -696,6 +698,8 @@ header {
   overflow: hidden !important;
   text-overflow: ellipsis !important;
   white-space: nowrap !important;
+  line-height: 20px !important;
+  vertical-align: middle !important;
 }
 
 /* Only show selected items in preview */

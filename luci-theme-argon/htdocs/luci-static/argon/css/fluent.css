@@ -1267,6 +1267,40 @@ ul.cbi-tabmenu > li[class="cbi-tab-disabled"] > a:hover {
   font-size: 14px !important;
   font-weight: 400 !important;
   line-height: 20px !important;
+  
+  /* Horizontal scrolling */
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent !important;
+}
+
+/* Horizontal scrollbar styling - Webkit */
+#tabmenu > ul.tabs::-webkit-scrollbar,
+.tabmenu > ul.tabs::-webkit-scrollbar {
+  height: 8px !important;
+}
+
+#tabmenu > ul.tabs::-webkit-scrollbar-track,
+.tabmenu > ul.tabs::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+#tabmenu > ul.tabs::-webkit-scrollbar-thumb,
+.tabmenu > ul.tabs::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  border-radius: 4px !important;
+  transition: background-color 0.2s ease !important;
+}
+
+#tabmenu > ul.tabs::-webkit-scrollbar-thumb:hover,
+.tabmenu > ul.tabs::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+#tabmenu > ul.tabs:hover::-webkit-scrollbar-thumb,
+.tabmenu > ul.tabs:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
 /* Tab Item */
@@ -1299,7 +1333,6 @@ ul.cbi-tabmenu > li[class="cbi-tab-disabled"] > a:hover {
   background-color: transparent !important;
   border: none !important;
   border-bottom: 2px solid transparent !important;
-  margin-bottom: -2px !important;
   
   /* Typography */
   font-family: var(--font-family-sans-serif) !important;

@@ -955,8 +955,28 @@ header {
   border-color: #5c5c5c !important;
 }
 
-/* Hide the more indicator */
+/* More indicator - shows when empty/no selection - Dark Mode */
 .cbi-dropdown > span.more {
+  display: inline-flex !important;
+  align-items: center !important;
+  flex: 1 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  color: #8a8886 !important;
+  padding: 0 0 0 3.5px !important;
+  pointer-events: none !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+}
+
+/* Hide more indicator when preview has content */
+.cbi-dropdown:not([empty]) > span.more {
+  display: none !important;
+}
+
+/* Hide preview when empty */
+.cbi-dropdown[empty] > ul.preview {
   display: none !important;
 }
 

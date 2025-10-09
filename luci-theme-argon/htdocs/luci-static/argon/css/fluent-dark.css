@@ -557,11 +557,10 @@ header {
   box-sizing: border-box !important;
   position: relative !important;
   vertical-align: middle !important;
-  min-width: 250px !important;
+  min-width: 17rem !important;
   
-  /* Size: medium (default) */
-  min-height: 32px !important;
-  padding: 5px 10px !important;
+  /* Size: medium (default) - 与 Input 保持一致 */
+  padding: 0 8px 0 12px !important;
   gap: 4px !important;
   
   /* Appearance: outline (dark) */

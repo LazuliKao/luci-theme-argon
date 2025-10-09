@@ -70,178 +70,43 @@ body {
 }
 
 /* Buttons get FluentUI styling */
-/* ============================================
-   Fluent UI Buttons
-   ============================================ */
-
-/* Base Button Styles */
 .btn,
-button:not(.cbi-button):not(.cbi-button-up):not(.cbi-button-down),
-input[type="button"]:not(.cbi-button),
-input[type="reset"]:not(.cbi-button),
-input[type="submit"]:not(.cbi-button) {
-  /* Layout */
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  box-sizing: border-box !important;
-  position: relative !important;
-  vertical-align: middle !important;
-  
-  /* Size: medium (default) */
-  min-width: 96px !important;
-  min-height: 32px !important;
-  padding: 5px 12px !important;
-  gap: 6px !important;
-  
-  /* Appearance: subtle (default) */
-  background-color: transparent !important;
-  border: 1px solid transparent !important;
-  border-radius: 4px !important;
-  
-  /* Typography */
-  font-family: var(--font-family-sans-serif) !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  line-height: 20px !important;
-  color: #242424 !important;
-  text-decoration: none !important;
-  white-space: nowrap !important;
-  
-  /* Interaction */
-  cursor: pointer !important;
-  user-select: none !important;
-  outline-style: none !important;
-  
-  /* Transition */
-  transition: background-color 0.05s cubic-bezier(0.33, 0, 0.67, 1),
-              color 0.05s cubic-bezier(0.33, 0, 0.67, 1),
-              border-color 0.05s cubic-bezier(0.33, 0, 0.67, 1) !important;
+.cbi-button,
+.item::after,
+button,
+select,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  border-radius: var(--fluent-radius);
+  transition: var(--fluent-transition);
+  box-shadow: var(--fluent-shadow);
+  border: 1px solid var(--fluent-border);
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
 
-/* Button Hover State */
 .btn:hover,
-button:not(.cbi-button):not(.cbi-button-up):not(.cbi-button-down):hover,
-input[type="button"]:not(.cbi-button):hover,
-input[type="reset"]:not(.cbi-button):hover,
-input[type="submit"]:not(.cbi-button):hover {
-  background-color: #f5f5f5 !important;
-  color: #242424 !important;
+.cbi-button:hover,
+.item:hover::after,
+button:hover {
+  box-shadow: var(--fluent-shadow-hover);
 }
 
-/* Button Active/Pressed State */
-.btn:active,
-button:not(.cbi-button):not(.cbi-button-up):not(.cbi-button-down):active,
-input[type="button"]:not(.cbi-button):active,
-input[type="reset"]:not(.cbi-button):active,
-input[type="submit"]:not(.cbi-button):active {
-  background-color: #e1dfdd !important;
-  color: #242424 !important;
+.btn.primary,
+.cbi-button-save,
+.cbi-button-add,
+.cbi-button-apply,
+.cbi-button-positive {
+  background-color: var(--fluent-primary);
+  border-color: var(--fluent-primary);
 }
 
-/* Button Disabled State */
-.btn:disabled,
-button:not(.cbi-button):not(.cbi-button-up):not(.cbi-button-down):disabled,
-input[type="button"]:not(.cbi-button):disabled,
-input[type="reset"]:not(.cbi-button):disabled,
-input[type="submit"]:not(.cbi-button):disabled {
-  background-color: transparent !important;
-  border-color: transparent !important;
-  color: #a19f9d !important;
-  cursor: not-allowed !important;
-  opacity: 1 !important;
-}
-
-/* ============================================
-   Primary Button (Appearance: primary)
-   ============================================ */
-
-.btn.primary {
-  background-color: var(--fluent-primary) !important;
-  border-color: transparent !important;
-  color: #ffffff !important;
-}
-
-.btn.primary:hover {
-  background-color: color-mix(in srgb, var(--fluent-primary) 85%, black) !important;
-  color: #ffffff !important;
-}
-
-.btn.primary:active {
-  background-color: color-mix(in srgb, var(--fluent-primary) 70%, black) !important;
-  color: #ffffff !important;
-}
-
-.btn.primary:disabled {
-  background-color: #f5f5f5 !important;
-  border-color: transparent !important;
-  color: #a19f9d !important;
-}
-
-/* ============================================
-   Danger Button (Negative actions)
-   ============================================ */
-
-.btn.danger {
-  background-color: transparent !important;
-  border-color: transparent !important;
-  color: #c50f1f !important;
-}
-
-.btn.danger:hover {
-  background-color: #fef6f6 !important;
-  color: #c50f1f !important;
-}
-
-.btn.danger:active {
-  background-color: #f7e7e7 !important;
-  color: #c50f1f !important;
-}
-
-.btn.danger:disabled {
-  background-color: transparent !important;
-  border-color: transparent !important;
-  color: #a19f9d !important;
-}
-
-/* ============================================
-   Outline Button (Appearance: outline)
-   ============================================ */
-
-.btn.outline {
-  background-color: transparent !important;
-  border-color: #8a8886 !important;
-  color: #242424 !important;
-}
-
-.btn.outline:hover {
-  background-color: #f5f5f5 !important;
-  border-color: #8a8886 !important;
-  color: #242424 !important;
-}
-
-.btn.outline:active {
-  background-color: #e1dfdd !important;
-  border-color: #8a8886 !important;
-  color: #242424 !important;
-}
-
-.btn.outline:disabled {
-  background-color: transparent !important;
-  border-color: #c8c6c4 !important;
-  color: #a19f9d !important;
-}
-
-/* ============================================
-   Small Button Size
-   ============================================ */
-
-.btn.small {
-  min-width: 64px !important;
-  min-height: 24px !important;
-  padding: 3px 8px !important;
-  font-size: 12px !important;
-  line-height: 16px !important;
+.btn.danger,
+.cbi-button-remove,
+.cbi-button-negative {
+  background-color: var(--fluent-error);
+  border-color: var(--fluent-error);
 }
 
 /* Fluent UI Input Fields */
@@ -2029,14 +1894,22 @@ td.td.cbi-section-table-cell.nowrap.cbi-section-actions
   margin-left: 5px;
 }
 
-.cbi-dropdown {
-  min-height: 2rem !important;
-  min-width: 17rem !important;
+.cbi-button-up {
+  color: var(--fluent-text) !important;
+  border: 1px solid var(--fluent-border) !important;
+  box-shadow: var(--fluent-shadow) !important;
+  content: "" !important;
+  font-size: 0 !important;
+  width: 20px !important;
 }
-
-/* ============================================
-   Icon-only Buttons
-   ============================================ */
+.cbi-button-down {
+  color: var(--fluent-text) !important;
+  border: 1px solid var(--fluent-border) !important;
+  box-shadow: var(--fluent-shadow) !important;
+  content: "" !important;
+  font-size: 0 !important;
+  width: 20px !important;
+}
 
 #modal_overlay > div > p {
   margin: auto;
@@ -2046,6 +1919,12 @@ td.td.cbi-section-table-cell.nowrap.cbi-section-actions
 #maincontent {
   animation: var(--fluent-animation-fadeIn);
 }
+/* #page > div {
+  --zoom: 1.5;
+  transform: scale(calc(1 / var(--zoom)));
+  width: calc(100% * var(--zoom));
+  transform-origin: top left;
+} */
 
 /* 隐藏network_guide */
 a[href*="/admin/network_guide"] {

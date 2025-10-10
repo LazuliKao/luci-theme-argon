@@ -172,12 +172,20 @@ input[type="url"],
   /* Transition */
   transition: border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
   outline-style: none !important;
+}
 
-  /* Placeholder */
-  ::placeholder {
-    color: #8a8886 !important;
-    opacity: 1 !important;
-  }
+/* Placeholder */
+input[type="text"]::placeholder,
+input[type="password"]::placeholder,
+input[type="email"]::placeholder,
+input[type="number"]::placeholder,
+input[type="search"]::placeholder,
+input[type="tel"]::placeholder,
+input[type="url"]::placeholder,
+.cbi-input-text::placeholder,
+.cbi-input-password::placeholder {
+  color: #8a8886 !important;
+  opacity: 1 !important;
 }
 
 /* Input focus state with bottom indicator animation */

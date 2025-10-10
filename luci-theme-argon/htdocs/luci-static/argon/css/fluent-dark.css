@@ -153,7 +153,7 @@ input[type="url"],
   position: relative !important;
 
   /* Size: medium (default) */
-  min-height: 32px !important;
+  min-height: 2.5rem !important;
   padding: 0 12px !important;
 
   /* Appearance: outline (dark mode) */
@@ -312,7 +312,7 @@ input[type="url"]:disabled,
   /* Size to match input height */
   min-width: 32px !important;
   width: 32px !important;
-  height: 32px !important;
+  height: 2.5rem !important;
   padding: 0 !important;
   margin: 0 !important;
 
@@ -411,7 +411,7 @@ input[type="url"]:disabled,
 /* Dynlist input field - ensure consistent height */
 .cbi-dynlist > .add-item > input.cbi-input-text {
   flex: 1 !important;
-  height: 32px !important;
+  height: 2.5rem !important;
   padding: 6px 12px !important;
   line-height: 18px !important;
   box-sizing: border-box !important;
@@ -424,9 +424,7 @@ input[type="url"]:disabled,
 /* Dynlist add button - ensure 32px height and proper alignment */
 .cbi-dynlist > .add-item > .cbi-button-add,
 .cbi-dynlist > .add-item > .btn.cbi-button-add {
-  height: 30px !important;
-  min-height: 30px !important;
-  max-height: 30px !important;
+  min-height: 2.5rem !important;
   width: 30px !important;
   min-width: 30px !important;
   max-width: 30px !important;
@@ -456,7 +454,7 @@ input[type="url"]:disabled,
 /* Dynlist item span (content area) */
 .cbi-dynlist > .item > span {
   flex: 1 !important;
-  height: 32px !important;
+  height: 2.5rem !important;
   line-height: 18px !important;
   padding: 6px 12px !important;
   margin: 0.25rem 0 !important;
@@ -472,9 +470,7 @@ input[type="url"]:disabled,
 /* Dynlist delete button (X) - ensure 32px height and proper alignment */
 .cbi-dynlist > .item::after {
   position: relative !important;
-  height: 30px !important;
-  min-height: 30px !important;
-  max-height: 30px !important;
+  min-height: 2.5rem !important;
   width: 30px !important;
   min-width: 30px !important;
   max-width: 30px !important;
@@ -740,7 +736,7 @@ header {
   width: 100% !important;
   padding: 32px 28px 28px 28px !important;
   box-sizing: border-box !important;
-  
+
   /* Fluent Design - Acrylic Material (Dark) */
   background: linear-gradient(
     135deg,
@@ -749,17 +745,15 @@ header {
   ) !important;
   backdrop-filter: blur(40px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
-  
+
   /* Border - Dark reveal */
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 8px !important;
-  
+
   /* Fluent Shadows - Enhanced for dark mode */
-  box-shadow: 
-    0 8px 16px 0 rgba(0, 0, 0, 0.6),
-    0 2px 4px 0 rgba(0, 0, 0, 0.4),
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6), 0 2px 4px 0 rgba(0, 0, 0, 0.4),
     inset 0 1px 0 0 rgba(255, 255, 255, 0.05) !important;
-  
+
   /* Animation */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   animation: fluent-login-fade-in-dark 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -778,9 +772,7 @@ header {
 
 .login-page .login-container .login-form:hover {
   /* Enhanced shadow on hover */
-  box-shadow: 
-    0 12px 24px 0 rgba(0, 0, 0, 0.7),
-    0 4px 8px 0 rgba(0, 0, 0, 0.5),
+  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.7), 0 4px 8px 0 rgba(0, 0, 0, 0.5),
     inset 0 1px 0 0 rgba(255, 255, 255, 0.08) !important;
   transform: translateY(-2px) !important;
   border-color: rgba(255, 255, 255, 0.12) !important;
@@ -810,10 +802,11 @@ header {
 
 .login-page .login-container .login-form .brand .brand-text {
   /* Fluent Typography - Display (Dark) */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", sans-serif !important;
   font-size: 24px !important;
   font-weight: 600 !important;
-  line-height: 32px !important;
+  line-height: 2.5rem !important;
   color: #f5f5f5 !important;
   letter-spacing: -0.01em !important;
   margin: 0 !important;
@@ -826,18 +819,19 @@ header {
   padding: 10px 14px !important;
   margin-bottom: 16px !important;
   border-radius: 4px !important;
-  
+
   /* Fluent Semantic Colors - Error (Dark) */
   background-color: rgba(196, 49, 75, 0.15) !important;
   border: 1px solid rgba(196, 49, 75, 0.4) !important;
   color: #ff99a4 !important;
-  
+
   /* Typography */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", sans-serif !important;
   font-size: 14px !important;
   font-weight: 400 !important;
   line-height: 20px !important;
-  
+
   /* Icon spacing */
   display: flex !important;
   align-items: center !important;
@@ -873,20 +867,24 @@ header {
   left: 14px !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
-  
+
   /* Icon styling */
-  font-family: 'argon' !important;
+  font-family: "argon" !important;
   font-size: 18px !important;
   color: #c8c6c4 !important;
   z-index: 2 !important;
   pointer-events: none !important;
-  
+
   /* Fluent transition */
   transition: color 0.1s cubic-bezier(0.33, 0, 0.67, 1) !important;
 }
 
 /* Icon color change on focus */
-.login-page .login-container .login-form .form-login .input-group:has(input:focus)::before {
+.login-page
+  .login-container
+  .login-form
+  .form-login
+  .input-group:has(input:focus)::before {
   color: var(--fluent-primary, #60cdff) !important;
 }
 
@@ -902,41 +900,51 @@ header {
 
 /* Fluent Design Input Fields - Login Page (Dark Mode) */
 .login-page .login-container .login-form .form-login .input-group input,
-.login-page .login-container .login-form .form-login .input-group .cbi-input-user,
-.login-page .login-container .login-form .form-login .input-group .cbi-input-password {
+.login-page
+  .login-container
+  .login-form
+  .form-login
+  .input-group
+  .cbi-input-user,
+.login-page
+  .login-container
+  .login-form
+  .form-login
+  .input-group
+  .cbi-input-password {
   /* Layout */
   display: block !important;
   box-sizing: border-box !important;
   width: 100% !important;
-  
+
   /* Size - Fluent Design touch-friendly */
   min-height: 44px !important;
   padding: 10px 16px 10px 44px !important;
-  
+
   /* Fluent Appearance - Outline style (Dark) */
   background-color: #292929 !important;
   border: 1px solid #5c5c5c !important;
   border-bottom: 2px solid #8a8886 !important;
   border-radius: 4px !important;
-  
+
   /* Typography - Fluent Design */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", sans-serif !important;
   font-size: 15px !important;
   font-weight: 400 !important;
   line-height: 22px !important;
   color: #f5f5f5 !important;
-  
+
   /* Effects */
   box-shadow: none !important;
   outline: none !important;
   margin: 0 !important;
-  
+
   /* Fluent transitions */
-  transition: 
-    border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
+  transition: border-color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
     background-color 0.1s cubic-bezier(0.33, 0, 0.67, 1),
     box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  
+
   /* Focus indicator preparation */
   position: relative !important;
   background-image: linear-gradient(
@@ -950,18 +958,48 @@ header {
 }
 
 /* Placeholder styling - Dark Mode */
-.login-page .login-container .login-form .form-login .input-group input::placeholder,
-.login-page .login-container .login-form .form-login .input-group .cbi-input-user::placeholder,
-.login-page .login-container .login-form .form-login .input-group .cbi-input-password::placeholder {
+.login-page
+  .login-container
+  .login-form
+  .form-login
+  .input-group
+  input::placeholder,
+.login-page
+  .login-container
+  .login-form
+  .form-login
+  .input-group
+  .cbi-input-user::placeholder,
+.login-page
+  .login-container
+  .login-form
+  .form-login
+  .input-group
+  .cbi-input-password::placeholder {
   color: #8a8886 !important;
   opacity: 1 !important;
   font-size: 15px !important;
 }
 
 /* Hover state - Fluent subtle interaction (Dark) */
-.login-page .login-container .login-form .form-login .input-group input:hover:not(:focus):not(:disabled),
-.login-page .login-container .login-form .form-login .input-group .cbi-input-user:hover:not(:focus):not(:disabled),
-.login-page .login-container .login-form .form-login .input-group .cbi-input-password:hover:not(:focus):not(:disabled) {
+.login-page
+  .login-container
+  .login-form
+  .form-login
+  .input-group
+  input:hover:not(:focus):not(:disabled),
+.login-page
+  .login-container
+  .login-form
+  .form-login
+  .input-group
+  .cbi-input-user:hover:not(:focus):not(:disabled),
+.login-page
+  .login-container
+  .login-form
+  .form-login
+  .input-group
+  .cbi-input-password:hover:not(:focus):not(:disabled) {
   background-color: #3d3d3d !important;
   border-color: #707070 !important;
   border-bottom-color: #a19f9d !important;
@@ -969,29 +1007,69 @@ header {
 
 /* Focus state - Fluent Design with bottom indicator (Dark) */
 .login-page .login-container .login-form .form-login .input-group input:focus,
-.login-page .login-container .login-form .form-login .input-group .cbi-input-user:focus,
-.login-page .login-container .login-form .form-login .input-group .cbi-input-password:focus {
+.login-page
+  .login-container
+  .login-form
+  .form-login
+  .input-group
+  .cbi-input-user:focus,
+.login-page
+  .login-container
+  .login-form
+  .form-login
+  .input-group
+  .cbi-input-password:focus {
   background-color: #323130 !important;
   border-color: #5c5c5c !important;
   border-bottom-color: var(--fluent-primary, #60cdff) !important;
   background-size: 100% 2px !important;
-  
+
   /* Fluent focus shadow (Dark) */
   box-shadow: 0 0 0 1px var(--fluent-primary, #60cdff) inset !important;
 }
 
 /* Active/pressed state (Dark) */
-.login-page .login-container .login-form .form-login .input-group input:active:not(:disabled),
-.login-page .login-container .login-form .form-login .input-group .cbi-input-user:active:not(:disabled),
-.login-page .login-container .login-form .form-login .input-group .cbi-input-password:active:not(:disabled) {
+.login-page
+  .login-container
+  .login-form
+  .form-login
+  .input-group
+  input:active:not(:disabled),
+.login-page
+  .login-container
+  .login-form
+  .form-login
+  .input-group
+  .cbi-input-user:active:not(:disabled),
+.login-page
+  .login-container
+  .login-form
+  .form-login
+  .input-group
+  .cbi-input-password:active:not(:disabled) {
   background-color: #323130 !important;
   border-color: #5c5c5c !important;
 }
 
 /* Disabled state (Dark) */
-.login-page .login-container .login-form .form-login .input-group input:disabled,
-.login-page .login-container .login-form .form-login .input-group .cbi-input-user:disabled,
-.login-page .login-container .login-form .form-login .input-group .cbi-input-password:disabled {
+.login-page
+  .login-container
+  .login-form
+  .form-login
+  .input-group
+  input:disabled,
+.login-page
+  .login-container
+  .login-form
+  .form-login
+  .input-group
+  .cbi-input-user:disabled,
+.login-page
+  .login-container
+  .login-form
+  .form-login
+  .input-group
+  .cbi-input-password:disabled {
   background-color: rgba(255, 255, 255, 0.03) !important;
   background-image: none !important;
   border-color: #424242 !important;
@@ -1005,25 +1083,25 @@ header {
   display: none !important;
 }
 
-
 /* Login Button - Fluent Design Primary Button (Dark Mode) */
 .login-page .login-container .login-form .cbi-button-apply {
   /* Layout */
   display: block !important;
   width: 100% !important;
   box-sizing: border-box !important;
-  
+
   /* Size - Fluent touch-friendly */
   min-height: 48px !important;
   padding: 12px 24px !important;
-  
+
   /* Fluent Primary Button Appearance (Dark Mode) */
   background: var(--fluent-primary, #60cdff) !important;
   border: 1px solid var(--fluent-primary, #60cdff) !important;
   border-radius: 4px !important;
-  
+
   /* Typography - Fluent Design */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", sans-serif !important;
   font-size: 16px !important;
   font-weight: 600 !important;
   line-height: 22px !important;
@@ -1031,17 +1109,15 @@ header {
   text-align: center !important;
   letter-spacing: 0.01em !important;
   text-transform: none !important;
-  
+
   /* Effects - Fluent elevation (Dark) */
   cursor: pointer !important;
-  box-shadow: 
-    0 3px 6px rgba(0, 0, 0, 0.5),
-    0 0 2px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5), 0 0 2px rgba(0, 0, 0, 0.4) !important;
   outline: none !important;
-  
+
   /* Spacing */
   margin: 6px 0 0 0 !important;
-  
+
   /* Fluent animation */
   transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
   position: relative !important;
@@ -1050,7 +1126,7 @@ header {
 
 /* Fluent ripple effect on click (Dark) */
 .login-page .login-container .login-form .cbi-button-apply::after {
-  content: '' !important;
+  content: "" !important;
   position: absolute !important;
   top: 50% !important;
   left: 50% !important;
@@ -1069,28 +1145,39 @@ header {
 
 /* Hover state - Fluent elevation increase (Dark) */
 .login-page .login-container .login-form .cbi-button-apply:hover {
-  background: color-mix(in srgb, var(--fluent-primary, #60cdff) 90%, white) !important;
-  border-color: color-mix(in srgb, var(--fluent-primary, #60cdff) 90%, white) !important;
-  box-shadow: 
-    0 5px 10px rgba(0, 0, 0, 0.6),
-    0 0 4px rgba(96, 205, 255, 0.3) !important;
+  background: color-mix(
+    in srgb,
+    var(--fluent-primary, #60cdff) 90%,
+    white
+  ) !important;
+  border-color: color-mix(
+    in srgb,
+    var(--fluent-primary, #60cdff) 90%,
+    white
+  ) !important;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6), 0 0 4px rgba(96, 205, 255, 0.3) !important;
   transform: translateY(-1px) !important;
 }
 
 /* Active/Pressed state - Fluent press effect (Dark) */
 .login-page .login-container .login-form .cbi-button-apply:active {
-  background: color-mix(in srgb, var(--fluent-primary, #60cdff) 80%, black) !important;
-  border-color: color-mix(in srgb, var(--fluent-primary, #60cdff) 80%, black) !important;
-  box-shadow: 
-    0 1px 2px rgba(0, 0, 0, 0.4) !important;
+  background: color-mix(
+    in srgb,
+    var(--fluent-primary, #60cdff) 80%,
+    black
+  ) !important;
+  border-color: color-mix(
+    in srgb,
+    var(--fluent-primary, #60cdff) 80%,
+    black
+  ) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
   transform: translateY(0) scale(0.98) !important;
 }
 
 /* Focus state - Fluent focus indicator (Dark) */
 .login-page .login-container .login-form .cbi-button-apply:focus {
-  box-shadow: 
-    0 0 0 2px #202020,
-    0 0 0 4px var(--fluent-primary, #60cdff),
+  box-shadow: 0 0 0 2px #202020, 0 0 0 4px var(--fluent-primary, #60cdff),
     0 3px 6px rgba(0, 0, 0, 0.5) !important;
 }
 
@@ -1150,25 +1237,25 @@ header {
     top: 50% !important;
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
-    
+
     /* Reset margins */
     margin: 0 !important;
-    
+
     /* Layout adjustments */
     height: auto !important;
     min-height: auto !important;
     width: auto !important;
-    
+
     /* Remove side shadow */
     box-shadow: none !important;
-    
+
     /* Flexbox centering fallback */
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
     align-items: center !important;
   }
-  
+
   .login-page .login-container .login-form {
     position: relative !important;
   }
@@ -1180,12 +1267,12 @@ header {
     max-width: 480px !important;
     padding: 56px 48px !important;
   }
-  
+
   .login-page .login-container .login-form .brand .icon {
     width: 64px !important;
     height: 64px !important;
   }
-  
+
   .login-page .login-container .login-form .brand .brand-text {
     font-size: 32px !important;
     line-height: 40px !important;
@@ -1213,55 +1300,65 @@ header {
     margin: 0 !important;
     padding: 0 !important;
     box-shadow: none !important;
-    
+
     /* Center content */
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
     align-items: center !important;
   }
-  
+
   .login-page .login-container .login-form {
     position: relative !important;
     max-width: 100% !important;
     width: 100% !important;
     padding: 24px 20px !important;
     margin: 0 !important;
-    
+
     /* Remove or reduce backdrop blur for better mobile performance */
     backdrop-filter: blur(20px) saturate(150%) !important;
     -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   }
-  
+
   /* Adjust brand section for mobile */
   .login-page .login-container .login-form .brand {
     margin-bottom: 20px !important;
   }
-  
+
   .login-page .login-container .login-form .brand .icon {
     width: 56px !important;
     height: 56px !important;
   }
-  
+
   .login-page .login-container .login-form .brand .brand-text {
     font-size: 26px !important;
     line-height: 34px !important;
   }
-  
+
   /* Adjust input spacing for mobile */
   .login-page .login-container .login-form .form-login .input-container {
     gap: 14px !important;
     margin-bottom: 20px !important;
   }
-  
+
   /* Larger touch targets for mobile */
   .login-page .login-container .login-form .form-login .input-group input,
-  .login-page .login-container .login-form .form-login .input-group .cbi-input-user,
-  .login-page .login-container .login-form .form-login .input-group .cbi-input-password {
+  .login-page
+    .login-container
+    .login-form
+    .form-login
+    .input-group
+    .cbi-input-user,
+  .login-page
+    .login-container
+    .login-form
+    .form-login
+    .input-group
+    .cbi-input-password {
     min-height: 48px !important;
     font-size: 16px !important;
   }
-  
+
   /* Larger button for mobile */
   .login-page .login-container .login-form .cbi-button-apply {
     min-height: 52px !important;
@@ -1399,7 +1496,7 @@ header {
   gap: 4px !important;
   pointer-events: none !important;
   height: 100% !important;
-  min-height: 32px !important;
+  min-height: 2.5rem !important;
 }
 
 .cbi-dropdown > ul.preview > li {
@@ -1546,7 +1643,7 @@ header {
   width: 100% !important;
 
   /* Size */
-  min-height: 32px !important;
+  min-height: 2.5rem !important;
   padding: 5px 8px !important;
 
   /* Appearance */
@@ -1690,7 +1787,7 @@ select.cbi-input-select {
   vertical-align: middle !important;
 
   /* Size: medium (default) - 与 Input 保持一致 */
-  min-height: 32px !important;
+  min-height: 2.5rem !important;
   padding: 0 32px 0 12px !important;
   min-width: 17rem !important;
 
@@ -1798,7 +1895,7 @@ ul.cbi-tabmenu {
 
   /* Spacing */
   padding: 0 !important;
-  margin: 0 0 16px 0 !important;
+  margin: 0 !important;
   gap: 0 !important;
   list-style: none !important;
 
@@ -1833,7 +1930,7 @@ ul.cbi-tabmenu > li > a {
   position: relative !important;
 
   /* Size: medium */
-  min-height: 32px !important;
+  min-height: 2.5rem !important;
   padding: 8px 16px !important;
 
   /* Appearance */
@@ -2009,13 +2106,13 @@ ul.cbi-tabmenu > li[class="cbi-tab-disabled"] > a:hover {
   position: relative !important;
 
   /* Size: medium */
-  min-height: 32px !important;
+  min-height: 2.5rem !important;
   padding: 6px 12px !important;
 
   /* Appearance */
   background-color: transparent !important;
   border: none !important;
-  border-bottom: 2px solid transparent !important;
+  border-bottom: 3px solid transparent !important;
 
   /* Typography */
   font-family: var(--font-family-sans-serif) !important;
@@ -2440,16 +2537,6 @@ input:focus:not([type="checkbox"]):not([type="radio"]) {
   color: var(
     --fluent-neutral-foreground-M
   ); /* Medium emphasis for the last column */
-}
-
-/* Section Value Styling */
-.cbi-section-node .cbi-value {
-  padding: 12px 0; /* Adjust padding within section nodes */
-  border-bottom: 1px solid var(--fluent-neutral-stroke); /* Subtle separator between values */
-}
-
-.cbi-section-node .cbi-value:last-child {
-  border-bottom: none; /* Remove border for the last value */
 }
 
 /* Interface Boxes Styling */

@@ -655,16 +655,99 @@ input:focus:not([type="checkbox"]):not([type="radio"]) {
   color: var(--fluent-text) !important;
 }
 
-.tr.placeholder {
-  background-color: rgba(60, 60, 60, 0.7) !important;
-}
-
+/* Table rows - FluentUI Dark styling */
 .tr.cbi-section-table-row {
-  background-color: rgba(70, 70, 70, 0.4) !important;
+  background-color: rgba(45, 45, 48, 0.6) !important;
+  transition: var(--fluent-transition);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
 }
 
 .tr.cbi-section-table-row:hover {
-  background-color: rgba(96, 205, 255, 0.1) !important;
+  background-color: rgba(96, 205, 255, 0.15) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.tr.cbi-section-table-row:active {
+  background-color: rgba(96, 205, 255, 0.2) !important;
+  transform: translateY(0);
+}
+
+/* Alternate row colors for better readability */
+.tr.cbi-section-table-row.cbi-rowstyle-1 {
+  background-color: rgba(40, 40, 43, 0.6) !important;
+}
+
+.tr.cbi-section-table-row.cbi-rowstyle-2 {
+  background-color: rgba(45, 45, 48, 0.6) !important;
+}
+
+/* Table row cells */
+.tr.cbi-section-table-row > .td {
+  padding: 0.9rem 1rem;
+  vertical-align: middle;
+}
+
+.tr.cbi-section-table-row > .td.cbi-section-actions {
+  padding: 0.6rem 1rem;
+}
+
+/* Placeholder row for empty tables */
+.tr.placeholder {
+  background-color: rgba(60, 60, 60, 0.5) !important;
+  border: 1px dashed rgba(255, 255, 255, 0.15) !important;
+  border-radius: var(--fluent-radius);
+  height: 5rem;
+  position: relative;
+}
+
+.tr.placeholder > .td {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem !important;
+  text-align: center !important;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.5) !important;
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+.tr.placeholder > .td em {
+  font-style: normal;
+  opacity: 0.8;
+}
+
+/* Table header styling */
+.tr.cbi-section-table-titles > .th {
+  background-color: rgba(50, 50, 50, 0.8) !important;
+  border-bottom: 2px solid rgba(96, 205, 255, 0.3) !important;
+  padding: 0.8rem 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: none;
+  letter-spacing: 0.01em;
+}
+
+/* Remove borders between cells for cleaner look */
+.cbi-section-table .td,
+.cbi-section-table .th {
+  border-left: none;
+  border-right: none;
+}
+
+/* First and last row special handling */
+.cbi-section-table > .tr.cbi-section-table-row:first-of-type {
+  border-top: none;
+}
+
+.cbi-section-table > .tr.cbi-section-table-row:last-of-type {
+  border-bottom: none;
 }
 
 .table .th,

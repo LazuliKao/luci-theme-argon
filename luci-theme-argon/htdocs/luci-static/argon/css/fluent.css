@@ -618,71 +618,69 @@ table > tbody > tr:last-child > th {
 }
 
 /* Table rows - FluentUI styling */
-.tr.cbi-section-table-row {
+.tr.cbi-section-table-row:not(.placeholder) {
   background-color: rgba(255, 255, 255, 0.6) !important;
   transition: var(--fluent-transition);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
 }
 
-.tr.cbi-section-table-row:hover {
+.tr.cbi-section-table-row:not(.placeholder):hover {
   background-color: rgba(0, 120, 212, 0.08) !important;
   transform: translateY(-1px);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-.tr.cbi-section-table-row:active {
+.tr.cbi-section-table-row:not(.placeholder):active {
   background-color: rgba(0, 120, 212, 0.12) !important;
   transform: translateY(0);
 }
 
 /* Alternate row colors for better readability */
-.tr.cbi-section-table-row.cbi-rowstyle-1 {
+.tr.cbi-section-table-row.cbi-rowstyle-1:not(.placeholder) {
   background-color: rgba(248, 250, 252, 0.7) !important;
 }
 
-.tr.cbi-section-table-row.cbi-rowstyle-2 {
+.tr.cbi-section-table-row.cbi-rowstyle-2:not(.placeholder) {
   background-color: rgba(255, 255, 255, 0.6) !important;
 }
 
 /* Table row cells */
-.tr.cbi-section-table-row > .td {
+.tr.cbi-section-table-row:not(.placeholder) > .td {
   padding: 0.9rem 1rem;
   vertical-align: middle;
 }
 
-.tr.cbi-section-table-row > .td.cbi-section-actions {
+.tr.cbi-section-table-row:not(.placeholder) > .td.cbi-section-actions {
   padding: 0.6rem 1rem;
 }
 
 /* Placeholder row for empty tables */
 .tr.placeholder {
-  background-color: rgba(240, 240, 240, 0.6);
-  border: 1px dashed rgba(0, 0, 0, 0.15);
+  background-color: rgba(240, 240, 240, 0.6) !important;
+  border: 1px dashed rgba(0, 0, 0, 0.15) !important;
   border-radius: var(--fluent-radius);
   height: 5rem;
+  display: inline-table;
   position: relative;
+  width: 100%;
 }
 
 .tr.placeholder > .td {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem !important;
+  display: table-cell !important;
+  vertical-align: middle !important;
   text-align: center !important;
-  background: transparent;
+  background: transparent !important;
+  border: none !important;
   color: var(--fluent-text-secondary);
   font-style: italic;
   font-size: 0.95rem;
+  position: static !important;
 }
 
 .tr.placeholder > .td em {
   font-style: normal;
   opacity: 0.7;
+  display: inline-block;
 }
 
 /* Table header styling */
@@ -3100,5 +3098,14 @@ abbr {
   color: var(--fluent-text-secondary) !important;
 }
 #mainmenu > ul > li:has(a[data-title="NetworkGuide"]) {
+  display: none !important;
+}
+
+.cbi-section-table > tbody:has(> tr.cbi-section-table-row.placeholder) {
+  display: inline !important;
+}
+.cbi-section-table
+  > tbody:has(> tr.cbi-section-table-row.placeholder)
+  > .tr.cbi-section-table-titles {
   display: none !important;
 }

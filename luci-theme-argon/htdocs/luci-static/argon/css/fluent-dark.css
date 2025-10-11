@@ -2695,3 +2695,361 @@ td.cbi-value-field var {
   overflow-x: auto; /* Add scroll if needed */
   border: 1px solid var(--fluent-neutral-stroke); /* Add border */
 }
+
+/* Dark Fix For iStore QuickStart */
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) .card-container .feature-card.blue {
+  background: linear-gradient(135deg, #1a4d7a 0%, #0d3a5c 100%);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) .card-container .feature-card.purple {
+  background: linear-gradient(135deg, #4a3d6e 0%, #3d2654 100%);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) .card-container .feature-card.skyblue {
+  background: linear-gradient(135deg, #2d5a7a 0%, #1a4d5c 100%);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) .card-container .feature-card.pink {
+  background: linear-gradient(135deg, #7a3d5a 0%, #5c2d3a 100%);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) .card-container .feature-card.orange {
+  background: linear-gradient(135deg, #7a4d3d 0%, #5c3a2d 100%);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) .card-container .feature-card .right-arrow path {
+  fill: rgba(255, 255, 255, 0.5);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) .card-container .feature-card .icon-svg path {
+  fill: #ffffff;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) .card-container .feature-card .title {
+  color: #ffffff !important;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) .card-container .feature-card .subtitle {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) .card-container .feature-card .footer .extra {
+  color: rgba(255, 255, 255, 0.9);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) .card-container .feature-card .footer .extra .extra_num {
+  color: #ffffff;
+  font-weight: 700;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.network-container.align-c .left-box .item_container .item {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.05) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.network-container.align-c .left-box .item_container .item::before {
+  content: "";
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.network-container.align-c .left-box .item_container .item:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.08) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.network-container.align-c .left-box .item_container .item:hover::before {
+  opacity: 1;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.network-container.align-c .left-box .item_container .item:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.network-container.align-c .left-box .item_container .item .icon {
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.network-container.align-c .left-box .item_container .item .icon path {
+  opacity: 0.95;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.network-container.align-c .left-box .item_container .item > span:not(.app-update-button-more):not(.renew) {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.network-container.align-c .left-box .item_container .item .dns_txt {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.network-container.align-c .left-box .item_container .item .app-update-button-more .icon path {
+  fill: rgba(255, 255, 255, 0.7) !important;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.network-container.align-c .left-box .item_container .item .renew {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.network-container.align-c .left-box .item_container .item .app-update-button-menu .menu_background {
+  background: rgba(18, 24, 36, 0.95);
+  backdrop-filter: blur(20px);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.network-container.align-c .left-box .item_container .item .app-update-button-menu ul {
+  background: linear-gradient(135deg, rgba(26, 34, 48, 0.9) 0%, rgba(18, 24, 36, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.network-container.align-c .left-box .item_container .item .app-update-button-menu ul li {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.network-container.align-c .left-box .item_container .item .app-update-button-menu ul li:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.network-container.align-c .left-box .item_container .item .app-update-button-menu ul li .app-update-menu-item {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item div > div.card-body > div > div:nth-child(1) > div.info > div.schedule > li > div.disk-item_name > span {
+  color: #ffffff;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-header .left {
+  color: #ffffff;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.05) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item::before {
+  content: "";
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.08) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item:hover::before {
+  opacity: 1;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item:hover .icon2 {
+  transform: scale(1.1);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item:active {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15), 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item .icon2 {
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item .icon2 path {
+  opacity: 0.95;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item .title {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-size: 16px;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item > span {
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 13px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item.cloud::before {
+  background: linear-gradient(135deg, rgba(21, 93, 252, 0.1) 0%, transparent 100%);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item.cloud:hover {
+  border-color: rgba(21, 93, 252, 0.4);
+  box-shadow: 0 12px 32px rgba(21, 93, 252, 0.2), 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item.cloud.active {
+  border-color: rgba(21, 93, 252, 0.5);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item.cloud .icon2 {
+  filter: drop-shadow(0 4px 12px rgba(21, 93, 252, 0.3));
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item.memory::before {
+  background: linear-gradient(135deg, rgba(11, 171, 71, 0.1) 0%, transparent 100%);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item.memory:hover {
+  border-color: rgba(11, 171, 71, 0.4);
+  box-shadow: 0 12px 32px rgba(11, 171, 71, 0.2), 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item.memory.active {
+  border-color: rgba(11, 171, 71, 0.5);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item.memory .icon2 {
+  filter: drop-shadow(0 4px 12px rgba(11, 171, 71, 0.3));
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item.network::before {
+  background: linear-gradient(135deg, rgba(152, 16, 250, 0.1) 0%, transparent 100%);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item.network:hover {
+  border-color: rgba(152, 16, 250, 0.4);
+  box-shadow: 0 12px 32px rgba(152, 16, 250, 0.2), 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item.network.active {
+  border-color: rgba(152, 16, 250, 0.5);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > .grid-item .reusable-card .card-body .content .tab .item.network .icon2 {
+  filter: drop-shadow(0 4px 12px rgba(152, 16, 250, 0.3));
+}
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container div > div > div > div.card-body > div > ul > li.content > div > div,
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.other-container .reusable-card > .card-body > .content > .info div.title_box > .path {
+  color: rgba(255, 255, 255, 0.95);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-header .left .computerIcon path {
+  fill: rgba(255, 255, 255, 0.9);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-header .left .title {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-size: 18px;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-header .settings-wrapper {
+  background-color: transparent !important;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-header .settings-wrapper .settings-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-header .settings-wrapper .settings-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-header .settings-wrapper .dropdown-menu {
+  background: linear-gradient(135deg, rgba(26, 34, 48, 0.95) 0%, rgba(18, 24, 36, 0.98) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-header .settings-wrapper .dropdown-menu div {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-header .settings-wrapper .dropdown-menu div:last-child {
+  border-bottom: none;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-header .settings-wrapper .dropdown-menu div:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-header .settings-wrapper .dropdown-menu div a {
+  color: rgba(255, 255, 255, 0.9) !important;
+  transition: color 0.3s ease;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-header .settings-wrapper .dropdown-menu div a:hover {
+  color: rgb(255, 255, 255) !important;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .chart_box .chart {
+  margin: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .chart_box .chart:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .chart_box .chart > div:last-child {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-size: 14px;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .chart_box .chart .pie-chart-wrapper .center-content .center-icon path {
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .chart_box .chart .pie-chart-wrapper .center-content .center-label {
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .info .item,
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .info .item1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .info .item:hover,
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .info .item1:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateX(4px);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .info .item > div .icon1,
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .info .item1 > div .icon1 {
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .info .item > div .icon1 path,
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .info .item1 > div .icon1 path {
+  opacity: 0.95;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .info .item > div span,
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .info .item1 > div span {
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 13px;
+  font-weight: 500;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .info .item > span,
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .info .item1 > span {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-size: 14px;
+  line-height: 1.6;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .info .item1.bgcolor1::before,
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .info .item1.bgcolor2::before {
+  content: "";
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .info .item1.bgcolor1:hover::before,
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .info .item1.bgcolor2:hover::before {
+  opacity: 1;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .info .item1.bgcolor1::before {
+  background: linear-gradient(135deg, rgba(21, 93, 252, 0.05) 0%, transparent 100%);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.system .reusable-card .card-body .content .info .item1.bgcolor2::before {
+  background: linear-gradient(135deg, rgba(0, 166, 62, 0.05) 0%, transparent 100%);
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.right-box > div.reusable-card > div.card-body > div.content {
+  display: grid;
+}
+.page-container:has(> div > a[href="https://www.istoreos.com/"]) div.right-box > div.reusable-card > div.card-body > div.content .item::before {
+  content: "";
+  background: unset;
+}
+
+/*# sourceMappingURL=istore-quickstart.css.map */

@@ -1,0 +1,541 @@
+.page-container:has(>div>a[href="https://www.istoreos.com/"])
+{
+    .card-container {
+        .feature-card.blue {
+            background: linear-gradient(135deg, #1a4d7a 0%, #0d3a5c 100%);
+        }
+
+        .feature-card.purple {
+            background: linear-gradient(135deg, #4a3d6e 0%, #3d2654 100%);
+        }
+
+        .feature-card.skyblue {
+            background: linear-gradient(135deg, #2d5a7a 0%, #1a4d5c 100%);
+        }
+
+        .feature-card.pink {
+            background: linear-gradient(135deg, #7a3d5a 0%, #5c2d3a 100%);
+        }
+
+        .feature-card.orange {
+            background: linear-gradient(135deg, #7a4d3d 0%, #5c3a2d 100%);
+        }
+
+        // 优化右侧箭头在暗色背景上的可见性
+        .feature-card .right-arrow path {
+            fill: rgba(255, 255, 255, 0.5);
+        }
+
+        // Fluent Design 风格的文字颜色优化 - 提高对比度
+        .feature-card {
+            .icon-svg path {
+                fill: #ffffff;
+            }
+            .title {
+                color: #ffffff !important;
+                font-weight: 700;
+                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            }
+
+            .subtitle {
+                color: rgba(255, 255, 255, 0.85) !important;
+            }
+            .footer {
+                .extra {
+                    color: rgba(255, 255, 255, 0.9);
+                    .extra_num {
+                        color: #ffffff;
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+    }
+    div.network-container.align-c {
+        .left-box {
+            .item_container {
+                .item {
+                    background: linear-gradient(
+                        135deg,
+                        rgba(255, 255, 255, 0.08) 0%,
+                        rgba(255, 255, 255, 0.05) 100%
+                    ) !important;
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    border-radius: 10px;
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                    cursor: pointer;
+
+                    &::before {
+                        content: "";
+                        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+                        opacity: 0;
+                        transition: opacity 0.3s ease;
+                    }
+
+                    &:hover {
+                        background: linear-gradient(
+                            135deg,
+                            rgba(255, 255, 255, 0.12) 0%,
+                            rgba(255, 255, 255, 0.08) 100%
+                        ) !important;
+                        border-color: rgba(255, 255, 255, 0.2);
+                        transform: translateY(-2px);
+                        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+
+                        &::before {
+                            opacity: 1;
+                        }
+                    }
+
+                    &:active {
+                        transform: translateY(0);
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                    }
+
+                    .icon {
+                        filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+
+                        path {
+                            opacity: 0.95;
+                        }
+                    }
+
+                    > span:not(.app-update-button-more):not(.renew) {
+                        color: rgba(255, 255, 255, 0.95) !important;
+                        font-weight: 600;
+                        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+                    }
+
+                    .dns_txt {
+                        color: rgba(255, 255, 255, 0.95) !important;
+                        font-weight: 600;
+                        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+                    }
+
+                    // 固件更新按钮特殊样式
+                    .app-update-button-more {
+                        .icon path {
+                            fill: rgba(255, 255, 255, 0.7) !important;
+                        }
+                    }
+
+                    .renew {
+                        color: rgba(255, 255, 255, 0.95) !important;
+                        font-weight: 600;
+                        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+                    }
+
+                    .app-update-button-menu {
+                        .menu_background {
+                            background: rgba(18, 24, 36, 0.95);
+                            backdrop-filter: blur(20px);
+                        }
+
+                        ul {
+                            background: linear-gradient(135deg, rgba(26, 34, 48, 0.9) 0%, rgba(18, 24, 36, 0.95) 100%);
+                            border: 1px solid rgba(255, 255, 255, 0.1);
+                            border-radius: 8px;
+                            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+                            li {
+                                border-bottom-color: rgba(255, 255, 255, 0.08);
+
+                                &:hover {
+                                    background: rgba(255, 255, 255, 0.05);
+                                }
+
+                                .app-update-menu-item {
+                                    color: rgba(255, 255, 255, 0.9) !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    div.other-container {
+        div > .grid-item {
+            div > div.card-body > div > div:nth-child(1) > div.info > div.schedule > li > div.disk-item_name > span {
+                color: #ffffff;
+            }
+            .reusable-card {
+                .card-header {
+                    .left {
+                        color: #ffffff;
+                    }
+                }
+                .card-body {
+                    .content {
+                        .tab {
+                            // 通用卡片样式
+                            .item {
+                                background: linear-gradient(
+                                    135deg,
+                                    rgba(255, 255, 255, 0.08) 0%,
+                                    rgba(255, 255, 255, 0.05) 100%
+                                ) !important;
+                                border: 1px solid rgba(255, 255, 255, 0.1);
+                                border-radius: 12px;
+                                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                                cursor: pointer;
+
+                                &::before {
+                                    content: "";
+                                    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+                                    opacity: 0;
+                                    transition: opacity 0.3s ease;
+                                }
+
+                                &:hover {
+                                    background: linear-gradient(
+                                        135deg,
+                                        rgba(255, 255, 255, 0.12) 0%,
+                                        rgba(255, 255, 255, 0.08) 100%
+                                    ) !important;
+                                    border-color: rgba(255, 255, 255, 0.2);
+                                    transform: translateY(-4px);
+                                    box-shadow:
+                                        0 12px 32px rgba(0, 0, 0, 0.2),
+                                        0 4px 16px rgba(0, 0, 0, 0.3);
+
+                                    &::before {
+                                        opacity: 1;
+                                    }
+
+                                    .icon2 {
+                                        transform: scale(1.1);
+                                    }
+                                }
+
+                                &:active {
+                                    transform: translateY(-2px);
+                                    box-shadow:
+                                        0 6px 20px rgba(0, 0, 0, 0.15),
+                                        0 2px 12px rgba(0, 0, 0, 0.25);
+                                }
+
+                                .icon2 {
+                                    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+                                    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+                                    path {
+                                        opacity: 0.95;
+                                    }
+                                }
+
+                                .title {
+                                    color: rgba(255, 255, 255, 0.95) !important;
+                                    font-size: 16px;
+                                    font-weight: 600;
+                                    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+                                }
+
+                                > span {
+                                    color: rgba(255, 255, 255, 0.7) !important;
+                                    font-size: 13px;
+                                    background: rgba(255, 255, 255, 0.05);
+                                    border-radius: 12px;
+                                    border: 1px solid rgba(255, 255, 255, 0.1);
+                                }
+
+                                // 易有云（蓝色）
+                                &.cloud {
+                                    &::before {
+                                        background: linear-gradient(
+                                            135deg,
+                                            rgba(21, 93, 252, 0.1) 0%,
+                                            transparent 100%
+                                        );
+                                    }
+
+                                    &:hover {
+                                        border-color: rgba(21, 93, 252, 0.4);
+                                        box-shadow:
+                                            0 12px 32px rgba(21, 93, 252, 0.2),
+                                            0 4px 16px rgba(0, 0, 0, 0.3);
+                                    }
+
+                                    &.active {
+                                        border-color: rgba(21, 93, 252, 0.5);
+                                    }
+
+                                    .icon2 {
+                                        filter: drop-shadow(0 4px 12px rgba(21, 93, 252, 0.3));
+                                    }
+                                }
+
+                                // SAMBA（绿色）
+                                &.memory {
+                                    &::before {
+                                        background: linear-gradient(
+                                            135deg,
+                                            rgba(11, 171, 71, 0.1) 0%,
+                                            transparent 100%
+                                        );
+                                    }
+
+                                    &:hover {
+                                        border-color: rgba(11, 171, 71, 0.4);
+                                        box-shadow:
+                                            0 12px 32px rgba(11, 171, 71, 0.2),
+                                            0 4px 16px rgba(0, 0, 0, 0.3);
+                                    }
+
+                                    &.active {
+                                        border-color: rgba(11, 171, 71, 0.5);
+                                    }
+
+                                    .icon2 {
+                                        filter: drop-shadow(0 4px 12px rgba(11, 171, 71, 0.3));
+                                    }
+                                }
+
+                                // WEBDAV（紫色）
+                                &.network {
+                                    &::before {
+                                        background: linear-gradient(
+                                            135deg,
+                                            rgba(152, 16, 250, 0.1) 0%,
+                                            transparent 100%
+                                        );
+                                    }
+
+                                    &:hover {
+                                        border-color: rgba(152, 16, 250, 0.4);
+                                        box-shadow:
+                                            0 12px 32px rgba(152, 16, 250, 0.2),
+                                            0 4px 16px rgba(0, 0, 0, 0.3);
+                                    }
+
+                                    &.active {
+                                        border-color: rgba(152, 16, 250, 0.5);
+                                    }
+
+                                    .icon2 {
+                                        filter: drop-shadow(0 4px 12px rgba(152, 16, 250, 0.3));
+                                    }
+                                }
+                            }
+
+                            @keyframes pulse {
+                                0%,
+                                100% {
+                                    opacity: 1;
+                                    transform: scale(1);
+                                }
+                                50% {
+                                    opacity: 0.6;
+                                    transform: scale(1.2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        div > div > div > div.card-body > div > ul > li.content > div > div,
+        .reusable-card > .card-body > .content > .info div.title_box > .path {
+            color: rgba(255, 255, 255, 0.95);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 8px 12px;
+        }
+    }
+    div.system {
+        .reusable-card {
+            .card-header {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+                .left {
+                    .computerIcon path {
+                        fill: rgba(255, 255, 255, 0.9);
+                    }
+
+                    .title {
+                        color: rgba(255, 255, 255, 0.95) !important;
+                        font-size: 18px;
+                        font-weight: 600;
+                        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+                    }
+                }
+
+                .settings-wrapper {
+                    background-color: transparent !important;
+
+                    .settings-btn {
+                        background: rgba(255, 255, 255, 0.08);
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                        border-radius: 8px;
+                        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+                        &:hover {
+                            background: rgba(255, 255, 255, 0.12);
+                            border-color: rgba(255, 255, 255, 0.2);
+                        }
+                    }
+
+                    .dropdown-menu {
+                        background: linear-gradient(135deg, rgba(26, 34, 48, 0.95) 0%, rgba(18, 24, 36, 0.98) 100%);
+                        backdrop-filter: blur(20px);
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                        border-radius: 8px;
+                        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+                        overflow: hidden;
+
+                        div {
+                            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+                            &:last-child {
+                                border-bottom: none;
+                            }
+
+                            &:hover {
+                                background: rgba(255, 255, 255, 0.05);
+                            }
+
+                            a {
+                                color: rgba(255, 255, 255, 0.9) !important;
+                                transition: color 0.3s ease;
+
+                                &:hover {
+                                    color: rgba(255, 255, 255, 1) !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .card-body {
+                .content {
+                    .chart_box {
+                        .chart {
+                            margin: 5px;
+                            padding-top: 5px;
+                            padding-bottom: 5px;
+                            background: linear-gradient(
+                                135deg,
+                                rgba(255, 255, 255, 0.05) 0%,
+                                rgba(255, 255, 255, 0.02) 100%
+                            );
+                            border: 1px solid rgba(255, 255, 255, 0.08);
+                            border-radius: 12px;
+                            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+                            &:hover {
+                                background: linear-gradient(
+                                    135deg,
+                                    rgba(255, 255, 255, 0.08) 0%,
+                                    rgba(255, 255, 255, 0.04) 100%
+                                );
+                                border-color: rgba(255, 255, 255, 0.12);
+                                transform: translateY(-2px);
+                                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+                            }
+
+                            > div:last-child {
+                                color: rgba(255, 255, 255, 0.85) !important;
+                                font-size: 14px;
+                                font-weight: 500;
+                                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+                            }
+
+                            .pie-chart-wrapper {
+                                .center-content {
+                                    .center-icon path {
+                                        filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+                                    }
+
+                                    .center-label {
+                                        font-weight: 700;
+                                        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .info {
+                        .item,
+                        .item1 {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background: linear-gradient(
+                                135deg,
+                                rgba(255, 255, 255, 0.05) 0%,
+                                rgba(255, 255, 255, 0.02) 100%
+                            );
+                            border: 1px solid rgba(255, 255, 255, 0.08);
+                            border-radius: 10px;
+                            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+                            &:hover {
+                                background: linear-gradient(
+                                    135deg,
+                                    rgba(255, 255, 255, 0.08) 0%,
+                                    rgba(255, 255, 255, 0.04) 100%
+                                );
+                                border-color: rgba(255, 255, 255, 0.12);
+                                transform: translateX(4px);
+                            }
+
+                            > div {
+                                .icon1 {
+                                    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+
+                                    path {
+                                        opacity: 0.95;
+                                    }
+                                }
+
+                                span {
+                                    color: rgba(255, 255, 255, 0.7) !important;
+                                    font-size: 13px;
+                                    font-weight: 500;
+                                }
+                            }
+
+                            > span {
+                                color: rgba(255, 255, 255, 0.95) !important;
+                                font-size: 14px;
+                                line-height: 1.6;
+                                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                            }
+                        }
+
+                        .item1.bgcolor1,
+                        .item1.bgcolor2 {
+                            &::before {
+                                content: "";
+                                opacity: 0;
+                                transition: opacity 0.3s ease;
+                            }
+
+                            &:hover::before {
+                                opacity: 1;
+                            }
+                        }
+
+                        .item1.bgcolor1::before {
+                            background: linear-gradient(135deg, rgba(21, 93, 252, 0.05) 0%, transparent 100%);
+                        }
+
+                        .item1.bgcolor2::before {
+                            background: linear-gradient(135deg, rgba(0, 166, 62, 0.05) 0%, transparent 100%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    div.right-box > div.reusable-card > div.card-body > div.content {
+        display: grid;
+        .item::before {
+            content: "";
+            background: unset;
+        }
+    }
+}

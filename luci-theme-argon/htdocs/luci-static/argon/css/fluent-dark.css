@@ -1869,7 +1869,6 @@ select.cbi-input-select {
   /* Size: medium (default) - 与 Input 保持一致 */
   min-height: 2.5rem !important;
   padding: 0 32px 0 12px !important;
-  min-width: 17rem !important;
 
   /* Appearance: outline - Dark Mode */
   background-color: #1f1f1f !important;

@@ -1850,7 +1850,6 @@ select.cbi-input-select {
   /* Size: medium (default) - 与 Input 保持一致 */
   min-height: 2.5rem !important;
   padding: 0 32px 0 12px !important;
-  min-width: 17rem !important;
 
   /* Appearance: outline */
   background-color: #ffffff !important;
@@ -2804,7 +2803,6 @@ a[href*="/admin/network_guide"] {
 
 .cbi-dropdown {
   min-height: 2rem !important;
-  min-width: 17rem !important;
 }
 .cbi-button {
   min-width: auto !important;
@@ -3108,4 +3106,9 @@ abbr {
   > tbody:has(> tr.cbi-section-table-row.placeholder)
   > .tr.cbi-section-table-titles {
   display: none !important;
+}
+
+ul.dropdown > * > input {
+  min-width: unset !important;
+  max-width: unset !important;
 }

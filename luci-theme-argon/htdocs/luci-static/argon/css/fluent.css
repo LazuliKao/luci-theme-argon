@@ -3090,7 +3090,7 @@ a[href*="/admin/network_guide"] {
 [data-page^="admin-system-admin"]:not(.node-main-login)
   .cbi-map:not(#cbi-dropbear),
 [data-page="admin-system-opkg"] #maincontent > .container {
-  margin: 0 !important;
+  margin: 0 0 1rem 0 !important;
 }
 abbr {
   color: var(--fluent-text-secondary) !important;

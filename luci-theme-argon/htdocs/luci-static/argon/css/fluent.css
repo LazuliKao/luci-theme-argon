@@ -50,7 +50,6 @@
   --fluent-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.16);
   --fluent-transition: all 0.2s ease-in-out;
   --fluent-animation-fadeIn: fluent-fadeIn 0.3s ease-out forwards;
-  --fluent-backdrop-filter: blur(20px);
 
   /* Override theme variables with FluentUI values */
   --main-color: var(--fluent-primary);
@@ -564,8 +563,6 @@ select:focus,
 [data-page="admin-system-opkg"] #maincontent > .container {
   border-radius: var(--fluent-radius-large);
   background-color: var(--fluent-card-bg);
-  backdrop-filter: var(--fluent-backdrop-filter);
-  -webkit-backdrop-filter: var(--fluent-backdrop-filter);
   transition: var(--fluent-transition);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
   border: 1px solid rgba(0, 0, 0, 0.03);
@@ -720,16 +717,12 @@ table > tbody > tr:last-child > th {
 /* Acrylic header */
 header {
   background-color: rgba(0, 120, 212, 0.85) !important;
-  backdrop-filter: var(--fluent-backdrop-filter);
-  -webkit-backdrop-filter: var(--fluent-backdrop-filter);
   box-shadow: var(--fluent-shadow);
 }
 
 /* Main left navigation */
 .main-left {
   background-color: var(--fluent-card-bg);
-  backdrop-filter: var(--fluent-backdrop-filter);
-  -webkit-backdrop-filter: var(--fluent-backdrop-filter);
   /* border-right: 1px solid rgba(255, 255, 255, 0.5);
   box-shadow: var(--fluent-shadow); */
 }
@@ -792,8 +785,6 @@ header {
 .modal {
   border-radius: var(--fluent-radius-large);
   background-color: var(--fluent-card-bg);
-  backdrop-filter: var(--fluent-backdrop-filter);
-  -webkit-backdrop-filter: var(--fluent-backdrop-filter);
   border: 1px solid rgba(255, 255, 255, 0.5);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
@@ -2547,8 +2538,6 @@ th input[type="checkbox"]:checked:disabled,
 
   .main-left {
     background-color: var(--fluent-card-bg);
-    backdrop-filter: var(--fluent-backdrop-filter);
-    -webkit-backdrop-filter: var(--fluent-backdrop-filter);
   }
 }
 

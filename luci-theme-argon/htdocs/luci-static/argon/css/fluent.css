@@ -3068,19 +3068,6 @@ a[href*="/admin/network_guide"] {
   border-bottom: none !important;
 }
 
-.cbi-section,
-.cbi-section-error,
-#iptables,
-.Firewall form,
-#cbi-network > .cbi-section-node,
-#cbi-wireless > .cbi-section-node,
-#cbi-wireless > #wifi_assoclist_table,
-[data-tab-title],
-[data-page^="admin-system-admin"]:not(.node-main-login)
-  .cbi-map:not(#cbi-dropbear),
-[data-page="admin-system-opkg"] #maincontent > .container {
-  margin: 0 0 1rem 0 !important;
-}
 abbr {
   color: var(--fluent-text-secondary) !important;
 }

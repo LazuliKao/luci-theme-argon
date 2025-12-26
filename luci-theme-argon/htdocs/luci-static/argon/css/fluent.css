@@ -241,6 +241,153 @@ input[type="url"]:disabled,
 }
 
 /* ============================================
+   Invalid/Error State - Fluent UI Style
+   ============================================ */
+
+/* Error input field styling */
+input[type="text"].cbi-input-invalid,
+input[type="password"].cbi-input-invalid,
+input[type="email"].cbi-input-invalid,
+input[type="number"].cbi-input-invalid,
+input[type="search"].cbi-input-invalid,
+input[type="tel"].cbi-input-invalid,
+input[type="url"].cbi-input-invalid,
+.cbi-input-text.cbi-input-invalid,
+.cbi-input-password.cbi-input-invalid,
+.password-input.cbi-input-invalid {
+  border-color: var(--fluent-error) !important;
+  border-bottom-color: var(--fluent-error) !important;
+  background-image: linear-gradient(
+    0deg,
+    color-mix(in srgb, var(--fluent-error) 25%, transparent) 0%,
+    color-mix(in srgb, var(--fluent-error) 25%, transparent) 100%
+  ) !important;
+  background-size: 100% 4px !important;
+}
+
+/* Error input field on hover */
+input[type="text"].cbi-input-invalid:hover:not(:focus),
+input[type="password"].cbi-input-invalid:hover:not(:focus),
+input[type="email"].cbi-input-invalid:hover:not(:focus),
+input[type="number"].cbi-input-invalid:hover:not(:focus),
+input[type="search"].cbi-input-invalid:hover:not(:focus),
+input[type="tel"].cbi-input-invalid:hover:not(:focus),
+input[type="url"].cbi-input-invalid:hover:not(:focus),
+.cbi-input-text.cbi-input-invalid:hover:not(:focus),
+.cbi-input-password.cbi-input-invalid:hover:not(:focus),
+.password-input.cbi-input-invalid:hover:not(:focus) {
+  border-color: #d13438 !important;
+  border-bottom-color: #d13438 !important;
+}
+
+/* Error input field on focus */
+input[type="text"].cbi-input-invalid:focus,
+input[type="password"].cbi-input-invalid:focus,
+input[type="email"].cbi-input-invalid:focus,
+input[type="number"].cbi-input-invalid:focus,
+input[type="search"].cbi-input-invalid:focus,
+input[type="tel"].cbi-input-invalid:focus,
+input[type="url"].cbi-input-invalid:focus,
+.cbi-input-text.cbi-input-invalid:focus,
+.cbi-input-password.cbi-input-invalid:focus,
+.password-input.cbi-input-invalid:focus {
+  border-color: var(--fluent-error) !important;
+  border-bottom-color: var(--fluent-error) !important;
+  background-size: 100% 4px !important;
+  box-shadow: 0 0 0 2px rgba(209, 52, 56, 0.12) !important;
+}
+
+/* Error tooltip styling */
+input[type="text"][data-tooltip].cbi-input-invalid,
+input[type="password"][data-tooltip].cbi-input-invalid,
+input[type="email"][data-tooltip].cbi-input-invalid,
+input[type="number"][data-tooltip].cbi-input-invalid,
+input[type="search"][data-tooltip].cbi-input-invalid,
+input[type="tel"][data-tooltip].cbi-input-invalid,
+input[type="url"][data-tooltip].cbi-input-invalid,
+.cbi-input-text[data-tooltip].cbi-input-invalid,
+.cbi-input-password[data-tooltip].cbi-input-invalid,
+.password-input[data-tooltip].cbi-input-invalid {
+  position: relative !important;
+}
+
+/* Tooltip container for error messages */
+input[type="text"][data-tooltip].cbi-input-invalid::after,
+input[type="password"][data-tooltip].cbi-input-invalid::after,
+input[type="email"][data-tooltip].cbi-input-invalid::after,
+input[type="number"][data-tooltip].cbi-input-invalid::after,
+input[type="search"][data-tooltip].cbi-input-invalid::after,
+input[type="tel"][data-tooltip].cbi-input-invalid::after,
+input[type="url"][data-tooltip].cbi-input-invalid::after,
+.cbi-input-text[data-tooltip].cbi-input-invalid::after,
+.cbi-input-password[data-tooltip].cbi-input-invalid::after,
+.password-input[data-tooltip].cbi-input-invalid::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -32px;
+  left: 0;
+  right: 0;
+  padding: 6px 12px;
+  background-color: var(--fluent-error);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  border-radius: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  animation: fluent-tooltip-show 0.2s ease-out forwards;
+  pointer-events: none;
+}
+
+/* Tooltip arrow */
+input[type="text"][data-tooltip].cbi-input-invalid::before,
+input[type="password"][data-tooltip].cbi-input-invalid::before,
+input[type="email"][data-tooltip].cbi-input-invalid::before,
+input[type="number"][data-tooltip].cbi-input-invalid::before,
+input[type="search"][data-tooltip].cbi-input-invalid::before,
+input[type="tel"][data-tooltip].cbi-input-invalid::before,
+input[type="url"][data-tooltip].cbi-input-invalid::before,
+.cbi-input-text[data-tooltip].cbi-input-invalid::before,
+.cbi-input-password[data-tooltip].cbi-input-invalid::before,
+.password-input[data-tooltip].cbi-input-invalid::before {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 8px;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid var(--fluent-error);
+  z-index: 1001;
+  animation: fluent-tooltip-show 0.2s ease-out forwards;
+  pointer-events: none;
+}
+
+/* Tooltip animation */
+@keyframes fluent-tooltip-show {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Alternative: Using data-tooltip-style="error" for Luci compatibility */
+input[data-tooltip-style="error"],
+.cbi-input-invalid[data-tooltip-style="error"] {
+  border-color: var(--fluent-error) !important;
+  border-bottom-color: var(--fluent-error) !important;
+}
+
+/* ============================================
    Password Input with Toggle Button
    ============================================ */
 

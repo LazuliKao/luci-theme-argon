@@ -6,8 +6,13 @@
 
 set -e
 
-echo "=== OpenWrt SDK Package Build ==="
+SDK_DIR=/builder
 
+echo "=== OpenWrt SDK Package Build ==="
+echo "SDK directory: $SDK_DIR"
+
+cd "$SDK_DIR"
+test -f feeds.conf.default || { echo "ERROR: feeds.conf.default not found in $SDK_DIR"; ls -la; exit 1; }
 # Fix feeds to use GitHub mirror (faster)
 sed -i 's/git\.openwrt\.org\/project\/luci/github\.com\/openwrt\/luci/g' ./feeds.conf.default
 sed -i 's/git\.openwrt\.org\/project\/feeds/github\.com\/openwrt\/feeds/g' ./feeds.conf.default

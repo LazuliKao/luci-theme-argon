@@ -1,0 +1,122 @@
+name: CI
+
+on:
+  push:
+    branches: [openwrt-24.10]
+  pull_request:
+    branches: [openwrt-24.10]
+
+jobs:
+  scss:
+    name: SCSS Build Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: luci-theme-fluent/pnpm-lock.yaml
+
+      - name: Install dependencies
+        working-directory: luci-theme-fluent
+        run: pnpm install --frozen-lockfile
+
+      - name: Build CSS
+        working-directory: luci-theme-fluent
+        run: pnpm run build
+
+      - name: Verify output
+        run: |
+          test -s luci-theme-fluent/htdocs/luci-static/fluent/css/fluent.css
+          size=$(wc -c < luci-theme-fluent/htdocs/luci-static/fluent/css/fluent.css)
+          echo "✅ fluent.css built successfully (${size} bytes)"
+
+      - name: Upload CSS artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fluent-css
+          path: luci-theme-fluent/htdocs/luci-static/fluent/css/fluent.css
+
+  lint:
+    name: SCSS Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: luci-theme-fluent/pnpm-lock.yaml
+
+      - name: Install dependencies
+        working-directory: luci-theme-fluent
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint SCSS
+        working-directory: luci-theme-fluent
+        run: pnpm run lint || true
+
+  openwrt-sdk:
+    name: OpenWrt SDK Build
+    needs: scss
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [openwrt-24.10, openwrt-23.05]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download CSS artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: fluent-css
+          path: luci-theme-fluent/htdocs/luci-static/fluent/css/
+
+      - name: Prepare package sources
+        run: |
+          mkdir -p bin
+          # Copy each package into the staging area
+          for pkg in luci-theme-fluent luci-theme-argon luci-app-fluent-config luci-app-argon-config; do
+            if [ -d "$pkg" ]; then
+              cp -r "$pkg" "bin/$pkg"
+            fi
+          done
+          echo "Staged packages:"
+          ls -la bin/
+
+      - name: Pull OpenWrt SDK
+        run: docker pull openwrt/sdk:x86_64-${{ matrix.target }}
+
+      - name: Build ipk packages
+        run: |
+          docker run --rm -u root \
+            -v "$(pwd)/bin:/builder/bin" \
+            -v "$(pwd)/.github/workflows:/builder/workflows" \
+            openwrt/sdk:x86_64-${{ matrix.target }} \
+            /bin/sh /builder/workflows/build.sh
+
+      - name: Collect ipk files
+        run: |
+          mkdir -p output
+          find bin -name "*.ipk" -exec cp {} output/ \;
+          echo "Built packages:"
+          ls -lh output/
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ipk-${{ matrix.target }}
+          path: output/*.ipk
+          if-no-files-found: warn

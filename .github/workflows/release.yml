@@ -1,0 +1,115 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag (e.g. v1.0.0)"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  scss:
+    name: Build CSS
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ github.event.inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build Fluent theme CSS
+        working-directory: luci-theme-fluent
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm run build
+          test -s htdocs/luci-static/fluent/css/fluent.css
+
+      - name: Upload CSS artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fluent-css
+          path: luci-theme-fluent/htdocs/luci-static/fluent/css/fluent.css
+
+  release:
+    name: Build ipk & Publish
+    needs: scss
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ github.event.inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download CSS artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: fluent-css
+          path: luci-theme-fluent/htdocs/luci-static/fluent/css/
+
+      - name: Prepare package sources
+        run: |
+          mkdir -p bin
+          for pkg in luci-theme-fluent luci-theme-argon luci-app-fluent-config luci-app-argon-config; do
+            if [ -d "$pkg" ]; then
+              cp -r "$pkg" "bin/$pkg"
+            fi
+          done
+
+      - name: Pull OpenWrt SDK
+        run: docker pull openwrt/sdk:x86_64-openwrt-24.10
+
+      - name: Build ipk packages
+        run: |
+          docker run --rm -u root \
+            -v "$(pwd)/bin:/builder/bin" \
+            -v "$(pwd)/.github/workflows:/builder/workflows" \
+            openwrt/sdk:x86_64-openwrt-24.10 \
+            /bin/sh /builder/workflows/build.sh
+
+      - name: Collect artifacts
+        run: |
+          mkdir -p release
+          find bin -name "*.ipk" -exec cp {} release/ \;
+          echo "Built packages:"
+          ls -lh release/
+
+      - name: Upload release artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-${{ env.TAG }}
+          path: release/*.ipk
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.TAG }}
+          name: "Release ${{ env.TAG }}"
+          body: |
+            ## LuCI Theme Fluent ${{ env.TAG }}
+
+            ### Packages
+            - `luci-theme-fluent` — FluentUI theme for OpenWrt LuCI
+            - `luci-app-fluent-config` — Theme configuration app
+            - `luci-theme-argon` — Original Argon theme
+            - `luci-app-argon-config` — Argon configuration app
+
+            ### Installation
+            ```bash
+            opkg install luci-theme-fluent_*.ipk
+            opkg install luci-app-fluent-config_*.ipk
+            ```
+          files: release/*.ipk
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,5 @@
+node_modules/
+*.ipk
+*.tar.xz
+.env
+.env.local

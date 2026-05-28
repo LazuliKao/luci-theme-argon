@@ -1,0 +1,190 @@
+{#
+  FluentUI Theme for LuCI - Login Page
+  Licensed to the public under the Apache License 2.0
+#}
+
+{%
+  import { access, glob } from 'fs';
+  import ubus from 'ubus';
+  import { cursor } from 'uci';
+  import { exec } from 'luci.sys';
+  import { getenv } from 'luci.http';
+
+  // System info
+  let boardinfo = ubus.call('system', 'board');
+  let hostname = boardinfo?.hostname || '?';
+
+  // UCI config
+  let cfg = cursor();
+  let mode = 'normal';
+  let primary = '#0078d4';
+  let dark_primary = '#1a1a2e';
+  let blur_radius = '0';
+  let blur_radius_dark = '0';
+  let blur_opacity = '0';
+  let blur_opacity_dark = '0';
+  let bar_color = primary;
+
+  if (access('/etc/config/fluent')) {
+    mode = cfg.get_first('fluent', 'global', 'mode') || 'normal';
+    primary = cfg.get_first('fluent', 'global', 'primary') || '#0078d4';
+    dark_primary = cfg.get_first('fluent', 'global', 'dark_primary') || '#1a1a2e';
+    blur_radius = cfg.get_first('fluent', 'global', 'blur') || '0';
+    blur_radius_dark = cfg.get_first('fluent', 'global', 'blur_dark') || '0';
+    blur_opacity = cfg.get_first('fluent', 'global', 'transparency') || '0';
+    blur_opacity_dark = cfg.get_first('fluent', 'global', 'transparency_dark') || '0';
+
+    bar_color = mode === 'dark' ? dark_primary : primary;
+  }
+
+  // Background image handling
+  let imageTypes = ' jpg png gif webp ';
+  let videoTypes = ' mp4 webm ';
+  let allTypes = imageTypes + videoTypes;
+
+  function fetchMedia(path, themeDir) {
+    let backgroundTable = [];
+    let backgroundCount = 0;
+
+    try {
+      let files = glob(path);
+      for (let f in files) {
+        let ext = f.match(/.+\.(\w+)$/);
+        if (ext) {
+          ext = ext[1].toLowerCase();
+          if (allTypes.indexOf(' ' + ext + ' ') >= 0) {
+            backgroundTable.push({
+              type: ext,
+              url: themeDir + f
+            });
+            backgroundCount++;
+          }
+        }
+      }
+    } catch (e) {}
+
+    return [backgroundTable, backgroundCount];
+  }
+
+  function selectBackground(themeDir) {
+    let bgUrl = media + '/img/bg1.jpg';
+    let backgroundType = 'Image';
+    let mimeType = '';
+
+    if (access('/etc/config/fluent')) {
+      let online_wallpaper = cfg.get_first('fluent', 'global', 'online_wallpaper');
+      if (online_wallpaper && online_wallpaper !== 'none') {
+        try {
+          let picurl = exec('/usr/libexec/fluent/online_wallpaper');
+          if (picurl && picurl !== '') {
+            return [picurl, 'Image', ''];
+          }
+        } catch (e) {}
+      }
+    }
+
+    let [backgroundTable, backgroundCount] = fetchMedia('/www' + themeDir + '*', themeDir);
+    if (backgroundCount > 0) {
+      let currentBg = backgroundTable[Math.floor(Math.random() * backgroundCount)];
+      bgUrl = currentBg.url;
+      if (videoTypes.indexOf(' ' + currentBg.type + ' ') >= 0) {
+        backgroundType = 'Video';
+        mimeType = 'video/' + currentBg.type;
+      }
+    }
+
+    return [bgUrl, backgroundType, mimeType];
+  }
+
+  let themeDir = media + '/background/';
+  let [bgUrl, backgroundType, mimeType] = selectBackground(themeDir);
+%}
+
+<!-- Login Page Start -->
+<div class="login-page">
+  {% if (backgroundType === 'Video') { %}
+  <!-- Video Player Start -->
+  <div class="video">
+    <video autoplay loop muted id="video">
+      <source src="{{ bgUrl }}" type="{{ mimeType }}">
+    </video>
+  </div>
+  <div class="volume-control mute"></div>
+  <script>
+    document.querySelector(".volume-control").addEventListener("click", function(){
+      var video = document.getElementById("video");
+      if(this.classList.contains("mute")){
+        this.classList.remove("mute");
+        video.muted = false;
+      } else {
+        this.classList.add("mute");
+        video.muted = true;
+      }
+    });
+  </script>
+  <!-- Video Player End -->
+  {% } else { %}
+  <!-- Image Background Start -->
+  <div class="main-bg" id="main-bg" style="background-image:url({{ bgUrl }})"></div>
+  <!-- Image Background End -->
+  {% } %}
+  <!-- Login Container Start -->
+  <div class="login-container">
+    <div class="login-form">
+      <!-- Logo Start -->
+      <a class="brand" href="/">
+        <img src="{{ media }}/img/fluent.svg" class="icon">
+        <span class="brand-text">{{ hostname }}</span>
+      </a>
+      <!-- Logo End -->
+      <!-- Login Form Start -->
+      <form class="form-login" method="post" action="{{ pcdata(getenv('REQUEST_URI')) }}">
+
+        {%- if (fuser) { %}
+        <div class="errorbox">{%:Invalid username and/or password! Please try again.%}</div>
+        {%- } %}
+
+        <div class="input-container">
+          <div class="input-group user-icon">
+            <input class="cbi-input-user" id="cbi-input-user" type="text" name="luci_username" value="{{ duser }}" />
+            <label class="border" for="cbi-input-user"></label>
+          </div>
+          <div class="input-group pass-icon">
+            <input class="cbi-input-password" id="cbi-input-password" type="password" name="luci_password" />
+            <label class="border" for="cbi-input-password"></label>
+          </div>
+        </div>
+        <div>
+          <input type="submit" value="{%:Login%}" class="cbi-button cbi-button-apply" />
+        </div>
+      </form>
+      <!-- Login Form End -->
+      <script type="text/javascript">//<![CDATA[
+        var input = document.getElementsByName('luci_password')[0];
+        if (input)
+          input.focus();
+      //]]></script>
+      {%
+        let https_key = cfg.get('uhttpd', 'main', 'key');
+        let https_port = cfg.get('uhttpd', 'main', 'listen_https');
+
+        if (type(https_port) === 'object') {
+          https_port = https_port[0];
+        }
+
+        if (https_port && access(https_key)) {
+          https_port = https_port.match(/(\d+)$/)[0];
+      %}
+      <script type="text/javascript">//<![CDATA[
+        if (document.location.protocol != 'https:') {
+          var url = 'https://' + window.location.hostname + ':' + '{{ https_port }}' + window.location.pathname;
+          var img = new Image;
+          img.onload = function () { window.location = url };
+          img.src = 'https://' + window.location.hostname + ':' + '{{ https_port }}' + '{{ resource }}/cbi/up.gif?' + Math.random();
+          setTimeout(function () {
+            img.src = ''
+          }, 5000);
+        }
+      //]]></script>
+      {% } %}
+<!-- Login Page End -->

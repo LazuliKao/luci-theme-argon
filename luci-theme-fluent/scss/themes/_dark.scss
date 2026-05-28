@@ -1,0 +1,31 @@
+// Themes - Dark Mode
+// Dark mode overrides via media query and class toggle
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fluent-bg: #1b1b1b;
+    --fluent-bg-card: #2d2d2d;
+    --fluent-bg-hover: #383838;
+    --fluent-bg-active: #444444;
+    --fluent-text: #f3f2f1;
+    --fluent-text-secondary: #a0a0a0;
+    --fluent-border: #404040;
+    --fluent-shadow-sm: 0 2px 4px rgba(0,0,0,0.3);
+    --fluent-shadow-md: 0 4px 8px rgba(0,0,0,0.35);
+    --fluent-shadow-lg: 0 8px 16px rgba(0,0,0,0.4);
+  }
+}
+
+// Manual dark mode toggle via data attribute
+[data-theme="dark"] {
+  --fluent-bg: #1b1b1b;
+  --fluent-bg-card: #2d2d2d;
+  --fluent-bg-hover: #383838;
+  --fluent-bg-active: #444444;
+  --fluent-text: #f3f2f1;
+  --fluent-text-secondary: #a0a0a0;
+  --fluent-border: #404040;
+  --fluent-shadow-sm: 0 2px 4px rgba(0,0,0,0.3);
+  --fluent-shadow-md: 0 4px 8px rgba(0,0,0,0.35);
+  --fluent-shadow-lg: 0 8px 16px rgba(0,0,0,0.4);
+}

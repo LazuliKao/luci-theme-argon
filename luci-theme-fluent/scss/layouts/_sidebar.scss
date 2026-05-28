@@ -1,0 +1,326 @@
+// Layouts - Sidebar
+// FluentUI sidebar navigation with Win11-inspired styling
+@use '../mixins' as *;
+
+// ============================================================
+// SIDEBAR CONTAINER
+// ============================================================
+.main-left {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--fluent-sidebar-width, 260px);
+  height: 100vh;
+  background: var(--fluent-bg-card);
+  border-right: 1px solid var(--fluent-border);
+  z-index: var(--fluent-zindex-dropdown, 1000);
+  overflow-y: auto;
+  transition: transform var(--fluent-duration-normal) var(--fluent-easing-standard);
+  
+  @include custom-scrollbar;
+}
+
+// ============================================================
+// MAIN CONTENT AREA
+// ============================================================
+.main-right {
+  margin-left: var(--fluent-sidebar-width, 260px);
+  min-height: 100vh;
+  transition: margin-left var(--fluent-duration-normal) var(--fluent-easing-standard);
+}
+
+// ============================================================
+// NAVIGATION CONTAINER
+// ============================================================
+.main-left .nav {
+  margin-top: var(--fluent-space-xs, 0.5rem);
+  padding: 0;
+  transition: all var(--fluent-duration-normal) var(--fluent-easing-standard);
+
+  // ============================================================
+  // TOP-LEVEL MENU ITEMS
+  // Both direct links and expandable parent menus
+  // ============================================================
+  > li > a:first-child {
+    display: block;
+    margin: 0.1rem var(--fluent-space-xs, 0.5rem);
+    padding: 0.675rem 0 0.675rem 2.5rem;
+    border-radius: var(--fluent-radius-md, 4px);
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: var(--fluent-font-weight-regular, 400);
+    color: var(--fluent-text);
+    background: transparent;
+    box-shadow: none;
+    position: relative;
+    transition: background var(--fluent-duration-fast) var(--fluent-easing-standard),
+                color var(--fluent-duration-fast) var(--fluent-easing-standard),
+                border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+
+    // Subtle FluentUI hover state
+    &:hover {
+      background: rgba(0, 0, 0, 0.03);
+      color: var(--fluent-text);
+
+      &::before {
+        color: var(--fluent-primary);
+      }
+    }
+
+    // Active state - FluentUI accent indicator
+    &.active {
+      color: var(--fluent-text);
+      background: rgba(0, 120, 212, 0.08);
+      border-left: 3px solid var(--fluent-primary);
+      padding-left: calc(2.5rem - 3px);
+
+      &::before {
+        color: var(--fluent-primary);
+      }
+    }
+  }
+
+  // ============================================================
+  // LIST ITEMS BASE
+  // ============================================================
+  li {
+    padding: 0;
+    cursor: pointer;
+    user-select: none;
+    transition: all var(--fluent-duration-normal) var(--fluent-easing-standard);
+
+    a {
+      display: block;
+      color: var(--fluent-text);
+      font-weight: var(--fluent-font-weight-regular, 400);
+      box-shadow: none;
+    }
+
+    // ============================================================
+    // EXPANDABLE (SLIDE) MENU CONTAINER
+    // ============================================================
+    &.slide {
+      padding: 0;
+
+      &:hover {
+        background: none;
+      }
+
+      // Hidden submenu by default
+      ul {
+        display: none;
+        overflow: hidden;
+      }
+
+      // ============================================================
+      // SUBMENU (SLIDE-MENU)
+      // ============================================================
+      .slide-menu {
+        margin: 0 var(--fluent-space-xs, 0.5rem) 0.2rem 20px;
+        padding: 0.3rem var(--fluent-space-xs, 0.5rem);
+        padding-left: 0;
+        background: rgba(0, 0, 0, 0.02);
+        border-radius: var(--fluent-radius-md, 4px);
+        transition: all var(--fluent-duration-normal) var(--fluent-easing-standard);
+
+        // Active submenu - visible
+        &.active {
+          display: block;
+        }
+
+        // ============================================================
+        // SUBMENU ITEMS
+        // ============================================================
+        li {
+          position: relative;
+          border-radius: var(--fluent-radius-md, 4px);
+          margin: 0.1rem 0;
+          background: none;
+          list-style: none;
+          transition: background var(--fluent-duration-fast) var(--fluent-easing-standard);
+
+          // Left indicator bar (Win11 style)
+          &::before {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 15%;
+            height: 70%;
+            width: 4px;
+            background-color: transparent;
+            border-radius: 2px;
+            transition: background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+          }
+
+          // Remove underline animation from submenu items
+          &::after {
+            content: none;
+            display: none;
+          }
+
+          a {
+            text-decoration: none;
+            padding: var(--fluent-space-xs, 0.5rem) 0.8rem;
+            padding-left: 1rem;
+            border-radius: var(--fluent-radius-md, 4px);
+            display: block;
+            box-shadow: none;
+            transition: color var(--fluent-duration-fast) var(--fluent-easing-standard);
+          }
+
+          // Submenu item hover
+          &:hover {
+            background: rgba(0, 0, 0, 0.03);
+
+            &::before {
+              background-color: rgba(0, 120, 212, 0.3);
+            }
+
+            a {
+              color: var(--fluent-text);
+            }
+
+            &::after {
+              width: 0;
+              display: none;
+            }
+          }
+
+          // ============================================================
+          // ACTIVE SUBMENU ITEM
+          // Win11 style with accent left indicator
+          // ============================================================
+          &.active {
+            background: rgba(0, 120, 212, 0.06);
+            color: var(--fluent-text);
+
+            &::before {
+              background-color: var(--fluent-primary);
+            }
+
+            a {
+              color: var(--fluent-primary);
+              font-weight: var(--fluent-font-weight-semibold, 500);
+            }
+
+            &::after {
+              content: none;
+              display: none;
+            }
+
+            // Active + hover state
+            &:hover {
+              background: rgba(0, 120, 212, 0.1);
+
+              &::before {
+                background-color: var(--fluent-primary);
+              }
+
+              &::after {
+                width: 0;
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // ============================================================
+    // EXPANDABLE MENU (PARENT ITEMS WITH CHILDREN)
+    // ============================================================
+    .menu {
+      display: block;
+      margin: 0.1rem var(--fluent-space-xs, 0.5rem);
+      padding: 0.675rem 0 0.675rem 2.5rem;
+      border-radius: var(--fluent-radius-md, 4px);
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: var(--fluent-font-weight-regular, 400);
+      color: var(--fluent-text);
+      background: transparent;
+      box-shadow: none;
+      position: relative;
+      transition: background var(--fluent-duration-fast) var(--fluent-easing-standard),
+                  color var(--fluent-duration-fast) var(--fluent-easing-standard);
+
+      // Icon (via ::before pseudo-element)
+      &::before {
+        color: var(--fluent-text-secondary);
+      }
+
+      // Expand/collapse arrow
+      &::after {
+        position: absolute;
+        right: 0.8rem;
+        top: 0.8rem;
+        font-family: 'argon';
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -moz-osx-font-smoothing: grayscale;
+        content: '\e90f';
+        transition: all var(--fluent-duration-fast) var(--fluent-easing-standard);
+        color: var(--fluent-text-secondary);
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        font-size: 0.875rem;
+      }
+
+      // Hover state
+      &:hover {
+        cursor: pointer;
+        color: var(--fluent-text);
+        background: rgba(0, 0, 0, 0.03);
+
+        &::before {
+          color: var(--fluent-primary);
+        }
+      }
+
+      // Active state - expanded
+      &.active {
+        color: var(--fluent-text);
+        background: rgba(0, 120, 212, 0.08);
+        border-left: 3px solid var(--fluent-primary);
+        padding-left: calc(2.5rem - 3px);
+
+        &::before {
+          color: var(--fluent-primary);
+        }
+
+        // Rotate arrow when expanded
+        &::after {
+          transform: rotate(90deg);
+          color: var(--fluent-primary);
+        }
+      }
+    }
+  }
+}
+
+// Active slide submenu margin adjustment
+#mainmenu > ul > li.slide.active > ul.slide-menu {
+  margin-left: 20px;
+}
+
+// ============================================================
+// MOBILE RESPONSIVE
+// ============================================================
+@media (max-width: 768px) {
+  .main-left {
+    transform: translateX(-100%);
+    
+    &.open {
+      transform: translateX(0);
+    }
+  }
+  
+  .main-right {
+    margin-left: 0;
+  }
+}

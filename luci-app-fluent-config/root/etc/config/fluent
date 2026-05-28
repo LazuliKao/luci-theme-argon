@@ -1,0 +1,11 @@
+config global
+	option primary '#0078D4'
+	option dark_primary '#005A9E'
+	option progressbar_font '#2e2b60'
+	option font_weight '600'
+	option blur '10'
+	option blur_dark '10'
+	option transparency '0.3'
+	option transparency_dark '0.3'
+	option mode 'normal'
+	option online_wallpaper 'none'

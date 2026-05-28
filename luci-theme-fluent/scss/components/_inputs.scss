@@ -1,0 +1,89 @@
+// ============================================================
+// INPUTS - FluentUI Input Field Styles
+// ============================================================
+@use '../mixins' as *;
+
+// Standard input types
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="url"] {
+  @include input-base;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  background-image: linear-gradient(var(--fluent-primary), var(--fluent-primary)),
+                    linear-gradient(var(--fluent-primary), var(--fluent-primary));
+  background-size: 0 2px, 100% 1px;
+  background-position: center bottom, center calc(100% - 1px);
+  background-repeat: no-repeat;
+  transition: background-size var(--fluent-duration-fast) var(--fluent-easing-standard),
+              border-color var(--fluent-duration-fast) var(--fluent-easing-standard),
+              box-shadow var(--fluent-duration-fast) var(--fluent-easing-standard);
+
+  &:focus {
+    background-size: 100% 2px, 100% 1px;
+    border-color: var(--fluent-input-border-focus);
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+// LuCI-specific input classes
+.cbi-input-text,
+.cbi-input-password {
+  @include input-base;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  background-image: linear-gradient(var(--fluent-primary), var(--fluent-primary)),
+                    linear-gradient(var(--fluent-primary), var(--fluent-primary));
+  background-size: 0 2px, 100% 1px;
+  background-position: center bottom, center calc(100% - 1px);
+  background-repeat: no-repeat;
+  transition: background-size var(--fluent-duration-fast) var(--fluent-easing-standard),
+              border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+
+  &:focus {
+    background-size: 100% 2px, 100% 1px;
+    border-color: var(--fluent-input-border-focus);
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+// Input group container
+.cbi-input-group {
+  display: flex;
+  align-items: center;
+  gap: var(--fluent-space-xs);
+}
+
+// Disabled state
+input:disabled,
+.cbi-input-text:disabled,
+.cbi-input-password:disabled {
+  background-color: var(--fluent-input-bg-disabled);
+  color: var(--fluent-text-disabled);
+  cursor: not-allowed;
+  border-color: var(--fluent-border);
+  background-image: none;
+}
+
+// Search input specific
+input[type="search"] {
+  -webkit-appearance: none;
+  padding-left: var(--fluent-space-xl);
+
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    height: 14px;
+    width: 14px;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+}

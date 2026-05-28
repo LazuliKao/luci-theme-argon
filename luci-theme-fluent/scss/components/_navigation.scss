@@ -1,0 +1,97 @@
+// ============================================================
+// NAVIGATION - FluentUI Navigation and Sidebar Styles
+// ============================================================
+
+// Main navigation container
+.main-left {
+  .nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+      position: relative;
+
+      > a {
+        display: flex;
+        align-items: center;
+        padding: var(--fluent-space-xs) var(--fluent-space-md);
+        color: var(--fluent-text-secondary);
+        text-decoration: none;
+        font-size: var(--fluent-font-size-base);
+        line-height: var(--fluent-line-height-normal);
+        border-radius: var(--fluent-radius-md);
+        transition: background var(--fluent-duration-fast) var(--fluent-easing-standard),
+                    color var(--fluent-duration-fast) var(--fluent-easing-standard);
+        min-height: 36px;
+
+        &:hover {
+          background: var(--fluent-sidebar-item-hover);
+          color: var(--fluent-text);
+        }
+      }
+
+      &.active > a,
+      &.slide-active > a {
+        background: var(--fluent-sidebar-item-active);
+        color: var(--fluent-primary);
+        font-weight: var(--fluent-font-weight-semibold);
+      }
+
+      // Sub-menu indentation
+      .nav {
+        > li > a {
+          padding-left: calc(var(--fluent-space-md) + var(--fluent-space-lg));
+        }
+      }
+    }
+  }
+}
+
+// Slide menu (collapsible)
+.slide-menu {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height var(--fluent-duration-normal) var(--fluent-easing-standard);
+
+  &.slide-open {
+    max-height: 1000px;
+  }
+}
+
+// Menu items
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    a {
+      display: block;
+      padding: var(--fluent-space-xs) var(--fluent-space-md);
+      color: var(--fluent-text-secondary);
+      text-decoration: none;
+      font-size: var(--fluent-font-size-base);
+      border-radius: var(--fluent-radius-md);
+      transition: background var(--fluent-duration-fast) var(--fluent-easing-standard),
+                  color var(--fluent-duration-fast) var(--fluent-easing-standard);
+
+      &:hover {
+        background: var(--fluent-sidebar-item-hover);
+        color: var(--fluent-text);
+      }
+    }
+
+    &.active a {
+      background: var(--fluent-sidebar-item-active);
+      color: var(--fluent-primary);
+    }
+  }
+}
+
+// Main menu
+#mainmenu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

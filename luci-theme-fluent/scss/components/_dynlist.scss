@@ -1,0 +1,78 @@
+// ============================================================
+// DYNLIST - FluentUI Dynamic List Styles
+// ============================================================
+@use '../mixins' as *;
+
+.cbi-dynlist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fluent-space-xxs);
+  padding: var(--fluent-space-xs);
+  min-height: var(--fluent-input-height);
+  background: var(--fluent-input-bg);
+  border: 1px solid var(--fluent-input-border);
+  border-radius: var(--fluent-radius-md);
+  transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+
+  &:focus-within {
+    border-color: var(--fluent-input-border-focus);
+    box-shadow: 0 0 0 1px var(--fluent-input-border-focus);
+  }
+
+  // Individual items
+  > .item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--fluent-space-xxs);
+    padding: var(--fluent-space-xxs) var(--fluent-space-xs);
+    background: var(--fluent-bg-hover);
+    border-radius: var(--fluent-radius-sm);
+    font-size: var(--fluent-font-size-sm);
+    color: var(--fluent-text);
+    max-width: 100%;
+
+    > span {
+      @include text-truncate;
+    }
+
+    // Remove button
+    &::after {
+      content: '\00D7';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      font-size: 14px;
+      line-height: 1;
+      color: var(--fluent-text-secondary);
+      cursor: pointer;
+      border-radius: var(--fluent-radius-sm);
+      flex-shrink: 0;
+      transition: background var(--fluent-duration-fast) var(--fluent-easing-standard),
+                  color var(--fluent-duration-fast) var(--fluent-easing-standard);
+
+      &:hover {
+        background: var(--fluent-error-light);
+        color: var(--fluent-error);
+      }
+    }
+  }
+
+  // Add item input
+  > .add-item {
+    flex: 1;
+    min-width: 120px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: var(--fluent-font-family);
+    font-size: var(--fluent-font-size-base);
+    color: var(--fluent-text);
+    padding: var(--fluent-space-xxs) 0;
+
+    &::placeholder {
+      color: var(--fluent-text-disabled);
+    }
+  }
+}

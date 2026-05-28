@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Migration script for luci-app-fluent-config
+# Handles any future config migrations
+
+exit 0

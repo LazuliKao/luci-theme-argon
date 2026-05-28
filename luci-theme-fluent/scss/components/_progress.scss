@@ -1,0 +1,61 @@
+// ============================================================
+// PROGRESS - FluentUI Progress Bar Styles
+// ============================================================
+
+.cbi-progressbar {
+  height: var(--fluent-progress-height);
+  background: var(--fluent-progress-bg);
+  border-radius: calc(var(--fluent-progress-height) / 2);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  > div {
+    height: 100%;
+    background: var(--fluent-progress-bar-bg);
+    border-radius: calc(var(--fluent-progress-height) / 2);
+    transition: width var(--fluent-duration-normal) var(--fluent-easing-decelerate);
+    position: relative;
+
+    // Shimmer effect for indeterminate
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      );
+      animation: progressShimmer 2s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes progressShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+// Success variant
+.cbi-progressbar-success > div {
+  background: var(--fluent-success);
+}
+
+// Warning variant
+.cbi-progressbar-warning > div {
+  background: var(--fluent-warning);
+}
+
+// Error variant
+.cbi-progressbar-error > div {
+  background: var(--fluent-error);
+}

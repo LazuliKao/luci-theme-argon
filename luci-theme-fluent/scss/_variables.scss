@@ -1,0 +1,215 @@
+// FluentUI Design Tokens - CSS Custom Properties
+// This file defines all color, spacing, typography, and animation variables
+
+:root {
+  // ============================================================
+  // PRIMARY COLORS
+  // ============================================================
+  --fluent-primary: #0078d4;
+  --fluent-primary-hover: #106ebe;
+  --fluent-primary-active: #005a9e;
+  --fluent-primary-light: #c7e0f4;
+  --fluent-primary-lighter: #deecf9;
+  --fluent-primary-lightest: #eff6fc;
+  
+  // ============================================================
+  // NEUTRAL COLORS
+  // ============================================================
+  --fluent-white: #ffffff;
+  --fluent-black: #000000;
+  
+  // Background
+  --fluent-bg: #ffffff;
+  --fluent-bg-hover: #f3f2f1;
+  --fluent-bg-active: #edebe9;
+  --fluent-bg-card: #ffffff;
+  --fluent-bg-page: #f3f2f1;
+  
+  // Text
+  --fluent-text: #323130;
+  --fluent-text-secondary: #605e5c;
+  --fluent-text-disabled: #a19f9d;
+  --fluent-text-on-primary: #ffffff;
+  --fluent-text-link: #0078d4;
+  --fluent-text-link-hover: #0067b8;
+  
+  // Border
+  --fluent-border: #edebe9;
+  --fluent-border-hover: #c8c6c4;
+  --fluent-border-active: #0078d4;
+  
+  // ============================================================
+  // STATUS COLORS
+  // ============================================================
+  --fluent-success: #107c10;
+  --fluent-success-light: #dff6dd;
+  --fluent-warning: #ffb900;
+  --fluent-warning-light: #fff4ce;
+  --fluent-error: #d13438;
+  --fluent-error-light: #fde7e9;
+  --fluent-info: #0078d4;
+  --fluent-info-light: #eff6fc;
+  
+  // ============================================================
+  // TYPOGRAPHY
+  // ============================================================
+  --fluent-font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+  --fluent-font-size-xs: 10px;
+  --fluent-font-size-sm: 12px;
+  --fluent-font-size-base: 14px;
+  --fluent-font-size-md: 16px;
+  --fluent-font-size-lg: 20px;
+  --fluent-font-size-xl: 24px;
+  --fluent-font-size-xxl: 28px;
+  --fluent-font-size-xxxl: 40px;
+  
+  --fluent-font-weight-regular: 400;
+  --fluent-font-weight-semibold: 600;
+  --fluent-font-weight-bold: 700;
+  
+  --fluent-line-height-tight: 1.2;
+  --fluent-line-height-normal: 1.5;
+  --fluent-line-height-relaxed: 1.75;
+  
+  // ============================================================
+  // SPACING
+  // ============================================================
+  --fluent-space-unit: 4px;
+  --fluent-space-xxs: 4px;
+  --fluent-space-xs: 8px;
+  --fluent-space-sm: 12px;
+  --fluent-space-md: 16px;
+  --fluent-space-lg: 24px;
+  --fluent-space-xl: 32px;
+  --fluent-space-xxl: 48px;
+  
+  // ============================================================
+  // BORDER RADIUS
+  // ============================================================
+  --fluent-radius-sm: 2px;
+  --fluent-radius-md: 4px;
+  --fluent-radius-lg: 8px;
+  --fluent-radius-xl: 12px;
+  --fluent-radius-round: 50%;
+  
+  // ============================================================
+  // SHADOWS
+  // ============================================================
+  --fluent-shadow-sm: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+  --fluent-shadow-md: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+  --fluent-shadow-lg: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+  --fluent-shadow-xl: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
+  
+  // ============================================================
+  // TRANSITIONS
+  // ============================================================
+  --fluent-duration-fast: 150ms;
+  --fluent-duration-normal: 250ms;
+  --fluent-duration-slow: 400ms;
+  --fluent-easing-standard: cubic-bezier(0.8, 0, 0.2, 1);
+  --fluent-easing-decelerate: cubic-bezier(0, 0, 0, 1);
+  --fluent-easing-accelerate: cubic-bezier(1, 0, 1, 1);
+  
+  // ============================================================
+  // Z-INDEX
+  // ============================================================
+  --fluent-zindex-dropdown: 1000;
+  --fluent-zindex-modal: 1100;
+  --fluent-zindex-tooltip: 1200;
+  --fluent-zindex-toast: 1300;
+  
+  // ============================================================
+  // COMPONENT-SPECIFIC
+  // ============================================================
+  
+  // Sidebar
+  --fluent-sidebar-width: 260px;
+  --fluent-sidebar-collapsed-width: 48px;
+  --fluent-sidebar-bg: #ffffff;
+  --fluent-sidebar-item-hover: #f3f2f1;
+  --fluent-sidebar-item-active: #e6e6e6;
+  
+  // Header
+  --fluent-header-height: 48px;
+  --fluent-header-bg: #0078d4;
+  --fluent-header-text: #ffffff;
+  
+  // Input
+  --fluent-input-height: 32px;
+  --fluent-input-border: #8a8886;
+  --fluent-input-border-hover: #323130;
+  --fluent-input-border-focus: #0078d4;
+  --fluent-input-bg: #ffffff;
+  --fluent-input-bg-disabled: #f3f2f1;
+  
+  // Button
+  --fluent-btn-height: 32px;
+  --fluent-btn-padding: 0 16px;
+  --fluent-btn-primary-bg: #0078d4;
+  --fluent-btn-primary-bg-hover: #106ebe;
+  --fluent-btn-primary-bg-active: #005a9e;
+  --fluent-btn-secondary-bg: transparent;
+  --fluent-btn-secondary-border: #8a8886;
+  --fluent-btn-secondary-border-hover: #323130;
+  
+  // Card
+  --fluent-card-bg: #ffffff;
+  --fluent-card-border: #edebe9;
+  --fluent-card-shadow: var(--fluent-shadow-sm);
+  --fluent-card-radius: var(--fluent-radius-lg);
+  --fluent-card-padding: var(--fluent-space-lg);
+  
+  // Table
+  --fluent-table-header-bg: #f3f2f1;
+  --fluent-table-row-hover: #f3f2f1;
+  --fluent-table-row-selected: #deecf9;
+  --fluent-table-border: #edebe9;
+  
+  // Modal
+  --fluent-modal-bg: #ffffff;
+  --fluent-modal-overlay: rgba(0, 0, 0, 0.4);
+  --fluent-modal-radius: var(--fluent-radius-lg);
+  --fluent-modal-padding: var(--fluent-space-lg);
+  
+  // Tab
+  --fluent-tab-height: 44px;
+  --fluent-tab-indicator-height: 3px;
+  --fluent-tab-indicator-color: #0078d4;
+  
+  // Checkbox & Radio
+  --fluent-checkbox-size: 20px;
+  --fluent-checkbox-border: #8a8886;
+  --fluent-checkbox-bg: #ffffff;
+  --fluent-checkbox-checked-bg: #0078d4;
+  --fluent-checkbox-checked-border: #0078d4;
+  
+  // Scrollbar
+  --fluent-scrollbar-width: 6px;
+  --fluent-scrollbar-track-bg: transparent;
+  --fluent-scrollbar-thumb-bg: #c8c6c4;
+  --fluent-scrollbar-thumb-bg-hover: #a19f9d;
+  
+  // Progress
+  --fluent-progress-height: 4px;
+  --fluent-progress-bg: #edebe9;
+  --fluent-progress-bar-bg: #0078d4;
+  
+  // Badge
+  --fluent-badge-bg: #0078d4;
+  --fluent-badge-text: #ffffff;
+  --fluent-badge-radius: 10px;
+  
+  // Toast
+  --fluent-toast-bg: #ffffff;
+  --fluent-toast-shadow: var(--fluent-shadow-lg);
+  --fluent-toast-radius: var(--fluent-radius-lg);
+}
+
+// ============================================================
+// OVERRIDABLE VIA UCI CONFIG
+// These can be overridden by inline styles from UCI config
+// ============================================================
+// --fluent-primary
+// --fluent-primary-hover (auto-calculated)
+// --fluent-primary-active (auto-calculated)
+// --fluent-header-bg (defaults to primary)

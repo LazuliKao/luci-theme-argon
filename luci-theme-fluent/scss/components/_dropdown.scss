@@ -1,0 +1,441 @@
+// ============================================================
+// DROPDOWN - FluentUI Dropdown and Combobox Styles
+// Complete FluentUI dropdown with animated bottom indicator,
+// preview list, listbox options, and scrollbar styling.
+// ============================================================
+@use '../mixins' as *;
+
+// ============================================================
+// DROPDOWN KEYFRAMES
+// ============================================================
+@keyframes fluent-dropdown-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scaleY(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+// ============================================================
+// DROPDOWN CONTAINER
+// ============================================================
+.cbi-dropdown {
+  // Layout: inline-flex for proper alignment with other form elements
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  position: relative;
+  vertical-align: middle;
+
+  // Size: medium (default) - matches Input height
+  padding: 0 var(--fluent-space-xs);
+  gap: var(--fluent-space-xxs);
+  min-width: 120px;
+
+  // Appearance: outline style (FluentUI "outline" appearance)
+  background: var(--fluent-bg);
+  border: 1px solid var(--fluent-input-border);
+  border-bottom-color: var(--fluent-text);
+  border-radius: var(--fluent-radius-md);
+
+  // Typography
+  font-family: var(--fluent-font-family);
+  font-size: var(--fluent-font-size-base);
+  font-weight: var(--fluent-font-weight-regular);
+  line-height: 20px;
+  color: var(--fluent-text);
+
+  // Transition & cursor
+  transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  outline-style: none;
+  cursor: pointer;
+
+  // ----------------------------------------------------------
+  // Bottom indicator (::after) - FluentUI focus animation
+  // Starts scaleX(0), animates to scaleX(1) on focus/open
+  // ----------------------------------------------------------
+  &::after {
+    box-sizing: border-box;
+    content: '';
+    position: absolute;
+    left: -1px;
+    bottom: -1px;
+    right: -1px;
+    height: max(2px, 4px);
+    border-bottom-left-radius: var(--fluent-radius-md);
+    border-bottom-right-radius: var(--fluent-radius-md);
+    border-bottom: 2px solid var(--fluent-primary);
+    clip-path: inset(calc(100% - 2px) 0 0 0);
+    transform: scaleX(0);
+    transition-property: transform;
+    transition-duration: var(--fluent-duration-fast);
+    transition-timing-function: var(--fluent-easing-standard);
+  }
+
+  // ----------------------------------------------------------
+  // HOVER STATE
+  // ----------------------------------------------------------
+  &:hover:not([disabled]) {
+    border-color: var(--fluent-text-secondary);
+    border-bottom-color: var(--fluent-text);
+  }
+
+  // ----------------------------------------------------------
+  // FOCUS / OPEN STATE
+  // ----------------------------------------------------------
+  &:focus,
+  &.focus,
+  &[open] {
+    border-color: var(--fluent-input-border);
+    border-bottom-color: var(--fluent-text);
+    outline: none;
+  }
+
+  &:focus::after,
+  &.focus::after,
+  &[open]::after {
+    transform: scaleX(1);
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.23, 1);
+  }
+
+  // ----------------------------------------------------------
+  // ACTIVE STATE
+  // ----------------------------------------------------------
+  &:active:not([disabled]) {
+    border-color: var(--fluent-input-border);
+    border-bottom-color: var(--fluent-text);
+  }
+
+  // ----------------------------------------------------------
+  // DISABLED STATE
+  // ----------------------------------------------------------
+  &[disabled] {
+    cursor: not-allowed;
+    background-color: transparent;
+    border-color: var(--fluent-border-hover);
+    color: var(--fluent-text-disabled);
+    opacity: 1;
+
+    // Hide bottom indicator when disabled
+    &::after {
+      content: none;
+    }
+  }
+
+  // ----------------------------------------------------------
+  // PREVIEW AREA (selected items display)
+  // ----------------------------------------------------------
+  > ul.preview {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    padding: 0 0 0 3.5px;
+    margin: 0;
+    list-style: none;
+    gap: var(--fluent-space-xxs);
+    pointer-events: none;
+    height: 100%;
+    min-height: 2.5rem;
+
+    > li {
+      display: none;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 20px;
+      vertical-align: middle;
+
+      // Show only selected items in preview
+      &[selected] {
+        display: inline;
+      }
+    }
+
+    // Show placeholder only when no selection exists
+    &:not(:has(li[selected])) > li[placeholder] {
+      display: inline;
+      color: var(--fluent-text-disabled);
+    }
+
+    // Fallback for browsers without :has() support
+    > li[placeholder]:only-of-type {
+      display: inline;
+      color: var(--fluent-text-disabled);
+    }
+  }
+
+  // Hide placeholder when there's any selection (parent-level :has())
+  &:has(ul.preview > li[selected]) > ul.preview > li[placeholder] {
+    display: none;
+  }
+
+  // ----------------------------------------------------------
+  // OPEN / EXPAND INDICATOR (chevron)
+  // ----------------------------------------------------------
+  > span.open {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin-left: var(--fluent-space-xs);
+    margin-right: 0;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.23, 1);
+    position: relative;
+    font-size: 0;
+    color: transparent;
+
+    // FluentUI Chevron Down Icon
+    &::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-right: 1.5px solid var(--fluent-text-secondary);
+      border-bottom: 1.5px solid var(--fluent-text-secondary);
+      transform: rotate(45deg) translateY(-1px);
+      transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+    }
+  }
+
+  // Chevron hover color
+  &:hover > span.open::before {
+    border-color: var(--fluent-text);
+  }
+
+  // Chevron disabled color
+  &[disabled] > span.open::before {
+    border-color: var(--fluent-border-hover);
+  }
+
+  // Rotate chevron when open
+  &[open] > span.open {
+    transform: rotate(180deg);
+  }
+
+  // ----------------------------------------------------------
+  // MORE INDICATOR (empty/no selection text)
+  // ----------------------------------------------------------
+  > span.more {
+    display: inline-flex;
+    align-items: center;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--fluent-text-disabled);
+    padding: 0 0 0 3.5px;
+    pointer-events: none;
+    font-size: var(--fluent-font-size-base);
+    line-height: 20px;
+  }
+
+  // Hide more indicator when preview has content
+  &:not([empty]) > span.more {
+    display: none;
+  }
+
+  // Hide preview when empty
+  &[empty] > ul.preview {
+    display: none;
+  }
+
+  // ----------------------------------------------------------
+  // DROPDOWN LIST (Listbox)
+  // ----------------------------------------------------------
+  &[open] > ul.dropdown {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    min-width: 100%;
+    max-width: 400px;
+    overflow-y: auto;
+
+    // Appearance
+    background-color: var(--fluent-bg-card);
+    border: 1px solid var(--fluent-input-border);
+    border-radius: var(--fluent-radius-md);
+    outline: 1px solid transparent;
+
+    // Shadow
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14), 0 0 2px rgba(0, 0, 0, 0.12);
+
+    // Position
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: var(--fluent-zindex-dropdown);
+
+    // Padding
+    padding: var(--fluent-space-xxs);
+    margin: 0;
+    margin-top: var(--fluent-space-xxs);
+    list-style: none;
+
+    // Animation
+    animation: fluent-dropdown-slide-in 0.2s cubic-bezier(0.4, 0, 0.23, 1) forwards;
+    transform-origin: top;
+
+    // --------------------------------------------------------
+    // SCROLLBAR STYLING
+    // --------------------------------------------------------
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--fluent-scrollbar-thumb-bg);
+      border-radius: var(--fluent-radius-md);
+      border: 2px solid transparent;
+      background-clip: padding-box;
+
+      &:hover {
+        background-color: var(--fluent-scrollbar-thumb-bg-hover);
+      }
+    }
+
+    // --------------------------------------------------------
+    // LIST OPTIONS (li items)
+    // --------------------------------------------------------
+    > li {
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      position: relative;
+      width: 100%;
+
+      // Size
+      min-height: 2.5rem;
+      padding: 5px var(--fluent-space-xs);
+
+      // Appearance
+      border-radius: var(--fluent-radius-md);
+      color: var(--fluent-text);
+      cursor: pointer;
+      user-select: none;
+
+      // Typography
+      font-family: var(--fluent-font-family);
+      font-size: var(--fluent-font-size-base);
+      font-weight: var(--fluent-font-weight-regular);
+      line-height: 20px;
+
+      // Text overflow
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      // Transition
+      transition: background-color 0.05s var(--fluent-easing-standard),
+                  color 0.05s var(--fluent-easing-standard);
+
+      // Ensure inner spans and badges fill width
+      > span,
+      > .ifacebadge {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: var(--fluent-space-xxs);
+      }
+
+      // Placeholder option
+      &[placeholder] {
+        color: var(--fluent-text-disabled);
+      }
+
+      // Hide placeholder in dropdown when something is selected
+      &[placeholder]:not(:only-child) {
+        display: none;
+      }
+
+      // Hover state
+      &:hover {
+        background-color: var(--fluent-bg-hover);
+        color: var(--fluent-text);
+      }
+
+      // Selected state
+      &[selected] {
+        background-color: var(--fluent-primary-lightest);
+        color: var(--fluent-text);
+        font-weight: var(--fluent-font-weight-semibold);
+      }
+
+      // Selected + hover
+      &[selected]:hover {
+        background-color: var(--fluent-primary-lighter);
+      }
+
+      // Focus / Active state
+      &.focus,
+      &:active {
+        background-color: var(--fluent-bg-active);
+        color: var(--fluent-text);
+      }
+
+      // Disabled state
+      &[disabled],
+      &[unselectable] {
+        color: var(--fluent-text-disabled);
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      // Custom input in dropdown (data-value="-")
+      &[data-value="-"] {
+        padding: var(--fluent-space-xxs);
+        background-color: transparent;
+        cursor: default;
+        pointer-events: all;
+      }
+
+      // Create item input field
+      .create-item-input {
+        width: 100%;
+        min-height: 24px;
+        padding: 2px var(--fluent-space-xs);
+        box-sizing: border-box;
+
+        background-color: var(--fluent-bg);
+        border: 1px solid var(--fluent-input-border);
+        border-radius: var(--fluent-radius-sm);
+
+        font-family: var(--fluent-font-family);
+        font-size: var(--fluent-font-size-base);
+        color: var(--fluent-text);
+
+        outline: none;
+        transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+      }
+    }
+  }
+
+  // ----------------------------------------------------------
+  // LEGACY SELECT / INPUT-SELECT (kept for compatibility)
+  // ----------------------------------------------------------
+  > select,
+  > .cbi-input-select {
+    @include input-base;
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: var(--fluent-space-xl);
+    cursor: pointer;
+  }
+}

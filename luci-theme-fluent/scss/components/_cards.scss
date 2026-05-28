@@ -1,0 +1,76 @@
+// ============================================================
+// CARDS - FluentUI Card and Section Styles
+// ============================================================
+@use '../mixins' as *;
+
+// Main section card
+.cbi-section {
+  @include card;
+  margin-bottom: var(--fluent-space-lg);
+
+  & > .cbi-section-node {
+    padding: 0 var(--fluent-space-md);
+  }
+}
+
+// Section error state
+.cbi-section-error {
+  background: var(--fluent-error-light);
+  border: 1px solid var(--fluent-error);
+  border-radius: var(--fluent-card-radius);
+  padding: var(--fluent-space-md);
+  margin-bottom: var(--fluent-space-md);
+  color: var(--fluent-error);
+}
+
+// Section title
+.cbi-section-table-titles {
+  h3 {
+    font-size: var(--fluent-font-size-md);
+    font-weight: var(--fluent-font-weight-semibold);
+    color: var(--fluent-text);
+    margin: 0;
+    padding: var(--fluent-space-md) 0;
+  }
+}
+
+// Panel / widget containers
+.panel {
+  @include card;
+  margin-bottom: var(--fluent-space-lg);
+
+  .panel-title {
+    font-size: var(--fluent-font-size-md);
+    font-weight: var(--fluent-font-weight-semibold);
+    color: var(--fluent-text);
+    padding-bottom: var(--fluent-space-sm);
+    margin-bottom: var(--fluent-space-md);
+    border-bottom: 1px solid var(--fluent-card-border);
+  }
+}
+
+// Inline section within forms
+.cbi-section-node {
+  padding: var(--fluent-space-md) 0;
+}
+
+// Tab content sections
+[data-tab-title] {
+  padding: var(--fluent-space-md);
+}
+
+// Network/Interface section overrides
+#cbi-network > .cbi-section-node {
+  padding: 0;
+}
+
+// Card with actions
+.cbi-section-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--fluent-space-xs);
+  padding: var(--fluent-space-md) 0 0;
+  border-top: 1px solid var(--fluent-card-border);
+  margin-top: var(--fluent-space-md);
+}

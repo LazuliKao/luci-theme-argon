@@ -1,0 +1,6 @@
+#!/bin/sh
+# Register luci-theme-fluent in LuCI
+uci batch <<EOF
+set luci.themes.fluent=/luci-static/fluent
+commit luci
+EOF

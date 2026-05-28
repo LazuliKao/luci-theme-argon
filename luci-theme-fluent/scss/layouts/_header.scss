@@ -1,0 +1,43 @@
+// Layouts - Header
+// Top header bar
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--fluent-spacing-sm) var(--fluent-spacing-md);
+  background: var(--fluent-bg);
+  border-bottom: 1px solid var(--fluent-border);
+  height: var(--fluent-header-height, 48px);
+  
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--fluent-spacing-sm);
+  }
+  
+  &__logo {
+    height: 32px;
+    width: auto;
+  }
+  
+  &__title {
+    font-size: var(--fluent-font-size-lg);
+    font-weight: 600;
+    color: var(--fluent-text);
+  }
+  
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--fluent-spacing-sm);
+  }
+  
+  &__toggle {
+    display: none;
+    
+    @media (max-width: 768px) {
+      display: flex;
+    }
+  }
+}

@@ -71,8 +71,8 @@ jobs:
 
       - name: Build ipk packages
         run: |
-          docker run --rm -u root --workdir /builder \
-            -v "$(pwd)/bin:/builder/bin" \
+          docker run --rm -u root \
+            -v "$(pwd)/bin:/builder/openwrt/bin" \
             -v "$(pwd)/.github/workflows:/builder/workflows" \
             openwrt/sdk:x86_64-openwrt-24.10 \
             /bin/sh /builder/workflows/build.sh

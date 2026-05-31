@@ -89,14 +89,14 @@ jobs:
 
       - name: Prepare package sources
         run: |
-          mkdir -p packages
+          mkdir -p ${HOME}/builder/packages
           for pkg in luci-theme-fluent luci-theme-argon luci-app-fluent-config luci-app-argon-config; do
             if [ -d "$pkg" ]; then
-              cp -r "$pkg" "packages/$pkg"
+              cp -r "$pkg" "${HOME}/builder/packages/$pkg"
             fi
           done
           echo "Staged packages:"
-          ls -la packages/
+          ls -la ${HOME}/builder/packages/
 
       - name: Build packages
         run: |
@@ -106,8 +106,8 @@ jobs:
       - name: Collect built packages
         run: |
           mkdir -p output
-          cp /builder/output/*.ipk output/ 2>/dev/null || true
-          cp /builder/output/*.apk output/ 2>/dev/null || true
+          cp ${HOME}/builder/output/*.ipk output/ 2>/dev/null || true
+          cp ${HOME}/builder/output/*.apk output/ 2>/dev/null || true
           echo "Built packages:"
           ls -lh output/
 

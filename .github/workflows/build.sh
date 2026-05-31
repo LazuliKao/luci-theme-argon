@@ -11,6 +11,12 @@ set -e
 VERSION="${1:?Usage: build.sh <version>}"
 SDK_BASE_URL="https://downloads.openwrt.org/releases/${VERSION}/targets/x86/64"
 
+# Use local directory (works on GitHub Actions runners and Docker)
+BUILDER_DIR="${HOME}/builder"
+SDK_DIR="${BUILDER_DIR}/sdk"
+PACKAGES_DIR="${BUILDER_DIR}/packages"
+OUTPUT_DIR="${BUILDER_DIR}/output"
+
 # Determine package format from major version
 MAJOR_VERSION=$(echo "$VERSION" | cut -d. -f1)
 if [ "$MAJOR_VERSION" -ge 25 ]; then
@@ -23,6 +29,7 @@ fi
 
 echo "=== OpenWrt ${VERSION} SDK Build ==="
 echo "Package format: ${PKG_FORMAT} (.${PKG_EXT})"
+echo "Builder directory: ${BUILDER_DIR}"
 
 # Discover exact SDK filename (handles gcc version changes)
 echo ">>> Discovering SDK..."
@@ -35,8 +42,6 @@ if [ -z "$SDK_TARBALL" ]; then
 fi
 
 SDK_URL="${SDK_BASE_URL}/${SDK_TARBALL}"
-SDK_DIR="/builder/sdk"
-
 echo "SDK: ${SDK_URL}"
 
 # Verify URL exists
@@ -51,8 +56,8 @@ echo "    HTTP ${HTTP_CODE} OK"
 
 # Download SDK
 echo ">>> Downloading SDK (${SDK_TARBALL})..."
-mkdir -p /builder
-cd /builder
+mkdir -p "${BUILDER_DIR}"
+cd "${BUILDER_DIR}"
 wget -q --show-progress -O sdk.tar.zst "${SDK_URL}"
 
 # Extract SDK
@@ -76,7 +81,7 @@ echo ">>> Updating feeds..."
 
 # Copy package sources into SDK package tree
 echo ">>> Installing package sources..."
-for pkg_dir in /builder/packages/*/; do
+for pkg_dir in ${PACKAGES_DIR}/*/; do
   [ -d "$pkg_dir" ] || continue
   pkg_name=$(basename "$pkg_dir")
   echo "    -> $pkg_name"
@@ -98,10 +103,10 @@ make -j$(nproc) V=s BUILD_LOG=1 \
 
 # Collect built packages
 echo ">>> Collecting ${PKG_EXT} files..."
-mkdir -p /builder/output
-find bin -name "*.${PKG_EXT}" -exec cp {} /builder/output/ \;
-tar -cJf /builder/output/logs.tar.xz logs 2>/dev/null || true
+mkdir -p "${OUTPUT_DIR}"
+find bin -name "*.${PKG_EXT}" -exec cp {} "${OUTPUT_DIR}/" \;
+tar -cJf "${OUTPUT_DIR}/logs.tar.xz" logs 2>/dev/null || true
 
 echo "=== Build complete ==="
 echo "Package format: ${PKG_FORMAT} (.${PKG_EXT})"
-ls -lh /builder/output/*.${PKG_EXT} 2>/dev/null || echo "Warning: no ${PKG_EXT} files found"
+ls -lh "${OUTPUT_DIR}"/*.${PKG_EXT} 2>/dev/null || echo "Warning: no ${PKG_EXT} files found"

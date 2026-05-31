@@ -1,0 +1,279 @@
+// ============================================================
+// CBI DIALOGS - FluentUI 2 LuCI dialogs, alerts, and page actions
+// Radius: 8px, Shadow: xl, Token-only styling
+// ============================================================
+@use '../mixins' as *;
+
+.uci-dialog {
+  @include slide-in-up;
+  background: var(--fluent-modal-bg);
+  border: 1px solid var(--fluent-border);
+  border-radius: var(--fluent-radius-lg);
+  box-shadow: var(--fluent-shadow-xl);
+  color: var(--fluent-text);
+
+  .cbi-section {
+    padding: var(--fluent-space-lg);
+  }
+}
+
+.uci-change-list {
+  @include custom-scrollbar;
+  display: flex;
+  flex-direction: column;
+  gap: var(--fluent-space-xs);
+  width: 100%;
+  max-height: calc(
+    var(--fluent-space-xxxl) +
+    var(--fluent-space-xxxl) +
+    var(--fluent-space-xxxl) +
+    var(--fluent-space-xxl) +
+    var(--fluent-space-xl)
+  );
+  overflow: auto;
+  padding: var(--fluent-space-sm);
+  font-family: var(--fluent-font-family);
+  font-size: var(--fluent-font-size-sm);
+  line-height: var(--fluent-line-height-normal);
+  background: var(--fluent-bg-page);
+  border: 1px solid var(--fluent-border);
+  border-radius: var(--fluent-radius-md);
+
+  ins,
+  del,
+  var {
+    display: block;
+    padding: var(--fluent-space-sm) var(--fluent-space-md);
+    border-radius: var(--fluent-radius-md);
+    text-decoration: none;
+    font-style: normal;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  ins {
+    color: var(--fluent-success);
+    background: var(--fluent-success-light);
+    border: 1px solid var(--fluent-success);
+  }
+
+  del {
+    color: var(--fluent-error);
+    background: var(--fluent-error-light);
+    border: 1px solid var(--fluent-error);
+  }
+
+  var {
+    color: var(--fluent-text-secondary);
+    background: var(--fluent-bg-hover);
+    border: 1px solid var(--fluent-border);
+  }
+
+  var ins,
+  var del {
+    display: inline;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    white-space: inherit;
+  }
+}
+
+.uci-change-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fluent-space-sm) var(--fluent-space-lg);
+  padding: var(--fluent-space-md) 0 0;
+  line-height: var(--fluent-line-height-normal);
+}
+
+.uci-change-legend-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fluent-space-sm);
+  color: var(--fluent-text-secondary);
+  font-size: var(--fluent-font-size-sm);
+
+  > ins,
+  > del,
+  > var {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--fluent-space-sm) + var(--fluent-space-xs) + var(--fluent-space-xxs));
+    height: calc(var(--fluent-space-sm) + var(--fluent-space-xs) + var(--fluent-space-xxs));
+    min-width: calc(var(--fluent-space-sm) + var(--fluent-space-xs) + var(--fluent-space-xxs));
+    padding: 0;
+    border-radius: var(--fluent-radius-sm);
+    text-decoration: none;
+    font-style: normal;
+  }
+
+  > ins {
+    background: var(--fluent-success-light);
+    border: 1px solid var(--fluent-success);
+  }
+
+  > del {
+    background: var(--fluent-error-light);
+    border: 1px solid var(--fluent-error);
+  }
+
+  > var {
+    position: relative;
+    background: var(--fluent-bg-hover);
+    border: 1px solid var(--fluent-border);
+    color: transparent;
+  }
+
+  > var ins,
+  > var del {
+    position: absolute;
+    inset: 2px;
+    display: block;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+}
+
+.cbi-modal {
+  max-height: none;
+}
+
+.modal {
+  > .button-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--fluent-space-sm);
+    margin-top: var(--fluent-space-lg);
+    padding-top: var(--fluent-space-lg);
+    border-top: 1px solid var(--fluent-border);
+
+    > button:first-of-type,
+    > .cbi-button:first-of-type,
+    > .btn:first-of-type {
+      margin-right: auto;
+    }
+  }
+
+  label > input[type='checkbox'] {
+    margin-right: var(--fluent-space-sm);
+    vertical-align: middle;
+  }
+
+  .label {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--fluent-space-xxs) var(--fluent-space-sm);
+    border-radius: var(--fluent-radius-circular);
+    background: var(--fluent-info-light);
+    color: var(--fluent-info);
+    font-size: var(--fluent-font-size-sm);
+    font-weight: var(--fluent-font-weight-semibold);
+
+    &.warning {
+      background: var(--fluent-warning-light);
+      color: var(--fluent-text);
+    }
+  }
+}
+
+.cbi-page-actions {
+  position: sticky;
+  bottom: 0;
+  z-index: calc(var(--fluent-zindex-modal) - 1);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--fluent-space-sm);
+  margin-top: var(--fluent-space-xl);
+  padding: var(--fluent-space-md) var(--fluent-space-lg);
+  background: color-mix(in srgb, var(--fluent-bg-card) 92%, transparent);
+  border: 1px solid var(--fluent-border);
+  border-radius: var(--fluent-radius-lg);
+  box-shadow: var(--fluent-shadow-lg);
+
+  > form[method='post'] {
+    display: inline-flex;
+  }
+
+  .cbi-button-link:first-child {
+    margin-right: auto;
+  }
+
+  .cbi-button-apply {
+    @include button-primary;
+  }
+
+  .cbi-button-save {
+    @include button-secondary;
+  }
+}
+
+.alert,
+.alert-message {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fluent-space-xs);
+  margin: 0 0 var(--fluent-space-lg);
+  padding: var(--fluent-space-md) var(--fluent-space-lg);
+  border: 1px solid var(--fluent-success);
+  border-radius: var(--fluent-radius-lg);
+  background: var(--fluent-success-light);
+  box-shadow: var(--fluent-shadow-sm);
+  color: var(--fluent-text);
+
+  h4 {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    font-size: var(--fluent-font-size-md);
+    font-weight: var(--fluent-font-weight-semibold);
+  }
+
+  .btn,
+  .cbi-button {
+    @include button-secondary;
+    align-self: flex-start;
+    height: auto;
+    min-height: var(--fluent-btn-height);
+    padding: var(--fluent-space-xs) var(--fluent-space-md);
+  }
+
+  > * {
+    margin: 0;
+  }
+
+  &.error {
+    border-color: var(--fluent-error);
+    background: var(--fluent-error-light);
+  }
+}
+
+.alert.error,
+.alert-message.error {
+  border-color: var(--fluent-error);
+  background: var(--fluent-error-light);
+}
+
+.notice {
+  background: var(--fluent-info-light);
+}
+
+.success {
+  background: var(--fluent-success-light);
+}
+
+.warning {
+  background: var(--fluent-warning-light);
+}
+
+.danger {
+  background: var(--fluent-error-light);
+}

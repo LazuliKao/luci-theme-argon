@@ -1,0 +1,222 @@
+// ============================================================
+// CBI NETWORK - LuCI Network Status Components
+// FluentUI 2 badges, zone indicators, interface cards, log output
+// ============================================================
+@use '../mixins' as *;
+
+.ifacebadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fluent-space-xs);
+  min-height: calc(var(--fluent-input-height) - var(--fluent-space-sm));
+  max-width: 100%;
+  padding: var(--fluent-space-xxs) var(--fluent-space-sm);
+  border: 1px solid var(--fluent-border);
+  border-radius: var(--fluent-radius-circular);
+  background: var(--fluent-primary-lightest);
+  color: var(--fluent-text);
+  font-size: var(--fluent-font-size-sm);
+  font-weight: var(--fluent-font-weight-semibold);
+  line-height: var(--fluent-line-height-tight);
+  box-sizing: border-box;
+  vertical-align: middle;
+
+  > em {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--fluent-space-lg);
+    color: var(--fluent-text-secondary);
+    font-style: normal;
+    line-height: 1;
+  }
+
+  > img {
+    width: var(--fluent-space-lg);
+    height: var(--fluent-space-lg);
+    flex-shrink: 0;
+    border-radius: var(--fluent-radius-round);
+    object-fit: contain;
+    background: var(--fluent-bg-card);
+  }
+}
+
+td > .ifacebadge,
+.td > .ifacebadge {
+  margin: var(--fluent-space-xxs) 0;
+}
+
+.zonebadge {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--fluent-space-sm);
+  padding: var(--fluent-space-sm) var(--fluent-space-md);
+  border: 1px solid var(--fluent-card-border);
+  border-inline-start: var(--fluent-space-xs) solid var(--fluent-primary);
+  border-radius: var(--fluent-radius-lg);
+  background: var(--fluent-card-bg);
+  box-shadow: var(--fluent-card-shadow);
+  color: var(--fluent-text);
+}
+
+.zonebadge .ifacebadge {
+  background: var(--fluent-bg-page);
+  border-color: var(--fluent-table-border);
+}
+
+.zonebadge > input[type="text"] {
+  @include input-base;
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+
+.zonebadge > em,
+.zonebadge > strong {
+  color: var(--fluent-text);
+  font-style: normal;
+  line-height: var(--fluent-line-height-normal);
+}
+
+.zonebadge > strong {
+  font-weight: var(--fluent-font-weight-semibold);
+}
+
+.zonebadge-empty {
+  border-style: dashed;
+  border-inline-start-color: var(--fluent-warning);
+  background: var(--fluent-bg-page);
+  color: var(--fluent-text-secondary);
+}
+
+.zone-forwards {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--fluent-space-sm);
+  color: var(--fluent-text-secondary);
+}
+
+.zone-forwards .zone-src,
+.zone-forwards .zone-dest {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fluent-space-xs);
+  min-height: calc(var(--fluent-input-height) - var(--fluent-space-sm));
+  padding: var(--fluent-space-xxs) var(--fluent-space-sm);
+  border: 1px solid var(--fluent-border);
+  border-radius: var(--fluent-radius-circular);
+  background: var(--fluent-bg-page);
+  color: var(--fluent-text);
+}
+
+.zone-forwards .zone-src {
+  border-inline-start: var(--fluent-space-xxs) solid var(--fluent-info);
+}
+
+.zone-forwards .zone-dest {
+  border-inline-start: var(--fluent-space-xxs) solid var(--fluent-success);
+}
+
+.ifacebox {
+  @include card;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+.ifacebox-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fluent-space-sm);
+  padding: var(--fluent-space-md) var(--fluent-space-lg);
+  border-bottom: 1px solid var(--fluent-card-border);
+  background: var(--fluent-bg-page);
+  color: var(--fluent-text);
+  font-size: var(--fluent-font-size-base);
+  font-weight: var(--fluent-font-weight-semibold);
+  line-height: var(--fluent-line-height-normal);
+}
+
+.ifacebox-head.active {
+  border-bottom-color: var(--fluent-success);
+  background: var(--fluent-success-light);
+  color: var(--fluent-success);
+}
+
+.ifacebox-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fluent-space-sm);
+  padding: var(--fluent-space-lg);
+  color: var(--fluent-text-secondary);
+}
+
+.network-status-table {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--fluent-space-lg);
+  align-items: stretch;
+}
+
+.network-status-table .ifacebox {
+  margin: 0;
+}
+
+.network-status-table .ifacebox-body {
+  min-height: 100%;
+  padding: var(--fluent-space-md) var(--fluent-space-lg) var(--fluent-space-lg);
+}
+
+.network-status-table .ifacebox-body > span {
+  display: block;
+  color: var(--fluent-text-secondary);
+  word-break: break-word;
+}
+
+.network-status-table .ifacebox-body > div {
+  color: var(--fluent-text);
+  word-break: break-word;
+}
+
+#syslog {
+  @include custom-scrollbar;
+  width: 100%;
+  min-height: 20rem;
+  padding: var(--fluent-space-md);
+  border: 1px solid var(--fluent-border-hover);
+  border-radius: var(--fluent-radius-lg);
+  background: var(--fluent-black);
+  color: var(--fluent-white);
+  font-family: ui-monospace, 'Cascadia Code', 'SFMono-Regular', Consolas, monospace;
+  font-size: var(--fluent-font-size-sm);
+  line-height: var(--fluent-line-height-relaxed);
+  box-sizing: border-box;
+}
+
+#syslog:focus {
+  border-color: var(--fluent-border-active);
+  outline: none;
+}
+
+#diag-rc-output > pre,
+#command-rc-output > pre {
+  @include custom-scrollbar;
+  margin: 0;
+  padding: var(--fluent-space-lg);
+  border: 1px solid var(--fluent-card-border);
+  border-radius: var(--fluent-radius-lg);
+  background: var(--fluent-black);
+  color: var(--fluent-white);
+  font-family: ui-monospace, 'Cascadia Code', 'SFMono-Regular', Consolas, monospace;
+  font-size: var(--fluent-font-size-sm);
+  line-height: var(--fluent-line-height-relaxed);
+  white-space: pre-wrap;
+  word-break: break-word;
+  box-shadow: var(--fluent-shadow-sm);
+  overflow: auto;
+}

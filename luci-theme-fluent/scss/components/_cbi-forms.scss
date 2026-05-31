@@ -1,0 +1,163 @@
+// ============================================================
+// CBI FORMS - FluentUI 2 LuCI Form Structure Styles
+// Sections, maps, labels, descriptions, and form row layout
+// ============================================================
+@use '../mixins' as *;
+
+.cbi-map {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fluent-space-lg);
+  font-family: var(--fluent-font-family);
+  color: var(--fluent-text);
+
+  h2,
+  h3 {
+    margin: 0;
+    color: var(--fluent-text);
+    font-family: var(--fluent-font-family);
+    font-weight: var(--fluent-font-weight-semibold);
+    line-height: var(--fluent-line-height-tight);
+  }
+
+  h2 {
+    font-size: var(--fluent-font-size-xxl);
+  }
+
+  h3 {
+    font-size: var(--fluent-font-size-lg);
+  }
+}
+
+.cbi-map-descr {
+  margin: calc(var(--fluent-space-sm) * -1) 0 0;
+  color: var(--fluent-text-secondary);
+  font-size: var(--fluent-font-size-base);
+  line-height: var(--fluent-line-height-relaxed);
+}
+
+.cbi-section {
+  background: var(--fluent-bg-card);
+  border: 1px solid var(--fluent-card-border);
+  border-radius: var(--fluent-radius-md);
+  box-shadow: var(--fluent-shadow-sm);
+  margin-bottom: var(--fluent-space-lg);
+  overflow: hidden;
+}
+
+.cbi-section-error {
+  background: var(--fluent-error-light);
+  border-color: var(--fluent-error);
+  box-shadow: none;
+}
+
+.cbi-section-node,
+.cbi-section-node-tabbed {
+  padding: var(--fluent-space-lg);
+}
+
+.cbi-section-node-tabbed {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fluent-space-md);
+}
+
+.cbi-section .cbi-title {
+  margin: 0;
+  padding: var(--fluent-space-lg);
+  border-bottom: 1px solid var(--fluent-card-border);
+  color: var(--fluent-text);
+  font-family: var(--fluent-font-family);
+  font-size: var(--fluent-font-size-md);
+  font-weight: var(--fluent-font-weight-semibold);
+  line-height: var(--fluent-line-height-tight);
+}
+
+.cbi-section-descr {
+  margin: 0;
+  padding: 0 var(--fluent-space-lg) var(--fluent-space-md);
+  color: var(--fluent-text-secondary);
+  font-size: var(--fluent-font-size-base);
+  line-height: var(--fluent-line-height-relaxed);
+}
+
+.cbi-section.fade-in {
+  @include fade-in;
+  transform-origin: top;
+}
+
+.cbi-value {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--fluent-space-sm) var(--fluent-space-xl);
+  padding: var(--fluent-space-md) 0;
+  border-bottom: 1px solid var(--fluent-card-border);
+
+  &:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  @include respond-to('md') {
+    grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.cbi-value-title {
+  margin: 0;
+  color: var(--fluent-text);
+  font-family: var(--fluent-font-family);
+  font-size: var(--fluent-font-size-base);
+  font-weight: var(--fluent-font-weight-semibold);
+  line-height: var(--fluent-line-height-normal);
+}
+
+.cbi-value-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fluent-space-sm);
+  min-width: 0;
+}
+
+.cbi-value-description {
+  margin: 0;
+  color: var(--fluent-text-secondary);
+  font-family: var(--fluent-font-family);
+  font-size: var(--fluent-font-size-sm);
+  font-weight: var(--fluent-font-weight-regular);
+  line-height: var(--fluent-line-height-normal);
+}
+
+.cbi-value-description abbr {
+  display: inline-block;
+  margin-left: var(--fluent-space-xs);
+  color: var(--fluent-primary);
+  font-size: var(--fluent-font-size-sm);
+  font-weight: var(--fluent-font-weight-semibold);
+  text-decoration: none;
+  cursor: help;
+}
+
+.cbi-optionals {
+  margin-top: var(--fluent-space-lg);
+  padding-top: var(--fluent-space-md);
+  border-top: 1px solid var(--fluent-card-border);
+}
+
+.cbi-rowstyle-1,
+.cbi-rowstyle-2 {
+  transition: background var(--fluent-duration-fast) var(--fluent-easing-standard);
+}
+
+.cbi-rowstyle-1 {
+  background: var(--fluent-bg);
+}
+
+.cbi-rowstyle-2 {
+  background: var(--fluent-bg-page);
+}

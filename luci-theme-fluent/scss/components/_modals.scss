@@ -1,5 +1,6 @@
 // ============================================================
-// MODALS - FluentUI Modal Dialog Styles
+// MODALS - FluentUI 2 Modal Dialog Styles
+// Radius: 8px, Overlay: rgba(0,0,0,0.4)
 // ============================================================
 @use '../mixins' as *;
 
@@ -41,7 +42,7 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: var(--fluent-space-lg);
-    padding-bottom: var(--fluent-space-md);
+    padding-bottom: var(--fluent-space-lg);
     border-bottom: 1px solid var(--fluent-border);
 
     h3 {
@@ -64,7 +65,7 @@
     align-items: center;
     justify-content: flex-end;
     gap: var(--fluent-space-xs);
-    padding-top: var(--fluent-space-md);
+    padding-top: var(--fluent-space-lg);
     border-top: 1px solid var(--fluent-border);
   }
 
@@ -79,8 +80,8 @@
     border: none;
     color: var(--fluent-text-secondary);
     position: absolute;
-    top: var(--fluent-space-md);
-    right: var(--fluent-space-md);
+    top: var(--fluent-space-lg);
+    right: var(--fluent-space-lg);
 
     &::before {
       content: '\00D7';

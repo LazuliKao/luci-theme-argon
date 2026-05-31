@@ -1,6 +1,8 @@
 // ============================================================
-// TABS - FluentUI Tab Styles
+// TABS - FluentUI 2 Tab Styles
+// Tab height: 44px, Indicator: 3px, Focus: 2px black outline
 // ============================================================
+
 // Two tab structures:
 //   1. ul.cbi-tabmenu (LuCI form tabs) - uses ::after indicator with scaleX animation
 //   2. #tabmenu/.tabmenu > ul.tabs (header tabs) - uses border-bottom indicator
@@ -20,7 +22,7 @@ ul.cbi-tabmenu {
   margin: 0;
   gap: 0;
   list-style: none;
-  border-bottom: 1px solid var(--fluent-border-hover);
+  border-bottom: 1px solid var(--fluent-border);
   font-family: var(--fluent-font-family);
   font-size: var(--fluent-font-size-base);
   font-weight: var(--fluent-font-weight-regular);
@@ -42,7 +44,7 @@ ul.cbi-tabmenu {
       box-sizing: border-box;
       position: relative;
       min-height: var(--fluent-tab-height);
-      padding: var(--fluent-space-xs) var(--fluent-space-md);
+      padding: var(--fluent-space-xs) var(--fluent-space-lg);
       margin-bottom: -1px;
       background-color: transparent;
       border: none;
@@ -77,6 +79,12 @@ ul.cbi-tabmenu {
         color: var(--fluent-text);
         background-color: var(--fluent-bg-hover);
       }
+      
+      // Focus indicator
+      &:focus-visible {
+        outline: 2px solid var(--fluent-black);
+        outline-offset: -2px;
+      }
     }
 
     // Active/selected state (.cbi-tab)
@@ -94,7 +102,7 @@ ul.cbi-tabmenu {
       // Active + hover state
       &:hover {
         color: var(--fluent-primary);
-        background-color: rgba(0, 120, 212, 0.05);
+        background-color: rgba(0, 120, 212, 0.04);
       }
     }
 
@@ -211,6 +219,12 @@ ul.cbi-tabmenu {
           color: var(--fluent-text);
           background-color: transparent;
         }
+        
+        // Focus indicator
+        &:focus-visible {
+          outline: 2px solid var(--fluent-black);
+          outline-offset: -2px;
+        }
       }
 
       // Active/selected state
@@ -240,5 +254,5 @@ ul.cbi-tabmenu {
 // ============================================================
 
 .cbi-tabcontainer {
-  padding: var(--fluent-space-md) 0;
+  padding: var(--fluent-space-lg) 0;
 }

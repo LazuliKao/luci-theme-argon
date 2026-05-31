@@ -1,4 +1,4 @@
-// FluentUI Base Styles
+// FluentUI 2 Base Styles
 // CSS reset and foundational styles
 @use 'mixins' as *;
 
@@ -65,7 +65,7 @@ h6 {
 }
 
 p {
-  margin-bottom: var(--fluent-space-md);
+  margin-bottom: var(--fluent-space-lg);
 }
 
 a {
@@ -82,7 +82,7 @@ a {
 // LISTS
 // ============================================================
 ul, ol {
-  padding-left: var(--fluent-space-lg);
+  padding-left: var(--fluent-space-xl);
 }
 
 li {
@@ -153,10 +153,10 @@ textarea {
 }
 
 // ============================================================
-// FOCUS
+// FOCUS (FluentUI: 2px black outline, 2px offset)
 // ============================================================
 :focus-visible {
-  outline: 2px solid var(--fluent-primary);
+  outline: 2px solid var(--fluent-black);
   outline-offset: 2px;
 }
 

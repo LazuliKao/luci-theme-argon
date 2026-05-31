@@ -1,5 +1,6 @@
 // ============================================================
-// CARDS - FluentUI Card and Section Styles
+// CARDS - FluentUI 2 Card and Section Styles
+// Radius: 8px, Shadow: sm, Border: Grey88
 // ============================================================
 @use '../mixins' as *;
 
@@ -9,7 +10,7 @@
   margin-bottom: var(--fluent-space-lg);
 
   & > .cbi-section-node {
-    padding: 0 var(--fluent-space-md);
+    padding: 0 var(--fluent-space-lg);
   }
 }
 
@@ -18,8 +19,8 @@
   background: var(--fluent-error-light);
   border: 1px solid var(--fluent-error);
   border-radius: var(--fluent-card-radius);
-  padding: var(--fluent-space-md);
-  margin-bottom: var(--fluent-space-md);
+  padding: var(--fluent-space-lg);
+  margin-bottom: var(--fluent-space-lg);
   color: var(--fluent-error);
 }
 
@@ -30,7 +31,7 @@
     font-weight: var(--fluent-font-weight-semibold);
     color: var(--fluent-text);
     margin: 0;
-    padding: var(--fluent-space-md) 0;
+    padding: var(--fluent-space-lg) 0;
   }
 }
 
@@ -44,19 +45,19 @@
     font-weight: var(--fluent-font-weight-semibold);
     color: var(--fluent-text);
     padding-bottom: var(--fluent-space-sm);
-    margin-bottom: var(--fluent-space-md);
+    margin-bottom: var(--fluent-space-lg);
     border-bottom: 1px solid var(--fluent-card-border);
   }
 }
 
 // Inline section within forms
 .cbi-section-node {
-  padding: var(--fluent-space-md) 0;
+  padding: var(--fluent-space-lg) 0;
 }
 
 // Tab content sections
 [data-tab-title] {
-  padding: var(--fluent-space-md);
+  padding: var(--fluent-space-lg);
 }
 
 // Network/Interface section overrides
@@ -70,7 +71,7 @@
   align-items: center;
   justify-content: flex-end;
   gap: var(--fluent-space-xs);
-  padding: var(--fluent-space-md) 0 0;
+  padding: var(--fluent-space-lg) 0 0;
   border-top: 1px solid var(--fluent-card-border);
-  margin-top: var(--fluent-space-md);
+  margin-top: var(--fluent-space-lg);
 }

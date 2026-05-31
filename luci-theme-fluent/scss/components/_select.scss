@@ -1,5 +1,6 @@
 // ============================================================
-// SELECT - FluentUI Select Dropdown Styles
+// SELECT - FluentUI 2 Select Dropdown Styles
+// Bottom-border underline indicator, 32px height
 // ============================================================
 @use '../mixins' as *;
 
@@ -10,20 +11,6 @@ select {
   -webkit-appearance: none;
   padding-right: var(--fluent-space-xl);
   cursor: pointer;
-  background-image: linear-gradient(var(--fluent-primary), var(--fluent-primary)),
-                    linear-gradient(var(--fluent-primary), var(--fluent-primary));
-  background-size: 0 2px, 100% 1px;
-  background-position: center bottom, center calc(100% - 1px);
-  background-repeat: no-repeat;
-  transition: background-size var(--fluent-duration-fast) var(--fluent-easing-standard),
-              border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
-
-  &:focus {
-    background-size: 100% 2px, 100% 1px;
-    border-color: var(--fluent-input-border-focus);
-    box-shadow: none;
-    outline: none;
-  }
 
   // Custom chevron
   &::after {
@@ -37,16 +24,10 @@ select.cbi-input-select {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23605e5c' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"),
-                    linear-gradient(var(--fluent-primary), var(--fluent-primary)),
-                    linear-gradient(var(--fluent-primary), var(--fluent-primary));
-  background-position: right 10px center, center bottom, center calc(100% - 1px);
-  background-size: 10px 6px, 0 2px, 100% 1px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23616161' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: right 10px center;
+  background-size: 10px 6px;
   background-repeat: no-repeat;
-
-  &:focus {
-    background-size: 10px 6px, 100% 2px, 100% 1px;
-  }
 
   // Multiple select
   &[multiple] {

@@ -1,11 +1,12 @@
 // ============================================================
-// PROGRESS - FluentUI Progress Bar Styles
+// PROGRESS - FluentUI 2 Progress Bar Styles
+// Height: 4px, Rounded ends
 // ============================================================
 
 .cbi-progressbar {
   height: var(--fluent-progress-height);
   background: var(--fluent-progress-bg);
-  border-radius: calc(var(--fluent-progress-height) / 2);
+  border-radius: var(--fluent-radius-circular);
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -13,7 +14,7 @@
   > div {
     height: 100%;
     background: var(--fluent-progress-bar-bg);
-    border-radius: calc(var(--fluent-progress-height) / 2);
+    border-radius: var(--fluent-radius-circular);
     transition: width var(--fluent-duration-normal) var(--fluent-easing-decelerate);
     position: relative;
 

@@ -1,5 +1,6 @@
 // ============================================================
-// BUTTONS - FluentUI Button Styles
+// BUTTONS - FluentUI 2 Button Styles
+// Height: 32px, Radius: 4px, Focus: 2px black outline
 // ============================================================
 @use '../mixins' as *;
 
@@ -25,13 +26,13 @@
     border-color: var(--fluent-error);
 
     &:hover {
-      background: #c32b2f;
-      border-color: #c32b2f;
+      background: #b42b2f;
+      border-color: #b42b2f;
     }
 
     &:active {
-      background: #a52226;
-      border-color: #a52226;
+      background: #9a2226;
+      border-color: #9a2226;
     }
   }
 
@@ -86,7 +87,7 @@
 
     &::before {
       content: '\26B2';
-      font-size: var(--fluent-font-size-md);
+      font-size: var(--fluent-font-size-base);
     }
   }
 }

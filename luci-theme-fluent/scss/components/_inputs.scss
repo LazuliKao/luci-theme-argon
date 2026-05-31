@@ -1,5 +1,6 @@
 // ============================================================
-// INPUTS - FluentUI Input Field Styles
+// INPUTS - FluentUI 2 Input Field Styles
+// Bottom-border underline indicator, 32px height
 // ============================================================
 @use '../mixins' as *;
 
@@ -15,21 +16,6 @@ input[type="url"] {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  background-image: linear-gradient(var(--fluent-primary), var(--fluent-primary)),
-                    linear-gradient(var(--fluent-primary), var(--fluent-primary));
-  background-size: 0 2px, 100% 1px;
-  background-position: center bottom, center calc(100% - 1px);
-  background-repeat: no-repeat;
-  transition: background-size var(--fluent-duration-fast) var(--fluent-easing-standard),
-              border-color var(--fluent-duration-fast) var(--fluent-easing-standard),
-              box-shadow var(--fluent-duration-fast) var(--fluent-easing-standard);
-
-  &:focus {
-    background-size: 100% 2px, 100% 1px;
-    border-color: var(--fluent-input-border-focus);
-    box-shadow: none;
-    outline: none;
-  }
 }
 
 // LuCI-specific input classes
@@ -39,20 +25,6 @@ input[type="url"] {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  background-image: linear-gradient(var(--fluent-primary), var(--fluent-primary)),
-                    linear-gradient(var(--fluent-primary), var(--fluent-primary));
-  background-size: 0 2px, 100% 1px;
-  background-position: center bottom, center calc(100% - 1px);
-  background-repeat: no-repeat;
-  transition: background-size var(--fluent-duration-fast) var(--fluent-easing-standard),
-              border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
-
-  &:focus {
-    background-size: 100% 2px, 100% 1px;
-    border-color: var(--fluent-input-border-focus);
-    box-shadow: none;
-    outline: none;
-  }
 }
 
 // Input group container
@@ -70,7 +42,7 @@ input:disabled,
   color: var(--fluent-text-disabled);
   cursor: not-allowed;
   border-color: var(--fluent-border);
-  background-image: none;
+  border-bottom-color: var(--fluent-border);
 }
 
 // Search input specific

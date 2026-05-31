@@ -1,14 +1,15 @@
 // ============================================================
-// CHECKBOXES - FluentUI Checkbox and Switch Styles
+// CHECKBOXES - FluentUI 2 Checkbox and Switch Styles
 // ============================================================
 
 // Checkmark SVG for table/context checkboxes
 // Data URIs cannot reference CSS variables, so fill colors are hardcoded
 $checkmark-svg-white: url('data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3e%3cpath fill="white" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/%3e%3c/svg%3e');
-$checkmark-svg-disabled: url('data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3e%3cpath fill="%23a19f9d" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/%3e%3c/svg%3e');
+$checkmark-svg-disabled: url('data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3e%3cpath fill="%236b6b6b" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/%3e%3c/svg%3e');
 
 // ============================================================
 // FLUENT UI SWITCH (default for checkboxes outside tables)
+// Width: 40px, Height: 20px, Thumb: 12px
 // ============================================================
 input[type="checkbox"] {
   appearance: none !important;
@@ -20,7 +21,7 @@ input[type="checkbox"] {
   min-width: 40px !important;
   min-height: 20px !important;
   border-radius: 10px !important;
-  border: 1px solid var(--fluent-text-secondary) !important;
+  border: 1px solid var(--fluent-checkbox-border) !important;
   border-width: 1px !important;
   border-style: solid !important;
   background-color: var(--fluent-bg) !important;
@@ -43,6 +44,7 @@ input[type="checkbox"] {
 
   // --------------------------------------------------------
   // Switch thumb (indicator)
+  // 12px circle, 3px offset from top-left
   // --------------------------------------------------------
   &::before {
     content: "" !important;
@@ -91,18 +93,18 @@ input[type="checkbox"] {
     background-image: none !important;
 
     &:checked {
-      background-color: color-mix(in srgb, var(--fluent-primary) 90%, black) !important;
-      border-color: color-mix(in srgb, var(--fluent-primary) 90%, black) !important;
+      background-color: var(--fluent-primary-hover) !important;
+      border-color: var(--fluent-primary-hover) !important;
       background-image: none !important;
     }
   }
 
   // --------------------------------------------------------
-  // Focus state
+  // Focus state (FluentUI: 2px black outline)
   // --------------------------------------------------------
   &:focus,
   &:focus-visible {
-    outline: 2px solid var(--fluent-primary) !important;
+    outline: 2px solid var(--fluent-black) !important;
     outline-offset: 2px !important;
     outline-style: solid !important;
   }
@@ -168,11 +170,11 @@ $table-checkbox-contexts: (
 
 @each $context in $table-checkbox-contexts {
   #{$context} input[type="checkbox"] {
-    // Reset to square checkbox style
-    width: 18px !important;
-    height: 18px !important;
-    min-width: 18px !important;
-    min-height: 18px !important;
+    // Reset to square checkbox style (20x20px, radius 4px)
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
     border-radius: 4px !important;
     border: 1px solid var(--fluent-checkbox-border) !important;
     border-width: 1px !important;
@@ -217,19 +219,19 @@ $table-checkbox-contexts: (
     // Hover state
     &:hover:not(:disabled) {
       background-color: var(--fluent-bg-hover) !important;
-      border-color: var(--fluent-text-secondary) !important;
+      border-color: var(--fluent-checkbox-hover-border) !important;
       background-image: none !important;
 
       &:checked {
-        background-color: color-mix(in srgb, var(--fluent-primary) 90%, black) !important;
-        border-color: color-mix(in srgb, var(--fluent-primary) 90%, black) !important;
+        background-color: var(--fluent-primary-hover) !important;
+        border-color: var(--fluent-primary-hover) !important;
         background-image: $checkmark-svg-white !important;
       }
     }
 
     // Disabled state
     &:disabled {
-      background-color: var(--fluent-bg-hover) !important;
+      background-color: var(--fluent-input-bg-disabled) !important;
       border-color: var(--fluent-border-hover) !important;
       opacity: 0.6 !important;
       cursor: not-allowed !important;
@@ -282,11 +284,11 @@ input[type="radio"] {
   }
 
   &:hover {
-    border-color: var(--fluent-primary-hover);
+    border-color: var(--fluent-checkbox-hover-border);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--fluent-primary);
+    outline: 2px solid var(--fluent-black);
     outline-offset: 2px;
   }
 

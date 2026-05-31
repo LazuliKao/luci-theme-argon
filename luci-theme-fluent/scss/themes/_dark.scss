@@ -1,31 +1,162 @@
 // Themes - Dark Mode
-// Dark mode overrides via media query and class toggle
+// Based on FluentUI 2 dark theme tokens (Grey, Brand)
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --fluent-bg: #1b1b1b;
-    --fluent-bg-card: #2d2d2d;
-    --fluent-bg-hover: #383838;
-    --fluent-bg-active: #444444;
-    --fluent-text: #f3f2f1;
-    --fluent-text-secondary: #a0a0a0;
-    --fluent-border: #404040;
-    --fluent-shadow-sm: 0 2px 4px rgba(0,0,0,0.3);
-    --fluent-shadow-md: 0 4px 8px rgba(0,0,0,0.35);
-    --fluent-shadow-lg: 0 8px 16px rgba(0,0,0,0.4);
+    // Backgrounds - FluentUI dark: Grey12 for page, Grey16 for card
+    --fluent-bg: #1f1f1f;              // Grey12
+    --fluent-bg-card: #292929;         // Grey16
+    --fluent-bg-hover: #383838;        // Grey24
+    --fluent-bg-active: #424242;       // Grey26
+    --fluent-bg-page: #1a1a1a;         // Grey10
+    
+    // Text - FluentUI dark: White for primary, Grey68 for secondary
+    --fluent-text: #ffffff;            // White
+    --fluent-text-secondary: #adadad;  // Grey68
+    --fluent-text-disabled: #6b6b6b;   // Grey44
+    --fluent-text-on-primary: #ffffff;
+    --fluent-text-link: #4da6ff;       // Brand tint20
+    --fluent-text-link-hover: #80c4ff; // Brand tint30
+    
+    // Borders - FluentUI dark: Grey32 for default, Grey48 for hover
+    --fluent-border: #525252;          // Grey32
+    --fluent-border-hover: #7a7a7a;    // Grey48
+    --fluent-border-active: #4da6ff;   // Brand tint20
+    
+    // Shadows - Stronger for dark mode
+    --fluent-shadow-sm: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.264), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.216);
+    --fluent-shadow-md: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.264), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.216);
+    --fluent-shadow-lg: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.264), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.216);
+    --fluent-shadow-xl: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.44), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.36);
+    
+    // Sidebar
+    --fluent-sidebar-bg: #1f1f1f;
+    --fluent-sidebar-item-hover: rgba(255, 255, 255, 0.06);
+    --fluent-sidebar-item-active: rgba(77, 166, 255, 0.08);
+    
+    // Input
+    --fluent-input-bg: #292929;         // Grey16
+    --fluent-input-border: #adadad;     // Grey68
+    --fluent-input-border-hover: #ffffff; // White
+    --fluent-input-border-focus: #4da6ff; // Brand tint20
+    --fluent-input-bg-disabled: #333333;  // Grey20
+    --fluent-input-bg-hover: #333333;     // Grey20
+    
+    // Button
+    --fluent-btn-primary-bg: #4da6ff;    // Brand tint20
+    --fluent-btn-primary-bg-hover: #80c4ff; // Brand tint30
+    --fluent-btn-primary-bg-active: #b3d9ff; // Brand tint40
+    --fluent-btn-secondary-border: #adadad;  // Grey68
+    --fluent-btn-secondary-border-hover: #ffffff; // White
+    --fluent-btn-secondary-border-active: #4da6ff; // Brand tint20
+    
+    // Card
+    --fluent-card-bg: #292929;          // Grey16
+    --fluent-card-border: #3d3d3d;      // Grey24
+    
+    // Table
+    --fluent-table-header-bg: #292929;  // Grey16
+    --fluent-table-row-hover: #383838;  // Grey24
+    --fluent-table-row-selected: #1a3a5c; // BrandShade30
+    --fluent-table-border: #3d3d3d;     // Grey24
+    
+    // Modal
+    --fluent-modal-bg: #292929;         // Grey16
+    
+    // Checkbox
+    --fluent-checkbox-border: #adadad;  // Grey68
+    --fluent-checkbox-bg: #292929;      // Grey16
+    --fluent-checkbox-checked-bg: #4da6ff; // Brand tint20
+    --fluent-checkbox-checked-border: #4da6ff;
+    --fluent-checkbox-hover-border: #ffffff; // White
+    
+    // Switch
+    --fluent-checkbox-border: #adadad;  // Grey68 for switch border
+    
+    // Scrollbar
+    --fluent-scrollbar-thumb-bg: #525252;     // Grey32
+    --fluent-scrollbar-thumb-bg-hover: #7a7a7a; // Grey48
+    
+    // Progress
+    --fluent-progress-bg: #3d3d3d;      // Grey24
+    --fluent-progress-bar-bg: #4da6ff;  // Brand tint20
   }
 }
 
 // Manual dark mode toggle via data attribute
 [data-theme="dark"] {
-  --fluent-bg: #1b1b1b;
-  --fluent-bg-card: #2d2d2d;
+  // Backgrounds
+  --fluent-bg: #1f1f1f;
+  --fluent-bg-card: #292929;
   --fluent-bg-hover: #383838;
-  --fluent-bg-active: #444444;
-  --fluent-text: #f3f2f1;
-  --fluent-text-secondary: #a0a0a0;
-  --fluent-border: #404040;
-  --fluent-shadow-sm: 0 2px 4px rgba(0,0,0,0.3);
-  --fluent-shadow-md: 0 4px 8px rgba(0,0,0,0.35);
-  --fluent-shadow-lg: 0 8px 16px rgba(0,0,0,0.4);
+  --fluent-bg-active: #424242;
+  --fluent-bg-page: #1a1a1a;
+  
+  // Text
+  --fluent-text: #ffffff;
+  --fluent-text-secondary: #adadad;
+  --fluent-text-disabled: #6b6b6b;
+  --fluent-text-on-primary: #ffffff;
+  --fluent-text-link: #4da6ff;
+  --fluent-text-link-hover: #80c4ff;
+  
+  // Borders
+  --fluent-border: #525252;
+  --fluent-border-hover: #7a7a7a;
+  --fluent-border-active: #4da6ff;
+  
+  // Shadows
+  --fluent-shadow-sm: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.264), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.216);
+  --fluent-shadow-md: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.264), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.216);
+  --fluent-shadow-lg: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.264), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.216);
+  --fluent-shadow-xl: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.44), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.36);
+  
+  // Sidebar
+  --fluent-sidebar-bg: #1f1f1f;
+  --fluent-sidebar-item-hover: rgba(255, 255, 255, 0.06);
+  --fluent-sidebar-item-active: rgba(77, 166, 255, 0.08);
+  
+  // Input
+  --fluent-input-bg: #292929;
+  --fluent-input-border: #adadad;
+  --fluent-input-border-hover: #ffffff;
+  --fluent-input-border-focus: #4da6ff;
+  --fluent-input-bg-disabled: #333333;
+  --fluent-input-bg-hover: #333333;
+  
+  // Button
+  --fluent-btn-primary-bg: #4da6ff;
+  --fluent-btn-primary-bg-hover: #80c4ff;
+  --fluent-btn-primary-bg-active: #b3d9ff;
+  --fluent-btn-secondary-border: #adadad;
+  --fluent-btn-secondary-border-hover: #ffffff;
+  --fluent-btn-secondary-border-active: #4da6ff;
+  
+  // Card
+  --fluent-card-bg: #292929;
+  --fluent-card-border: #3d3d3d;
+  
+  // Table
+  --fluent-table-header-bg: #292929;
+  --fluent-table-row-hover: #383838;
+  --fluent-table-row-selected: #1a3a5c;
+  --fluent-table-border: #3d3d3d;
+  
+  // Modal
+  --fluent-modal-bg: #292929;
+  
+  // Checkbox
+  --fluent-checkbox-border: #adadad;
+  --fluent-checkbox-bg: #292929;
+  --fluent-checkbox-checked-bg: #4da6ff;
+  --fluent-checkbox-checked-border: #4da6ff;
+  --fluent-checkbox-hover-border: #ffffff;
+  
+  // Scrollbar
+  --fluent-scrollbar-thumb-bg: #525252;
+  --fluent-scrollbar-thumb-bg-hover: #7a7a7a;
+  
+  // Progress
+  --fluent-progress-bg: #3d3d3d;
+  --fluent-progress-bar-bg: #4da6ff;
 }

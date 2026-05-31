@@ -26,13 +26,13 @@
     border-color: var(--fluent-error);
 
     &:hover {
-      background: #b42b2f;
-      border-color: #b42b2f;
+      background: var(--fluent-error-hover);
+      border-color: var(--fluent-error-hover);
     }
 
     &:active {
-      background: #9a2226;
-      border-color: #9a2226;
+      background: var(--fluent-error-active);
+      border-color: var(--fluent-error-active);
     }
   }
 

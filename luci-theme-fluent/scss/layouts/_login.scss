@@ -57,16 +57,12 @@
       position: relative;
 
       // Fluent Design - Acrylic Material Effect
-      background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.92) 0%,
-        rgba(255, 255, 255, 0.88) 100%
-      );
+      background: var(--fluent-login-bg);
       backdrop-filter: blur(40px) saturate(180%);
       -webkit-backdrop-filter: blur(40px) saturate(180%);
 
       // Border - Subtle reveal
-      border: 1px solid rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--fluent-login-border);
       border-radius: var(--fluent-radius-lg);
 
       // Fluent Shadows - Layered depth

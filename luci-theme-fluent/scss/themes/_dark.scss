@@ -62,6 +62,7 @@
     
     // Modal
     --fluent-modal-bg: #292929;         // Grey16
+    --fluent-modal-overlay: rgba(0, 0, 0, 0.6);
     
     // Checkbox
     --fluent-checkbox-border: #adadad;  // Grey68
@@ -70,9 +71,6 @@
     --fluent-checkbox-checked-border: #4da6ff;
     --fluent-checkbox-hover-border: #ffffff; // White
     
-    // Switch
-    --fluent-checkbox-border: #adadad;  // Grey68 for switch border
-    
     // Scrollbar
     --fluent-scrollbar-thumb-bg: #525252;     // Grey32
     --fluent-scrollbar-thumb-bg-hover: #7a7a7a; // Grey48
@@ -80,6 +78,22 @@
     // Progress
     --fluent-progress-bg: #3d3d3d;      // Grey24
     --fluent-progress-bar-bg: #4da6ff;  // Brand tint20
+    
+    // Login
+    --fluent-login-bg: rgba(31, 31, 31, 0.92);
+    --fluent-login-border: rgba(82, 82, 82, 0.7);
+    --fluent-login-icon-color: var(--fluent-text-secondary);
+    
+    // Dropdown
+    --fluent-dropdown-bg: var(--fluent-bg-card);
+    --fluent-dropdown-border: var(--fluent-input-border);
+    --fluent-dropdown-shadow: 0 8px 16px rgba(0, 0, 0, 0.28), 0 0 2px rgba(0, 0, 0, 0.24);
+    --fluent-dropdown-option-hover: var(--fluent-bg-hover);
+    --fluent-dropdown-option-selected: rgba(77, 166, 255, 0.1);
+    
+    // Focus indicator (white in dark mode for visibility)
+    --fluent-focus-color: #ffffff;
+    --fluent-focus-inner-color: #000000;
   }
 }
 
@@ -144,6 +158,7 @@
   
   // Modal
   --fluent-modal-bg: #292929;
+  --fluent-modal-overlay: rgba(0, 0, 0, 0.6);
   
   // Checkbox
   --fluent-checkbox-border: #adadad;
@@ -159,4 +174,20 @@
   // Progress
   --fluent-progress-bg: #3d3d3d;
   --fluent-progress-bar-bg: #4da6ff;
+  
+  // Login
+  --fluent-login-bg: rgba(31, 31, 31, 0.92);
+  --fluent-login-border: rgba(82, 82, 82, 0.7);
+  --fluent-login-icon-color: var(--fluent-text-secondary);
+  
+  // Dropdown
+  --fluent-dropdown-bg: var(--fluent-bg-card);
+  --fluent-dropdown-border: var(--fluent-input-border);
+  --fluent-dropdown-shadow: 0 8px 16px rgba(0, 0, 0, 0.28), 0 0 2px rgba(0, 0, 0, 0.24);
+  --fluent-dropdown-option-hover: var(--fluent-bg-hover);
+  --fluent-dropdown-option-selected: rgba(77, 166, 255, 0.1);
+  
+  // Focus indicator (white in dark mode for visibility)
+  --fluent-focus-color: #ffffff;
+  --fluent-focus-inner-color: #000000;
 }

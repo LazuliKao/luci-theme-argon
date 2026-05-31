@@ -46,6 +46,8 @@
   --fluent-warning: #ffb900;          // Marigold primary
   --fluent-warning-light: #fff4ce;    // Marigold tint50
   --fluent-error: #d13438;            // Red primary
+  --fluent-error-hover: #b42b2f;      // Red shade10
+  --fluent-error-active: #9a2226;     // Red shade20
   --fluent-error-light: #fde7e9;      // Red tint50
   --fluent-info: #0078d4;             // BrandBlue
   --fluent-info-light: #f3f9fd;       // BrandBlue tint60
@@ -220,6 +222,22 @@
   --fluent-toast-bg: #ffffff;
   --fluent-toast-shadow: var(--fluent-shadow-lg);
   --fluent-toast-radius: var(--fluent-radius-lg);
+  
+  // Login
+  --fluent-login-bg: rgba(255, 255, 255, 0.92);
+  --fluent-login-border: rgba(255, 255, 255, 0.7);
+  --fluent-login-icon-color: var(--fluent-text-secondary);
+  
+  // Dropdown
+  --fluent-dropdown-bg: var(--fluent-bg-card);
+  --fluent-dropdown-border: var(--fluent-input-border);
+  --fluent-dropdown-shadow: 0 8px 16px rgba(0, 0, 0, 0.14), 0 0 2px rgba(0, 0, 0, 0.12);
+  --fluent-dropdown-option-hover: var(--fluent-bg-hover);
+  --fluent-dropdown-option-selected: var(--fluent-primary-lightest);
+  
+  // Focus indicator (adapts to theme)
+  --fluent-focus-color: #000000;
+  --fluent-focus-inner-color: #ffffff;
 }
 
 // ============================================================

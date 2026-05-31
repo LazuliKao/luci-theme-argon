@@ -265,13 +265,13 @@
     overflow-y: auto;
 
     // Appearance
-    background-color: var(--fluent-bg-card);
-    border: 1px solid var(--fluent-input-border);
+    background-color: var(--fluent-dropdown-bg);
+    border: 1px solid var(--fluent-dropdown-border);
     border-radius: var(--fluent-radius-md);
     outline: 1px solid transparent;
 
     // Shadow
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14), 0 0 2px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--fluent-dropdown-shadow);
 
     // Position
     position: absolute;
@@ -367,13 +367,13 @@
 
       // Hover state
       &:hover {
-        background-color: var(--fluent-bg-hover);
+        background-color: var(--fluent-dropdown-option-hover);
         color: var(--fluent-text);
       }
 
       // Selected state
       &[selected] {
-        background-color: var(--fluent-primary-lightest);
+        background-color: var(--fluent-dropdown-option-selected);
         color: var(--fluent-text);
         font-weight: var(--fluent-font-weight-semibold);
       }

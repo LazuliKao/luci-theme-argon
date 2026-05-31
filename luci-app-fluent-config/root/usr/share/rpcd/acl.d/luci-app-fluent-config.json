@@ -1,0 +1,20 @@
+{
+	"luci-app-fluent-config": {
+		"description": "Grant UCI access for luci-app-fluent-config",
+		"read": {
+			"file": {
+				"/www/luci-static/fluent/background/*": [ "list" ]
+			},
+			"ubus": {
+				"luci.fluent": [ "avail", "remove", "rename" ]
+			},
+			"uci": [ "fluent" ]
+		},
+		"write": {
+			"file": {
+				"/tmp/fluent_background.tmp": [ "write" ]
+			},
+			"uci": [ "fluent" ]
+		}
+	}
+}

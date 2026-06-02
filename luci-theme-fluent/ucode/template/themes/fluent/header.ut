@@ -14,39 +14,78 @@
   // System info
   let boardinfo = ubus.call('system', 'board');
   let hostname = boardinfo?.hostname || '?';
+  let model = boardinfo?.model || boardinfo?.board_name || '?';
 
   // UCI config
   let cfg = cursor();
   let mode = 'normal';
   let primary = '#0078d4';
-  let dark_primary = '#1a1a2e';
+  let dark_primary = '#4DA6FF';
   let blur_radius = '0';
   let blur_radius_dark = '0';
   let blur_opacity = '0';
   let blur_opacity_dark = '0';
-  let font_weight = '600';
+  let font_weight = '400';
+  let font_size = '14';
   let progressbar_font = '#2e2b60';
   let main_left_font_color = '#69758c';
   let bar_color = primary;
+  let sidebar_width = '260';
+  let header_height = '48';
+  let border_radius = '4';
+  let card_shadow = 'small';
+  let transition_speed = 'normal';
+  let custom_css = '';
+  let dark_sidebar_bg = '';
+  let dark_card_bg = '';
+  let dark_page_bg = '';
+
+  // Transition speed mapping
+  let transition_map = {
+    'fast': '100ms',
+    'normal': '150ms',
+    'slow': '250ms',
+    'none': '0ms'
+  };
+
+  // Shadow mapping
+  let shadow_map = {
+    'none': 'none',
+    'small': '0 2px 4px rgba(0,0,0,0.1)',
+    'medium': '0 4px 8px rgba(0,0,0,0.12)',
+    'large': '0 8px 16px rgba(0,0,0,0.14)'
+  };
 
   if (access('/etc/config/fluent')) {
     mode = cfg.get_first('fluent', 'global', 'mode') || 'normal';
     primary = cfg.get_first('fluent', 'global', 'primary') || '#0078d4';
-    dark_primary = cfg.get_first('fluent', 'global', 'dark_primary') || '#1a1a2e';
-    font_weight = cfg.get_first('fluent', 'global', 'font_weight') || '600';
+    dark_primary = cfg.get_first('fluent', 'global', 'dark_primary') || '#4DA6FF';
+    font_weight = cfg.get_first('fluent', 'global', 'font_weight') || '400';
+    font_size = cfg.get_first('fluent', 'global', 'font_size') || '14';
     blur_radius = cfg.get_first('fluent', 'global', 'blur') || '0';
     blur_radius_dark = cfg.get_first('fluent', 'global', 'blur_dark') || '0';
     blur_opacity = cfg.get_first('fluent', 'global', 'transparency') || '0';
     blur_opacity_dark = cfg.get_first('fluent', 'global', 'transparency_dark') || '0';
     progressbar_font = cfg.get_first('fluent', 'global', 'progressbar_font') || '#2e2b60';
+    sidebar_width = cfg.get_first('fluent', 'global', 'sidebar_width') || '260';
+    header_height = cfg.get_first('fluent', 'global', 'header_height') || '48';
+    border_radius = cfg.get_first('fluent', 'global', 'border_radius') || '4';
+    card_shadow = cfg.get_first('fluent', 'global', 'card_shadow') || 'small';
+    transition_speed = cfg.get_first('fluent', 'global', 'transition_speed') || 'normal';
+    custom_css = cfg.get_first('fluent', 'global', 'custom_css') || '';
+    dark_sidebar_bg = cfg.get_first('fluent', 'global', 'dark_sidebar_bg') || '';
+    dark_card_bg = cfg.get_first('fluent', 'global', 'dark_card_bg') || '';
+    dark_page_bg = cfg.get_first('fluent', 'global', 'dark_page_bg') || '';
 
     bar_color = mode === 'dark' ? dark_primary : primary;
     main_left_font_color = font_weight === 'normal' ? '#5f6368' : '#69758c';
   }
 
-  // Brand name
+  // Computed values
+  let transition_duration = transition_map[transition_speed] || '150ms';
+  let card_shadow_value = shadow_map[card_shadow] || shadow_map['small'];
   let brand_name = hostname;
-%}
+%]
 <!DOCTYPE html>
 <html lang="{{ dispatcher.lang }}">
 
@@ -94,10 +133,18 @@
 
   <link rel="stylesheet" href="{{ media }}/css/fluent.css">
   <style title="text/css">
-    {# Default light values - must come FIRST so dark overrides can take precedence #}
+    {# Default light values #}
     :root {
       --fluent-primary: {{ primary }};
       --fluent-font-weight: {{ font_weight }};
+      --fluent-font-size: {{ font_size }}px;
+      --fluent-sidebar-width: {{ sidebar_width }}px;
+      --fluent-header-height: {{ header_height }}px;
+      --fluent-radius-sm: {{ border_radius }}px;
+      --fluent-radius-md: {{ border_radius }}px;
+      --fluent-card-shadow: {{ card_shadow_value }};
+      --fluent-transition-fast: {{ transition_duration }} ease;
+      --fluent-transition-normal: {{ transition_duration }} ease;
       --fluent-progressbar-font-color: {{ progressbar_font }};
       --fluent-blur-radius: {{ blur_radius }}px;
       --fluent-blur-opacity: {{ blur_opacity }};
@@ -106,22 +153,44 @@
       --fluent-main-left-font-color: {{ main_left_font_color }};
     }
 
-    {# Dark mode overrides - must come AFTER default values #}
-    {% if (mode === 'normal') %}
+    {# Dark mode overrides #}
+    {% if (mode === 'normal') { %}
       @media (prefers-color-scheme: dark) {
-        :root {
+        :root:not([data-theme="light"]) {
           --fluent-primary: {{ dark_primary }};
           --fluent-bg: #1b1b1b;
+          --fluent-bg-card: #2d2d2d;
           --fluent-text: #f3f2f1;
+          --fluent-text-secondary: #a0a0a0;
+          --fluent-border: #404040;
+          {% if (dark_sidebar_bg) { %}--fluent-sidebar-bg: {{ dark_sidebar_bg }};{% } %}
+          {% if (dark_card_bg) { %}--fluent-bg-card: {{ dark_card_bg }};{% } %}
+          {% if (dark_page_bg) { %}--fluent-bg: {{ dark_page_bg }};{% } %}
         }
       }
-    {% elif (mode === 'dark') %}
+    {% } else if (mode === 'dark') { %}
       :root {
         --fluent-primary: {{ dark_primary }};
         --fluent-bg: #1b1b1b;
+        --fluent-bg-card: #2d2d2d;
         --fluent-text: #f3f2f1;
+        --fluent-text-secondary: #a0a0a0;
+        --fluent-border: #404040;
+        {% if (dark_sidebar_bg) { %}--fluent-sidebar-bg: {{ dark_sidebar_bg }};{% } %}
+        {% if (dark_card_bg) { %}--fluent-bg-card: {{ dark_card_bg }};{% } %}
+        {% if (dark_page_bg) { %}--fluent-bg: {{ dark_page_bg }};{% } %}
       }
-    {% endif %}
+    {% } %}
+
+    {# Font size on body #}
+    body {
+      font-size: {{ font_size }}px;
+    }
+
+    {# Custom CSS injection #}
+    {% if (custom_css) { %}
+    {{ custom_css }}
+    {% } %}
   </style>
 
   <link rel="shortcut icon" type="image/ico" href="{{ media }}/favicon.ico">
@@ -136,11 +205,64 @@
   <script src="{{ url('admin/translations', dispatcher.lang) }}?v={{ version.luciversion }}"></script>
   <script src="{{ resource }}/cbi.js?v={{ version.luciversion }}"></script>
   <script src="{{ resource }}/luci.js?v={{ version.luciversion }}"></script>
+  <script>
+    // Dark mode toggle
+    (function() {
+      var mode = '{{ mode }}';
+      var toggle = document.getElementById('theme-toggle');
+      if (!toggle) return;
+
+      // Determine initial state
+      var isDark = false;
+      if (mode === 'dark') {
+        isDark = true;
+      } else if (mode === 'normal') {
+        isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+
+      // Apply initial theme
+      function applyTheme(dark) {
+        if (dark) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+        toggle.setAttribute('data-active-theme', dark ? 'dark' : 'light');
+      }
+
+      if (mode !== 'normal') {
+        applyTheme(isDark);
+      } else {
+        // For 'normal' mode, listen for system changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+          if (!document.documentElement.hasAttribute('data-theme')) {
+            applyTheme(e.matches);
+          }
+        });
+      }
+
+      // Toggle click handler
+      toggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-theme');
+        var newTheme = (current === 'dark') ? 'light' : 'dark';
+        applyTheme(newTheme === 'dark');
+        // Store preference
+        try { localStorage.setItem('fluent-theme', newTheme); } catch(e) {}
+      });
+
+      // Restore stored preference
+      try {
+        var stored = localStorage.getItem('fluent-theme');
+        if (stored) applyTheme(stored === 'dark');
+      } catch(e) {}
+    })();
+  </script>
 </head>
 
 <body
   class="lang_{{ dispatcher.lang }} {{ node ? entityencode(node.title, true) : '' }} {{ ctx.authsession ? 'logged-in' : '' }}"
-  data-page="{{ entityencode(ctx.request_path.join('-'), true) }}">
+  data-page="{{ entityencode(ctx.request_path.join('-'), true) }}"
+  data-theme-mode="{{ mode }}">
 
   <div class="main">
     <div class="main-left" id="mainmenu" style="display:none">
@@ -166,7 +288,17 @@
               <a class="showSide"></a>
               <a class="brand" href="/">{{ brand_name }}</a>
             </div>
-            <div class="status" id="indicators"></div>
+            <div class="header-actions">
+              <button class="theme-toggle" id="theme-toggle" title="{%:Toggle dark mode%}" aria-label="{%:Toggle dark mode%}">
+                <svg class="theme-toggle-icon sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="theme-toggle-icon moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+              </button>
+              <div class="status" id="indicators"></div>
+            </div>
           </div>
         </div>
       </header>

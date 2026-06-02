@@ -1,307 +1,223 @@
-# AGENTS.md - Developer Guide for Luci-Theme-Fluent
+# AGENTS.md - Developer Guide for luci-theme-fluent
 
 ## Project Overview
 
-**Luci-Theme-Fluent** is an independent FluentUI theme for OpenWrt LuCI, built with modern tooling (SCSS, ucode templates) and designed for maintainability and performance.
+**luci-theme-fluent** is a FluentUI 2 theme for OpenWrt LuCI, part of the `luci-theme-argon` monorepo. Built with SCSS, ucode templates, and CSS custom properties for full theming support (light/dark/auto).
+
+**Repo**: `LazuliKao/luci-theme-argon` · **Branch**: `openwrt-24.10`  
+**Targets**: OpenWrt 24.10.7 (opkg/ipk), OpenWrt 25.12.4 (apk)
+
+## Monorepo Structure
+
+```
+luci-theme-argon/
+├── luci-theme-argon/           # Original Argon theme (Lua templates)
+├── luci-theme-fluent/          # FluentUI theme (ucode templates) ← YOU ARE HERE
+├── luci-app-argon-config/      # Argon config app
+├── luci-app-fluent-config/     # Fluent config app (UCI-based)
+├── .github/workflows/          # CI/CD pipeline
+│   ├── ci.yml                  # SCSS build + lint + matrix SDK builds
+│   ├── release.yml             # Release workflow
+│   └── build.sh                # SDK download + compile script
+└── prompts.md                  # FluentUI design specs & implementation notes
+```
 
 ## Development Setup
 
 ### Prerequisites
-
 - Node.js >= 18
-- pnpm (package manager)
-- OpenWrt SDK (for building packages)
+- pnpm 10+ (`npm i -g pnpm`)
 
-### Installation
-
+### Quick Start
 ```bash
-# Clone the repository
-git clone https://github.com/your-org/luci-theme-fluent.git
 cd luci-theme-fluent
-
-# Install dependencies
-pnpm install
-
-# Build CSS
-pnpm run build
-
-# Watch for changes
-pnpm run watch
+pnpm install          # Install deps (sass, sass-lint)
+pnpm run build        # Compile SCSS → fluent.css
+pnpm run watch        # Auto-rebuild on changes
+pnpm run lint         # SCSS lint check
 ```
 
 ### Build Commands
+| Command | Action |
+|---------|--------|
+| `pnpm run build` | Compile `scss/fluent.scss` → `htdocs/luci-static/fluent/css/fluent.css` |
+| `pnpm run build:min` | Minified build (compressed) |
+| `pnpm run watch` | Watch mode with auto-rebuild |
+| `pnpm run lint` | Run sass-lint |
 
-```bash
-# Build CSS
-pnpm run build
-
-# Build minified CSS
-pnpm run build:min
-
-# Watch mode (auto-rebuild on changes)
-pnpm run watch
-
-# Lint SCSS
-pnpm run lint
-
-# Run tests
-pnpm test
-```
-
-## Project Structure
+## Project Structure (luci-theme-fluent)
 
 ```
 luci-theme-fluent/
-├── scss/                       # SCSS source files
-│   ├── _variables.scss         # Design tokens
-│   ├── _mixins.scss            # Reusable mixins
-│   ├── _base.scss              # Base styles
-│   ├── components/             # Component partials
-│   ├── layouts/                # Layout styles
-│   ├── themes/                 # Theme variations
-│   └── fluent.scss             # Main entry point
-├── htdocs/luci-static/fluent/  # Compiled output
-├── ucode/template/themes/fluent/ # ucode templates
-├── root/                       # OpenWrt package files
-├── package.json                # Build tooling
-├── Makefile                    # OpenWrt build
-├── DESIGN.md                   # Architecture docs
-└── AGENTS.md                   # This file
+├── scss/
+│   ├── fluent.scss              # Entry point (27 @use imports)
+│   ├── _variables.scss          # CSS custom properties / design tokens
+│   ├── _mixins.scss             # Reusable SCSS mixins
+│   ├── _base.scss               # Reset, typography, animations
+│   ├── components/              # 20 component partials
+│   │   ├── _buttons.scss        # FluentUI button variants
+│   │   ├── _inputs.scss         # Text/number/email inputs
+│   │   ├── _textarea.scss       # Textarea
+│   │   ├── _select.scss         # Select dropdowns
+│   │   ├── _checkboxes.scss     # Switch + checkbox (FluentUI style)
+│   │   ├── _tables.scss         # Data tables with row styling
+│   │   ├── _cards.scss          # Card surfaces
+│   │   ├── _tabs.scss           # Tab navigation (.cbi-tabmenu, .tabs)
+│   │   ├── _navigation.scss     # Main nav
+│   │   ├── _dropdown.scss       # Dropdown menus (.cbi-dropdown)
+│   │   ├── _dynlist.scss        # Dynamic list inputs
+│   │   ├── _password.scss       # Password toggle groups
+│   │   ├── _modals.scss         # Modal dialogs
+│   │   ├── _progress.scss       # Progress bars
+│   │   ├── _scrollbars.scss     # Custom scrollbars
+│   │   ├── _errors.scss         # Error/alert messages
+│   │   ├── _cbi-forms.scss      # CBI section/value/map layouts
+│   │   ├── _cbi-dialogs.scss    # UCI dialog/change-list
+│   │   ├── _cbi-network.scss    # Network badges/status tables
+│   │   └── _cbi-widgets.scss    # Tooltip/progressbar/validation/file-upload
+│   ├── layouts/
+│   │   ├── _login.scss          # Login page layout
+│   │   ├── _sidebar.scss        # Sidebar navigation
+│   │   └── _header.scss         # Top header bar
+│   └── themes/
+│       ├── _light.scss          # Light theme variables
+│       └── _dark.scss           # Dark theme variables
+├── htdocs/luci-static/fluent/   # Compiled output + static assets
+│   ├── css/fluent.css           # Compiled CSS (~176 KB)
+│   ├── background/              # User-uploaded backgrounds
+│   ├── fonts/                   # Self-contained fonts
+│   ├── icon/                    # Favicons & app icons
+│   └── img/                     # Logo & placeholder images
+├── ucode/template/themes/fluent/ # ucode templates (6 files)
+│   ├── header.ut                # Main page header
+│   ├── footer.ut                # Main page footer
+│   ├── header_login.ut          # Login page header
+│   ├── footer_login.ut          # Login page footer
+│   ├── out_header_login.ut      # Login header wrapper
+│   └── sysauth.ut               # Login/auth page
+├── root/etc/uci-defaults/
+│   └── luci-fluent              # Theme registration script
+├── Makefile                     # OpenWrt package definition
+├── package.json                 # Build tooling
+├── DESIGN.md                    # Architecture docs
+└── AGENTS.md                    # This file
 ```
 
 ## Coding Standards
 
-### SCSS Guidelines
+### SCSS Rules
+1. **All colors/spacing via CSS custom properties** — defined in `_variables.scss`, never hardcoded
+2. **Component-based** — one partial per component in `scss/components/`
+3. **No `!important`** — unless overriding `cascade.css` (then document why)
+4. **BEM naming** — `.block__element--modifier`
+5. **Max 3 levels nesting**
+6. **Mobile-first** — `min-width` media queries
+7. **Dark mode via variables** — themes switch CSS vars, not separate files
 
-1. **Use Variables**: All colors, spacing, and typography should use variables from `_variables.scss`
-2. **Component-Based**: Each component gets its own partial file
-3. **No `!important`**: Self-contained styles, no override layer
-4. **BEM Naming**: Use Block-Element-Modifier naming convention
-5. **Nesting Limit**: Max 3 levels of nesting
-6. **Mobile-First**: Use `min-width` media queries
-
-```scss
-// Good
-.card {
-  &__header {
-    background: var(--fluent-bg);
-  }
-  
-  &__title {
-    font-size: 1.25rem;
-  }
-  
-  &--highlighted {
-    border-left: 3px solid var(--fluent-primary);
-  }
-}
-
-// Bad
-.card .card-header .card-title {
-  font-size: 1.25rem !important;
-}
-```
-
-### ucode Template Guidelines
-
-1. **Use Auto-Available Globals**: `theme`, `media`, `resource`, `node`, `dispatcher`, `version`, `ctx`
-2. **Import Only When Needed**: Use `import { ... } from 'module';`
-3. **Escape Output**: Use `entityencode()` for user content
-4. **Comment Blocks**: Use `{# ... #}` for comments
-
-```ut
-{# Good #}
-{% 
-  import { cursor } from 'uci';
-  let cfg = cursor();
-  let primary = cfg.get_first('fluent', 'global', 'primary') || '#0078d4';
-%}
-<link rel="stylesheet" href="{{ media }}/css/fluent.css">
-
-{# Bad #}
-<%
-  local uci = require('luci.model.uci').cursor()
-  local primary = uci:get_first('fluent', 'global', 'primary') or '#0078d4'
-%>
-<link rel="stylesheet" href="<%=media%>/css/fluent.css">
-```
-
-### JavaScript Guidelines
-
-1. **LuCI Module System**: Use `baseclass.extend` or `view.extend`
-2. **Minimal Dependencies**: Only sidebar navigation (menu-fluent.js)
-3. **ES6+ Syntax**: Use modern JavaScript features
-4. **JSDoc Comments**: Document all functions and classes
-
-```javascript
-// Good
-'use strict';
-'require baseclass';
-
-return baseclass.extend({
-  title: _('Fluent Navigation'),
-  
-  load: function() {
-    // Implementation
-  }
-});
-```
-
-## Component Development
+### ucode Template Rules
+1. **Use modern ucode syntax** — `{% %}` for code, `{{ }}` for output, `{# #}` for comments
+2. **Auto-available globals**: `theme`, `media`, `resource`, `node`, `dispatcher`, `version`, `ctx`
+3. **UCI access via `import { cursor } from 'uci'`**
+4. **Escape user content**: `entityencode()` or `pcdata()`
+5. **System info via ubus**: `ubus.call('system', 'board')`
+6. **File ops via `fs` module**: `import { access, glob } from 'fs'`
 
 ### Adding a New Component
+1. Create `scss/components/_new.scss`
+2. Add `@use 'components/new';` to `scss/fluent.scss`
+3. Add CSS custom properties to `_variables.scss` if needed
+4. Test in both light and dark modes
+5. Run `pnpm run build` to verify compilation
 
-1. Create a new partial in `scss/components/`
-2. Import it in `scss/fluent.scss`
-3. Add variables to `_variables.scss` if needed
-4. Create corresponding ucode template if needed
-5. Update documentation
+## UCI Configuration
 
-```scss
-// scss/components/_new-component.scss
-.new-component {
-  background: var(--fluent-bg);
-  padding: 1rem;
-  
-  &__element {
-    color: var(--fluent-text);
-  }
-}
-```
-
-### Modifying Existing Components
-
-1. Find the component partial in `scss/components/`
-2. Make changes following coding standards
-3. Test in both light and dark modes
-4. Update documentation if behavior changes
-
-## Theming
-
-### CSS Custom Properties
-
-All theming uses CSS custom properties defined in `_variables.scss`:
-
-```scss
-:root {
-  // Primary
-  --fluent-primary: #0078d4;
-  --fluent-primary-hover: #106ebe;
-  
-  // Background
-  --fluent-bg: #ffffff;
-  --fluent-bg-hover: #f3f2f1;
-  
-  // Text
-  --fluent-text: #323130;
-  --fluent-text-secondary: #605e5c;
-}
-```
-
-### Dark Mode
-
-Dark mode uses media query override:
-
-```scss
-@media (prefers-color-scheme: dark) {
-  :root {
-    --fluent-bg: #1b1b1b;
-    --fluent-text: #f3f2f1;
-  }
-}
-```
-
-### UCI Configuration
-
-Theme options are configured via UCI:
+Theme settings are in `/etc/config/fluent`:
 
 ```bash
-# Set primary color
-uci set fluent.global.primary='#0078d4'
-
-# Set dark mode
-uci set fluent.global.mode='dark'
-
-# Apply changes
+uci set fluent.global.mode='dark'           # normal|light|dark
+uci set fluent.global.primary='#0078D4'     # Light accent color
+uci set fluent.global.dark_primary='#4DA6FF' # Dark accent color
+uci set fluent.global.font_weight='400'     # 300-700
+uci set fluent.global.blur='15'             # Login blur radius (px)
+uci set fluent.global.transparency='0.92'   # Login card opacity
 uci commit fluent
 ```
 
-## Testing
+Full config options: see `luci-app-fluent-config` (8 sections: mode, colors, typography, layout, cards, animations, login, advanced).
 
-### Manual Testing
+## CI/CD Pipeline
 
-1. Build the theme: `pnpm run build`
-2. Install on OpenWrt device
-3. Test in LuCI web interface
-4. Verify light and dark modes
-5. Test responsive design
+**Trigger**: Push/PR to `openwrt-24.10`
 
-### Visual Regression Testing
+### Jobs (all must pass)
+1. **SCSS Build Validation** — `pnpm install && pnpm run build`, verifies `fluent.css` exists
+2. **SCSS Lint** — `pnpm run lint` (non-blocking)
+3. **OpenWrt SDK Build (24.10.7)** — Downloads SDK, builds `.ipk` packages
+4. **OpenWrt SDK Build (25.12.4)** — Downloads SDK, builds `.apk` packages
 
-```bash
-# Take screenshots of key pages
-# Compare with baseline images
-# Flag any visual changes
+### Build Script (`build.sh`)
+- Downloads SDK from `https://downloads.openwrt.org/releases/{version}/targets/x86/64/`
+- Auto-discovers SDK tarball name (handles gcc version changes)
+- HTTP 200 verification before download
+- Builds all 4 packages: `luci-theme-fluent`, `luci-theme-argon`, `luci-app-fluent-config`, `luci-app-argon-config`
+- Output: `${HOME}/builder/output/` (.ipk or .apk)
+
+### Release Workflow
+Push a tag → matrix build for both SDK versions → publish artifacts.
+
+## Design Tokens (Key CSS Variables)
+
+```scss
+// Colors
+--fluent-primary: #0078D4;       // Accent
+--fluent-bg: #ffffff;            // Page background
+--fluent-bg-card: #f9f9f9;      // Card surface
+--fluent-text: #242424;          // Body text
+--fluent-border: #e0e0e0;       // Borders
+
+// Spacing (4px grid)
+--fluent-spacing-xs: 4px;
+--fluent-spacing-sm: 8px;
+--fluent-spacing-md: 16px;
+--fluent-spacing-lg: 24px;
+--fluent-spacing-xl: 32px;
+
+// Components
+--fluent-radius-sm: 4px;        // Standard radius
+--fluent-input-height: 32px;    // Input/button height
+--fluent-font-size-md: 14px;    // Base font size
 ```
 
-## Deployment
+Full token list: `scss/_variables.scss` (249 lines)
 
-### Building Package
+## FluentUI 2 Component Specs
 
-```bash
-# In OpenWrt SDK
-make package/luci-theme-fluent/compile
-make package/luci-theme-fluent/install
-```
+| Component | Height | Radius | Key Feature |
+|-----------|--------|--------|-------------|
+| Button | 32px | 4px | Subtle/Primary/Danger/Outline variants |
+| Input | 32px | 4px | Bottom focus line (2px blue) |
+| Textarea | 52px min | 4px | Same focus line |
+| Checkbox (table) | 18×18 | 3px | SVG checkmark animation |
+| Switch (form) | 20×40 | 10px | Slide toggle animation |
+| Tab | auto | — | 2px bottom indicator + scaleX ripple |
+| Dropdown | 32px | 4px | Arrow rotation, custom input support |
 
-### Installation
-
-```bash
-# On OpenWrt device
-opkg install luci-theme-fluent_1.0.0_all.ipk
-```
+Reference: `prompts.md` has full FluentUI source links.
 
 ## Troubleshooting
 
-### Common Issues
-
-1. **CSS not loading**: Check `htdocs/luci-static/fluent/css/` exists
-2. **Dark mode not working**: Verify CSS custom properties are defined
-3. **Build errors**: Check SCSS syntax and imports
-4. **Template errors**: Verify ucode syntax and imports
-
-### Debug Mode
-
-```bash
-# Enable debug logging
-uci set fluent.global.debug='1'
-uci commit fluent
-```
-
-## Contributing
-
-### Pull Request Process
-
-1. Fork the repository
-2. Create a feature branch
-3. Make changes following coding standards
-4. Test thoroughly
-5. Update documentation
-6. Submit PR with clear description
-
-### Code Review Checklist
-
-- [ ] Follows SCSS coding standards
-- [ ] No `!important` declarations
-- [ ] Uses CSS custom properties for theming
-- [ ] Works in light and dark modes
-- [ ] Responsive design tested
-- [ ] Documentation updated
-- [ ] No breaking changes
+| Issue | Check |
+|-------|-------|
+| CSS not loading | `htdocs/luci-static/fluent/css/fluent.css` exists? |
+| Dark mode wrong | UCI `mode` set correctly? CSS vars injected? |
+| Build fails | `pnpm install` first, check SCSS syntax with `pnpm run lint` |
+| Template error | ucode syntax: `{% %}` not `<% %>`, `{{ }}` not `<%= %>` |
+| CI SDK fails | Check `build.sh` — SDK URL returns HTTP 200? |
 
 ## Resources
 
-- [FluentUI Design System](https://developer.microsoft.com/en-us/fluentui)
-- [OpenWrt LuCI Documentation](https://openwrt.org/docs/guide-user/luci/luci)
+- [FluentUI 2 Design System](https://developer.microsoft.com/en-us/fluentui)
+- [FluentUI React Source](https://github.com/microsoft/fluentui/tree/master/packages/react-components)
+- [OpenWrt LuCI Docs](https://openwrt.org/docs/guide-user/luci/luci)
 - [ucode Template Syntax](https://openwrt.org/docs/techref/ucode)
 - [SCSS Documentation](https://sass-lang.com/documentation)

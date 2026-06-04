@@ -3,6 +3,7 @@
 // Radius: 8px, Overlay: rgba(0,0,0,0.4)
 // ============================================================
 @use '../mixins' as *;
+@use '../icons' as *;
 
 // Modal overlay
 #modal_overlay {
@@ -84,9 +85,7 @@
     right: var(--fluent-space-lg);
 
     &::before {
-      content: '\00D7';
-      font-size: 20px;
-      line-height: 1;
+      @include fluent-icon-content($fluent-icon-dismiss, 20px);
     }
 
     &:hover {

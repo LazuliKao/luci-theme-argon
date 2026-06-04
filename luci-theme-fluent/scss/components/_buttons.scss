@@ -3,6 +3,7 @@
 // Height: 32px, Radius: 4px, Focus: 2px black outline
 // ============================================================
 @use '../mixins' as *;
+@use '../icons' as *;
 
 // Base .cbi-button applied to all LuCI buttons
 .cbi-button {
@@ -86,8 +87,7 @@
     @include button-secondary;
 
     &::before {
-      content: '\26B2';
-      font-size: var(--fluent-font-size-base);
+      @include fluent-icon-content($fluent-icon-arrow-right, 16px);
     }
   }
 }

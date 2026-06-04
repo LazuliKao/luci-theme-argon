@@ -2,6 +2,7 @@
 // FluentUI 2 Tree/Nav pattern with Win11-inspired styling
 // Aligned with @fluentui/react-nav, @fluentui/react-tree
 @use '../mixins' as *;
+@use '../icons' as *;
 
 // ============================================================
 // SIDEBAR CONTAINER
@@ -302,19 +303,7 @@
         right: var(--fluent-space-sm);
         top: 50%;
         transform: translateY(-50%);
-        font-family: 'argon';
-        font-style: normal;
-        font-weight: normal;
-        font-variant: normal;
-        text-transform: none;
-        line-height: 1;
-        -moz-osx-font-smoothing: grayscale;
-        content: '\e90f';
-        transition: transform var(--fluent-duration-fast) var(--fluent-easing-standard);
-        color: var(--fluent-text-secondary);
-        text-rendering: auto;
-        -webkit-font-smoothing: antialiased;
-        font-size: 14px;
+        @include fluent-icon-content($fluent-icon-chevron-down, 14px);
       }
 
       // Hover state

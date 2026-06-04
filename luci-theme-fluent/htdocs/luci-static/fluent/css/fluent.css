@@ -1,4 +1,3 @@
-@charset "UTF-8";
 :root {
   --fluent-primary: #0078d4;
   --fluent-primary-hover: #106ebe;
@@ -824,8 +823,15 @@ div[id=view] > .spinning::before {
   border-color: var(--fluent-btn-secondary-border-active);
 }
 .cbi-button.cbi-button-find::before {
-  content: "⚲";
-  font-size: var(--fluent-font-size-base);
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M10.8371 3.13074C10.6332 2.94456 10.3169 2.95895 10.1307 3.16289C9.94456 3.36683 9.95895 3.68309 10.1629 3.86927L16.3307 9.5H2.5C2.22386 9.5 2 9.72386 2 10C2 10.2761 2.22386 10.5 2.5 10.5H16.3279L10.1629 16.1281C9.95895 16.3143 9.94456 16.6305 10.1307 16.8345C10.3169 17.0384 10.6332 17.0528 10.8371 16.8666L17.7535 10.5526C17.8934 10.4248 17.9732 10.2573 17.993 10.0841C17.9976 10.0568 18 10.0287 18 10C18 9.97313 17.9979 9.94675 17.9938 9.92103C17.9756 9.74512 17.8955 9.57446 17.7535 9.44478L10.8371 3.13074Z' fill='%23212121'/></svg>");
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .cbi-button svg,
@@ -1348,9 +1354,15 @@ input[type=search]::-webkit-search-cancel-button {
 }
 .modal .modal-close::before,
 .modal .close::before {
-  content: "×";
-  font-size: 20px;
-  line-height: 1;
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M4.08859 4.21569L4.14645 4.14645C4.32001 3.97288 4.58944 3.9536 4.78431 4.08859L4.85355 4.14645L10 9.293L15.1464 4.14645C15.32 3.97288 15.5894 3.9536 15.7843 4.08859L15.8536 4.14645C16.0271 4.32001 16.0464 4.58944 15.9114 4.78431L15.8536 4.85355L10.707 10L15.8536 15.1464C16.0271 15.32 16.0464 15.5894 15.9114 15.7843L15.8536 15.8536C15.68 16.0271 15.4106 16.0464 15.2157 15.9114L15.1464 15.8536L10 10.707L4.85355 15.8536C4.67999 16.0271 4.41056 16.0464 4.21569 15.9114L4.14645 15.8536C3.97288 15.68 3.9536 15.4106 4.08859 15.2157L4.14645 15.1464L9.293 10L4.14645 4.85355C3.97288 4.67999 3.9536 4.41056 4.08859 4.21569L4.14645 4.14645L4.08859 4.21569Z' fill='%23212121'/></svg>");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .modal .modal-close:hover,
 .modal .close:hover {
@@ -3859,14 +3871,15 @@ code::-webkit-scrollbar-thumb:hover {
   white-space: nowrap;
 }
 .cbi-dynlist > .item::after {
-  content: "×";
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  content: "";
+  display: inline-block;
   width: 16px;
   height: 16px;
-  font-size: 14px;
-  line-height: 1;
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M4.08859 4.21569L4.14645 4.14645C4.32001 3.97288 4.58944 3.9536 4.78431 4.08859L4.85355 4.14645L10 9.293L15.1464 4.14645C15.32 3.97288 15.5894 3.9536 15.7843 4.08859L15.8536 4.14645C16.0271 4.32001 16.0464 4.58944 15.9114 4.78431L15.8536 4.85355L10.707 10L15.8536 15.1464C16.0271 15.32 16.0464 15.5894 15.9114 15.7843L15.8536 15.8536C15.68 16.0271 15.4106 16.0464 15.2157 15.9114L15.1464 15.8536L10 10.707L4.85355 15.8536C4.67999 16.0271 4.41056 16.0464 4.21569 15.9114L4.14645 15.8536C3.97288 15.68 3.9536 15.4106 4.08859 15.2157L4.14645 15.1464L9.293 10L4.14645 4.85355C3.97288 4.67999 3.9536 4.41056 4.08859 4.21569L4.14645 4.14645L4.08859 4.21569Z' fill='%23212121'/></svg>");
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
   color: var(--fluent-text-secondary);
   cursor: pointer;
   border-radius: var(--fluent-radius-sm);
@@ -4988,9 +5001,15 @@ select:disabled {
   line-height: 20px;
 }
 .login-page .login-container .login-form .form-login .errorbox::before {
-  content: "⚠";
-  font-size: 16px;
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
   flex-shrink: 0;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M7.37013 3.55566C8.50949 1.48158 11.4895 1.48168 12.629 3.55566L18.1251 13.5605C19.2227 15.5597 17.7759 18.0046 15.4952 18.0049H4.5039C2.22288 18.0048 0.776902 15.5598 1.87498 13.5605L7.37013 3.55566ZM11.753 4.03711C10.9934 2.65441 9.00677 2.65456 8.24709 4.03711L2.75096 14.042C2.01908 15.3748 2.98329 17.0048 4.5039 17.0049H15.4952C17.0156 17.0046 17.9798 15.3747 17.2481 14.042L11.753 4.03711ZM10 12.75C10.4142 12.7501 10.75 13.0858 10.75 13.5C10.75 13.9141 10.4141 14.2499 10 14.25C9.58587 14.25 9.2501 13.9141 9.25003 13.5C9.25003 13.0858 9.58582 12.75 10 12.75ZM10 6.5C10.2761 6.50007 10.5 6.7239 10.5 7V11C10.5 11.276 10.2761 11.4999 10 11.5C9.72394 11.5 9.50011 11.2761 9.50003 11V7C9.50003 6.72386 9.72389 6.5 10 6.5Z' fill='%23212121'/></svg>");
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .login-page .login-container .login-form .form-login .input-container {
   display: flex;
@@ -5009,8 +5028,10 @@ select:disabled {
   left: 14px;
   top: 50%;
   transform: translateY(-50%);
-  font-family: "argon";
-  font-size: 18px;
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
   color: var(--fluent-text-secondary);
   z-index: 2;
   pointer-events: none;
@@ -5020,10 +5041,16 @@ select:disabled {
   color: var(--fluent-primary);
 }
 .login-page .login-container .login-form .form-login .input-group.user-icon::before {
-  content: "\e971";
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2ZM7 6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6C13 7.65685 11.6569 9 10 9C8.34315 9 7 7.65685 7 6ZM5.00873 11C3.90315 11 3 11.8869 3 13C3 14.6912 3.83281 15.9663 5.13499 16.7966C6.41697 17.614 8.14526 18 10 18C11.8547 18 13.583 17.614 14.865 16.7966C16.1672 15.9663 17 14.6912 17 13C17 11.8956 16.1045 11 15 11L5.00873 11ZM4 13C4 12.4467 4.44786 12 5.00873 12L15 12C15.5522 12 16 12.4478 16 13C16 14.3088 15.3777 15.2837 14.3274 15.9534C13.2568 16.636 11.7351 17 10 17C8.26489 17 6.74318 16.636 5.67262 15.9534C4.62226 15.2837 4 14.3088 4 13Z' fill='%23212121'/></svg>");
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .login-page .login-container .login-form .form-login .input-group.pass-icon::before {
-  content: "\e910";
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M10 1C12.2091 1 14 2.79086 14 5V7.0498C15.1411 7.28142 16 8.29051 16 9.5V15.5C16 16.8807 14.8807 18 13.5 18H6.5C5.11929 18 4 16.8807 4 15.5V9.5C4 8.29051 4.85886 7.28142 6 7.0498V5C6 2.79086 7.79086 1 10 1ZM6.5 8C5.67157 8 5 8.67157 5 9.5V15.5C5 16.3284 5.67157 17 6.5 17H13.5C14.3284 17 15 16.3284 15 15.5V9.5C15 8.67157 14.3284 8 13.5 8H6.5ZM10 11.5C10.5523 11.5 11 11.9477 11 12.5C11 13.0523 10.5523 13.5 10 13.5C9.44772 13.5 9 13.0523 9 12.5C9 11.9477 9.44772 11.5 10 11.5ZM10 2C8.34315 2 7 3.34315 7 5V7H13V5C13 3.34315 11.6569 2 10 2Z' fill='%23212121'/></svg>");
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .login-page .login-container .login-form .form-login .input-group input,
 .login-page .login-container .login-form .form-login .input-group .cbi-input-user,
@@ -5512,19 +5539,15 @@ select:disabled {
   right: var(--fluent-space-sm);
   top: 50%;
   transform: translateY(-50%);
-  font-family: "argon";
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -moz-osx-font-smoothing: grayscale;
-  content: "\e90f";
-  transition: transform var(--fluent-duration-fast) var(--fluent-easing-standard);
-  color: var(--fluent-text-secondary);
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M15.8537 7.64582C16.0493 7.84073 16.0499 8.15731 15.855 8.35292L10.39 13.8374C10.1751 14.0531 9.82574 14.0531 9.6108 13.8374L4.14582 8.35292C3.9509 8.15731 3.95147 7.84073 4.14708 7.64582C4.34269 7.4509 4.65927 7.45147 4.85418 7.64708L10.0004 12.8117L15.1466 7.64708C15.3415 7.45147 15.6581 7.4509 15.8537 7.64582Z' fill='%23212121'/></svg>");
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .main-left .nav li .menu:hover {
   cursor: pointer;

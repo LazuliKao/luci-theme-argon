@@ -70,6 +70,65 @@
   font-size: var(--fluent-font-size-md);
   font-weight: var(--fluent-font-weight-semibold);
   line-height: var(--fluent-line-height-tight);
+
+  h3 {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+
+    &:has(.label[data-clickable="true"]) {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      gap: var(--fluent-space-sm) !important;
+
+      .label[data-clickable="true"] {
+        order: -1 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 20px !important;
+        height: 20px !important;
+        min-width: unset !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        color: transparent !important;
+        font-size: 0 !important;
+        cursor: pointer;
+        position: relative;
+        border-radius: var(--fluent-radius-sm);
+        transition: background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+
+        &:hover {
+          background-color: var(--fluent-bg-hover) !important;
+        }
+
+        &::before {
+          content: '';
+          display: block;
+          width: 6px;
+          height: 6px;
+          border-right: 1.5px solid var(--fluent-text-secondary);
+          border-bottom: 1.5px solid var(--fluent-text-secondary);
+          transform: rotate(-45deg) translate(-1px, -1px); // Points right (>) when collapsed
+          transition: transform var(--fluent-duration-normal) var(--fluent-easing-standard),
+                      border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+        }
+
+        &:hover::before {
+          border-color: var(--fluent-text);
+        }
+
+        &[data-style="inactive"]::before {
+          transform: rotate(45deg) translate(0px, -1px); // Points down (v) when expanded
+        }
+      }
+    }
+  }
 }
 
 .cbi-section-descr {

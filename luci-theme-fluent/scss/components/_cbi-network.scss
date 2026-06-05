@@ -125,7 +125,51 @@ td > .ifacebadge,
   min-width: 0;
   height: 100%;
   padding: 0;
-  overflow: hidden;
+  overflow: visible;
+
+  // Port icon images
+  > .ifacebox-body img {
+    display: block;
+    margin: 0 auto var(--fluent-space-sm);
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+  }
+
+  // Zone badge stripe inside ifacebox (cbi-tooltip-container)
+  > .ifacebox-head.cbi-tooltip-container {
+    padding: 0;
+    border-bottom: none;
+    background: none;
+
+    > .zonebadge {
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    // Position tooltip relative to ifacebox, not the stripe
+    > .cbi-tooltip {
+      left: 0;
+      right: 0;
+      transform: translateY(var(--fluent-space-xs));
+      white-space: normal;
+    }
+
+    &:hover > .cbi-tooltip:not(:empty) {
+      transform: translateY(0);
+    }
+  }
+
+  // Traffic stats body
+  > .ifacebox-body:last-child {
+    font-size: var(--fluent-font-size-sm);
+
+    .cbi-tooltip-container {
+      display: block;
+    }
+  }
 }
 
 .ifacebox-head {
@@ -151,9 +195,11 @@ td > .ifacebadge,
 .ifacebox-body {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--fluent-space-sm);
-  padding: var(--fluent-space-lg);
+  padding: var(--fluent-space-md) var(--fluent-space-lg);
   color: var(--fluent-text-secondary);
+  text-align: center;
 }
 
 .network-status-table {

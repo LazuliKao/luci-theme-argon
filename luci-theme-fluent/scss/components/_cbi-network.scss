@@ -123,6 +123,8 @@ td > .ifacebadge,
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  flex: 1;
   min-width: 0;
   height: 100%;
   padding: 0;
@@ -132,8 +134,8 @@ td > .ifacebadge,
     z-index: 1;
   }
 
-  // Port icon images
-  > .ifacebox-body img {
+  // Port icon images (direct children only, e.g. in Portweaver)
+  > .ifacebox-body > img {
     display: block;
     margin: 0 auto var(--fluent-space-xs);
     width: 48px;
@@ -167,12 +169,23 @@ td > .ifacebadge,
     }
   }
 
-  // Traffic stats body
+  // Traffic stats body (Interfaces list)
   > .ifacebox-body:last-child {
     font-size: var(--fluent-font-size-sm);
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--fluent-space-xs);
 
     .cbi-tooltip-container {
-      display: block;
+      display: inline-flex;
+      align-items: center;
+      
+      img.middle {
+        width: 20px;
+        height: 20px;
+        margin: 0 2px;
+      }
     }
   }
 }

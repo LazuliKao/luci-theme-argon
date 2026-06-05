@@ -132,9 +132,9 @@
       }
     }
 
-    // FluentUI focus indicator (2px black outline)
+    // FluentUI focus indicator (2px outline)
     &:focus-visible {
-      outline: 2px solid var(--fluent-black);
+      outline: 2px solid var(--fluent-focus-color);
       outline-offset: -2px;
     }
 
@@ -364,7 +364,7 @@
 
       // Focus indicator
       &:focus-visible {
-        outline: 2px solid var(--fluent-black);
+        outline: 2px solid var(--fluent-focus-color);
         outline-offset: -2px;
       }
 

@@ -107,7 +107,7 @@ ul.cbi-tabmenu {
       
       // Focus indicator
       &:focus-visible {
-        outline: 2px solid var(--fluent-black);
+        outline: 2px solid var(--fluent-focus-color);
         outline-offset: -2px;
       }
     }
@@ -248,7 +248,7 @@ ul.cbi-tabmenu {
         
         // Focus indicator
         &:focus-visible {
-          outline: 2px solid var(--fluent-black);
+          outline: 2px solid var(--fluent-focus-color);
           outline-offset: -2px;
         }
       }

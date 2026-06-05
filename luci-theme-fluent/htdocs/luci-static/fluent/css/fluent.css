@@ -283,7 +283,7 @@ textarea {
 }
 
 :focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 
@@ -537,7 +537,7 @@ div[id=view] > *:not(.spinning) {
   pointer-events: none;
 }
 .cbi-button:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .cbi-button.cbi-button-save, .cbi-button.cbi-button-apply, .cbi-button.cbi-button-positive {
@@ -565,7 +565,7 @@ div[id=view] > *:not(.spinning) {
   pointer-events: none;
 }
 .cbi-button.cbi-button-save:focus-visible, .cbi-button.cbi-button-apply:focus-visible, .cbi-button.cbi-button-positive:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .cbi-button.cbi-button-save, .cbi-button.cbi-button-apply, .cbi-button.cbi-button-positive {
@@ -606,7 +606,7 @@ div[id=view] > *:not(.spinning) {
   pointer-events: none;
 }
 .cbi-button.cbi-button-add:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .cbi-button.cbi-button-add {
@@ -647,7 +647,7 @@ div[id=view] > *:not(.spinning) {
   pointer-events: none;
 }
 .cbi-button.cbi-button-remove:focus-visible, .cbi-button.cbi-button-negative:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .cbi-button.cbi-button-remove, .cbi-button.cbi-button-negative {
@@ -688,7 +688,7 @@ div[id=view] > *:not(.spinning) {
   pointer-events: none;
 }
 .cbi-button.cbi-button-neutral:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .cbi-button.cbi-button-neutral {
@@ -729,7 +729,7 @@ div[id=view] > *:not(.spinning) {
   pointer-events: none;
 }
 .cbi-button.cbi-button-link:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .cbi-button.cbi-button-link {
@@ -775,7 +775,7 @@ div[id=view] > *:not(.spinning) {
   pointer-events: none;
 }
 .cbi-button.cbi-button-up:focus-visible, .cbi-button.cbi-button-down:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .cbi-button.cbi-button-up, .cbi-button.cbi-button-down {
@@ -841,7 +841,7 @@ div[id=view] > *:not(.spinning) {
   pointer-events: none;
 }
 .cbi-button.cbi-button-find:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .cbi-button.cbi-button-find {
@@ -1277,7 +1277,7 @@ div.th {
   color: var(--fluent-text);
 }
 .main-left .nav > li > a:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: -2px;
 }
 .main-left .nav > li.active > a, .main-left .nav > li.slide-active > a {
@@ -1448,7 +1448,7 @@ body.modal-overlay-active #modal_overlay {
 }
 .modal .modal-close:focus-visible,
 .modal .close:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .modal .modal-close,
@@ -1913,7 +1913,7 @@ body.modal-overlay-active #modal_overlay {
   pointer-events: none;
 }
 .cbi-page-actions .cbi-button-apply:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .cbi-page-actions .cbi-button-apply {
@@ -1954,7 +1954,7 @@ body.modal-overlay-active #modal_overlay {
   pointer-events: none;
 }
 .cbi-page-actions .cbi-button-save:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .cbi-page-actions .cbi-button-save {
@@ -2039,7 +2039,7 @@ body.modal-overlay-active #modal_overlay {
 .alert .cbi-button:focus-visible,
 .alert-message .btn:focus-visible,
 .alert-message .cbi-button:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .alert .btn,
@@ -2586,7 +2586,7 @@ select.cbi-input-invalid {
   pointer-events: none;
 }
 .cbi-input-file::file-selector-button:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .cbi-input-file::file-selector-button {
@@ -2651,7 +2651,7 @@ select.cbi-input-invalid {
   pointer-events: none;
 }
 .cbi-image-button:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .cbi-image-button {
@@ -2846,7 +2846,7 @@ ul.cbi-tabmenu > li > a:hover {
   background-color: var(--fluent-bg-hover);
 }
 ul.cbi-tabmenu > li > a:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: -2px;
 }
 ul.cbi-tabmenu > li.cbi-tab > a, ul.cbi-tabmenu > li.active > a {
@@ -2966,7 +2966,7 @@ ul.cbi-tabmenu > li.cbi-tab-disabled > a:hover {
 }
 #tabmenu > ul.tabs > li > a:focus-visible,
 .tabmenu > ul.tabs > li > a:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: -2px;
 }
 #tabmenu > ul.tabs > li.active > a,
@@ -3076,7 +3076,7 @@ input[type=checkbox]:hover:not(:disabled):checked {
   background-image: none !important;
 }
 input[type=checkbox]:focus, input[type=checkbox]:focus-visible {
-  outline: 2px solid var(--fluent-black) !important;
+  outline: 2px solid var(--fluent-focus-color) !important;
   outline-offset: 2px !important;
   outline-style: solid !important;
 }
@@ -3658,7 +3658,7 @@ input[type=radio]:hover {
   border-color: var(--fluent-checkbox-hover-border);
 }
 input[type=radio]:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 input[type=radio]:disabled {
@@ -4258,7 +4258,7 @@ code::-webkit-scrollbar-thumb:hover {
 .control-group:has(> input.cbi-input-password) .cbi-button:focus-visible,
 .control-group:has(> input.cbi-input-password) .cbi-button-neutral:focus-visible,
 .control-group:has(> input.cbi-input-password) button.cbi-button:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .control-group:has(> input.cbi-input-password) .cbi-button,
@@ -4360,7 +4360,7 @@ code::-webkit-scrollbar-thumb:hover {
   pointer-events: none;
 }
 .password-input .toggle-password:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .password-input .toggle-password {
@@ -5905,7 +5905,7 @@ body.login-page {
   color: var(--fluent-text);
 }
 .main-left .nav > li > a:first-child:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: -2px;
 }
 .main-left .nav > li > a:first-child.active {
@@ -6077,7 +6077,7 @@ body.login-page {
   color: var(--fluent-text);
 }
 .main-left .nav li .menu:focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: -2px;
 }
 .main-left .nav li .menu.active {

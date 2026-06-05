@@ -157,7 +157,7 @@ textarea {
 // FOCUS (FluentUI: 2px black outline, 2px offset)
 // ============================================================
 :focus-visible {
-  outline: 2px solid var(--fluent-black);
+  outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 

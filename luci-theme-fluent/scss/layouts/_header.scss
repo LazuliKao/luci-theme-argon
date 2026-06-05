@@ -1,6 +1,7 @@
 // Layouts - Header
 // FluentUI 2 Toolbar pattern with brand, actions, mobile toggle
 @use '../mixins' as *;
+@use '../icons' as *;
 
 // ============================================================
 // HEADER CONTAINER
@@ -65,8 +66,27 @@
     border-radius: var(--fluent-radius-md);
     transition: background var(--fluent-duration-fast) var(--fluent-easing-standard);
     
+    &::before {
+      @include fluent-icon-content($fluent-icon-menu, 20px, #323130);
+    }
+
     &:hover {
       background: var(--fluent-bg-hover);
+    }
+
+    // In dark mode or on bg-primary (blue header), icon should be white
+    [data-theme="dark"] &::before {
+      @include fluent-icon($fluent-icon-menu, 20px, #ffffff);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) &::before {
+        @include fluent-icon($fluent-icon-menu, 20px, #ffffff);
+      }
+    }
+
+    .bg-primary &::before {
+      @include fluent-icon($fluent-icon-menu, 20px, #ffffff);
     }
     
     @media (max-width: 768px) {

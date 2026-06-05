@@ -5026,19 +5026,19 @@ body.login-page {
 .login-page .login-container .login-form .brand {
   display: flex !important;
   align-items: center !important;
-  justify-content: flex-start !important;
+  justify-content: center !important;
   margin-bottom: 28px !important;
   gap: 10px !important;
   text-decoration: none !important;
   width: 100% !important;
 }
 .login-page .login-container .login-form .brand .icon {
-  width: 28px !important;
-  height: 28px !important;
+  width: 52px !important;
+  height: 52px !important;
 }
 .login-page .login-container .login-form .brand .brand-text {
   font-family: var(--fluent-font-family) !important;
-  font-size: 15px !important;
+  font-size: 30px !important;
   font-weight: var(--fluent-font-weight-semibold) !important;
   color: var(--fluent-text-secondary) !important;
   margin: 0 !important;
@@ -5048,7 +5048,7 @@ body.login-page {
 .login-page .login-container .login-form .login-account-pill {
   display: inline-flex !important;
   align-items: center !important;
-  align-self: flex-start !important;
+  align-self: center !important;
   max-width: 100% !important;
   min-height: 32px !important;
   margin: -4px 0 20px 0 !important;
@@ -5075,7 +5075,7 @@ body.login-page {
   font-weight: var(--fluent-font-weight-semibold) !important;
   color: var(--fluent-text) !important;
   margin: 0 0 10px 0 !important;
-  text-align: left !important;
+  text-align: center !important;
   line-height: 30px !important;
   border: none !important;
   padding: 0 !important;
@@ -5086,7 +5086,7 @@ body.login-page {
   font-size: 13px !important;
   color: var(--fluent-text-secondary) !important;
   margin: 0 0 24px 0 !important;
-  text-align: left !important;
+  text-align: center !important;
   line-height: 18px !important;
 }
 .login-page .login-container .login-form .form-login {
@@ -5097,49 +5097,35 @@ body.login-page {
 }
 .login-page .login-container .login-form .form-login .errorbox {
   position: relative !important;
-  padding: 12px 16px 12px 40px !important;
-  margin-bottom: 16px !important;
-  border-radius: var(--fluent-radius-md) !important;
+  padding: 4px 0 0 20px !important;
+  margin: 6px 0 0 0 !important;
+  border-radius: 0 !important;
   display: block !important;
   text-align: left !important;
-  background-color: #fdf6f6 !important;
-  border: 1px solid #f5c6cb !important;
-  color: var(--fluent-error) !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #e81123 !important;
   font-family: var(--fluent-font-family) !important;
   font-size: 13px !important;
   font-weight: var(--fluent-font-weight-regular) !important;
-  line-height: 18px !important;
+  line-height: 16px !important;
 }
 .login-page .login-container .login-form .form-login .errorbox::before {
+  display: none !important;
+}
+.login-page .login-container .login-form .form-login .errorbox::after {
   content: "" !important;
   position: absolute !important;
   left: 0 !important;
-  top: 0 !important;
-  bottom: 0 !important;
-  width: 4px !important;
-  border-radius: var(--fluent-radius-md) 0 0 var(--fluent-radius-md) !important;
-  background-color: var(--fluent-error) !important;
-  display: block !important;
-  margin-right: 0 !important;
-  flex-shrink: 0 !important;
-}
-.login-page .login-container .login-form .form-login .errorbox::after {
-  content: "";
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M7.37013 3.55566C8.50949 1.48158 11.4895 1.48168 12.629 3.55566L18.1251 13.5605C19.2227 15.5597 17.7759 18.0046 15.4952 18.0049H4.5039C2.22288 18.0048 0.776902 15.5598 1.87498 13.5605L7.37013 3.55566ZM11.753 4.03711C10.9934 2.65441 9.00677 2.65456 8.24709 4.03711L2.75096 14.042C2.01908 15.3748 2.98329 17.0048 4.5039 17.0049H15.4952C17.0156 17.0046 17.9798 15.3747 17.2481 14.042L11.753 4.03711ZM10 12.75C10.4142 12.7501 10.75 13.0858 10.75 13.5C10.75 13.9141 10.4141 14.2499 10 14.25C9.58587 14.25 9.2501 13.9141 9.25003 13.5C9.25003 13.0858 9.58582 12.75 10 12.75ZM10 6.5C10.2761 6.50007 10.5 6.7239 10.5 7V11C10.5 11.276 10.2761 11.4999 10 11.5C9.72394 11.5 9.50011 11.2761 9.50003 11V7C9.50003 6.72386 9.72389 6.5 10 6.5Z' fill='%23212121'/></svg>");
-  background-size: 16px 16px;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: absolute !important;
-  left: 14px !important;
-  top: 12px !important;
-  width: 16px !important;
-  height: 16px !important;
+  top: 5px !important;
+  width: 14px !important;
+  height: 14px !important;
   display: block !important;
   flex-shrink: 0 !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14z' fill='%23e81123'/%3E%3Cpath d='M8 4a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-1.5 0v-4.5A.75.75 0 0 1 8 4zm0 8.25a.875.875 0 1 1 0-1.75.875.875 0 0 1 0 1.75z' fill='%23ffffff'/%3E%3C/svg%3E") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
 }
 .login-page .login-container .login-form .form-login .input-container {
   display: flex !important;
@@ -5209,6 +5195,27 @@ body.login-page {
   border-color: var(--fluent-border) !important;
   color: var(--fluent-text-disabled) !important;
   cursor: not-allowed !important;
+}
+.login-page .login-container .login-form .form-login .input-group input.cbi-input-invalid,
+.login-page .login-container .login-form .form-login .input-group .cbi-input-user.cbi-input-invalid,
+.login-page .login-container .login-form .form-login .input-group .cbi-input-password.cbi-input-invalid {
+  border-color: #e81123 !important;
+  border-bottom-color: #e81123 !important;
+  background-image: linear-gradient(0deg, #e81123 0%, #e81123 100%) !important;
+}
+.login-page .login-container .login-form .form-login .input-group input.cbi-input-invalid:hover:not(:focus):not(:disabled),
+.login-page .login-container .login-form .form-login .input-group .cbi-input-user.cbi-input-invalid:hover:not(:focus):not(:disabled),
+.login-page .login-container .login-form .form-login .input-group .cbi-input-password.cbi-input-invalid:hover:not(:focus):not(:disabled) {
+  border-color: #e81123 !important;
+  border-bottom-color: #e81123 !important;
+}
+.login-page .login-container .login-form .form-login .input-group input.cbi-input-invalid:focus,
+.login-page .login-container .login-form .form-login .input-group .cbi-input-user.cbi-input-invalid:focus,
+.login-page .login-container .login-form .form-login .input-group .cbi-input-password.cbi-input-invalid:focus {
+  border-color: #e81123 !important;
+  border-bottom-color: #e81123 !important;
+  background-size: 100% 2px !important;
+  box-shadow: 0 0 0 1px #e81123 inset !important;
 }
 .login-page .login-container .login-form .form-login .input-group .border {
   display: none !important;
@@ -5298,6 +5305,33 @@ body.login-page {
     border-color: rgba(255, 255, 255, 0.1) !important;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.24), 0 8px 16px rgba(0, 0, 0, 0.28) !important;
   }
+  :root:not([data-theme=light]) .login-page .login-container .login-form .form-login .errorbox {
+    color: #ff99a4 !important;
+  }
+  :root:not([data-theme=light]) .login-page .login-container .login-form .form-login .errorbox::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14z' fill='%23ff99a4'/%3E%3Cpath d='M8 4a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-1.5 0v-4.5A.75.75 0 0 1 8 4zm0 8.25a.875.875 0 1 1 0-1.75.875.875 0 0 1 0 1.75z' fill='%23292929'/%3E%3C/svg%3E") !important;
+  }
+  :root:not([data-theme=light]) .login-page .login-container .login-form .form-login .input-group input.cbi-input-invalid,
+  :root:not([data-theme=light]) .login-page .login-container .login-form .form-login .input-group .cbi-input-user.cbi-input-invalid,
+  :root:not([data-theme=light]) .login-page .login-container .login-form .form-login .input-group .cbi-input-password.cbi-input-invalid {
+    border-color: #ff99a4 !important;
+    border-bottom-color: #ff99a4 !important;
+    background-image: linear-gradient(0deg, #ff99a4 0%, #ff99a4 100%) !important;
+  }
+  :root:not([data-theme=light]) .login-page .login-container .login-form .form-login .input-group input.cbi-input-invalid:hover:not(:focus):not(:disabled),
+  :root:not([data-theme=light]) .login-page .login-container .login-form .form-login .input-group .cbi-input-user.cbi-input-invalid:hover:not(:focus):not(:disabled),
+  :root:not([data-theme=light]) .login-page .login-container .login-form .form-login .input-group .cbi-input-password.cbi-input-invalid:hover:not(:focus):not(:disabled) {
+    border-color: #ff99a4 !important;
+    border-bottom-color: #ff99a4 !important;
+  }
+  :root:not([data-theme=light]) .login-page .login-container .login-form .form-login .input-group input.cbi-input-invalid:focus,
+  :root:not([data-theme=light]) .login-page .login-container .login-form .form-login .input-group .cbi-input-user.cbi-input-invalid:focus,
+  :root:not([data-theme=light]) .login-page .login-container .login-form .form-login .input-group .cbi-input-password.cbi-input-invalid:focus {
+    border-color: #ff99a4 !important;
+    border-bottom-color: #ff99a4 !important;
+    background-size: 100% 2px !important;
+    box-shadow: 0 0 0 1px #ff99a4 inset !important;
+  }
 }
 [data-theme=dark] .login-page {
   background: radial-gradient(circle at 50% 50%, #171c26 0%, #0b0e14 100%) !important;
@@ -5306,6 +5340,33 @@ body.login-page {
   background: #292929 !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.24), 0 8px 16px rgba(0, 0, 0, 0.28) !important;
+}
+[data-theme=dark] .login-page .login-container .login-form .form-login .errorbox {
+  color: #ff99a4 !important;
+}
+[data-theme=dark] .login-page .login-container .login-form .form-login .errorbox::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14z' fill='%23ff99a4'/%3E%3Cpath d='M8 4a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-1.5 0v-4.5A.75.75 0 0 1 8 4zm0 8.25a.875.875 0 1 1 0-1.75.875.875 0 0 1 0 1.75z' fill='%23292929'/%3E%3C/svg%3E") !important;
+}
+[data-theme=dark] .login-page .login-container .login-form .form-login .input-group input.cbi-input-invalid,
+[data-theme=dark] .login-page .login-container .login-form .form-login .input-group .cbi-input-user.cbi-input-invalid,
+[data-theme=dark] .login-page .login-container .login-form .form-login .input-group .cbi-input-password.cbi-input-invalid {
+  border-color: #ff99a4 !important;
+  border-bottom-color: #ff99a4 !important;
+  background-image: linear-gradient(0deg, #ff99a4 0%, #ff99a4 100%) !important;
+}
+[data-theme=dark] .login-page .login-container .login-form .form-login .input-group input.cbi-input-invalid:hover:not(:focus):not(:disabled),
+[data-theme=dark] .login-page .login-container .login-form .form-login .input-group .cbi-input-user.cbi-input-invalid:hover:not(:focus):not(:disabled),
+[data-theme=dark] .login-page .login-container .login-form .form-login .input-group .cbi-input-password.cbi-input-invalid:hover:not(:focus):not(:disabled) {
+  border-color: #ff99a4 !important;
+  border-bottom-color: #ff99a4 !important;
+}
+[data-theme=dark] .login-page .login-container .login-form .form-login .input-group input.cbi-input-invalid:focus,
+[data-theme=dark] .login-page .login-container .login-form .form-login .input-group .cbi-input-user.cbi-input-invalid:focus,
+[data-theme=dark] .login-page .login-container .login-form .form-login .input-group .cbi-input-password.cbi-input-invalid:focus {
+  border-color: #ff99a4 !important;
+  border-bottom-color: #ff99a4 !important;
+  background-size: 100% 2px !important;
+  box-shadow: 0 0 0 1px #ff99a4 inset !important;
 }
 
 @media screen and (max-width: 576px) {

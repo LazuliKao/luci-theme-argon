@@ -197,6 +197,7 @@ return baseclass.extend({
 	 */
 	__init__: function () {
 		ui.menu.load().then(L.bind(this.render, this));
+		this.setupModalObserver();
 	},
 
 	/**
@@ -465,6 +466,81 @@ return baseclass.extend({
 			scrollbarArea.classList.add('active');
 			darkMask.classList.add('active');
 			this.adjustBrandTextSize();
+		}
+	},
+
+	/**
+	 * Sets up a MutationObserver on document.body to automatically wrap modal content in a scrollable container
+	 */
+	setupModalObserver: function () {
+		const observer = new MutationObserver(() => {
+			if (document.body.classList.contains('modal-overlay-active')) {
+				const overlay = document.getElementById('modal_overlay');
+				if (overlay) {
+					this.wrapModalContent(overlay);
+				}
+			}
+		});
+
+		observer.observe(document.body, {
+			childList: true,
+			attributes: true,
+			attributeFilter: ['class'],
+			subtree: true
+		});
+
+		// Run initially in case a modal is already open
+		if (document.body.classList.contains('modal-overlay-active')) {
+			const overlay = document.getElementById('modal_overlay');
+			if (overlay) {
+				this.wrapModalContent(overlay);
+			}
+		}
+	},
+
+	/**
+	 * Wraps the middle content of a modal inside a dedicated scrollable div (.modal-scroll-body)
+	 * @param {Element} overlay - The modal overlay element containing the modal
+	 */
+	wrapModalContent: function (overlay) {
+		const modal = overlay.querySelector('.modal');
+		if (!modal) return;
+		if (modal.querySelector('.modal-scroll-body')) return; // Already wrapped
+
+		const children = Array.from(modal.childNodes);
+		let header = null;
+		let footer = null;
+		const bodyNodes = [];
+
+		children.forEach((child) => {
+			if (child.nodeType === Node.ELEMENT_NODE) {
+				if (child.tagName === 'H4' || child.classList.contains('modal-header')) {
+					header = child;
+				} else if (child.classList.contains('button-row') || child.classList.contains('modal-footer')) {
+					footer = child;
+				} else if (child.classList.contains('modal-close') || child.classList.contains('close')) {
+					// Keep close button as a direct child of the modal so it stays fixed
+				} else {
+					bodyNodes.push(child);
+				}
+			} else {
+				if (child.textContent.trim() !== '') {
+					bodyNodes.push(child);
+				}
+			}
+		});
+
+		const scrollBody = document.createElement('div');
+		scrollBody.className = 'modal-scroll-body';
+
+		bodyNodes.forEach((node) => {
+			scrollBody.appendChild(node);
+		});
+
+		if (header) {
+			header.after(scrollBody);
+		} else {
+			modal.insertBefore(scrollBody, modal.firstChild);
 		}
 	}
 });

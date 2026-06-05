@@ -1,6 +1,6 @@
 // ============================================================
 // TABLES - FluentUI 2 Table Styles
-// Auto-width columns, compact padding, mobile horizontal scroll
+// Content-based column width, centered cells, mobile scroll
 // ============================================================
 @use '../mixins' as *;
 
@@ -19,7 +19,7 @@
 // LuCI table structure (div-based tables)
 .tr {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   border-bottom: 1px solid var(--fluent-table-border);
   transition: background var(--fluent-duration-fast) var(--fluent-easing-standard);
 
@@ -30,13 +30,17 @@
 
 .td,
 .th {
-  flex: 1 1 0;
-  min-width: 0;
+  flex: 1 1 auto;
   padding: var(--fluent-space-xs) var(--fluent-space-sm);
   font-size: var(--fluent-font-size-base);
   color: var(--fluent-text);
-  word-break: break-word;
   line-height: var(--fluent-line-height-normal);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: var(--fluent-space-xs);
 }
 
 .th {
@@ -73,7 +77,6 @@
 
     .td {
       padding: var(--fluent-space-xs) var(--fluent-space-sm);
-      vertical-align: middle;
     }
   }
 }
@@ -95,8 +98,9 @@
   font-style: italic;
 }
 
-// Table actions column
+// Table actions column — buttons in a row, no wrapping
 .cbi-section-table .cbi-section-actions {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -104,4 +108,12 @@
   padding: var(--fluent-space-xs) var(--fluent-space-sm);
   border-top: none;
   margin-top: 0;
+  white-space: nowrap;
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: var(--fluent-space-xs);
+    flex-wrap: nowrap;
+  }
 }

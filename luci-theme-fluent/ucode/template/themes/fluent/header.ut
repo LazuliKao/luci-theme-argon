@@ -91,7 +91,7 @@
   let card_shadow_value = shadow_map[card_shadow] || shadow_map['small'];
   let brand_name = hostname;
   let page_title = striptags(hostname + (node && node.title ? ' - ' + _(node.title) : ''));
-%}
+%} {% if (ctx.authsession) { %}
 <!DOCTYPE html>
 <html lang="{{ dispatcher.lang }}">
 
@@ -332,3 +332,8 @@
           </noscript>
 
           <div id="tabmenu" style="display:none"></div>
+{% } else { %}
+{% include("themes/fluent/out_header_login"); %}
+{% include("themes/fluent/sysauth"); %}
+{% ctx._fluent_login_shown = true; %}
+{% } %}

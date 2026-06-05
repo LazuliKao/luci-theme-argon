@@ -145,11 +145,14 @@
         <img src="{{ media }}/img/fluent.svg" class="icon">
         <span class="brand-text">{{ hostname }}</span>
       </a>
+      <div class="login-account-pill" id="login-account-pill"{% if (!duser) { %} style="display:none"{% } %}>
+        <span class="login-account-pill__text" id="login-account-pill-text">{{ entityencode(duser, true) }}</span>
+      </div>
       <!-- Logo End -->
       <h2 class="login-title">{{ _('Authorization Required') }}</h2>
       <p class="login-subtitle">{{ _('Please enter your username and password.') }}</p>
       <!-- Login Form Start -->
-      <form class="form-login" method="post" action="{{ pcdata(http.getenv('REQUEST_URI')) }}">
+      <form class="form-login" method="post" action="">
 
         {%- if (fuser) { %}
         <div class="errorbox">{{ _('Invalid username and/or password! Please try again.') }}</div>
@@ -171,9 +174,34 @@
       </form>
       <!-- Login Form End -->
       <script type="text/javascript">//<![CDATA[
-        var input = document.getElementsByName('luci_password')[0];
-        if (input)
-          input.focus();
+        var userInput = document.getElementById('cbi-input-user');
+        var passInput = document.getElementsByName('luci_password')[0];
+        var accountPill = document.getElementById('login-account-pill');
+        var accountPillText = document.getElementById('login-account-pill-text');
+
+        function syncAccountPill() {
+          if (!userInput || !accountPill || !accountPillText)
+            return;
+
+          var value = userInput.value != null ? userInput.value.trim() : '';
+
+          if (value) {
+            accountPillText.textContent = value;
+            accountPill.style.display = 'inline-flex';
+          } else {
+            accountPillText.textContent = '';
+            accountPill.style.display = 'none';
+          }
+        }
+
+        if (userInput) {
+          userInput.addEventListener('input', syncAccountPill);
+          userInput.addEventListener('change', syncAccountPill);
+          syncAccountPill();
+        }
+
+        if (passInput)
+          passInput.focus();
       //]]></script>
       {%
         let https_key = cfg.get('uhttpd', 'main', 'key');

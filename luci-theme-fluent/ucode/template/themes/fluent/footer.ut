@@ -4,6 +4,7 @@
 #}
 
 
+{% if (!ctx._fluent_login_shown) { %}
 </div>
 <footer>
   <div class="mobile-hide">
@@ -33,3 +34,4 @@
 <script type="text/javascript">L.require('menu-fluent')</script>
 </body>
 </html>
+{% } %}

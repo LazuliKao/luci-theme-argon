@@ -1394,8 +1394,8 @@ body.modal-overlay-active #modal_overlay {
   color: var(--fluent-text);
   margin: 0;
 }
-.modal .button-row,
-.modal .modal-footer {
+.modal > .button-row,
+.modal > .modal-footer {
   flex: 0 0 auto;
   margin: 0;
   padding: var(--fluent-space-lg) var(--fluent-modal-padding) var(--fluent-modal-padding);
@@ -1406,8 +1406,8 @@ body.modal-overlay-active #modal_overlay {
   justify-content: flex-end;
   gap: var(--fluent-space-xs);
 }
-.modal .button-row > :nth-child(2),
-.modal .modal-footer > :nth-child(2) {
+.modal > .button-row > :nth-child(2),
+.modal > .modal-footer > :nth-child(2) {
   margin-left: auto;
 }
 .modal .modal-body {
@@ -1495,6 +1495,31 @@ body.modal-overlay-active #modal_overlay {
 }
 .modal-scroll-body::-webkit-scrollbar-thumb:hover {
   background: var(--fluent-scrollbar-thumb-bg-hover);
+}
+.modal-scroll-body {
+  position: relative;
+}
+.modal-scroll-body .button-row,
+.modal-scroll-body .modal-footer {
+  position: sticky;
+  bottom: calc(var(--fluent-modal-padding) * -1);
+  z-index: 10;
+  background: var(--fluent-modal-bg);
+  border-top: 1px solid var(--fluent-border);
+  margin-top: var(--fluent-space-lg);
+  margin-left: calc(var(--fluent-modal-padding) * -1);
+  margin-right: calc(var(--fluent-modal-padding) * -1);
+  margin-bottom: calc(var(--fluent-modal-padding) * -1);
+  padding: var(--fluent-space-lg) var(--fluent-modal-padding) var(--fluent-modal-padding);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--fluent-space-xs);
+}
+.modal-scroll-body .button-row > :nth-child(2),
+.modal-scroll-body .modal-footer > :nth-child(2) {
+  margin-left: auto;
 }
 
 .modal-wide {

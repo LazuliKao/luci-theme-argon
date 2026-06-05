@@ -197,7 +197,6 @@ return baseclass.extend({
 	 */
 	__init__: function () {
 		ui.menu.load().then(L.bind(this.render, this));
-		this.setupModalObserver();
 	},
 
 	/**
@@ -466,98 +465,6 @@ return baseclass.extend({
 			scrollbarArea.classList.add('active');
 			darkMask.classList.add('active');
 			this.adjustBrandTextSize();
-		}
-	},
-
-	/**
-	 * Sets up a MutationObserver on document.body to automatically wrap modal content in a scrollable container
-	 */
-	setupModalObserver: function () {
-		const observer = new MutationObserver(() => {
-			if (document.body.classList.contains('modal-overlay-active')) {
-				const overlay = document.getElementById('modal_overlay');
-				if (overlay) {
-					this.wrapModalContent(overlay);
-				}
-			}
-		});
-
-		observer.observe(document.body, {
-			childList: true,
-			attributes: true,
-			attributeFilter: ['class'],
-			subtree: true
-		});
-
-		// Run initially in case a modal is already open
-		if (document.body.classList.contains('modal-overlay-active')) {
-			const overlay = document.getElementById('modal_overlay');
-			if (overlay) {
-				this.wrapModalContent(overlay);
-			}
-		}
-	},
-
-	/**
-	 * Wraps the middle content of a modal inside a dedicated scrollable div (.modal-scroll-body)
-	 * @param {Element} overlay - The modal overlay element containing the modal
-	 */
-	wrapModalContent: function (overlay) {
-		const modal = overlay.querySelector('.modal');
-		if (!modal) return;
-		if (modal.querySelector('.modal-scroll-body')) return; // Already wrapped
-
-		// 1. Find and extract the button row/footer if it's nested
-		let footer = modal.querySelector('.button-row, .modal-footer');
-		if (footer) {
-			footer.remove();
-		}
-
-		// 2. Find and extract the header if it's nested
-		let header = modal.querySelector('h4, .modal-header');
-		if (header && header.parentElement !== modal) {
-			header.remove();
-			modal.insertBefore(header, modal.firstChild);
-		} else if (!header) {
-			header = modal.querySelector('h4, .modal-header'); // it might be direct
-		}
-
-		// 3. Gather remaining children of the modal to be wrapped
-		const children = Array.from(modal.childNodes);
-		const bodyNodes = [];
-
-		children.forEach((child) => {
-			if (child.nodeType === Node.ELEMENT_NODE) {
-				if (child === header || child === footer) {
-					// Skip
-				} else if (child.classList.contains('modal-close') || child.classList.contains('close')) {
-					// Keep close button as a direct child of the modal so it stays fixed
-				} else {
-					bodyNodes.push(child);
-				}
-			} else {
-				if (child.textContent.trim() !== '') {
-					bodyNodes.push(child);
-				}
-			}
-		});
-
-		const scrollBody = document.createElement('div');
-		scrollBody.className = 'modal-scroll-body';
-
-		bodyNodes.forEach((node) => {
-			scrollBody.appendChild(node);
-		});
-
-		if (header) {
-			header.after(scrollBody);
-		} else {
-			modal.insertBefore(scrollBody, modal.firstChild);
-		}
-
-		// 4. Append the footer at the very end of the modal
-		if (footer) {
-			modal.appendChild(footer);
 		}
 	}
 });

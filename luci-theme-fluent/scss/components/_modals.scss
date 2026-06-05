@@ -67,9 +67,9 @@ body.modal-overlay-active {
     }
   }
 
-  // Support both .button-row (standard LuCI) and .modal-footer (custom)
-  .button-row,
-  .modal-footer {
+  // Support both .button-row (standard LuCI) and .modal-footer (custom) as direct children
+  > .button-row,
+  > .modal-footer {
     flex: 0 0 auto;
     margin: 0;
     padding: var(--fluent-space-lg) var(--fluent-modal-padding) var(--fluent-modal-padding);
@@ -124,6 +124,31 @@ body.modal-overlay-active {
   overflow-y: auto;
   padding: var(--fluent-space-lg) var(--fluent-modal-padding) var(--fluent-modal-padding);
   @include custom-scrollbar;
+  position: relative; // Required for absolute/sticky children
+
+  // Support nested .button-row (standard LuCI) as sticky at bottom
+  .button-row,
+  .modal-footer {
+    position: sticky;
+    bottom: calc(var(--fluent-modal-padding) * -1);
+    z-index: 10;
+    background: var(--fluent-modal-bg);
+    border-top: 1px solid var(--fluent-border);
+    margin-top: var(--fluent-space-lg);
+    margin-left: calc(var(--fluent-modal-padding) * -1);
+    margin-right: calc(var(--fluent-modal-padding) * -1);
+    margin-bottom: calc(var(--fluent-modal-padding) * -1);
+    padding: var(--fluent-space-lg) var(--fluent-modal-padding) var(--fluent-modal-padding);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--fluent-space-xs);
+
+    > :nth-child(2) {
+      margin-left: auto;
+    }
+  }
 }
 
 // Wide modal variant

@@ -5879,7 +5879,8 @@ body.login-page {
   position: absolute;
   right: var(--fluent-space-sm);
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) rotate(-90deg);
+  transition: transform var(--fluent-duration-fast) var(--fluent-easing-standard), color var(--fluent-duration-fast) var(--fluent-easing-standard);
   content: "";
   display: inline-block;
   width: 14px;
@@ -5913,7 +5914,7 @@ body.login-page {
   color: var(--fluent-primary);
 }
 .main-left .nav li .menu.active::after {
-  transform: translateY(-50%) rotate(90deg);
+  transform: translateY(-50%) rotate(0deg);
   color: var(--fluent-primary);
 }
 

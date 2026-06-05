@@ -345,7 +345,9 @@
         position: absolute;
         right: var(--fluent-space-sm);
         top: 50%;
-        transform: translateY(-50%);
+        transform: translateY(-50%) rotate(-90deg);
+        transition: transform var(--fluent-duration-fast) var(--fluent-easing-standard),
+                    color var(--fluent-duration-fast) var(--fluent-easing-standard);
         @include fluent-icon-content($fluent-icon-chevron-down, 14px);
       }
 
@@ -382,7 +384,7 @@
 
         // Rotate arrow when expanded
         &::after {
-          transform: translateY(-50%) rotate(90deg);
+          transform: translateY(-50%) rotate(0deg);
           color: var(--fluent-primary);
         }
       }

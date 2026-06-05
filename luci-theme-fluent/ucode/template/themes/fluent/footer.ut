@@ -6,6 +6,7 @@
 
 {% if (!ctx._fluent_login_shown) { %}
 </div>
+{% if (!ctx.authsession) { %}
 <footer>
   <div class="mobile-hide">
     <a class="luci-link" href="https://github.com/openwrt/luci">Powered by {{ version.luciname }} ({{ version.luciversion }})</a> /
@@ -13,6 +14,7 @@
     <ul class="breadcrumb pull-right" id="modemenu" style="display:none"></ul>
   </div>
 </footer>
+{% } %}
 </div>
 </div>
 <script>

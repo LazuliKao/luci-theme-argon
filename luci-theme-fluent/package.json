@@ -9,21 +9,18 @@
     "watch": "sass --no-source-map --watch scss/fluent.scss htdocs/luci-static/fluent/css/fluent.css",
     "lint": "sass-lint -v",
     "test": "echo \"No tests yet\" && exit 0",
-    "deploy": "luci-types dev",
     "dev:remote": "luci-types dev"
   },
   "devDependencies": {
+    "@lazulikao/luci-types": "github:LazuliKao/luci-types",
     "@types/node": "^22.19.19",
     "sass": "^1.100.0",
     "sass-lint": "^1.13.1",
-    "tsx": "^4.22.3",
+    "tsx": "^4.22.4",
     "typescript": "^6.0.3"
   },
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "pnpm@10.12.4",
-  "dependencies": {
-    "@lazulikao/luci-types": "github:LazuliKao/luci-types"
-  }
+  "packageManager": "pnpm@10.12.4"
 }

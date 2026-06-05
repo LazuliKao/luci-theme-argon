@@ -1,3 +1,4 @@
+{% include('themes/fluent/out_header_login'); %}
 {#
   FluentUI Theme for LuCI - Login Page
   Licensed to the public under the Apache License 2.0
@@ -5,9 +6,7 @@
 
 {%
   import { access, glob, popen } from 'fs';
-  import { rand } from 'math';
   import { cursor } from 'uci';
-  import { getenv } from 'luci.http';
 
   // System info
   let boardinfo = ubus.call('system', 'board');
@@ -51,7 +50,7 @@
     try {
       let files = glob(path);
       for (let f in files) {
-        let m = match(f, /.+\.([A-Za-z0-9]+)$/);
+        let m = match(f, regexp('.+\\.([A-Za-z0-9]+)$'));
         let ext = m ? m[1] : null;
 
         if (ext in imageTypes || ext in videoTypes) {
@@ -88,9 +87,11 @@
       }
     }
 
-    let [backgroundTable, backgroundCount] = fetchMedia('/www' + themeDir + '*', themeDir);
+    let mediaFiles = fetchMedia('/www' + themeDir + '*', themeDir);
+    let backgroundTable = mediaFiles[0];
+    let backgroundCount = mediaFiles[1];
     if (backgroundCount > 0) {
-      let currentBg = backgroundTable[rand() % backgroundCount];
+      let currentBg = backgroundTable[time() % backgroundCount];
       bgUrl = currentBg.url;
       if (currentBg.is_video) {
         backgroundType = 'Video';
@@ -102,7 +103,10 @@
   }
 
   let themeDir = media + '/background/';
-  let [bgUrl, backgroundType, mimeType] = selectBackground(themeDir);
+  let selectedBg = selectBackground(themeDir);
+  let bgUrl = selectedBg[0];
+  let backgroundType = selectedBg[1];
+  let mimeType = selectedBg[2];
 %}
 
 <!-- Login Page Start -->
@@ -142,8 +146,10 @@
         <span class="brand-text">{{ hostname }}</span>
       </a>
       <!-- Logo End -->
+      <h2 class="login-title">{{ _('Authorization Required') }}</h2>
+      <p class="login-subtitle">{{ _('Please enter your username and password.') }}</p>
       <!-- Login Form Start -->
-      <form class="form-login" method="post" action="{{ pcdata(getenv('REQUEST_URI')) }}">
+      <form class="form-login" method="post" action="{{ pcdata(http.getenv('REQUEST_URI')) }}">
 
         {%- if (fuser) { %}
         <div class="errorbox">{{ _('Invalid username and/or password! Please try again.') }}</div>
@@ -151,11 +157,11 @@
 
         <div class="input-container">
           <div class="input-group user-icon">
-            <input class="cbi-input-user" id="cbi-input-user" type="text" name="luci_username" value="{{ duser }}" />
+            <input class="cbi-input-user" id="cbi-input-user" type="text" name="luci_username" value="{{ entityencode(duser, true) }}" placeholder="{{ _('Username') }}" />
             <label class="border" for="cbi-input-user"></label>
           </div>
           <div class="input-group pass-icon">
-            <input class="cbi-input-password" id="cbi-input-password" type="password" name="luci_password" />
+            <input class="cbi-input-password" id="cbi-input-password" type="password" name="luci_password" placeholder="{{ _('Password') }}" />
             <label class="border" for="cbi-input-password"></label>
           </div>
         </div>
@@ -178,7 +184,7 @@
         }
 
         if (https_port && access(https_key)) {
-          let m = match(https_port, /(\d+)$/);
+          let m = match(https_port, regexp('(\\d+)$'));
           https_port = m ? m[1] : null;
       %}
       <script type="text/javascript">//<![CDATA[
@@ -193,4 +199,5 @@
         }
       //]]></script>
       {% } %}
+{% include('themes/fluent/footer_login'); %}
 <!-- Login Page End -->

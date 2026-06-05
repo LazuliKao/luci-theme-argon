@@ -67,12 +67,6 @@
 // Slide menu (collapsible)
 .slide-menu {
   overflow: hidden;
-  max-height: 0;
-  transition: max-height var(--fluent-duration-normal) var(--fluent-easing-standard);
-
-  &.slide-open {
-    max-height: 1000px;
-  }
 }
 
 // Menu items

@@ -6,12 +6,18 @@
 {%
   import { access } from 'fs';
   import { cursor } from 'uci';
+  import { srand } from 'math';
 
   // System info
   let boardinfo = ubus.call('system', 'board');
   let hostname = boardinfo && boardinfo.hostname ? boardinfo.hostname : '?';
 
   let cfg = cursor();
+
+  //send as HTML5
+  http.prepare_content('text/html; charset=UTF-8');
+
+  srand(+substr(reverse(time() + ""), 0, 8));
 
   // Custom settings
   let mode = 'normal';
@@ -40,6 +46,15 @@
 <head>
 	<meta charset="utf-8">
 	<title>{{ hostname }} - LuCI</title>
+  <!-- SEO and Description -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Security -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
 	<meta name="format-detection" content="telephone=no, email=no" />
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -107,3 +122,4 @@
 	<script src="{{ resource }}/cbi.js?v={{ version.luciversion }}"></script>
 	<script src="{{ resource }}/luci.js?v={{ version.luciversion }}"></script>
 </head>
+<body class="lang_{{ dispatcher.lang }} login-page" data-theme-mode="{{ mode }}">

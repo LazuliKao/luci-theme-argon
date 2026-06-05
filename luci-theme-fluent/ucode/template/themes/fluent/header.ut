@@ -9,6 +9,12 @@
   import { access } from 'fs';
   import { cursor } from 'uci';
   import { getuid, getspnam } from 'luci.core';
+  import { srand } from 'math';
+
+  //send as HTML5
+  http.prepare_content('text/html; charset=UTF-8');
+
+  srand(+substr(reverse(time() + ""), 0, 8));
 
   // System info
   let boardinfo = ubus.call('system', 'board');
@@ -263,6 +269,7 @@
   data-theme-mode="{{ mode }}">
 
   <div class="main">
+    {% if (ctx.authsession) { %}
     <div class="main-left" id="mainmenu" style="display:none">
       <div class="sidenav-header d-flex align-items-center">
         <a class="brand" href="/">{{ brand_name }}</a>
@@ -278,6 +285,7 @@
         </div>
       </div>
     </div>
+    {% } %}
     <div class="main-right">
       <header class="bg-primary">
         <div class="fill">
@@ -286,6 +294,7 @@
               <a class="showSide"></a>
               <a class="brand" href="/">{{ brand_name }}</a>
             </div>
+            {% if (ctx.authsession) { %}
             <div class="header-actions">
               <button class="theme-toggle" id="theme-toggle" title="{{ _('Toggle dark mode') }}" aria-label="{{ _('Toggle dark mode') }}">
                 <svg class="theme-toggle-icon sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
@@ -297,6 +306,7 @@
               </button>
               <div class="status" id="indicators"></div>
             </div>
+            {% } %}
           </div>
         </div>
       </header>

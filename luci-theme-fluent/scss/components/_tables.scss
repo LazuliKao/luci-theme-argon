@@ -19,7 +19,7 @@
 // LuCI table structure (div-based tables)
 .tr {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   border-bottom: 1px solid var(--fluent-table-border);
   transition: background var(--fluent-duration-fast) var(--fluent-easing-standard);
 

@@ -2,7 +2,7 @@
 // CBI FORMS - FluentUI 2 LuCI Form Structure Styles
 // Sections, maps, labels, descriptions, and form row layout
 // ============================================================
-@use '../mixins' as *;
+@use "../mixins" as *;
 
 .cbi-map {
   display: flex;
@@ -59,7 +59,6 @@
 .cbi-section-node-tabbed {
   display: flex;
   flex-direction: column;
-  gap: var(--fluent-space-md);
 }
 
 .cbi-section .cbi-title {
@@ -102,7 +101,7 @@
     padding-top: 0;
   }
 
-  @include respond-to('md') {
+  @include respond-to("md") {
     grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
     align-items: start;
   }

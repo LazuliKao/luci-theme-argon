@@ -2,16 +2,12 @@
 // CARDS - FluentUI 2 Card and Section Styles
 // Radius: 8px, Shadow: sm, Border: Grey88
 // ============================================================
-@use '../mixins' as *;
+@use "../mixins" as *;
 
 // Main section card
 .cbi-section {
   @include card;
   margin-bottom: var(--fluent-space-lg);
-
-  & > .cbi-section-node {
-    padding: 0 var(--fluent-space-lg);
-  }
 }
 
 // Section error state

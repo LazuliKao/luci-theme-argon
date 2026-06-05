@@ -23,6 +23,8 @@
 // DROPDOWN CONTAINER
 // ============================================================
 .cbi-dropdown {
+  @include input-base;
+
   // Layout: inline-flex for proper alignment with other form elements
   display: inline-flex;
   align-items: center;
@@ -31,27 +33,13 @@
   position: relative;
   vertical-align: middle;
 
-  // Size: medium (default) - matches Input height
-  height: var(--fluent-input-height);
+  // Size overrides for dropdown layout
   padding: 0 var(--fluent-space-xs);
   gap: var(--fluent-space-xxs);
   min-width: 120px;
 
-  // Appearance: outline style (FluentUI "outline" appearance)
-  background: var(--fluent-bg);
-  border: 1px solid var(--fluent-input-border);
-  border-bottom-color: var(--fluent-text);
-  border-radius: var(--fluent-radius-md);
-
-  // Typography
-  font-family: var(--fluent-font-family);
-  font-size: var(--fluent-font-size-base);
-  font-weight: var(--fluent-font-weight-regular);
+  // Typography & cursor overrides
   line-height: 20px;
-  color: var(--fluent-text);
-
-  // Transition & cursor
-  transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
   outline-style: none;
   cursor: pointer;
 
@@ -64,7 +52,7 @@
     content: '';
     position: absolute;
     left: -1px;
-    bottom: -1px;
+    bottom: -2px;
     right: -1px;
     height: max(2px, 4px);
     border-bottom-left-radius: var(--fluent-radius-md);
@@ -81,8 +69,7 @@
   // HOVER STATE
   // ----------------------------------------------------------
   &:hover:not([disabled]) {
-    border-color: var(--fluent-text-secondary);
-    border-bottom-color: var(--fluent-text);
+    border-bottom-color: var(--fluent-input-border-hover);
   }
 
   // ----------------------------------------------------------
@@ -91,8 +78,7 @@
   &:focus,
   &.focus,
   &[open] {
-    border-color: var(--fluent-input-border);
-    border-bottom-color: var(--fluent-text);
+    border-bottom-color: var(--fluent-input-border-focus);
     outline: none;
   }
 
@@ -108,8 +94,7 @@
   // ACTIVE STATE
   // ----------------------------------------------------------
   &:active:not([disabled]) {
-    border-color: var(--fluent-input-border);
-    border-bottom-color: var(--fluent-text);
+    border-bottom-color: var(--fluent-input-border-focus);
   }
 
   // ----------------------------------------------------------
@@ -117,8 +102,9 @@
   // ----------------------------------------------------------
   &[disabled] {
     cursor: not-allowed;
-    background-color: transparent;
-    border-color: var(--fluent-border-hover);
+    background: var(--fluent-input-bg-disabled);
+    border-color: var(--fluent-border);
+    border-bottom-color: var(--fluent-border);
     color: var(--fluent-text-disabled);
     opacity: 1;
 

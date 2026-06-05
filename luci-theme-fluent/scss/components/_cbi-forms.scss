@@ -163,7 +163,7 @@
     border-bottom: 0;
   }
 
-  &:has(.cbi-value-title) {
+  &:has(> .cbi-value-title) {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: var(--fluent-space-sm) var(--fluent-space-xl);

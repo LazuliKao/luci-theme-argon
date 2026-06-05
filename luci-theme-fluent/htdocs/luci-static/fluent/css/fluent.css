@@ -1513,13 +1513,13 @@ input[type=search]::-webkit-search-cancel-button {
   padding: 0;
   border-bottom: 0;
 }
-.cbi-value:has(.cbi-value-title) {
+.cbi-value:has(> .cbi-value-title) {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--fluent-space-sm) var(--fluent-space-xl);
 }
 @media (min-width: 768px) {
-  .cbi-value:has(.cbi-value-title) {
+  .cbi-value:has(> .cbi-value-title) {
     grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
     align-items: start;
   }

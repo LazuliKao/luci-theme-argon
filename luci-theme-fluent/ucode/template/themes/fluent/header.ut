@@ -7,14 +7,13 @@
 
 {%
   import { access } from 'fs';
-  import ubus from 'ubus';
   import { cursor } from 'uci';
-  import { process, user } from 'luci.sys';
+  import { getuid, getspnam } from 'luci.core';
 
   // System info
   let boardinfo = ubus.call('system', 'board');
-  let hostname = boardinfo?.hostname || '?';
-  let model = boardinfo?.model || boardinfo?.board_name || '?';
+  let hostname = boardinfo && boardinfo.hostname ? boardinfo.hostname : '?';
+  let model = boardinfo && boardinfo.model ? boardinfo.model : (boardinfo && boardinfo.board_name ? boardinfo.board_name : '?');
 
   // UCI config
   let cfg = cursor();
@@ -85,15 +84,14 @@
   let transition_duration = transition_map[transition_speed] || '150ms';
   let card_shadow_value = shadow_map[card_shadow] || shadow_map['small'];
   let brand_name = hostname;
-%]
+  let page_title = striptags(hostname + (node && node.title ? ' - ' + _(node.title) : ''));
+%}
 <!DOCTYPE html>
 <html lang="{{ dispatcher.lang }}">
 
 <head>
   <meta charset="utf-8">
-  <title>
-    {{ hostname }}{{ node?.title ? ' - ' + translate(node.title) : '' }} - LuCI
-  </title>
+  <title>{{ page_title }} - LuCI</title>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
   <meta name="format-detection" content="telephone=no, email=no" />
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -116,7 +114,7 @@
   <meta name="msapplication-TileColor" content="{{ bar_color }}">
   <meta name="msapplication-TileImage" content="{{ media }}/icon/ms-icon-144x144.png">
 
-  {% if (mode === 'normal') %}
+  {% if (mode === 'normal') { %}
   <meta name="theme-color" content="{{ bar_color }}">
   <script type="text/javascript">
     let prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -125,11 +123,11 @@
       viewport.setAttribute('content', '#444950');
     }
   </script>
-  {% elif (mode === 'dark') %}
+  {% } else if (mode === 'dark') { %}
   <meta name="theme-color" content="#444950">
-  {% elif (mode === 'light') %}
+  {% } else if (mode === 'light') { %}
   <meta name="theme-color" content="{{ bar_color }}">
-  {% endif %}
+  {% } %}
 
   <link rel="stylesheet" href="{{ media }}/css/fluent.css">
   <style title="text/css">
@@ -194,15 +192,15 @@
   </style>
 
   <link rel="shortcut icon" type="image/ico" href="{{ media }}/favicon.ico">
-  {% if (node?.css): %}
+  {% if (node && node.css) { %}
   <link rel="stylesheet" href="{{ resource }}/{{ node.css }}">
-  {% endif %}
-  {% if (css): %}
+  {% } %}
+  {% if (css) { %}
   <style title="text/css">
     {{ css }}
   </style>
-  {% endif %}
-  <script src="{{ url('admin/translations', dispatcher.lang) }}?v={{ version.luciversion }}"></script>
+  {% } %}
+  <script src="{{ dispatcher.build_url('admin/translations', dispatcher.lang) }}?v={{ version.luciversion }}"></script>
   <script src="{{ resource }}/cbi.js?v={{ version.luciversion }}"></script>
   <script src="{{ resource }}/luci.js?v={{ version.luciversion }}"></script>
   <script>
@@ -261,7 +259,7 @@
 
 <body
   class="lang_{{ dispatcher.lang }} {{ node ? entityencode(node.title, true) : '' }} {{ ctx.authsession ? 'logged-in' : '' }}"
-  data-page="{{ entityencode(ctx.request_path.join('-'), true) }}"
+  data-page="{{ entityencode(join('-', ctx.request_path), true) }}"
   data-theme-mode="{{ mode }}">
 
   <div class="main">
@@ -289,7 +287,7 @@
               <a class="brand" href="/">{{ brand_name }}</a>
             </div>
             <div class="header-actions">
-              <button class="theme-toggle" id="theme-toggle" title="{%:Toggle dark mode%}" aria-label="{%:Toggle dark mode%}">
+              <button class="theme-toggle" id="theme-toggle" title="{{ _('Toggle dark mode') }}" aria-label="{{ _('Toggle dark mode') }}">
                 <svg class="theme-toggle-icon sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
                   <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
                 </svg>
@@ -305,22 +303,21 @@
       <div class="darkMask"></div>
       <div id="maincontent">
         <div class="container">
-          {%- if (process.info('uid') == 0 && user.getuser('root') && !user.getpasswd('root')): %}
+          {% if (getuid() == 0 && getspnam('root') && getspnam('root').pwdp === '' && join('-', ctx.request_path) != 'admin-system-admin') { %}
           <div class="alert-message error">
-            <h4>{%:No password set!%}</h4>
-            <p>{%:There is no password set on this router. Please configure a root password to protect the web interface.%}
-            </p>
-            {% if (dispatcher.lookup('admin/system/admin')): %}
+            <h4>{{ _('No password set!') }}</h4>
+            <p>{{ _('There is no password set on this router. Please configure a root password to protect the web interface.') }}</p>
+            {% if (dispatcher.lookup('admin/system/admin')) { %}
             <div class="right"><a class="btn"
-                href="{{ url('admin/system/admin') }}">{%:Go to password configuration...%}</a></div>
-            {% endif %}
+                href="{{ dispatcher.build_url('admin/system/admin') }}">{{ _('Go to password configuration...') }}</a></div>
+            {% } %}
           </div>
-          {%- endif %}
+          {% } %}
 
           <noscript>
             <div class="alert-message error">
-              <h4>{%:JavaScript required!%}</h4>
-              <p>{%:You must enable JavaScript in your browser or LuCI will not work properly.%}</p>
+              <h4>{{ _('JavaScript required!') }}</h4>
+              <p>{{ _('You must enable JavaScript in your browser or LuCI will not work properly.') }}</p>
             </div>
           </noscript>
 

@@ -4,15 +4,14 @@
 #}
 
 {%
-  import { access, glob } from 'fs';
-  import ubus from 'ubus';
+  import { access, glob, popen } from 'fs';
+  import { rand } from 'math';
   import { cursor } from 'uci';
-  import { exec } from 'luci.sys';
   import { getenv } from 'luci.http';
 
   // System info
   let boardinfo = ubus.call('system', 'board');
-  let hostname = boardinfo?.hostname || '?';
+  let hostname = boardinfo && boardinfo.hostname ? boardinfo.hostname : '?';
 
   // UCI config
   let cfg = cursor();
@@ -38,9 +37,12 @@
   }
 
   // Background image handling
-  let imageTypes = ' jpg png gif webp ';
-  let videoTypes = ' mp4 webm ';
-  let allTypes = imageTypes + videoTypes;
+  let imageTypes = {
+    jpg: true, png: true, gif: true, webp: true
+  };
+  let videoTypes = {
+    mp4: true, webm: true
+  };
 
   function fetchMedia(path, themeDir) {
     let backgroundTable = [];
@@ -49,16 +51,16 @@
     try {
       let files = glob(path);
       for (let f in files) {
-        let ext = f.match(/.+\.(\w+)$/);
-        if (ext) {
-          ext = ext[1].toLowerCase();
-          if (allTypes.indexOf(' ' + ext + ' ') >= 0) {
-            backgroundTable.push({
-              type: ext,
-              url: themeDir + f
-            });
-            backgroundCount++;
-          }
+        let m = match(f, /.+\.([A-Za-z0-9]+)$/);
+        let ext = m ? m[1] : null;
+
+        if (ext in imageTypes || ext in videoTypes) {
+          push(backgroundTable, {
+            type: ext,
+            is_video: ext in videoTypes,
+            url: themeDir + f
+          });
+          backgroundCount++;
         }
       }
     } catch (e) {}
@@ -75,8 +77,11 @@
       let online_wallpaper = cfg.get_first('fluent', 'global', 'online_wallpaper');
       if (online_wallpaper && online_wallpaper !== 'none') {
         try {
-          let picurl = exec('/usr/libexec/fluent/online_wallpaper');
-          if (picurl && picurl !== '') {
+          let proc = popen('/usr/libexec/fluent/online_wallpaper');
+          let picurl = proc ? trim(proc.read('all')) : '';
+          if (proc)
+            proc.close();
+          if (picurl) {
             return [picurl, 'Image', ''];
           }
         } catch (e) {}
@@ -85,9 +90,9 @@
 
     let [backgroundTable, backgroundCount] = fetchMedia('/www' + themeDir + '*', themeDir);
     if (backgroundCount > 0) {
-      let currentBg = backgroundTable[Math.floor(Math.random() * backgroundCount)];
+      let currentBg = backgroundTable[rand() % backgroundCount];
       bgUrl = currentBg.url;
-      if (videoTypes.indexOf(' ' + currentBg.type + ' ') >= 0) {
+      if (currentBg.is_video) {
         backgroundType = 'Video';
         mimeType = 'video/' + currentBg.type;
       }
@@ -141,7 +146,7 @@
       <form class="form-login" method="post" action="{{ pcdata(getenv('REQUEST_URI')) }}">
 
         {%- if (fuser) { %}
-        <div class="errorbox">{%:Invalid username and/or password! Please try again.%}</div>
+        <div class="errorbox">{{ _('Invalid username and/or password! Please try again.') }}</div>
         {%- } %}
 
         <div class="input-container">
@@ -155,7 +160,7 @@
           </div>
         </div>
         <div>
-          <input type="submit" value="{%:Login%}" class="cbi-button cbi-button-apply" />
+          <input type="submit" value="{{ _('Login') }}" class="cbi-button cbi-button-apply" />
         </div>
       </form>
       <!-- Login Form End -->
@@ -173,7 +178,8 @@
         }
 
         if (https_port && access(https_key)) {
-          https_port = https_port.match(/(\d+)$/)[0];
+          let m = match(https_port, /(\d+)$/);
+          https_port = m ? m[1] : null;
       %}
       <script type="text/javascript">//<![CDATA[
         if (document.location.protocol != 'https:') {

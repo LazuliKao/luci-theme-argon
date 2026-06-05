@@ -5,12 +5,11 @@
 
 {%
   import { access } from 'fs';
-  import ubus from 'ubus';
   import { cursor } from 'uci';
 
   // System info
   let boardinfo = ubus.call('system', 'board');
-  let hostname = boardinfo?.hostname || '?';
+  let hostname = boardinfo && boardinfo.hostname ? boardinfo.hostname : '?';
 
   let cfg = cursor();
 

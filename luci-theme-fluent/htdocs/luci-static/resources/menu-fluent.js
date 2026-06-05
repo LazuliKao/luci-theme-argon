@@ -239,6 +239,7 @@ return baseclass.extend({
 		if (darkMask) {
 			darkMask.addEventListener('click', ui.createHandlerFn(this, 'handleSidebarToggle'));
 		}
+		window.addEventListener('resize', L.bind(this.adjustBrandTextSize, this));
 	},
 
 	/**
@@ -351,6 +352,7 @@ return baseclass.extend({
 			if (mainMenuElement) {
 				mainMenuElement.appendChild(menuContainer);
 				mainMenuElement.style.display = '';
+				this.adjustBrandTextSize();
 			}
 		}
 		
@@ -414,6 +416,25 @@ return baseclass.extend({
 	},
 
 	/**
+	 * Adjust brand text font size to fit container (prevent overflow)
+	 */
+	adjustBrandTextSize: function() {
+		var brandText = document.querySelector('.sidenav-header .brand-text');
+		if (brandText) {
+			var container = brandText.parentElement;
+			var maxW = container.clientWidth - 32; // subtract icon + gap
+			if (maxW > 0) {
+				var fontSize = 16;
+				brandText.style.fontSize = fontSize + 'px';
+				while (brandText.scrollWidth > maxW && fontSize > 9) {
+					fontSize -= 0.5;
+					brandText.style.fontSize = fontSize + 'px';
+				}
+			}
+		}
+	},
+
+	/**
 	 * Handle sidebar toggle functionality
 	 * Toggles the mobile/responsive sidebar menu visibility
 	 * @param {Event} ev - Click event from sidebar toggle button or dark mask
@@ -443,6 +464,7 @@ return baseclass.extend({
 			sidebar.classList.add('active');
 			scrollbarArea.classList.add('active');
 			darkMask.classList.add('active');
+			this.adjustBrandTextSize();
 		}
 	}
 });

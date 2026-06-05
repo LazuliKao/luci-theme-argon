@@ -5598,6 +5598,43 @@ body.login-page {
 .main-left::-webkit-scrollbar-thumb:hover {
   background: var(--fluent-scrollbar-thumb-bg-hover);
 }
+.main-left .sidenav-header {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--fluent-space-lg);
+  height: var(--fluent-header-height, 48px);
+  border-bottom: 1px solid var(--fluent-border);
+  flex-shrink: 0;
+}
+.main-left .sidenav-header .brand {
+  display: flex;
+  align-items: center;
+  gap: var(--fluent-space-sm, 8px);
+  text-decoration: none;
+  min-width: 0;
+  flex: 1;
+}
+.main-left .sidenav-header .brand .icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.main-left .sidenav-header .brand .brand-text {
+  font-family: var(--fluent-font-family);
+  font-size: var(--fluent-font-size-md, 16px);
+  font-weight: var(--fluent-font-weight-semibold, 600);
+  color: var(--fluent-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 100%;
+  transition: font-size var(--fluent-duration-fast) var(--fluent-easing-standard);
+}
+.main-left .sidenav-header .ml-auto {
+  margin-left: auto;
+  flex-shrink: 0;
+}
 
 .main-right {
   margin-left: var(--fluent-sidebar-width, 260px);

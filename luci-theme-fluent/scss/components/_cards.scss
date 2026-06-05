@@ -7,7 +7,28 @@
 // Main section card
 .cbi-section {
   @include card;
+  position: relative;
   margin-bottom: var(--fluent-space-lg);
+
+  // Top-right section remove button
+  .cbi-section-remove {
+    position: absolute;
+    top: var(--fluent-space-lg);
+    right: var(--fluent-space-lg);
+    z-index: 2;
+
+    .cbi-button {
+      background: var(--fluent-error);
+      border-color: var(--fluent-error);
+      color: var(--fluent-button-text);
+
+      &:hover,
+      &:focus {
+        background: var(--fluent-error-dark);
+        border-color: var(--fluent-error-dark);
+      }
+    }
+  }
 }
 
 // Section error state

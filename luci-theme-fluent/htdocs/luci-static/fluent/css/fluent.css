@@ -1028,7 +1028,23 @@ input[type=search]::-webkit-search-cancel-button {
   border-radius: var(--fluent-card-radius);
   box-shadow: var(--fluent-card-shadow);
   padding: var(--fluent-card-padding);
+  position: relative;
   margin-bottom: var(--fluent-space-lg);
+}
+.cbi-section .cbi-section-remove {
+  position: absolute;
+  top: var(--fluent-space-lg);
+  right: var(--fluent-space-lg);
+  z-index: 2;
+}
+.cbi-section .cbi-section-remove .cbi-button {
+  background: var(--fluent-error);
+  border-color: var(--fluent-error);
+  color: var(--fluent-button-text);
+}
+.cbi-section .cbi-section-remove .cbi-button:hover, .cbi-section .cbi-section-remove .cbi-button:focus {
+  background: var(--fluent-error-dark);
+  border-color: var(--fluent-error-dark);
 }
 
 .cbi-section-error {
@@ -2206,7 +2222,6 @@ td > .ifacebadge,
   width: 100%;
   flex: 1;
   min-width: 0;
-  height: 100%;
   padding: 0;
   overflow: visible;
 }

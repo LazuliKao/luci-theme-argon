@@ -2600,6 +2600,24 @@ ul.cbi-tabmenu {
   font-size: var(--fluent-font-size-base);
   font-weight: var(--fluent-font-weight-regular);
   line-height: var(--fluent-line-height-normal);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--fluent-scrollbar-thumb-bg) transparent;
+}
+ul.cbi-tabmenu::-webkit-scrollbar {
+  height: 3px;
+}
+ul.cbi-tabmenu::-webkit-scrollbar-track {
+  background: transparent;
+}
+ul.cbi-tabmenu::-webkit-scrollbar-thumb {
+  background-color: var(--fluent-scrollbar-thumb-bg);
+  border-radius: var(--fluent-radius-md);
+}
+ul.cbi-tabmenu::-webkit-scrollbar-thumb:hover {
+  background-color: var(--fluent-scrollbar-thumb-bg-hover);
 }
 ul.cbi-tabmenu > li {
   display: flex;
@@ -2609,6 +2627,7 @@ ul.cbi-tabmenu > li {
   list-style: none;
   margin: 0;
   padding: 0;
+  flex-shrink: 0;
 }
 ul.cbi-tabmenu > li > a {
   display: flex;
@@ -2737,6 +2756,7 @@ ul.cbi-tabmenu > li.cbi-tab-disabled > a:hover {
   list-style: none;
   margin: 0;
   padding: 0;
+  flex-shrink: 0;
 }
 #tabmenu > ul.tabs > li > a,
 .tabmenu > ul.tabs > li > a {

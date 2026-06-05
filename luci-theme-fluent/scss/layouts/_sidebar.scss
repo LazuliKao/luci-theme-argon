@@ -358,6 +358,7 @@
 @media (max-width: 768px) {
   .main-left {
     transform: translateX(-100%);
+    z-index: 1050;
     
     &.active {
       transform: translateX(0);
@@ -376,7 +377,7 @@
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(2px);
-    z-index: 999;
+    z-index: 1049;
     opacity: 0;
     pointer-events: none;
     transition: opacity var(--fluent-duration-normal) var(--fluent-easing-standard);

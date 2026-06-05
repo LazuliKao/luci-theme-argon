@@ -36,7 +36,7 @@
   
   &__title {
     font-size: var(--fluent-font-size-md);
-    font-weight: var(--fluent-font-weight-semibold);
+    font-weight: var(--fluent-font-weight-bold, 700);
     color: var(--fluent-text);
     line-height: var(--fluent-line-height-tight);
   }

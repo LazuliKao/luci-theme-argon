@@ -170,7 +170,7 @@ body.login-page {
         .brand-text {
           font-family: var(--fluent-font-family) !important;
           font-size: 30px !important;
-          font-weight: var(--fluent-font-weight-semibold) !important;
+          font-weight: var(--fluent-font-weight-bold, 700) !important;
           color: var(--fluent-text-secondary) !important;
           margin: 0 !important;
           letter-spacing: normal !important;

@@ -435,28 +435,61 @@ div:not([id=view]) > .spinning::before {
   animation: fluent-spin-swing var(--duration) infinite ease;
 }
 
+@keyframes fluent-spin-swing-clean {
+  0% {
+    transform: rotate(-135deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(225deg);
+  }
+}
 div[id=view] > .spinning {
-  position: relative;
-  --spinner-size: 48px;
-  padding-top: calc(var(--spinner-size) + 20px);
-  font-size: large;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  box-sizing: border-box;
+  text-align: center;
+  font-family: var(--fluent-font-family);
+  font-size: var(--fluent-font-size-md, 16px);
+  color: var(--fluent-text-secondary);
+  gap: var(--fluent-space-md, 12px);
+  padding: var(--fluent-space-xxl) 0;
 }
 div[id=view] > .spinning::before {
-  position: absolute;
-  left: calc(50% - var(--spinner-size) / 2);
-  top: calc(50% - var(--spinner-size) / 2 + 10px);
   content: "";
-  --duration: 1.5s;
-  --indicator-size: 6px;
+  display: block;
+  --spinner-size: 48px;
+  --indicator-size: 4px;
   height: var(--spinner-size);
   width: var(--spinner-size);
   border-radius: 50%;
   box-sizing: border-box;
-  border: var(--indicator-size) solid rgba(0, 120, 212, 0.2);
+  border: var(--indicator-size) solid rgba(0, 120, 212, 0.15);
   border-top-color: var(--fluent-primary);
   border-right-color: var(--fluent-primary);
-  animation: fluent-spin-swing var(--duration) infinite ease;
+  animation: fluent-spin-swing-clean 1.5s infinite ease;
   background: none;
+  position: static;
+  margin-bottom: var(--fluent-space-sm, 8px);
+}
+
+@keyframes fluent-view-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+div[id=view] > *:not(.spinning) {
+  animation: fluent-view-fade-in var(--fluent-duration-slow) var(--fluent-easing-decelerate) forwards;
 }
 
 @keyframes fluent-login-fade-in {

@@ -213,55 +213,63 @@
   <script src="{{ resource }}/cbi.js?v={{ version.luciversion }}"></script>
   <script src="{{ resource }}/luci.js?v={{ version.luciversion }}"></script>
   <script>
-    // Dark mode toggle
+    // Dark mode logic
     (function() {
       var mode = '{{ mode }}';
-      var toggle = document.getElementById('theme-toggle');
-      if (!toggle) return;
-
-      // Determine initial state
       var isDark = false;
       if (mode === 'dark') {
         isDark = true;
       } else if (mode === 'normal') {
         isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       }
-
-      // Apply initial theme
-      function applyTheme(dark) {
-        if (dark) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        } else {
-          document.documentElement.setAttribute('data-theme', 'light');
-        }
-        toggle.setAttribute('data-active-theme', dark ? 'dark' : 'light');
-      }
-
-      if (mode !== 'normal') {
-        applyTheme(isDark);
-      } else {
-        // For 'normal' mode, listen for system changes
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-          if (!document.documentElement.hasAttribute('data-theme')) {
-            applyTheme(e.matches);
-          }
-        });
-      }
-
-      // Toggle click handler
-      toggle.addEventListener('click', function() {
-        var current = document.documentElement.getAttribute('data-theme');
-        var newTheme = (current === 'dark') ? 'light' : 'dark';
-        applyTheme(newTheme === 'dark');
-        // Store preference
-        try { localStorage.setItem('fluent-theme', newTheme); } catch(e) {}
-      });
-
-      // Restore stored preference
+      
+      // Restore stored preference immediately in head to avoid flash of light/dark mode
       try {
         var stored = localStorage.getItem('fluent-theme');
-        if (stored) applyTheme(stored === 'dark');
+        if (stored) isDark = (stored === 'dark');
       } catch(e) {}
+
+      if (isDark) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+
+      // Once DOM is loaded, setup toggle behavior
+      window.addEventListener('DOMContentLoaded', function() {
+        var toggle = document.getElementById('theme-toggle');
+        if (!toggle) return;
+
+        toggle.setAttribute('data-active-theme', isDark ? 'dark' : 'light');
+
+        // Toggle click handler
+        toggle.addEventListener('click', function() {
+          var current = document.documentElement.getAttribute('data-theme');
+          var newTheme = (current === 'dark') ? 'light' : 'dark';
+          
+          if (newTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+          }
+          toggle.setAttribute('data-active-theme', newTheme);
+          
+          try { localStorage.setItem('fluent-theme', newTheme); } catch(e) {}
+        });
+
+        // If in 'normal' mode, listen to system color scheme changes
+        if (mode === 'normal') {
+          window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+            // Only follow system changes if the user hasn't set a manual preference
+            try {
+              if (localStorage.getItem('fluent-theme')) return;
+            } catch(err) {}
+            var dark = e.matches;
+            document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+            toggle.setAttribute('data-active-theme', dark ? 'dark' : 'light');
+          });
+        }
+      });
     })();
   </script>
 </head>

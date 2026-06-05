@@ -5991,6 +5991,76 @@ body.login-page {
   gap: var(--fluent-space-sm, 8px);
 }
 
+.status {
+  display: flex;
+  align-items: center;
+  gap: var(--fluent-space-sm);
+}
+.status #xhr_poll_status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: var(--fluent-font-size-sm);
+  font-weight: var(--fluent-font-weight-semibold);
+  padding: 2px 8px;
+  height: 24px;
+  border-radius: var(--fluent-radius-sm);
+  user-select: none;
+  transition: all var(--fluent-duration-fast) var(--fluent-easing-standard);
+}
+.status #xhr_poll_status[data-style=active] {
+  background-color: var(--fluent-bg-hover, #f3f2f1);
+  color: var(--fluent-primary);
+  border: 1px solid var(--fluent-border);
+}
+.status #xhr_poll_status[data-style=active]:hover {
+  background-color: var(--fluent-primary-lightest, #eff6fc);
+}
+.status #xhr_poll_status[data-style=inactive] {
+  background-color: var(--fluent-warning-light, #fff4ce);
+  color: var(--fluent-warning, #795707);
+  border: 1px solid var(--fluent-warning, #795707);
+}
+.status #xhr_poll_status[data-style=inactive]:hover {
+  background-color: #fde7aa;
+}
+
+[data-theme=dark] .status #xhr_poll_status[data-style=active] {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--fluent-primary);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+[data-theme=dark] .status #xhr_poll_status[data-style=active]:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+[data-theme=dark] .status #xhr_poll_status[data-style=inactive] {
+  background-color: rgba(251, 99, 64, 0.15);
+  color: #ff8f73;
+  border-color: #ff8f73;
+}
+[data-theme=dark] .status #xhr_poll_status[data-style=inactive]:hover {
+  background-color: rgba(251, 99, 64, 0.25);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme=light]) .status #xhr_poll_status[data-style=active] {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: var(--fluent-primary);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  :root:not([data-theme=light]) .status #xhr_poll_status[data-style=active]:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  :root:not([data-theme=light]) .status #xhr_poll_status[data-style=inactive] {
+    background-color: rgba(251, 99, 64, 0.15);
+    color: #ff8f73;
+    border-color: #ff8f73;
+  }
+  :root:not([data-theme=light]) .status #xhr_poll_status[data-style=inactive]:hover {
+    background-color: rgba(251, 99, 64, 0.25);
+  }
+}
 [data-theme=dark] .theme-toggle,
 .theme-toggle[data-active-theme=dark] {
   color: var(--fluent-text-secondary, #a0a0a0);

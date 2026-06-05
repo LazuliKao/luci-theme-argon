@@ -184,7 +184,7 @@
   line-height: var(--fluent-line-height-normal);
 }
 
-.cbi-value-field {
+.cbi-value-field:not(td) {
   display: flex;
   flex-direction: column;
   gap: var(--fluent-space-sm);

@@ -120,19 +120,16 @@ div.th {
 
 // Table actions column — buttons in a row, no wrapping
 .cbi-section-table .cbi-section-actions {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: var(--fluent-space-xs);
   padding: var(--fluent-space-xs) var(--fluent-space-sm);
-  border-top: none;
-  margin-top: 0;
   white-space: nowrap;
+  text-align: right;
+  vertical-align: middle;
+  align-self: center !important;
 
   > div {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     gap: var(--fluent-space-xs);
     flex-wrap: nowrap;
   }

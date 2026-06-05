@@ -332,67 +332,185 @@
   <!-- Login Container Start -->
   <div class="login-container">
     <div class="login-form">
-      <!-- Logo Start -->
-      <a class="brand" href="/">
-        <img src="{{ media }}/img/fluent.svg" class="icon">
-        <span class="brand-text">{{ hostname }}</span>
-      </a>
-      <div class="login-account-pill" id="login-account-pill"{% if (!duser) { %} style="display:none"{% } %}>
-        <span class="login-account-pill__text" id="login-account-pill-text">{{ entityencode(duser, true) }}</span>
+      <!-- Card Header Start -->
+      <div class="ms-card-header">
+        <button type="button" class="ms-back-button" id="ms-back-btn" style="display: none;" aria-label="Back">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </button>
+        <a class="brand" href="/">
+          <img src="{{ media }}/img/fluent.svg" class="icon" />
+          <span class="brand-text">{{ hostname }}</span>
+        </a>
       </div>
-      <!-- Logo End -->
-      <h2 class="login-title">{{ _('Authorization Required') }}</h2>
-      <p class="login-subtitle">{{ _('Please enter your username and password.') }}</p>
+      <!-- Card Header End -->
+
       <!-- Login Form Start -->
       <form class="form-login" method="post" action="">
-
-        <div class="input-container">
-          <div class="input-group user-icon">
-            <input class="cbi-input-user{% if (fuser) { %} cbi-input-invalid{% } %}" id="cbi-input-user" type="text" name="luci_username" value="{{ entityencode(duser, true) }}" placeholder="{{ _('Username') }}" />
-            <label class="border" for="cbi-input-user"></label>
+        <!-- Step 1: Username -->
+        <div id="step-username" class="step-container">
+          <h2 class="login-title">{{ _('Authorization Required') }}</h2>
+          <p class="login-subtitle">{{ _('Please enter your username.') }}</p>
+          
+          <div class="input-container">
+            <div class="ms-input-wrapper">
+              <input class="ms-input{% if (fuser) { %} cbi-input-invalid{% } %}" id="cbi-input-user" type="text" name="luci_username" value="{{ entityencode(duser, true) }}" placeholder=" " />
+              <label class="ms-label" for="cbi-input-user">{{ _('Username') }}</label>
+              <div class="ms-input-underline"></div>
+            </div>
           </div>
-          <div class="input-group pass-icon">
-            <input class="cbi-input-password{% if (fuser) { %} cbi-input-invalid{% } %}" id="cbi-input-password" type="password" name="luci_password" placeholder="{{ _('Password') }}" />
-            <label class="border" for="cbi-input-password"></label>
+          
+          <div class="button-container">
+            <button type="button" class="ms-button" id="btn-next">{{ _('Next') }}</button>
+          </div>
+        </div>
+
+        <!-- Step 2: Password -->
+        <div id="step-password" class="step-container">
+          <div class="login-account-pill-wrapper">
+            <div class="login-account-pill" id="login-account-pill">
+              <span class="login-account-pill__text" id="login-account-pill-text">{{ entityencode(duser, true) }}</span>
+            </div>
+          </div>
+          
+          <h2 class="login-title">{{ _('Authorization Required') }}</h2>
+          <p class="login-subtitle">{{ _('Please enter your password.') }}</p>
+          
+          <div class="input-container">
+            <div class="ms-input-wrapper password-wrapper">
+              <input class="ms-input{% if (fuser) { %} cbi-input-invalid{% } %}" id="cbi-input-password" type="password" name="luci_password" placeholder=" " />
+              <label class="ms-label" for="cbi-input-password">{{ _('Password') }}</label>
+              <button type="button" class="ms-password-toggle" id="ms-password-toggle" tabindex="-1" aria-label="Toggle password visibility">
+                <svg class="eye-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+              <div class="ms-input-underline"></div>
+            </div>
             {%- if (fuser) { %}
             <div class="errorbox">{{ _('Invalid username and/or password! Please try again.') }}</div>
             {%- } %}
           </div>
-        </div>
-        <div>
-          <input type="submit" value="{{ _('Login') }}" class="cbi-button cbi-button-apply" />
+
+          <div class="button-container">
+            <input type="submit" value="{{ _('Login') }}" class="ms-button" id="btn-login" />
+          </div>
         </div>
       </form>
       <!-- Login Form End -->
       <script type="text/javascript">//<![CDATA[
-        var userInput = document.getElementById('cbi-input-user');
-        var passInput = document.getElementsByName('luci_password')[0];
-        var accountPill = document.getElementById('login-account-pill');
-        var accountPillText = document.getElementById('login-account-pill-text');
+        (function() {
+          var userInput = document.getElementById('cbi-input-user');
+          var passInput = document.getElementById('cbi-input-password');
+          var stepUsername = document.getElementById('step-username');
+          var stepPassword = document.getElementById('step-password');
+          var backBtn = document.getElementById('ms-back-btn');
+          var btnNext = document.getElementById('btn-next');
+          var accountPillText = document.getElementById('login-account-pill-text');
+          var passwordToggle = document.getElementById('ms-password-toggle');
+          var errorBox = document.querySelector('.errorbox');
 
-        function syncAccountPill() {
-          if (!userInput || !accountPill || !accountPillText)
-            return;
-
-          var value = userInput.value != null ? userInput.value.trim() : '';
-
-          if (value) {
-            accountPillText.textContent = value;
-            accountPill.style.display = 'inline-flex';
-          } else {
-            accountPillText.textContent = '';
-            accountPill.style.display = 'none';
+          function clearError() {
+            if (errorBox) errorBox.style.display = 'none';
+            if (userInput) userInput.classList.remove('cbi-input-invalid');
+            if (passInput) passInput.classList.remove('cbi-input-invalid');
           }
-        }
 
-        if (userInput) {
-          userInput.addEventListener('input', syncAccountPill);
-          userInput.addEventListener('change', syncAccountPill);
-          syncAccountPill();
-        }
+          if (userInput) {
+            userInput.addEventListener('input', clearError);
+          }
+          if (passInput) {
+            passInput.addEventListener('input', clearError);
+          }
 
-        if (passInput)
-          passInput.focus();
+          var loginFormEl = document.querySelector('.form-login');
+
+          function showStep2() {
+            if (loginFormEl) loginFormEl.classList.add('show-step2');
+            if (backBtn) backBtn.style.display = 'flex';
+            if (passInput) {
+              setTimeout(function() {
+                passInput.focus();
+              }, 50);
+            }
+          }
+
+          function showStep1() {
+            if (loginFormEl) loginFormEl.classList.remove('show-step2');
+            if (backBtn) backBtn.style.display = 'none';
+            if (userInput) {
+              setTimeout(function() {
+                userInput.focus();
+              }, 50);
+            }
+          }
+
+          if (btnNext && userInput) {
+            btnNext.addEventListener('click', function(e) {
+              e.preventDefault();
+              if (userInput.value.trim() !== '') {
+                if (accountPillText) {
+                  accountPillText.textContent = userInput.value.trim();
+                }
+                showStep2();
+              } else {
+                if (typeof userInput.reportValidity === 'function') {
+                  userInput.reportValidity();
+                } else {
+                  alert('{{ _('Username is required.') }}');
+                }
+              }
+            });
+
+            userInput.addEventListener('keydown', function(e) {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                btnNext.click();
+              }
+            });
+          }
+
+          if (backBtn) {
+            backBtn.addEventListener('click', function(e) {
+              e.preventDefault();
+              showStep1();
+            });
+          }
+
+          if (passwordToggle && passInput) {
+            passwordToggle.addEventListener('click', function(e) {
+              e.preventDefault();
+              if (passInput.type === 'password') {
+                passInput.type = 'text';
+                passwordToggle.innerHTML = '<svg class="eye-off-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>';
+              } else {
+                passInput.type = 'password';
+                passwordToggle.innerHTML = '<svg class="eye-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+              }
+            });
+          }
+
+          // Initial router: If username is already populated, go straight to Step 2.
+          if (userInput && userInput.value.trim() !== '') {
+            if (accountPillText) {
+              accountPillText.textContent = userInput.value.trim();
+            }
+            if (loginFormEl) {
+              loginFormEl.classList.add('no-transition');
+              showStep2();
+              // Force reflow to flush styles before removing no-transition
+              var reflow = loginFormEl.offsetHeight;
+              loginFormEl.classList.remove('no-transition');
+            } else {
+              showStep2();
+            }
+          } else {
+            showStep1();
+          }
+        })();
       //]]></script>
       {%
         let https_key = cfg.get('uhttpd', 'main', 'key');

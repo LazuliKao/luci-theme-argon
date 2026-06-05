@@ -143,7 +143,7 @@ body.login-page {
       // Microsoft sign-in card token alignment
       background: var(--fluent-bg-card) !important;
       border: 1px solid var(--fluent-border) !important;
-      border-radius: var(--fluent-radius-xl) !important;
+      border-radius: 12px !important;
       box-shadow:
         0 0 2px rgba(0, 0, 0, 0.12),
         0 8px 16px rgba(0, 0, 0, 0.14) !important;
@@ -151,60 +151,77 @@ body.login-page {
       animation: fluent-login-fade-in var(--fluent-duration-slow) var(--fluent-easing-easy-ease);
 
       // ============================================================
-      // BRAND / LOGO SECTION (Left-aligned)
+      // CARD HEADER & LOGO
       // ============================================================
-      .brand {
+      .ms-card-header {
+        position: relative !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
         margin-bottom: 28px !important;
+        min-height: 48px !important;
+        width: 100% !important;
+      }
+
+      .ms-back-button {
+        position: absolute !important;
+        left: -12px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        background: transparent !important;
+        border: none !important;
+        padding: 8px !important;
+        border-radius: 50% !important;
+        cursor: pointer !important;
+        display: none;
+        align-items: center !important;
+        justify-content: center !important;
+        color: var(--fluent-text) !important;
+        transition: background-color var(--fluent-duration-fast) var(--fluent-easing-standard) !important;
+
+        svg {
+          width: 20px !important;
+          height: 24px !important;
+        }
+
+        &:hover {
+          background-color: rgba(128, 128, 128, 0.15) !important;
+        }
+
+        &:focus-visible {
+          outline: 2px solid var(--fluent-focus-color) !important;
+          background-color: rgba(128, 128, 128, 0.15) !important;
+        }
+      }
+
+      .brand {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
         gap: 10px !important;
         text-decoration: none !important;
-        width: 100% !important;
 
         .icon {
-          width: 52px !important;
-          height: 52px !important;
+          width: 48px !important;
+          height: 48px !important;
         }
 
         .brand-text {
           font-family: var(--fluent-font-family) !important;
-          font-size: 30px !important;
+          font-size: 26px !important;
           font-weight: var(--fluent-font-weight-bold, 700) !important;
           color: var(--fluent-text-secondary) !important;
           margin: 0 !important;
-          letter-spacing: normal !important;
           line-height: 1.1 !important;
-        }
-      }
-      .login-account-pill {
-        display: inline-flex !important;
-        align-items: center !important;
-        align-self: center !important;
-        max-width: 100% !important;
-        min-height: 32px !important;
-        margin: -4px 0 20px 0 !important;
-        padding: 0 14px !important;
-        background: rgba(255, 255, 255, 0.04) !important;
-        border: 1px solid rgba(255, 255, 255, 0.14) !important;
-        border-radius: var(--fluent-radius-circular) !important;
-        box-sizing: border-box !important;
-
-        &__text {
-          display: block !important;
-          overflow: hidden !important;
-          text-overflow: ellipsis !important;
-          white-space: nowrap !important;
-          font-family: var(--fluent-font-family) !important;
-          font-size: 13px !important;
-          font-weight: var(--fluent-font-weight-regular) !important;
-          line-height: 30px !important;
-          color: var(--fluent-text-secondary) !important;
         }
       }
 
       // ============================================================
-      // TYPOGRAPHY (Left-aligned headers)
+      // STEP CONTAINER & ANIMATION
+      // ============================================================
+
+      // ============================================================
+      // TYPOGRAPHY (Centered headers)
       // ============================================================
       .login-title {
         font-family: var(--fluent-font-family) !important;
@@ -232,16 +249,63 @@ body.login-page {
       // FORM LOGIN - Inner Form wrapper
       // ============================================================
       .form-login {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        grid-template-rows: 1fr !important;
+        overflow: hidden !important;
+        position: relative !important;
         width: 100% !important;
         padding: 0 !important;
         margin: 0 !important;
         background: transparent !important;
 
+        // Both steps stack in the same grid cell
+        .step-container {
+          grid-column: 1 / -1 !important;
+          grid-row: 1 / -1 !important;
+          width: 100% !important;
+          transition: transform 0.35s cubic-bezier(0.1, 0.9, 0.2, 1),
+                      opacity 0.25s cubic-bezier(0.1, 0.9, 0.2, 1) !important;
+        }
+
+        // Default state: Step 1 visible, Step 2 off to the right
+        #step-username {
+          transform: translateX(0) !important;
+          opacity: 1 !important;
+          visibility: visible !important;
+        }
+
+        #step-password {
+          transform: translateX(40px) !important;
+          opacity: 0 !important;
+          visibility: hidden !important;
+        }
+
+        // Active state: Step 2 visible, Step 1 off to the left
+        &.show-step2 {
+          #step-username {
+            transform: translateX(-40px) !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+          }
+          #step-password {
+            transform: translateX(0) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+          }
+        }
+
+        &.no-transition {
+          .step-container {
+            transition: none !important;
+          }
+        }
+
         // ERROR BOX (Microsoft style)
         .errorbox {
           position: relative !important;
-          padding: 4px 0 0 20px !important;
-          margin: 6px 0 0 0 !important;
+          padding: 0 0 0 16px !important;
+          margin: 2px 0 0 0 !important;
           border-radius: 0 !important;
           display: block !important;
           text-align: left !important;
@@ -251,11 +315,11 @@ body.login-page {
           color: #e81123 !important;
 
           font-family: var(--fluent-font-family) !important;
-          font-size: 13px !important;
+          font-size: 12px !important;
           font-weight: var(--fluent-font-weight-regular) !important;
           line-height: 16px !important;
+          box-sizing: border-box !important;
 
-          // Left accent bar (Not used)
           &::before {
             display: none !important;
           }
@@ -265,7 +329,7 @@ body.login-page {
             content: "" !important;
             position: absolute !important;
             left: 0 !important;
-            top: 5px !important;
+            top: 1px !important;
             width: 14px !important;
             height: 14px !important;
             display: block !important;
@@ -280,45 +344,33 @@ body.login-page {
         .input-container {
           display: flex !important;
           flex-direction: column !important;
-          gap: 14px !important;
-          margin-bottom: 26px !important;
+          gap: 0 !important;
+          margin-bottom: 0 !important;
         }
 
-        // INPUT GROUP
-        .input-group {
+        // INPUT WRAPPER & OUTLINE FLOATING LABELS
+        .ms-input-wrapper {
           position: relative !important;
-          display: flex !important;
-          flex-direction: column !important;
-          margin: 0 !important;
           width: 100% !important;
 
-          // Remove icons inside Microsoft-style inputs
-          &::before {
-            display: none !important;
-          }
-
-          // ============================================================
-          // INPUT FIELDS - Flat Microsoft Style
-          // ============================================================
-          input,
-          .cbi-input-user,
-          .cbi-input-password {
+          .ms-input {
             display: block !important;
             box-sizing: border-box !important;
             width: 100% !important;
-            height: 44px !important;
-            min-height: 44px !important;
-            padding: 10px 12px !important;
-
+            height: 38px !important;
+            min-height: 38px !important;
+            padding: 0 10px !important;
+            
             background-color: var(--fluent-input-bg) !important;
             border: 1px solid var(--fluent-input-border) !important;
-            border-bottom: 2px solid var(--fluent-input-border) !important;
-            border-radius: var(--fluent-radius-lg) !important;
-
+            border-bottom: 1px solid var(--fluent-input-border) !important;
+            border-radius: 4px !important;
+            
             font-family: var(--fluent-font-family) !important;
-            font-size: 15px !important;
-            line-height: 22px !important;
-
+            font-size: 14px !important;
+            color: var(--fluent-text) !important;
+            line-height: normal !important;
+            
             box-shadow: none !important;
             outline: none !important;
             margin: 0 !important;
@@ -334,11 +386,6 @@ body.login-page {
               background-color var(--fluent-duration-fast) var(--fluent-easing-standard),
               background-size var(--fluent-duration-fast) var(--fluent-easing-standard) !important;
 
-            &::placeholder {
-              color: var(--fluent-text-disabled) !important;
-              opacity: 1 !important;
-            }
-
             &:hover:not(:focus):not(:disabled) {
               border-color: var(--fluent-input-border-hover) !important;
               border-bottom-color: var(--fluent-text) !important;
@@ -351,14 +398,6 @@ body.login-page {
               box-shadow: 0 0 0 1px var(--fluent-primary) inset !important;
             }
 
-            &:disabled {
-              background-color: var(--fluent-input-bg-disabled) !important;
-              border-color: var(--fluent-border) !important;
-              color: var(--fluent-text-disabled) !important;
-              cursor: not-allowed !important;
-            }
-
-            // Microsoft invalid input state
             &.cbi-input-invalid {
               border-color: #e81123 !important;
               border-bottom-color: #e81123 !important;
@@ -378,49 +417,112 @@ body.login-page {
             }
           }
 
-          .border {
-            display: none !important;
+          // Floating Label
+          .ms-label {
+            position: absolute !important;
+            left: 10px !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            background-color: var(--fluent-bg-card) !important;
+            padding: 0 4px !important;
+            color: var(--fluent-text-secondary) !important;
+            font-family: var(--fluent-font-family) !important;
+            font-size: 14px !important;
+            pointer-events: none !important;
+            transition: all var(--fluent-duration-fast) var(--fluent-easing-standard) !important;
+          }
+
+          // Float states
+          .ms-input:focus ~ .ms-label,
+          .ms-input:not(:placeholder-shown) ~ .ms-label {
+            top: 0 !important;
+            font-size: 12px !important;
+            color: var(--fluent-primary) !important;
+          }
+
+          // Keep faded color when not focused but has content
+          .ms-input:not(:focus):not(:placeholder-shown) ~ .ms-label {
+            color: var(--fluent-text-secondary) !important;
+          }
+
+          // Invalid float label color
+          .ms-input.cbi-input-invalid:focus ~ .ms-label {
+            color: #e81123 !important;
+          }
+          .ms-input.cbi-input-invalid:not(:placeholder-shown) ~ .ms-label {
+            color: #e81123 !important;
+          }
+        }
+
+        // Password Wrapper (to give spacing for eye icon)
+        .password-wrapper {
+          .ms-input {
+            padding: 0 36px 0 10px !important;
+          }
+        }
+
+        // ============================================================
+        // PASSWORD EYE TOGGLE BUTTON
+        // ============================================================
+        .ms-password-toggle {
+          position: absolute !important;
+          right: 1px !important;
+          top: 1px !important;
+          bottom: 2px !important;
+          width: 32px !important;
+          background: transparent !important;
+          border: none !important;
+          border-radius: 0 1px 1px 0 !important;
+          cursor: pointer !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          color: var(--fluent-text-secondary) !important;
+          outline: none !important;
+          transition: background-color var(--fluent-duration-fast) var(--fluent-easing-standard), color var(--fluent-duration-fast) var(--fluent-easing-standard) !important;
+
+          &:hover {
+            background-color: rgba(128, 128, 128, 0.1) !important;
+            color: var(--fluent-text) !important;
+          }
+
+          &:focus-visible {
+            outline: 1px solid var(--fluent-primary) !important;
+            background-color: rgba(128, 128, 128, 0.1) !important;
           }
         }
       }
 
       // ============================================================
-      // LOGIN BUTTON - Microsoft Next/Sign-in Button
+      // BUTTONS
       // ============================================================
-      .cbi-button-apply {
-        display: block !important;
+      .button-container {
+        display: flex !important;
+        justify-content: center !important;
+        margin-top: 20px !important;
         width: 100% !important;
-        height: 44px !important;
-        min-height: 44px !important;
-        padding: 0 16px !important;
-        margin: 12px 0 0 0 !important;
+      }
 
-        // Microsoft Blue button style
+      .ms-button {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        height: 38px !important;
+        padding: 8px 16px !important;
         background: #0067b8 !important;
         border: 1px solid #0067b8 !important;
-        border-radius: var(--fluent-radius-lg) !important;
-        color: var(--fluent-text-on-primary) !important;
-
+        border-radius: 4px !important;
+        color: #ffffff !important;
+        
         font-family: var(--fluent-font-family) !important;
-        font-size: 15px !important;
-        font-weight: var(--fluent-font-weight-semibold) !important;
+        font-size: 14px !important;
+        font-weight: 400 !important;
         text-align: center !important;
-        letter-spacing: normal !important;
-        text-transform: none !important;
-
+        line-height: 20px !important;
         cursor: pointer !important;
-        box-shadow: none !important;
         outline: none !important;
-        position: relative !important;
-        overflow: hidden !important;
-        transition:
-          background var(--fluent-duration-fast) var(--fluent-easing-standard),
-          border-color var(--fluent-duration-fast) var(--fluent-easing-standard),
-          transform var(--fluent-duration-fast) var(--fluent-easing-standard) !important;
-
-        &::after {
-          display: none !important;
-        }
+        transition: background var(--fluent-duration-fast) var(--fluent-easing-standard), border-color var(--fluent-duration-fast) var(--fluent-easing-standard) !important;
 
         &:hover {
           background: #005da6 !important;
@@ -430,12 +532,53 @@ body.login-page {
         &:active {
           background: #005292 !important;
           border-color: #005292 !important;
-          transform: scale(0.985) !important;
         }
 
         &:focus-visible {
           outline: 2px solid var(--fluent-focus-color) !important;
           outline-offset: 2px !important;
+        }
+      }
+
+      // ============================================================
+      // USER ACCOUNT PILL
+      // ============================================================
+      .login-account-pill-wrapper {
+        display: flex !important;
+        justify-content: center !important;
+        margin-bottom: 18px !important;
+        width: 100% !important;
+      }
+
+      .login-account-pill {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        max-width: 100% !important;
+        height: 32px !important;
+        padding: 0 12px !important;
+        background: transparent !important;
+        border: 1px solid rgba(0, 0, 0, 0.25) !important;
+        border-radius: 100px !important;
+        box-sizing: border-box !important;
+        color: var(--fluent-text) !important;
+        font-size: 12px !important;
+        transition: background-color var(--fluent-duration-fast) var(--fluent-easing-standard) !important;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.05) !important;
+        }
+
+        &__text {
+          display: block !important;
+          overflow: hidden !important;
+          text-overflow: ellipsis !important;
+          white-space: nowrap !important;
+          font-family: var(--fluent-font-family) !important;
+          font-size: 13px !important;
+          font-weight: 400 !important;
+          line-height: 1.5 !important;
+          color: var(--fluent-text) !important;
         }
       }
     }
@@ -492,34 +635,46 @@ body.login-page {
       0 0 2px rgba(0, 0, 0, 0.24),
       0 8px 16px rgba(0, 0, 0, 0.28) !important;
 
+    .brand .brand-text {
+      color: #a3a3a3 !important;
+    }
+
     .form-login {
       .errorbox {
-        color: #ff99a4 !important;
+        color: #e37d80 !important;
 
         &::after {
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14z' fill='%23ff99a4'/%3E%3Cpath d='M8 4a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-1.5 0v-4.5A.75.75 0 0 1 8 4zm0 8.25a.875.875 0 1 1 0-1.75.875.875 0 0 1 0 1.75z' fill='%23292929'/%3E%3C/svg%3E") !important;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14z' fill='%23e37d80'/%3E%3Cpath d='M8 4a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-1.5 0v-4.5A.75.75 0 0 1 8 4zm0 8.25a.875.875 0 1 1 0-1.75.875.875 0 0 1 0 1.75z' fill='%23292929'/%3E%3C/svg%3E") !important;
         }
       }
 
-      .input-group {
-        input.cbi-input-invalid,
-        .cbi-input-user.cbi-input-invalid,
-        .cbi-input-password.cbi-input-invalid {
-          border-color: #ff99a4 !important;
-          border-bottom-color: #ff99a4 !important;
-          background-image: linear-gradient(0deg, #ff99a4 0%, #ff99a4 100%) !important;
+      .ms-input-wrapper {
+        .ms-input {
+          &.cbi-input-invalid {
+            border-color: #e37d80 !important;
+            border-bottom-color: #e37d80 !important;
+            background-image: linear-gradient(0deg, #e37d80 0%, #e37d80 100%) !important;
 
-          &:hover:not(:focus):not(:disabled) {
-            border-color: #ff99a4 !important;
-            border-bottom-color: #ff99a4 !important;
-          }
+            &:hover:not(:focus):not(:disabled) {
+              border-color: #e37d80 !important;
+              border-bottom-color: #e37d80 !important;
+            }
 
-          &:focus {
-            border-color: #ff99a4 !important;
-            border-bottom-color: #ff99a4 !important;
-            background-size: 100% 2px !important;
-            box-shadow: 0 0 0 1px #ff99a4 inset !important;
+            &:focus {
+              border-color: #e37d80 !important;
+              border-bottom-color: #e37d80 !important;
+              background-size: 100% 2px !important;
+              box-shadow: 0 0 0 1px #e37d80 inset !important;
+            }
           }
+        }
+      }
+
+      .login-account-pill {
+        border-color: rgba(255, 255, 255, 0.25) !important;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1) !important;
         }
       }
     }
@@ -565,31 +720,14 @@ body.login-page {
         border: none !important;
         border-radius: 0 !important;
         box-shadow: none !important;
-        background: #292929 !important;
+        background: var(--fluent-bg-card) !important;
 
-        .brand {
+        .ms-card-header {
           margin-bottom: 24px !important;
-
-          .icon {
-            width: 30px !important;
-            height: 30px !important;
-          }
-
-          .brand-text {
-            font-size: 18px !important;
-            color: var(--fluent-text) !important;
-          }
         }
 
-        .login-account-pill {
-          margin: -2px 0 18px 0 !important;
-          min-height: 30px !important;
-          padding: 0 12px !important;
-
-          &__text {
-            font-size: 12px !important;
-            line-height: 28px !important;
-          }
+        .login-account-pill-wrapper {
+          margin-bottom: 12px !important;
         }
 
         .login-title {
@@ -599,12 +737,12 @@ body.login-page {
         }
 
         .login-subtitle {
-          margin-bottom: 24px !important;
+          margin-bottom: 20px !important;
         }
 
         .form-login .input-container {
-          gap: 14px !important;
-          margin-bottom: 24px !important;
+          gap: 0 !important;
+          margin-bottom: 0 !important;
         }
       }
     }

@@ -507,17 +507,29 @@ return baseclass.extend({
 		if (!modal) return;
 		if (modal.querySelector('.modal-scroll-body')) return; // Already wrapped
 
+		// 1. Find and extract the button row/footer if it's nested
+		let footer = modal.querySelector('.button-row, .modal-footer');
+		if (footer) {
+			footer.remove();
+		}
+
+		// 2. Find and extract the header if it's nested
+		let header = modal.querySelector('h4, .modal-header');
+		if (header && header.parentElement !== modal) {
+			header.remove();
+			modal.insertBefore(header, modal.firstChild);
+		} else if (!header) {
+			header = modal.querySelector('h4, .modal-header'); // it might be direct
+		}
+
+		// 3. Gather remaining children of the modal to be wrapped
 		const children = Array.from(modal.childNodes);
-		let header = null;
-		let footer = null;
 		const bodyNodes = [];
 
 		children.forEach((child) => {
 			if (child.nodeType === Node.ELEMENT_NODE) {
-				if (child.tagName === 'H4' || child.classList.contains('modal-header')) {
-					header = child;
-				} else if (child.classList.contains('button-row') || child.classList.contains('modal-footer')) {
-					footer = child;
+				if (child === header || child === footer) {
+					// Skip
 				} else if (child.classList.contains('modal-close') || child.classList.contains('close')) {
 					// Keep close button as a direct child of the modal so it stays fixed
 				} else {
@@ -541,6 +553,11 @@ return baseclass.extend({
 			header.after(scrollBody);
 		} else {
 			modal.insertBefore(scrollBody, modal.firstChild);
+		}
+
+		// 4. Append the footer at the very end of the modal
+		if (footer) {
+			modal.appendChild(footer);
 		}
 	}
 });

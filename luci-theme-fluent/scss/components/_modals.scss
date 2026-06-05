@@ -80,10 +80,9 @@ body.modal-overlay-active {
     justify-content: flex-end;
     gap: var(--fluent-space-xs);
 
-    > button:first-of-type,
-    > .cbi-button:first-of-type,
-    > .btn:first-of-type {
-      margin-right: auto;
+    // Push the second and subsequent elements to the right, keeping first on the left
+    > :nth-child(2) {
+      margin-left: auto;
     }
   }
 
@@ -130,4 +129,16 @@ body.modal-overlay-active {
 // Wide modal variant
 .modal-wide {
   max-width: 1000px;
+}
+
+// Remove duplicate borders and padding when cbi-section is placed inside a modal/dialog
+.modal,
+.uci-dialog {
+  .cbi-section {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
 }

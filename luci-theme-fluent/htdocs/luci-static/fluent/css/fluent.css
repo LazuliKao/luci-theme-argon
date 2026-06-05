@@ -1406,13 +1406,9 @@ body.modal-overlay-active #modal_overlay {
   justify-content: flex-end;
   gap: var(--fluent-space-xs);
 }
-.modal .button-row > button:first-of-type,
-.modal .button-row > .cbi-button:first-of-type,
-.modal .button-row > .btn:first-of-type,
-.modal .modal-footer > button:first-of-type,
-.modal .modal-footer > .cbi-button:first-of-type,
-.modal .modal-footer > .btn:first-of-type {
-  margin-right: auto;
+.modal .button-row > :nth-child(2),
+.modal .modal-footer > :nth-child(2) {
+  margin-left: auto;
 }
 .modal .modal-body {
   margin-bottom: var(--fluent-space-lg);
@@ -1503,6 +1499,15 @@ body.modal-overlay-active #modal_overlay {
 
 .modal-wide {
   max-width: 1000px;
+}
+
+.modal .cbi-section,
+.uci-dialog .cbi-section {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .cbi-map {

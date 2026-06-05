@@ -1392,9 +1392,12 @@ body.modal-overlay-active #modal_overlay {
 }
 .modal h4,
 .modal .modal-header {
-  margin-top: 0;
-  margin-bottom: var(--fluent-space-lg);
-  padding-bottom: var(--fluent-space-lg);
+  position: sticky;
+  top: calc(var(--fluent-modal-padding) * -1);
+  z-index: 10;
+  background: var(--fluent-modal-bg);
+  margin: calc(var(--fluent-modal-padding) * -1) calc(var(--fluent-modal-padding) * -1) var(--fluent-space-lg);
+  padding: var(--fluent-modal-padding) var(--fluent-modal-padding) var(--fluent-space-lg);
   border-bottom: 1px solid var(--fluent-border);
   font-size: var(--fluent-font-size-lg);
   font-weight: var(--fluent-font-weight-semibold);
@@ -1409,16 +1412,25 @@ body.modal-overlay-active #modal_overlay {
 }
 .modal .button-row,
 .modal .modal-footer {
+  position: sticky;
+  bottom: calc(var(--fluent-modal-padding) * -1);
+  z-index: 10;
+  background: var(--fluent-modal-bg);
+  margin: var(--fluent-space-lg) calc(var(--fluent-modal-padding) * -1) calc(var(--fluent-modal-padding) * -1);
+  padding: var(--fluent-space-lg) var(--fluent-modal-padding) var(--fluent-modal-padding);
+  border-top: 1px solid var(--fluent-border);
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
   gap: var(--fluent-space-xs);
-  padding-top: var(--fluent-space-lg);
-  border-top: 1px solid var(--fluent-border);
-  margin-top: var(--fluent-space-lg);
 }
 .modal .button-row > button:first-of-type,
-.modal .modal-footer > button:first-of-type {
+.modal .button-row > .cbi-button:first-of-type,
+.modal .button-row > .btn:first-of-type,
+.modal .modal-footer > button:first-of-type,
+.modal .modal-footer > .cbi-button:first-of-type,
+.modal .modal-footer > .btn:first-of-type {
   margin-right: auto;
 }
 .modal .modal-body {
@@ -1834,20 +1846,6 @@ body.modal-overlay-active #modal_overlay {
   background: transparent;
 }
 
-.modal > .button-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--fluent-space-sm);
-  margin-top: var(--fluent-space-lg);
-  padding-top: var(--fluent-space-lg);
-  border-top: 1px solid var(--fluent-border);
-}
-.modal > .button-row > button:first-of-type,
-.modal > .button-row > .cbi-button:first-of-type,
-.modal > .button-row > .btn:first-of-type {
-  margin-right: auto;
-}
 .modal label > input[type=checkbox] {
   margin-right: var(--fluent-space-sm);
   vertical-align: middle;

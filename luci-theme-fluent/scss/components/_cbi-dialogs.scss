@@ -142,21 +142,6 @@
 
 
 .modal {
-  > .button-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--fluent-space-sm);
-    margin-top: var(--fluent-space-lg);
-    padding-top: var(--fluent-space-lg);
-    border-top: 1px solid var(--fluent-border);
-
-    > button:first-of-type,
-    > .cbi-button:first-of-type,
-    > .btn:first-of-type {
-      margin-right: auto;
-    }
-  }
 
   label > input[type='checkbox'] {
     margin-right: var(--fluent-space-sm);

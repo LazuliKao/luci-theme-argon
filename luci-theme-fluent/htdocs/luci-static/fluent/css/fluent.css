@@ -2165,6 +2165,7 @@ td > .ifacebadge,
   border-radius: var(--fluent-card-radius);
   box-shadow: var(--fluent-card-shadow);
   padding: var(--fluent-card-padding);
+  position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -2172,9 +2173,12 @@ td > .ifacebadge,
   padding: 0;
   overflow: visible;
 }
+.ifacebox:hover {
+  z-index: 1;
+}
 .ifacebox > .ifacebox-body img {
   display: block;
-  margin: 0 auto var(--fluent-space-sm);
+  margin: 0 auto var(--fluent-space-xs);
   width: 48px;
   height: 48px;
   object-fit: contain;
@@ -2211,7 +2215,7 @@ td > .ifacebadge,
   align-items: center;
   justify-content: space-between;
   gap: var(--fluent-space-sm);
-  padding: var(--fluent-space-md) var(--fluent-space-lg);
+  padding: var(--fluent-space-sm) var(--fluent-space-md);
   border-bottom: 1px solid var(--fluent-card-border);
   background: var(--fluent-bg-page);
   color: var(--fluent-text);
@@ -2230,8 +2234,8 @@ td > .ifacebadge,
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--fluent-space-sm);
-  padding: var(--fluent-space-md) var(--fluent-space-lg);
+  gap: var(--fluent-space-xs);
+  padding: var(--fluent-space-sm) var(--fluent-space-md);
   color: var(--fluent-text-secondary);
   text-align: center;
 }

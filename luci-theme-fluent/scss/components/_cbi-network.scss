@@ -129,6 +129,16 @@ td > .ifacebadge,
   padding: 0;
   overflow: visible;
 
+  > :first-child {
+    border-top-left-radius: calc(var(--fluent-card-radius) - 1px);
+    border-top-right-radius: calc(var(--fluent-card-radius) - 1px);
+  }
+
+  > :last-child {
+    border-bottom-left-radius: calc(var(--fluent-card-radius) - 1px);
+    border-bottom-right-radius: calc(var(--fluent-card-radius) - 1px);
+  }
+
   &:hover {
     z-index: 1;
   }

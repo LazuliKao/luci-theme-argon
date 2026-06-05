@@ -1140,8 +1140,6 @@ input[type=search]::-webkit-search-cancel-button {
 }
 
 .tr {
-  display: flex;
-  align-items: stretch;
   border-bottom: 1px solid var(--fluent-table-border);
   transition: background var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
@@ -1151,12 +1149,35 @@ input[type=search]::-webkit-search-cancel-button {
 
 .td,
 .th {
-  flex: 1 1 auto;
   padding: var(--fluent-space-xs) var(--fluent-space-sm);
   font-size: var(--fluent-font-size-base);
   color: var(--fluent-text);
   line-height: var(--fluent-line-height-normal);
+}
+.td.left,
+.th.left {
+  text-align: left;
+  justify-content: flex-start;
+}
+.td.right,
+.th.right {
+  text-align: right;
+  justify-content: flex-end;
+}
+.td.center,
+.th.center {
   text-align: center;
+  justify-content: center;
+}
+
+div.tr {
+  display: flex;
+  align-items: stretch;
+}
+
+div.td,
+div.th {
+  flex: 1 1 auto;
   display: flex;
   align-items: center;
   justify-content: center;

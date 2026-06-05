@@ -16,10 +16,8 @@
   @include custom-scrollbar;
 }
 
-// LuCI table structure (div-based tables)
+// LuCI table structure (visual styles for all tables)
 .tr {
-  display: flex;
-  align-items: stretch;
   border-bottom: 1px solid var(--fluent-table-border);
   transition: background var(--fluent-duration-fast) var(--fluent-easing-standard);
 
@@ -30,12 +28,34 @@
 
 .td,
 .th {
-  flex: 1 1 auto;
   padding: var(--fluent-space-xs) var(--fluent-space-sm);
   font-size: var(--fluent-font-size-base);
   color: var(--fluent-text);
   line-height: var(--fluent-line-height-normal);
-  text-align: center;
+
+  &.left {
+    text-align: left;
+    justify-content: flex-start;
+  }
+  &.right {
+    text-align: right;
+    justify-content: flex-end;
+  }
+  &.center {
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+// Structural Flexbox layout ONLY for div-based tables
+div.tr {
+  display: flex;
+  align-items: stretch;
+}
+
+div.td,
+div.th {
+  flex: 1 1 auto;
   display: flex;
   align-items: center;
   justify-content: center;

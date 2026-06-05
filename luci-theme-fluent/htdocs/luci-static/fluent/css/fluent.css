@@ -1348,10 +1348,19 @@ div.th {
   display: none;
   align-items: center;
   justify-content: center;
-  animation: fadeIn var(--fluent-duration-normal) var(--fluent-easing-decelerate);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--fluent-space-md);
+  box-sizing: border-box;
 }
-#modal_overlay.active {
+
+body.modal-overlay-active {
+  overflow: hidden;
+  height: 100vh;
+}
+body.modal-overlay-active #modal_overlay {
   display: flex;
+  animation: fadeIn var(--fluent-duration-normal) var(--fluent-easing-decelerate);
 }
 
 .modal {
@@ -1359,9 +1368,10 @@ div.th {
   border-radius: var(--fluent-modal-radius);
   box-shadow: var(--fluent-shadow-xl);
   padding: var(--fluent-modal-padding);
-  max-width: 90vw;
-  max-height: 80vh;
-  width: 480px;
+  width: 90%;
+  min-width: 280px;
+  max-width: 800px;
+  max-height: 85vh;
   overflow-y: auto;
   position: relative;
   animation: slideInUp var(--fluent-duration-normal) var(--fluent-easing-decelerate);
@@ -1380,26 +1390,24 @@ div.th {
 .modal::-webkit-scrollbar-thumb:hover {
   background: var(--fluent-scrollbar-thumb-bg-hover);
 }
+.modal h4,
 .modal .modal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  margin-top: 0;
   margin-bottom: var(--fluent-space-lg);
   padding-bottom: var(--fluent-space-lg);
   border-bottom: 1px solid var(--fluent-border);
+  font-size: var(--fluent-font-size-lg);
+  font-weight: var(--fluent-font-weight-semibold);
+  color: var(--fluent-text);
 }
+.modal h4 h3,
 .modal .modal-header h3 {
   font-size: var(--fluent-font-size-lg);
   font-weight: var(--fluent-font-weight-semibold);
   color: var(--fluent-text);
   margin: 0;
 }
-.modal .modal-body {
-  margin-bottom: var(--fluent-space-lg);
-  font-size: var(--fluent-font-size-base);
-  color: var(--fluent-text);
-  line-height: var(--fluent-line-height-normal);
-}
+.modal .button-row,
 .modal .modal-footer {
   display: flex;
   align-items: center;
@@ -1407,6 +1415,17 @@ div.th {
   gap: var(--fluent-space-xs);
   padding-top: var(--fluent-space-lg);
   border-top: 1px solid var(--fluent-border);
+  margin-top: var(--fluent-space-lg);
+}
+.modal .button-row > button:first-of-type,
+.modal .modal-footer > button:first-of-type {
+  margin-right: auto;
+}
+.modal .modal-body {
+  margin-bottom: var(--fluent-space-lg);
+  font-size: var(--fluent-font-size-base);
+  color: var(--fluent-text);
+  line-height: var(--fluent-line-height-normal);
 }
 .modal .modal-close,
 .modal .close {
@@ -1470,7 +1489,7 @@ div.th {
 }
 
 .modal-wide {
-  width: 640px;
+  max-width: 1000px;
 }
 
 .cbi-map {

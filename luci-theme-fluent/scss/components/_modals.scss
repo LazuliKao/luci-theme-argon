@@ -17,10 +17,19 @@
   display: none;
   align-items: center;
   justify-content: center;
-  @include fade-in;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--fluent-space-md);
+  box-sizing: border-box;
+}
 
-  &.active {
+body.modal-overlay-active {
+  overflow: hidden;
+  height: 100vh;
+
+  #modal_overlay {
     display: flex;
+    @include fade-in;
   }
 }
 
@@ -30,21 +39,25 @@
   border-radius: var(--fluent-modal-radius);
   box-shadow: var(--fluent-shadow-xl);
   padding: var(--fluent-modal-padding);
-  max-width: 90vw;
-  max-height: 80vh;
-  width: 480px;
+  width: 90%;
+  min-width: 280px;
+  max-width: 800px;
+  max-height: 85vh;
   overflow-y: auto;
   position: relative;
   @include slide-in-up;
   @include custom-scrollbar;
 
+  // Support both h4 (standard LuCI) and .modal-header (custom)
+  h4,
   .modal-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    margin-top: 0;
     margin-bottom: var(--fluent-space-lg);
     padding-bottom: var(--fluent-space-lg);
     border-bottom: 1px solid var(--fluent-border);
+    font-size: var(--fluent-font-size-lg);
+    font-weight: var(--fluent-font-weight-semibold);
+    color: var(--fluent-text);
 
     h3 {
       font-size: var(--fluent-font-size-lg);
@@ -54,13 +67,8 @@
     }
   }
 
-  .modal-body {
-    margin-bottom: var(--fluent-space-lg);
-    font-size: var(--fluent-font-size-base);
-    color: var(--fluent-text);
-    line-height: var(--fluent-line-height-normal);
-  }
-
+  // Support both .button-row (standard LuCI) and .modal-footer (custom)
+  .button-row,
   .modal-footer {
     display: flex;
     align-items: center;
@@ -68,6 +76,18 @@
     gap: var(--fluent-space-xs);
     padding-top: var(--fluent-space-lg);
     border-top: 1px solid var(--fluent-border);
+    margin-top: var(--fluent-space-lg);
+
+    > button:first-of-type {
+      margin-right: auto;
+    }
+  }
+
+  .modal-body {
+    margin-bottom: var(--fluent-space-lg);
+    font-size: var(--fluent-font-size-base);
+    color: var(--fluent-text);
+    line-height: var(--fluent-line-height-normal);
   }
 
   // Close button
@@ -97,5 +117,5 @@
 
 // Wide modal variant
 .modal-wide {
-  width: 640px;
+  max-width: 1000px;
 }

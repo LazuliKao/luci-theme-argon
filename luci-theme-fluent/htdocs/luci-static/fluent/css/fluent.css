@@ -1849,6 +1849,18 @@ input[type=search]::-webkit-search-cancel-button {
   background: var(--fluent-bg-active);
   border-color: var(--fluent-btn-secondary-border-active);
 }
+.cbi-page-actions .cbi-dropdown[open] > ul.dropdown {
+  left: auto !important;
+  right: 0 !important;
+  bottom: 100% !important;
+  top: auto !important;
+  margin-top: 0 !important;
+  margin-bottom: var(--fluent-space-xxs) !important;
+  width: max-content !important;
+  max-width: calc(100vw - 32px) !important;
+  transform-origin: bottom !important;
+  animation-name: fluent-dropdown-slide-in-up !important;
+}
 
 .alert,
 .alert-message {
@@ -3590,6 +3602,16 @@ code::-webkit-scrollbar-thumb:hover {
   from {
     opacity: 0;
     transform: translateY(-8px) scaleY(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+@keyframes fluent-dropdown-slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scaleY(0.95);
   }
   to {
     opacity: 1;

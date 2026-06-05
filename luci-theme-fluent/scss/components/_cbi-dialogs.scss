@@ -213,6 +213,22 @@
   .cbi-button-save {
     @include button-secondary;
   }
+
+  // Prevent Save & Apply dropdown from flying off the screen on mobile
+  .cbi-dropdown {
+    &[open] > ul.dropdown {
+      left: auto !important;
+      right: 0 !important;
+      bottom: 100% !important;
+      top: auto !important;
+      margin-top: 0 !important;
+      margin-bottom: var(--fluent-space-xxs) !important;
+      width: max-content !important;
+      max-width: calc(100vw - 32px) !important;
+      transform-origin: bottom !important;
+      animation-name: fluent-dropdown-slide-in-up !important;
+    }
+  }
 }
 
 .alert,

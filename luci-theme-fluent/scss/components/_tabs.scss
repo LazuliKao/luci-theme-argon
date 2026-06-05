@@ -253,6 +253,21 @@ ul.cbi-tabmenu {
 // Tab content panels
 // ============================================================
 
+[data-tab-title] {
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+[data-tab-active="true"] {
+  overflow: visible;
+  height: auto;
+  opacity: 1;
+  transition: opacity var(--fluent-transition-normal);
+}
+
 .cbi-tabcontainer {
   padding: var(--fluent-space-lg) 0;
 }

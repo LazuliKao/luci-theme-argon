@@ -53,7 +53,7 @@ td > .ifacebadge,
   gap: var(--fluent-space-sm);
   padding: var(--fluent-space-sm) var(--fluent-space-md);
   border: 1px solid var(--fluent-card-border);
-  border-inline-start: var(--fluent-space-xs) solid var(--fluent-primary);
+  border-inline-start: var(--fluent-space-xs) solid rgb(var(--zone-color-rgb, 128, 128, 128));
   border-radius: var(--fluent-radius-lg);
   background: var(--fluent-card-bg);
   box-shadow: var(--fluent-card-shadow);

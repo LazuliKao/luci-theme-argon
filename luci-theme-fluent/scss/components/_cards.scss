@@ -61,8 +61,8 @@
   padding: 0;
 }
 
-// Card with actions
-.cbi-section-actions {
+// Card with actions (exclude table cells which have their own rule)
+.cbi-section-actions:not(.th):not(.td) {
   display: flex;
   align-items: center;
   justify-content: flex-end;

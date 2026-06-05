@@ -71,22 +71,29 @@
     let bgUrl = media + '/img/bg1.jpg';
     let backgroundType = 'Image';
     let mimeType = '';
+    let login_bg = 'builtin';
 
     if (access('/etc/config/fluent')) {
-      let online_wallpaper = cfg.get_first('fluent', 'global', 'online_wallpaper');
-      if (online_wallpaper && online_wallpaper !== 'none') {
-        try {
-          let proc = popen('/usr/libexec/fluent/online_wallpaper');
-          let picurl = proc ? trim(proc.read('all')) : '';
-          if (proc)
-            proc.close();
-          if (picurl) {
-            return [picurl, 'Image', ''];
-          }
-        } catch (e) {}
-      }
+      login_bg = cfg.get_first('fluent', 'global', 'login_bg') || 'builtin';
     }
 
+    if (login_bg === 'microsoft') {
+      return ['', 'MicrosoftDynamic', ''];
+    }
+
+    if (login_bg === 'bing' || login_bg === 'unsplash') {
+      try {
+        let proc = popen('/usr/libexec/fluent/online_wallpaper');
+        let picurl = proc ? trim(proc.read('all')) : '';
+        if (proc)
+          proc.close();
+        if (picurl) {
+          return [picurl, 'Image', ''];
+        }
+      } catch (e) {}
+    }
+
+    // Custom or Built-in modes (fallback/scan directory)
     let mediaFiles = fetchMedia('/www' + themeDir + '*', themeDir);
     let backgroundTable = mediaFiles[0];
     let backgroundCount = mediaFiles[1];
@@ -132,6 +139,191 @@
     });
   </script>
   <!-- Video Player End -->
+  {% } else if (backgroundType === 'MicrosoftDynamic') { %}
+  <!-- Microsoft-style Dynamic Canvas Background -->
+  <canvas id="login-canvas" class="main-bg"></canvas>
+  <script type="text/javascript">//<![CDATA[
+    (function() {
+      const canvas = document.getElementById('login-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      
+      let w = canvas.width = window.innerWidth;
+      let h = canvas.height = window.innerHeight;
+      
+      // Determine light/dark mode
+      const isDark = document.body.getAttribute('data-theme-mode') === 'dark' || 
+                     (document.body.getAttribute('data-theme-mode') === 'normal' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      
+      // Dynamic color options based on theme
+      const colors = isDark ? {
+        bgStart: '#090a10',
+        bgEnd: '#030406',
+        ribbons: [
+          {
+            y1: 0.6, y2: 0.1, thicknessStart: 0.35, thicknessEnd: 0.3, thicknessMid: 0.5,
+            cp1x: 0.3, cp1y: 0.4, cp2x: 0.7, cp2y: 0.2, speed: 0.0004, phase: 0,
+            c1: 'rgba(10, 24, 72, 0.45)', c2: 'rgba(3, 8, 28, 0)'
+          },
+          {
+            y1: 0.75, y2: 0.2, thicknessStart: 0.25, thicknessEnd: 0.2, thicknessMid: 0.4,
+            cp1x: 0.4, cp1y: 0.55, cp2x: 0.8, cp2y: 0.35, speed: 0.0006, phase: 1.8,
+            c1: 'rgba(0, 72, 160, 0.35)', c2: 'rgba(0, 10, 40, 0)'
+          },
+          {
+            y1: 0.5, y2: 0.35, thicknessStart: 0.15, thicknessEnd: 0.15, thicknessMid: 0.3,
+            cp1x: 0.2, cp1y: 0.65, cp2x: 0.6, cp2y: 0.45, speed: 0.0005, phase: 3.5,
+            c1: 'rgba(84, 32, 140, 0.25)', c2: 'rgba(12, 4, 28, 0)'
+          },
+          {
+            y1: 0.5, y2: 0.35, thicknessStart: 0.02, thicknessEnd: 0.02, thicknessMid: 0.04,
+            cp1x: 0.2, cp1y: 0.65, cp2x: 0.6, cp2y: 0.45, speed: 0.0005, phase: 3.5,
+            c1: 'rgba(0, 180, 255, 0.25)', c2: 'rgba(0, 0, 0, 0)'
+          }
+        ]
+      } : {
+        bgStart: '#eef3fa',
+        bgEnd: '#f4f6f9',
+        ribbons: [
+          {
+            y1: 0.6, y2: 0.1, thicknessStart: 0.35, thicknessEnd: 0.3, thicknessMid: 0.5,
+            cp1x: 0.3, cp1y: 0.4, cp2x: 0.7, cp2y: 0.2, speed: 0.0004, phase: 0,
+            c1: 'rgba(0, 120, 215, 0.08)', c2: 'rgba(0, 120, 215, 0)'
+          },
+          {
+            y1: 0.75, y2: 0.2, thicknessStart: 0.25, thicknessEnd: 0.2, thicknessMid: 0.4,
+            cp1x: 0.4, cp1y: 0.55, cp2x: 0.8, cp2y: 0.35, speed: 0.0006, phase: 1.8,
+            c1: 'rgba(112, 48, 160, 0.06)', c2: 'rgba(112, 48, 160, 0)'
+          },
+          {
+            y1: 0.5, y2: 0.35, thicknessStart: 0.15, thicknessEnd: 0.15, thicknessMid: 0.3,
+            cp1x: 0.2, cp1y: 0.65, cp2x: 0.6, cp2y: 0.45, speed: 0.0005, phase: 3.5,
+            c1: 'rgba(0, 130, 114, 0.07)', c2: 'rgba(0, 130, 114, 0)'
+          },
+          {
+            y1: 0.5, y2: 0.35, thicknessStart: 0.02, thicknessEnd: 0.02, thicknessMid: 0.04,
+            cp1x: 0.2, cp1y: 0.65, cp2x: 0.6, cp2y: 0.45, speed: 0.0005, phase: 3.5,
+            c1: 'rgba(255, 255, 255, 0.65)', c2: 'rgba(255, 255, 255, 0)'
+          }
+        ]
+      };
+
+      // Random particles (stardust / micro-particles)
+      let particles = [];
+      const particleCount = isDark ? 65 : 30;
+
+      function initParticles() {
+        particles = [];
+        for (let i = 0; i < particleCount; i++) {
+          particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            size: Math.random() * 1.5 + 0.4,
+            alpha: Math.random() * 0.7 + 0.1,
+            targetAlpha: Math.random() * 0.7 + 0.1,
+            dx: (Math.random() - 0.5) * 0.06,
+            dy: (Math.random() - 0.5) * 0.06,
+            flicker: Math.random() * 0.008 + 0.002
+          });
+        }
+      }
+
+      initParticles();
+
+      window.addEventListener('resize', () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+        initParticles();
+      });
+
+      function drawRibbon(time, opt) {
+        ctx.beginPath();
+        
+        // Calculate dynamic start/end points using sine/cosine waves for gentle floating motion
+        const startX1 = -w * 0.2;
+        const startY1 = h * (opt.y1 + Math.sin(time * opt.speed + opt.phase) * 0.04);
+        
+        const cp1x = w * (opt.cp1x + Math.cos(time * opt.speed * 0.8 + opt.phase) * 0.04);
+        const cp1y = h * (opt.cp1y + Math.sin(time * opt.speed * 1.1 + opt.phase) * 0.05);
+        
+        const cp2x = w * (opt.cp2x + Math.sin(time * opt.speed * 0.9 + opt.phase * 1.5) * 0.04);
+        const cp2y = h * (opt.cp2y + Math.cos(time * opt.speed * 1.2 + opt.phase * 1.5) * 0.04);
+        
+        const endX1 = w * 1.2;
+        const endY1 = h * (opt.y2 + Math.cos(time * opt.speed * 0.7 + opt.phase * 2) * 0.04);
+        
+        ctx.moveTo(startX1, startY1);
+        ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, endX1, endY1);
+        
+        // Line down to start of bottom edge of the ribbon
+        const endX2 = w * 1.2;
+        const endY2 = endY1 + h * opt.thicknessEnd;
+        ctx.lineTo(endX2, endY2);
+        
+        // Bezier curves back to left side
+        const cp3x = cp2x;
+        const cp3y = cp2y + h * opt.thicknessMid;
+        const cp4x = cp1x;
+        const cp4y = cp1y + h * opt.thicknessMid;
+        
+        const startX2 = startX1;
+        const startY2 = startY1 + h * opt.thicknessStart;
+        
+        ctx.bezierCurveTo(cp3x, cp3y, cp4x, cp4y, startX2, startY2);
+        ctx.closePath();
+        
+        const grad = ctx.createLinearGradient(0, h * opt.y1, w, h * opt.y2);
+        grad.addColorStop(0, opt.c1);
+        grad.addColorStop(1, opt.c2);
+        
+        ctx.fillStyle = grad;
+        ctx.fill();
+      }
+
+      function animate(time) {
+        // 1. Draw base gradient background
+        const bgGrad = ctx.createLinearGradient(0, 0, w, h);
+        bgGrad.addColorStop(0, colors.bgStart);
+        bgGrad.addColorStop(1, colors.bgEnd);
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, w, h);
+
+        // 2. Draw dynamic ribbons/waves
+        colors.ribbons.forEach(opt => {
+          drawRibbon(time, opt);
+        });
+
+        // 3. Draw particles
+        particles.forEach(p => {
+          // Update position
+          p.x += p.dx;
+          p.y += p.dy;
+
+          // Loop screen edges
+          if (p.x < 0) p.x = w;
+          if (p.x > w) p.x = 0;
+          if (p.y < 0) p.y = h;
+          if (p.y > h) p.y = 0;
+
+          // Twinkle/Flicker alpha
+          if (Math.abs(p.alpha - p.targetAlpha) < 0.02) {
+            p.targetAlpha = Math.random() * (isDark ? 0.7 : 0.4) + 0.1;
+          }
+          p.alpha += (p.targetAlpha - p.alpha) * p.flicker;
+
+          // Draw
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = isDark ? `rgba(255, 255, 255, ${p.alpha})` : `rgba(0, 120, 215, ${p.alpha * 0.7})`;
+          ctx.fill();
+        });
+
+        requestAnimationFrame(animate);
+      }
+
+      requestAnimationFrame(animate);
+    })();
+  //]]></script>
   {% } else { %}
   <!-- Image Background Start -->
   <div class="main-bg" id="main-bg" style="background-image:url({{ bgUrl }})"></div>

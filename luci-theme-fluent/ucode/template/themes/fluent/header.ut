@@ -39,6 +39,7 @@
   let header_height = '48';
   let border_radius = '4';
   let card_shadow = 'small';
+  let control_height = '32';
   let transition_speed = 'normal';
   let custom_css = '';
   let dark_sidebar_bg = '';
@@ -76,6 +77,7 @@
     header_height = cfg.get_first('fluent', 'global', 'header_height') || '48';
     border_radius = cfg.get_first('fluent', 'global', 'border_radius') || '4';
     card_shadow = cfg.get_first('fluent', 'global', 'card_shadow') || 'small';
+    control_height = cfg.get_first('fluent', 'global', 'control_height') || '32';
     transition_speed = cfg.get_first('fluent', 'global', 'transition_speed') || 'normal';
     custom_css = cfg.get_first('fluent', 'global', 'custom_css') || '';
     dark_sidebar_bg = cfg.get_first('fluent', 'global', 'dark_sidebar_bg') || '';
@@ -145,6 +147,7 @@
       --fluent-sidebar-width: {{ sidebar_width }}px;
       --fluent-header-height: {{ header_height }}px;
       --fluent-radius-sm: {{ border_radius }}px;
+      --fluent-control-height: {{ control_height }}px;
       --fluent-radius-md: {{ border_radius }}px;
       --fluent-card-shadow: {{ card_shadow_value }};
       --fluent-transition-fast: {{ transition_duration }} ease;

@@ -32,6 +32,7 @@
   vertical-align: middle;
 
   // Size: medium (default) - matches Input height
+  height: var(--fluent-input-height);
   padding: 0 var(--fluent-space-xs);
   gap: var(--fluent-space-xxs);
   min-width: 120px;
@@ -130,7 +131,7 @@
   // ----------------------------------------------------------
   // PREVIEW AREA (selected items display)
   // ----------------------------------------------------------
-  > ul.preview {
+  > ul:not(.dropdown) {
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
@@ -144,7 +145,7 @@
     gap: var(--fluent-space-xxs);
     pointer-events: none;
     height: 100%;
-    min-height: 2.5rem;
+    min-height: unset;
 
     > li {
       display: none;
@@ -156,14 +157,16 @@
       line-height: 20px;
       vertical-align: middle;
 
-      // Show only selected items in preview
-      &[selected] {
-        display: inline;
+      // Show only selected or displayed items in preview
+      &[selected],
+      &[display] {
+        display: inline-flex;
+        align-items: center;
       }
     }
 
     // Show placeholder only when no selection exists
-    &:not(:has(li[selected])) > li[placeholder] {
+    &:not(:has(li[selected])):not(:has(li[display])) > li[placeholder] {
       display: inline;
       color: var(--fluent-text-disabled);
     }
@@ -176,7 +179,8 @@
   }
 
   // Hide placeholder when there's any selection (parent-level :has())
-  &:has(ul.preview > li[selected]) > ul.preview > li[placeholder] {
+  &:has(ul:not(.dropdown) > li[selected]) > ul:not(.dropdown) > li[placeholder],
+  &:has(ul:not(.dropdown) > li[display]) > ul:not(.dropdown) > li[placeholder] {
     display: none;
   }
 
@@ -249,7 +253,7 @@
   }
 
   // Hide preview when empty
-  &[empty] > ul.preview {
+  &[empty] > ul:not(.dropdown) {
     display: none;
   }
 
@@ -322,7 +326,7 @@
       width: 100%;
 
       // Size
-      min-height: 2.5rem;
+      min-height: var(--fluent-input-height);
       padding: 5px var(--fluent-space-xs);
 
       // Appearance

@@ -186,13 +186,20 @@ return view.extend({
 		o.rmempty = false;
 
 		o = s.option(form.ListValue, 'border_radius', _('Border Radius'),
-			=_('Controls the roundness of corners throughout the interface.'));
+			_('Controls the roundness of corners throughout the interface.'));
 		o.value('2', _('Sharp (2px)'));
 		o.value('4', _('Subtle (4px)'));
 		o.value('6', _('Medium (6px)'));
 		o.value('8', _('Rounded (8px)'));
 		o.value('12', _('Extra Rounded (12px)'));
 		o.default = '4';
+		o.rmempty = false;
+
+		o = s.option(form.ListValue, 'control_height', _('Control Height'),
+			_('The height of input fields, buttons, and dropdown menus.'));
+		o.value('32', _('Compact (32px)'));
+		o.value('42', _('Default (42px)'));
+		o.default = '32';
 		o.rmempty = false;
 
 		// ============================================================
@@ -244,6 +251,7 @@ return view.extend({
 		o = s.option(form.ListValue, 'login_bg', _('Background Source'),
 			_('Choose the background image source for the login page.'));
 		o.value('builtin', _('Built-in'));
+		o.value('microsoft', _('Microsoft Dynamic (Code Generated)'));
 		o.value('custom', _('Custom upload'));
 		o.value('bing', _('Bing Daily'));
 		o.value('unsplash', _('Unsplash Random'));

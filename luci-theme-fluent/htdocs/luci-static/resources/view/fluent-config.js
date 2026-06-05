@@ -53,6 +53,12 @@ return view.extend({
 		o.default = '600';
 		o.rmempty = false;
 
+		o = s.option(form.ListValue, 'control_height', _('Control Height'));
+		o.value('32', _('Compact (32px)'));
+		o.value('42', _('Default (42px)'));
+		o.default = '32';
+		o.rmempty = false;
+
 		o = s.option(form.Value, 'primary', _('[Light mode] Primary Color'), _('A HEX color (default: #0078d4).'))
 		o.default = '#0078d4';
 		o.rmempty = false;

@@ -440,4 +440,25 @@
     padding-right: var(--fluent-space-xl);
     cursor: pointer;
   }
+
+  // Button dropdown overrides to ensure chevron matches text color (e.g. white on blue/red buttons)
+  &.cbi-button,
+  &.btn {
+    > span.open::before {
+      border-color: currentColor !important;
+    }
+    &:hover > span.open::before {
+      border-color: currentColor !important;
+    }
+  }
+
+  // Remove border, background and padding of ifacebadge inside dropdown to keep text inline and clean
+  .ifacebadge {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    color: inherit !important;
+    min-height: unset !important;
+  }
 }

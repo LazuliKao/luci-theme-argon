@@ -6,8 +6,10 @@
 @use "../icons" as *;
 
 // Base .cbi-button applied to all LuCI buttons
-.cbi-button {
-  @include button-base;
+.cbi-button,
+.btn,
+button {
+  @include button-secondary;
 
   &.cbi-button-save,
   &.cbi-button-apply,

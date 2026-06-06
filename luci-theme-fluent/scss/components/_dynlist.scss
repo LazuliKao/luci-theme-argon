@@ -69,9 +69,10 @@
 
     // Absolute positioned delete button on the right to prevent coordinate calculations conflict
     &::after {
+      content: "";
       position: absolute;
       width: 28px !important;
-      height: 28px;
+      height: 28px !important;
       right: 2px;
       top: 50%;
       transform: translateY(-50%);
@@ -80,11 +81,11 @@
       border: none;
       border-radius: var(--fluent-radius-round, 50%);
       outline: 0;
-      // hands
       cursor: pointer;
+      z-index: 2; // Ensure it sits on top of span and receives pointer events
 
-      // Use standard Fluent delete SVG icon (perfectly centered)
-      @include fluent-icon-content($fluent-icon-delete, 28px, #616161);
+      // Use standard Fluent delete SVG icon (perfectly centered, 16px size)
+      @include fluent-icon($fluent-icon-delete, 16px, #616161);
 
       transition:
         background-color var(--fluent-duration-fast) var(--fluent-easing-standard),
@@ -92,38 +93,38 @@
 
       &:hover {
         background-color: var(--fluent-error-light);
-        @include fluent-icon($fluent-icon-delete, 28px, #d13438); // Fluent error red
+        @include fluent-icon($fluent-icon-delete, 16px, #d13438); // Fluent error red (light mode)
       }
 
       &:active {
         background-color: var(--fluent-error-hover);
-        @include fluent-icon($fluent-icon-delete, 28px, #ffffff); // white
+        @include fluent-icon($fluent-icon-delete, 16px, #ffffff); // white
       }
     }
 
     // Dark mode icon overrides (since SVGs cannot dynamically resolve CSS custom properties)
     [data-theme="dark"] & {
       &::after {
-        @include fluent-icon($fluent-icon-delete, 12px, #a0a0a0);
+        @include fluent-icon($fluent-icon-delete, 16px, #a0a0a0);
 
         &:hover {
-          @include fluent-icon($fluent-icon-delete, 12px, #d13438);
+          @include fluent-icon($fluent-icon-delete, 16px, #ff5f5f); // Bright error red for dark mode
         }
         &:active {
-          @include fluent-icon($fluent-icon-delete, 12px, #ffffff);
+          @include fluent-icon($fluent-icon-delete, 16px, #ffffff);
         }
       }
     }
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) & {
         &::after {
-          @include fluent-icon($fluent-icon-delete, 12px, #a0a0a0);
+          @include fluent-icon($fluent-icon-delete, 16px, #a0a0a0);
 
           &:hover {
-            @include fluent-icon($fluent-icon-delete, 12px, #d13438);
+            @include fluent-icon($fluent-icon-delete, 16px, #ff5f5f); // Bright error red for dark mode
           }
           &:active {
-            @include fluent-icon($fluent-icon-delete, 12px, #ffffff);
+            @include fluent-icon($fluent-icon-delete, 16px, #ffffff);
           }
         }
       }
@@ -199,10 +200,4 @@
   > .cbi-dynlist > .add-item[ondrop] > input {
     min-width: 13rem;
   }
-}
-
-.cbi-dropdown {
-  position: relative;
-  display: inline-flex;
-  min-height: 3.1rem;
 }

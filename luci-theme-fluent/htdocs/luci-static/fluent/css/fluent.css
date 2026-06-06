@@ -520,7 +520,9 @@ div[id=view] > *:not(.spinning) {
     transform: translateY(0);
   }
 }
-.cbi-button {
+.cbi-button,
+.btn,
+button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -537,18 +539,47 @@ div[id=view] > *:not(.spinning) {
   text-decoration: none;
   transition: background var(--fluent-duration-fast) var(--fluent-easing-standard), border-color var(--fluent-duration-fast) var(--fluent-easing-standard), color var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
-.cbi-button:disabled {
+.cbi-button:disabled,
+.btn:disabled,
+button:disabled {
   color: var(--fluent-text-disabled);
   background: var(--fluent-bg-active);
   border-color: var(--fluent-bg-active);
   cursor: not-allowed;
   pointer-events: none;
 }
-.cbi-button:focus-visible {
+.cbi-button:focus-visible,
+.btn:focus-visible,
+button:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
-.cbi-button.cbi-button-save, .cbi-button.cbi-button-apply, .cbi-button.cbi-button-positive {
+.cbi-button,
+.btn,
+button {
+  background: var(--fluent-btn-secondary-bg);
+  color: var(--fluent-text);
+  border-color: var(--fluent-btn-secondary-border);
+}
+.cbi-button:hover,
+.btn:hover,
+button:hover {
+  background: var(--fluent-btn-secondary-bg-hover);
+  border-color: var(--fluent-btn-secondary-border-hover);
+}
+.cbi-button:active,
+.btn:active,
+button:active {
+  background: var(--fluent-btn-secondary-bg-active);
+  border-color: var(--fluent-btn-secondary-border-active);
+}
+.cbi-button.cbi-button-save, .cbi-button.cbi-button-apply, .cbi-button.cbi-button-positive,
+.btn.cbi-button-save,
+.btn.cbi-button-apply,
+.btn.cbi-button-positive,
+button.cbi-button-save,
+button.cbi-button-apply,
+button.cbi-button-positive {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -565,31 +596,67 @@ div[id=view] > *:not(.spinning) {
   text-decoration: none;
   transition: background var(--fluent-duration-fast) var(--fluent-easing-standard), border-color var(--fluent-duration-fast) var(--fluent-easing-standard), color var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
-.cbi-button.cbi-button-save:disabled, .cbi-button.cbi-button-apply:disabled, .cbi-button.cbi-button-positive:disabled {
+.cbi-button.cbi-button-save:disabled, .cbi-button.cbi-button-apply:disabled, .cbi-button.cbi-button-positive:disabled,
+.btn.cbi-button-save:disabled,
+.btn.cbi-button-apply:disabled,
+.btn.cbi-button-positive:disabled,
+button.cbi-button-save:disabled,
+button.cbi-button-apply:disabled,
+button.cbi-button-positive:disabled {
   color: var(--fluent-text-disabled);
   background: var(--fluent-bg-active);
   border-color: var(--fluent-bg-active);
   cursor: not-allowed;
   pointer-events: none;
 }
-.cbi-button.cbi-button-save:focus-visible, .cbi-button.cbi-button-apply:focus-visible, .cbi-button.cbi-button-positive:focus-visible {
+.cbi-button.cbi-button-save:focus-visible, .cbi-button.cbi-button-apply:focus-visible, .cbi-button.cbi-button-positive:focus-visible,
+.btn.cbi-button-save:focus-visible,
+.btn.cbi-button-apply:focus-visible,
+.btn.cbi-button-positive:focus-visible,
+button.cbi-button-save:focus-visible,
+button.cbi-button-apply:focus-visible,
+button.cbi-button-positive:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
-.cbi-button.cbi-button-save, .cbi-button.cbi-button-apply, .cbi-button.cbi-button-positive {
+.cbi-button.cbi-button-save, .cbi-button.cbi-button-apply, .cbi-button.cbi-button-positive,
+.btn.cbi-button-save,
+.btn.cbi-button-apply,
+.btn.cbi-button-positive,
+button.cbi-button-save,
+button.cbi-button-apply,
+button.cbi-button-positive {
   background: var(--fluent-btn-primary-bg);
   color: var(--fluent-text-on-primary);
   border-color: var(--fluent-btn-primary-bg);
 }
-.cbi-button.cbi-button-save:hover, .cbi-button.cbi-button-apply:hover, .cbi-button.cbi-button-positive:hover {
+.cbi-button.cbi-button-save:hover, .cbi-button.cbi-button-apply:hover, .cbi-button.cbi-button-positive:hover,
+.btn.cbi-button-save:hover,
+.btn.cbi-button-apply:hover,
+.btn.cbi-button-positive:hover,
+button.cbi-button-save:hover,
+button.cbi-button-apply:hover,
+button.cbi-button-positive:hover {
   background: var(--fluent-btn-primary-bg-hover);
   border-color: var(--fluent-btn-primary-bg-hover);
 }
-.cbi-button.cbi-button-save:active, .cbi-button.cbi-button-apply:active, .cbi-button.cbi-button-positive:active {
+.cbi-button.cbi-button-save:active, .cbi-button.cbi-button-apply:active, .cbi-button.cbi-button-positive:active,
+.btn.cbi-button-save:active,
+.btn.cbi-button-apply:active,
+.btn.cbi-button-positive:active,
+button.cbi-button-save:active,
+button.cbi-button-apply:active,
+button.cbi-button-positive:active {
   background: var(--fluent-btn-primary-bg-active);
   border-color: var(--fluent-btn-primary-bg-active);
 }
-.cbi-button.cbi-button-add, .cbi-button.cbi-button-neutral, .cbi-button.cbi-button-reset {
+.cbi-button.cbi-button-add, .cbi-button.cbi-button-neutral, .cbi-button.cbi-button-reset,
+.btn.cbi-button-add,
+.btn.cbi-button-neutral,
+.btn.cbi-button-reset,
+button.cbi-button-add,
+button.cbi-button-neutral,
+button.cbi-button-reset {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -606,31 +673,65 @@ div[id=view] > *:not(.spinning) {
   text-decoration: none;
   transition: background var(--fluent-duration-fast) var(--fluent-easing-standard), border-color var(--fluent-duration-fast) var(--fluent-easing-standard), color var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
-.cbi-button.cbi-button-add:disabled, .cbi-button.cbi-button-neutral:disabled, .cbi-button.cbi-button-reset:disabled {
+.cbi-button.cbi-button-add:disabled, .cbi-button.cbi-button-neutral:disabled, .cbi-button.cbi-button-reset:disabled,
+.btn.cbi-button-add:disabled,
+.btn.cbi-button-neutral:disabled,
+.btn.cbi-button-reset:disabled,
+button.cbi-button-add:disabled,
+button.cbi-button-neutral:disabled,
+button.cbi-button-reset:disabled {
   color: var(--fluent-text-disabled);
   background: var(--fluent-bg-active);
   border-color: var(--fluent-bg-active);
   cursor: not-allowed;
   pointer-events: none;
 }
-.cbi-button.cbi-button-add:focus-visible, .cbi-button.cbi-button-neutral:focus-visible, .cbi-button.cbi-button-reset:focus-visible {
+.cbi-button.cbi-button-add:focus-visible, .cbi-button.cbi-button-neutral:focus-visible, .cbi-button.cbi-button-reset:focus-visible,
+.btn.cbi-button-add:focus-visible,
+.btn.cbi-button-neutral:focus-visible,
+.btn.cbi-button-reset:focus-visible,
+button.cbi-button-add:focus-visible,
+button.cbi-button-neutral:focus-visible,
+button.cbi-button-reset:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
-.cbi-button.cbi-button-add, .cbi-button.cbi-button-neutral, .cbi-button.cbi-button-reset {
+.cbi-button.cbi-button-add, .cbi-button.cbi-button-neutral, .cbi-button.cbi-button-reset,
+.btn.cbi-button-add,
+.btn.cbi-button-neutral,
+.btn.cbi-button-reset,
+button.cbi-button-add,
+button.cbi-button-neutral,
+button.cbi-button-reset {
   background: var(--fluent-btn-secondary-bg);
   color: var(--fluent-text);
   border-color: var(--fluent-btn-secondary-border);
 }
-.cbi-button.cbi-button-add:hover, .cbi-button.cbi-button-neutral:hover, .cbi-button.cbi-button-reset:hover {
+.cbi-button.cbi-button-add:hover, .cbi-button.cbi-button-neutral:hover, .cbi-button.cbi-button-reset:hover,
+.btn.cbi-button-add:hover,
+.btn.cbi-button-neutral:hover,
+.btn.cbi-button-reset:hover,
+button.cbi-button-add:hover,
+button.cbi-button-neutral:hover,
+button.cbi-button-reset:hover {
   background: var(--fluent-btn-secondary-bg-hover);
   border-color: var(--fluent-btn-secondary-border-hover);
 }
-.cbi-button.cbi-button-add:active, .cbi-button.cbi-button-neutral:active, .cbi-button.cbi-button-reset:active {
+.cbi-button.cbi-button-add:active, .cbi-button.cbi-button-neutral:active, .cbi-button.cbi-button-reset:active,
+.btn.cbi-button-add:active,
+.btn.cbi-button-neutral:active,
+.btn.cbi-button-reset:active,
+button.cbi-button-add:active,
+button.cbi-button-neutral:active,
+button.cbi-button-reset:active {
   background: var(--fluent-btn-secondary-bg-active);
   border-color: var(--fluent-btn-secondary-border-active);
 }
-.cbi-button.cbi-button-remove, .cbi-button.cbi-button-negative {
+.cbi-button.cbi-button-remove, .cbi-button.cbi-button-negative,
+.btn.cbi-button-remove,
+.btn.cbi-button-negative,
+button.cbi-button-remove,
+button.cbi-button-negative {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -647,31 +748,53 @@ div[id=view] > *:not(.spinning) {
   text-decoration: none;
   transition: background var(--fluent-duration-fast) var(--fluent-easing-standard), border-color var(--fluent-duration-fast) var(--fluent-easing-standard), color var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
-.cbi-button.cbi-button-remove:disabled, .cbi-button.cbi-button-negative:disabled {
+.cbi-button.cbi-button-remove:disabled, .cbi-button.cbi-button-negative:disabled,
+.btn.cbi-button-remove:disabled,
+.btn.cbi-button-negative:disabled,
+button.cbi-button-remove:disabled,
+button.cbi-button-negative:disabled {
   color: var(--fluent-text-disabled);
   background: var(--fluent-bg-active);
   border-color: var(--fluent-bg-active);
   cursor: not-allowed;
   pointer-events: none;
 }
-.cbi-button.cbi-button-remove:focus-visible, .cbi-button.cbi-button-negative:focus-visible {
+.cbi-button.cbi-button-remove:focus-visible, .cbi-button.cbi-button-negative:focus-visible,
+.btn.cbi-button-remove:focus-visible,
+.btn.cbi-button-negative:focus-visible,
+button.cbi-button-remove:focus-visible,
+button.cbi-button-negative:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
-.cbi-button.cbi-button-remove, .cbi-button.cbi-button-negative {
+.cbi-button.cbi-button-remove, .cbi-button.cbi-button-negative,
+.btn.cbi-button-remove,
+.btn.cbi-button-negative,
+button.cbi-button-remove,
+button.cbi-button-negative {
   background: var(--fluent-error);
   color: var(--fluent-text-on-primary);
   border-color: var(--fluent-error);
 }
-.cbi-button.cbi-button-remove:hover, .cbi-button.cbi-button-negative:hover {
+.cbi-button.cbi-button-remove:hover, .cbi-button.cbi-button-negative:hover,
+.btn.cbi-button-remove:hover,
+.btn.cbi-button-negative:hover,
+button.cbi-button-remove:hover,
+button.cbi-button-negative:hover {
   background: var(--fluent-error-hover);
   border-color: var(--fluent-error-hover);
 }
-.cbi-button.cbi-button-remove:active, .cbi-button.cbi-button-negative:active {
+.cbi-button.cbi-button-remove:active, .cbi-button.cbi-button-negative:active,
+.btn.cbi-button-remove:active,
+.btn.cbi-button-negative:active,
+button.cbi-button-remove:active,
+button.cbi-button-negative:active {
   background: var(--fluent-error-active);
   border-color: var(--fluent-error-active);
 }
-.cbi-button.cbi-button-link {
+.cbi-button.cbi-button-link,
+.btn.cbi-button-link,
+button.cbi-button-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -688,36 +811,54 @@ div[id=view] > *:not(.spinning) {
   text-decoration: none;
   transition: background var(--fluent-duration-fast) var(--fluent-easing-standard), border-color var(--fluent-duration-fast) var(--fluent-easing-standard), color var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
-.cbi-button.cbi-button-link:disabled {
+.cbi-button.cbi-button-link:disabled,
+.btn.cbi-button-link:disabled,
+button.cbi-button-link:disabled {
   color: var(--fluent-text-disabled);
   background: var(--fluent-bg-active);
   border-color: var(--fluent-bg-active);
   cursor: not-allowed;
   pointer-events: none;
 }
-.cbi-button.cbi-button-link:focus-visible {
+.cbi-button.cbi-button-link:focus-visible,
+.btn.cbi-button-link:focus-visible,
+button.cbi-button-link:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
-.cbi-button.cbi-button-link {
+.cbi-button.cbi-button-link,
+.btn.cbi-button-link,
+button.cbi-button-link {
   background: transparent;
   color: var(--fluent-text);
   border-color: transparent;
 }
-.cbi-button.cbi-button-link:hover {
+.cbi-button.cbi-button-link:hover,
+.btn.cbi-button-link:hover,
+button.cbi-button-link:hover {
   background: var(--fluent-bg-hover);
 }
-.cbi-button.cbi-button-link:active {
+.cbi-button.cbi-button-link:active,
+.btn.cbi-button-link:active,
+button.cbi-button-link:active {
   background: var(--fluent-bg-active);
 }
-.cbi-button.cbi-button-link {
+.cbi-button.cbi-button-link,
+.btn.cbi-button-link,
+button.cbi-button-link {
   color: var(--fluent-text-link);
 }
-.cbi-button.cbi-button-link:hover {
+.cbi-button.cbi-button-link:hover,
+.btn.cbi-button-link:hover,
+button.cbi-button-link:hover {
   color: var(--fluent-text-link-hover);
   text-decoration: underline;
 }
-.cbi-button.cbi-button-up, .cbi-button.cbi-button-down {
+.cbi-button.cbi-button-up, .cbi-button.cbi-button-down,
+.btn.cbi-button-up,
+.btn.cbi-button-down,
+button.cbi-button-up,
+button.cbi-button-down {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -734,36 +875,64 @@ div[id=view] > *:not(.spinning) {
   text-decoration: none;
   transition: background var(--fluent-duration-fast) var(--fluent-easing-standard), border-color var(--fluent-duration-fast) var(--fluent-easing-standard), color var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
-.cbi-button.cbi-button-up:disabled, .cbi-button.cbi-button-down:disabled {
+.cbi-button.cbi-button-up:disabled, .cbi-button.cbi-button-down:disabled,
+.btn.cbi-button-up:disabled,
+.btn.cbi-button-down:disabled,
+button.cbi-button-up:disabled,
+button.cbi-button-down:disabled {
   color: var(--fluent-text-disabled);
   background: var(--fluent-bg-active);
   border-color: var(--fluent-bg-active);
   cursor: not-allowed;
   pointer-events: none;
 }
-.cbi-button.cbi-button-up:focus-visible, .cbi-button.cbi-button-down:focus-visible {
+.cbi-button.cbi-button-up:focus-visible, .cbi-button.cbi-button-down:focus-visible,
+.btn.cbi-button-up:focus-visible,
+.btn.cbi-button-down:focus-visible,
+button.cbi-button-up:focus-visible,
+button.cbi-button-down:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
-.cbi-button.cbi-button-up, .cbi-button.cbi-button-down {
+.cbi-button.cbi-button-up, .cbi-button.cbi-button-down,
+.btn.cbi-button-up,
+.btn.cbi-button-down,
+button.cbi-button-up,
+button.cbi-button-down {
   background: var(--fluent-btn-secondary-bg);
   color: var(--fluent-text);
   border-color: var(--fluent-btn-secondary-border);
 }
-.cbi-button.cbi-button-up:hover, .cbi-button.cbi-button-down:hover {
+.cbi-button.cbi-button-up:hover, .cbi-button.cbi-button-down:hover,
+.btn.cbi-button-up:hover,
+.btn.cbi-button-down:hover,
+button.cbi-button-up:hover,
+button.cbi-button-down:hover {
   background: var(--fluent-btn-secondary-bg-hover);
   border-color: var(--fluent-btn-secondary-border-hover);
 }
-.cbi-button.cbi-button-up:active, .cbi-button.cbi-button-down:active {
+.cbi-button.cbi-button-up:active, .cbi-button.cbi-button-down:active,
+.btn.cbi-button-up:active,
+.btn.cbi-button-down:active,
+button.cbi-button-up:active,
+button.cbi-button-down:active {
   background: var(--fluent-btn-secondary-bg-active);
   border-color: var(--fluent-btn-secondary-border-active);
 }
-.cbi-button.cbi-button-up, .cbi-button.cbi-button-down {
+.cbi-button.cbi-button-up, .cbi-button.cbi-button-down,
+.btn.cbi-button-up,
+.btn.cbi-button-down,
+button.cbi-button-up,
+button.cbi-button-down {
   padding: 0;
   width: var(--fluent-btn-height);
   font-size: 0;
 }
-.cbi-button.cbi-button-up::before, .cbi-button.cbi-button-down::before {
+.cbi-button.cbi-button-up::before, .cbi-button.cbi-button-down::before,
+.btn.cbi-button-up::before,
+.btn.cbi-button-down::before,
+button.cbi-button-up::before,
+button.cbi-button-down::before {
   content: "";
   display: block;
   width: 8px;
@@ -772,18 +941,28 @@ div[id=view] > *:not(.spinning) {
   border-bottom: 2px solid var(--fluent-text-secondary);
   transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
-.cbi-button.cbi-button-up:hover::before, .cbi-button.cbi-button-down:hover::before {
+.cbi-button.cbi-button-up:hover::before, .cbi-button.cbi-button-down:hover::before,
+.btn.cbi-button-up:hover::before,
+.btn.cbi-button-down:hover::before,
+button.cbi-button-up:hover::before,
+button.cbi-button-down:hover::before {
   border-color: var(--fluent-text);
 }
-.cbi-button.cbi-button-up::before {
+.cbi-button.cbi-button-up::before,
+.btn.cbi-button-up::before,
+button.cbi-button-up::before {
   transform: rotate(-135deg);
   margin-top: 3px;
 }
-.cbi-button.cbi-button-down::before {
+.cbi-button.cbi-button-down::before,
+.btn.cbi-button-down::before,
+button.cbi-button-down::before {
   transform: rotate(45deg);
   margin-bottom: 3px;
 }
-.cbi-button.cbi-button-find {
+.cbi-button.cbi-button-find,
+.btn.cbi-button-find,
+button.cbi-button-find {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -800,31 +979,43 @@ div[id=view] > *:not(.spinning) {
   text-decoration: none;
   transition: background var(--fluent-duration-fast) var(--fluent-easing-standard), border-color var(--fluent-duration-fast) var(--fluent-easing-standard), color var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
-.cbi-button.cbi-button-find:disabled {
+.cbi-button.cbi-button-find:disabled,
+.btn.cbi-button-find:disabled,
+button.cbi-button-find:disabled {
   color: var(--fluent-text-disabled);
   background: var(--fluent-bg-active);
   border-color: var(--fluent-bg-active);
   cursor: not-allowed;
   pointer-events: none;
 }
-.cbi-button.cbi-button-find:focus-visible {
+.cbi-button.cbi-button-find:focus-visible,
+.btn.cbi-button-find:focus-visible,
+button.cbi-button-find:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
-.cbi-button.cbi-button-find {
+.cbi-button.cbi-button-find,
+.btn.cbi-button-find,
+button.cbi-button-find {
   background: var(--fluent-btn-secondary-bg);
   color: var(--fluent-text);
   border-color: var(--fluent-btn-secondary-border);
 }
-.cbi-button.cbi-button-find:hover {
+.cbi-button.cbi-button-find:hover,
+.btn.cbi-button-find:hover,
+button.cbi-button-find:hover {
   background: var(--fluent-btn-secondary-bg-hover);
   border-color: var(--fluent-btn-secondary-border-hover);
 }
-.cbi-button.cbi-button-find:active {
+.cbi-button.cbi-button-find:active,
+.btn.cbi-button-find:active,
+button.cbi-button-find:active {
   background: var(--fluent-btn-secondary-bg-active);
   border-color: var(--fluent-btn-secondary-border-active);
 }
-.cbi-button.cbi-button-find::before {
+.cbi-button.cbi-button-find::before,
+.btn.cbi-button-find::before,
+button.cbi-button-find::before {
   content: "";
   display: inline-block;
   width: 16px;
@@ -1199,18 +1390,20 @@ div.th {
   font-style: italic;
 }
 
-.cbi-section-table .cbi-section-actions {
+.cbi-section-table .cbi-section-actions,
+td.cbi-section-actions {
   padding: var(--fluent-space-xs) var(--fluent-space-sm);
   white-space: nowrap;
   text-align: right;
   vertical-align: middle;
   align-self: center !important;
 }
-.cbi-section-table .cbi-section-actions > div {
+.cbi-section-table .cbi-section-actions > div,
+td.cbi-section-actions > div {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: var(--fluent-space-xs);
+  gap: 5px;
   flex-wrap: nowrap;
 }
 
@@ -2118,7 +2311,6 @@ body.modal-overlay-active #modal_overlay {
   width: var(--fluent-space-lg);
   height: var(--fluent-space-lg);
   flex-shrink: 0;
-  border-radius: var(--fluent-radius-round);
   object-fit: contain;
   background: var(--fluent-bg-card);
 }
@@ -3182,7 +3374,7 @@ input[type=checkbox]:disabled:checked::before {
   border: 1px solid var(--fluent-checkbox-border) !important;
   border-width: 1px !important;
   border-style: solid !important;
-  background-color: var(--fluent-white) !important;
+  background-color: var(--fluent-checkbox-bg) !important;
   background-image: none !important;
   background-size: auto !important;
   background-repeat: no-repeat !important;
@@ -3246,7 +3438,7 @@ input[type=checkbox]:disabled:checked::before {
   border: 1px solid var(--fluent-checkbox-border) !important;
   border-width: 1px !important;
   border-style: solid !important;
-  background-color: var(--fluent-white) !important;
+  background-color: var(--fluent-checkbox-bg) !important;
   background-image: none !important;
   background-size: auto !important;
   background-repeat: no-repeat !important;
@@ -3310,7 +3502,7 @@ input[type=checkbox]:disabled:checked::before {
   border: 1px solid var(--fluent-checkbox-border) !important;
   border-width: 1px !important;
   border-style: solid !important;
-  background-color: var(--fluent-white) !important;
+  background-color: var(--fluent-checkbox-bg) !important;
   background-image: none !important;
   background-size: auto !important;
   background-repeat: no-repeat !important;
@@ -3374,7 +3566,7 @@ input[type=checkbox]:disabled:checked::before {
   border: 1px solid var(--fluent-checkbox-border) !important;
   border-width: 1px !important;
   border-style: solid !important;
-  background-color: var(--fluent-white) !important;
+  background-color: var(--fluent-checkbox-bg) !important;
   background-image: none !important;
   background-size: auto !important;
   background-repeat: no-repeat !important;
@@ -3438,7 +3630,7 @@ td input[type=checkbox] {
   border: 1px solid var(--fluent-checkbox-border) !important;
   border-width: 1px !important;
   border-style: solid !important;
-  background-color: var(--fluent-white) !important;
+  background-color: var(--fluent-checkbox-bg) !important;
   background-image: none !important;
   background-size: auto !important;
   background-repeat: no-repeat !important;
@@ -3502,7 +3694,7 @@ th input[type=checkbox] {
   border: 1px solid var(--fluent-checkbox-border) !important;
   border-width: 1px !important;
   border-style: solid !important;
-  background-color: var(--fluent-white) !important;
+  background-color: var(--fluent-checkbox-bg) !important;
   background-image: none !important;
   background-size: auto !important;
   background-repeat: no-repeat !important;
@@ -3566,7 +3758,7 @@ th input[type=checkbox]:disabled:checked {
   border: 1px solid var(--fluent-checkbox-border) !important;
   border-width: 1px !important;
   border-style: solid !important;
-  background-color: var(--fluent-white) !important;
+  background-color: var(--fluent-checkbox-bg) !important;
   background-image: none !important;
   background-size: auto !important;
   background-repeat: no-repeat !important;
@@ -3630,7 +3822,7 @@ th input[type=checkbox]:disabled:checked {
   border: 1px solid var(--fluent-checkbox-border) !important;
   border-width: 1px !important;
   border-style: solid !important;
-  background-color: var(--fluent-white) !important;
+  background-color: var(--fluent-checkbox-bg) !important;
   background-image: none !important;
   background-size: auto !important;
   background-repeat: no-repeat !important;
@@ -4212,6 +4404,20 @@ code::-webkit-scrollbar-thumb:hover {
   padding-right: var(--fluent-space-xl);
   cursor: pointer;
 }
+.cbi-dropdown.cbi-button > span.open::before, .cbi-dropdown.btn > span.open::before {
+  border-color: currentColor !important;
+}
+.cbi-dropdown.cbi-button:hover > span.open::before, .cbi-dropdown.btn:hover > span.open::before {
+  border-color: currentColor !important;
+}
+.cbi-dropdown .ifacebadge {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  color: inherit !important;
+  min-height: unset !important;
+}
 
 .cbi-dynlist {
   display: flex;
@@ -4271,9 +4477,10 @@ code::-webkit-scrollbar-thumb:hover {
   border-bottom-color: var(--fluent-border-hover);
 }
 .cbi-dynlist > .item::after {
+  content: "";
   position: absolute;
   width: 28px !important;
-  height: 28px;
+  height: 28px !important;
   right: 2px;
   top: 50%;
   transform: translateY(-50%);
@@ -4283,13 +4490,9 @@ code::-webkit-scrollbar-thumb:hover {
   border-radius: var(--fluent-radius-round, 50%);
   outline: 0;
   cursor: pointer;
-  content: "";
-  display: inline-block;
-  width: 28px;
-  height: 28px;
-  flex-shrink: 0;
+  z-index: 2;
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M8.5 4h3a1.5 1.5 0 0 0-3 0Zm-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.05l-1.2 10.34A3 3 0 0 1 12.27 18H7.73a3 3 0 0 1-2.98-2.66L3.55 5H2.5a.5.5 0 0 1 0-1h5ZM5.74 15.23A2 2 0 0 0 7.73 17h4.54a2 2 0 0 0 1.99-1.77L15.44 5H4.56l1.18 10.23ZM8.5 7.5c.28 0 .5.22.5.5v6a.5.5 0 0 1-1 0V8c0-.28.22-.5.5-.5ZM12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V8Z' fill='%23616161'/></svg>");
-  background-size: 28px 28px;
+  background-size: 16px 16px;
   background-repeat: no-repeat;
   background-position: center;
   transition: background-color var(--fluent-duration-fast) var(--fluent-easing-standard), color var(--fluent-duration-fast) var(--fluent-easing-standard);
@@ -4297,51 +4500,51 @@ code::-webkit-scrollbar-thumb:hover {
 .cbi-dynlist > .item::after:hover {
   background-color: var(--fluent-error-light);
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M8.5 4h3a1.5 1.5 0 0 0-3 0Zm-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.05l-1.2 10.34A3 3 0 0 1 12.27 18H7.73a3 3 0 0 1-2.98-2.66L3.55 5H2.5a.5.5 0 0 1 0-1h5ZM5.74 15.23A2 2 0 0 0 7.73 17h4.54a2 2 0 0 0 1.99-1.77L15.44 5H4.56l1.18 10.23ZM8.5 7.5c.28 0 .5.22.5.5v6a.5.5 0 0 1-1 0V8c0-.28.22-.5.5-.5ZM12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V8Z' fill='%23d13438'/></svg>");
-  background-size: 28px 28px;
+  background-size: 16px 16px;
   background-repeat: no-repeat;
   background-position: center;
 }
 .cbi-dynlist > .item::after:active {
   background-color: var(--fluent-error-hover);
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M8.5 4h3a1.5 1.5 0 0 0-3 0Zm-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.05l-1.2 10.34A3 3 0 0 1 12.27 18H7.73a3 3 0 0 1-2.98-2.66L3.55 5H2.5a.5.5 0 0 1 0-1h5ZM5.74 15.23A2 2 0 0 0 7.73 17h4.54a2 2 0 0 0 1.99-1.77L15.44 5H4.56l1.18 10.23ZM8.5 7.5c.28 0 .5.22.5.5v6a.5.5 0 0 1-1 0V8c0-.28.22-.5.5-.5ZM12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V8Z' fill='%23ffffff'/></svg>");
-  background-size: 28px 28px;
+  background-size: 16px 16px;
   background-repeat: no-repeat;
   background-position: center;
 }
 [data-theme=dark] .cbi-dynlist > .item::after {
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M8.5 4h3a1.5 1.5 0 0 0-3 0Zm-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.05l-1.2 10.34A3 3 0 0 1 12.27 18H7.73a3 3 0 0 1-2.98-2.66L3.55 5H2.5a.5.5 0 0 1 0-1h5ZM5.74 15.23A2 2 0 0 0 7.73 17h4.54a2 2 0 0 0 1.99-1.77L15.44 5H4.56l1.18 10.23ZM8.5 7.5c.28 0 .5.22.5.5v6a.5.5 0 0 1-1 0V8c0-.28.22-.5.5-.5ZM12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V8Z' fill='%23a0a0a0'/></svg>");
-  background-size: 12px 12px;
+  background-size: 16px 16px;
   background-repeat: no-repeat;
   background-position: center;
 }
 [data-theme=dark] .cbi-dynlist > .item::after:hover {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M8.5 4h3a1.5 1.5 0 0 0-3 0Zm-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.05l-1.2 10.34A3 3 0 0 1 12.27 18H7.73a3 3 0 0 1-2.98-2.66L3.55 5H2.5a.5.5 0 0 1 0-1h5ZM5.74 15.23A2 2 0 0 0 7.73 17h4.54a2 2 0 0 0 1.99-1.77L15.44 5H4.56l1.18 10.23ZM8.5 7.5c.28 0 .5.22.5.5v6a.5.5 0 0 1-1 0V8c0-.28.22-.5.5-.5ZM12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V8Z' fill='%23d13438'/></svg>");
-  background-size: 12px 12px;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M8.5 4h3a1.5 1.5 0 0 0-3 0Zm-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.05l-1.2 10.34A3 3 0 0 1 12.27 18H7.73a3 3 0 0 1-2.98-2.66L3.55 5H2.5a.5.5 0 0 1 0-1h5ZM5.74 15.23A2 2 0 0 0 7.73 17h4.54a2 2 0 0 0 1.99-1.77L15.44 5H4.56l1.18 10.23ZM8.5 7.5c.28 0 .5.22.5.5v6a.5.5 0 0 1-1 0V8c0-.28.22-.5.5-.5ZM12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V8Z' fill='%23ff5f5f'/></svg>");
+  background-size: 16px 16px;
   background-repeat: no-repeat;
   background-position: center;
 }
 [data-theme=dark] .cbi-dynlist > .item::after:active {
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M8.5 4h3a1.5 1.5 0 0 0-3 0Zm-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.05l-1.2 10.34A3 3 0 0 1 12.27 18H7.73a3 3 0 0 1-2.98-2.66L3.55 5H2.5a.5.5 0 0 1 0-1h5ZM5.74 15.23A2 2 0 0 0 7.73 17h4.54a2 2 0 0 0 1.99-1.77L15.44 5H4.56l1.18 10.23ZM8.5 7.5c.28 0 .5.22.5.5v6a.5.5 0 0 1-1 0V8c0-.28.22-.5.5-.5ZM12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V8Z' fill='%23ffffff'/></svg>");
-  background-size: 12px 12px;
+  background-size: 16px 16px;
   background-repeat: no-repeat;
   background-position: center;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme=light]) .cbi-dynlist > .item::after {
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M8.5 4h3a1.5 1.5 0 0 0-3 0Zm-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.05l-1.2 10.34A3 3 0 0 1 12.27 18H7.73a3 3 0 0 1-2.98-2.66L3.55 5H2.5a.5.5 0 0 1 0-1h5ZM5.74 15.23A2 2 0 0 0 7.73 17h4.54a2 2 0 0 0 1.99-1.77L15.44 5H4.56l1.18 10.23ZM8.5 7.5c.28 0 .5.22.5.5v6a.5.5 0 0 1-1 0V8c0-.28.22-.5.5-.5ZM12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V8Z' fill='%23a0a0a0'/></svg>");
-    background-size: 12px 12px;
+    background-size: 16px 16px;
     background-repeat: no-repeat;
     background-position: center;
   }
   :root:not([data-theme=light]) .cbi-dynlist > .item::after:hover {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M8.5 4h3a1.5 1.5 0 0 0-3 0Zm-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.05l-1.2 10.34A3 3 0 0 1 12.27 18H7.73a3 3 0 0 1-2.98-2.66L3.55 5H2.5a.5.5 0 0 1 0-1h5ZM5.74 15.23A2 2 0 0 0 7.73 17h4.54a2 2 0 0 0 1.99-1.77L15.44 5H4.56l1.18 10.23ZM8.5 7.5c.28 0 .5.22.5.5v6a.5.5 0 0 1-1 0V8c0-.28.22-.5.5-.5ZM12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V8Z' fill='%23d13438'/></svg>");
-    background-size: 12px 12px;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M8.5 4h3a1.5 1.5 0 0 0-3 0Zm-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.05l-1.2 10.34A3 3 0 0 1 12.27 18H7.73a3 3 0 0 1-2.98-2.66L3.55 5H2.5a.5.5 0 0 1 0-1h5ZM5.74 15.23A2 2 0 0 0 7.73 17h4.54a2 2 0 0 0 1.99-1.77L15.44 5H4.56l1.18 10.23ZM8.5 7.5c.28 0 .5.22.5.5v6a.5.5 0 0 1-1 0V8c0-.28.22-.5.5-.5ZM12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V8Z' fill='%23ff5f5f'/></svg>");
+    background-size: 16px 16px;
     background-repeat: no-repeat;
     background-position: center;
   }
   :root:not([data-theme=light]) .cbi-dynlist > .item::after:active {
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M8.5 4h3a1.5 1.5 0 0 0-3 0Zm-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.05l-1.2 10.34A3 3 0 0 1 12.27 18H7.73a3 3 0 0 1-2.98-2.66L3.55 5H2.5a.5.5 0 0 1 0-1h5ZM5.74 15.23A2 2 0 0 0 7.73 17h4.54a2 2 0 0 0 1.99-1.77L15.44 5H4.56l1.18 10.23ZM8.5 7.5c.28 0 .5.22.5.5v6a.5.5 0 0 1-1 0V8c0-.28.22-.5.5-.5ZM12 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V8Z' fill='%23ffffff'/></svg>");
-    background-size: 12px 12px;
+    background-size: 16px 16px;
     background-repeat: no-repeat;
     background-position: center;
   }
@@ -4430,12 +4633,6 @@ code::-webkit-scrollbar-thumb:hover {
 }
 .cbi-dynlist > .cbi-dynlist > .add-item[ondrop] > input {
   min-width: 13rem;
-}
-
-.cbi-dropdown {
-  position: relative;
-  display: inline-flex;
-  min-height: 3.1rem;
 }
 
 .control-group:has(> input.cbi-input-password) {

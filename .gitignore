@@ -4,3 +4,5 @@ node_modules/
 .env
 .env.local
 /.sisyphus
+luci-theme-fluent/htdocs/luci-static/fluent/css/fluent.min.css
+luci-theme-fluent/htdocs/luci-static/fluent/css/fluent.min.css.map

@@ -37,10 +37,7 @@ const SlideAnimations = {
     this.stop(element);
 
     // Convert duration string to milliseconds
-    const animDuration =
-      typeof duration === "string"
-        ? this.durations[duration] || this.durations.normal
-        : duration || this.durations.normal;
+    const animDuration = typeof duration === "string" ? this.durations[duration] || this.durations.normal : duration || this.durations.normal;
 
     // Store original styles
     const originalStyles = {
@@ -104,10 +101,7 @@ const SlideAnimations = {
     this.stop(element);
 
     // Convert duration string to milliseconds
-    const animDuration =
-      typeof duration === "string"
-        ? this.durations[duration] || this.durations.normal
-        : duration || this.durations.normal;
+    const animDuration = typeof duration === "string" ? this.durations[duration] || this.durations.normal : duration || this.durations.normal;
 
     // Store original styles
     const originalStyles = {
@@ -209,11 +203,7 @@ return baseclass.extend({
     var pollPausedBySelection = false;
 
     var isPollActive = function () {
-      if (
-        window.L &&
-        window.L.poll &&
-        typeof window.L.poll.active === "function"
-      ) {
+      if (window.L && window.L.poll && typeof window.L.poll.active === "function") {
         return window.L.poll.active();
       }
       if (window.XHR && typeof window.XHR.running === "function") {
@@ -223,11 +213,7 @@ return baseclass.extend({
     };
 
     var stopPoll = function () {
-      if (
-        window.L &&
-        window.L.poll &&
-        typeof window.L.poll.stop === "function"
-      ) {
+      if (window.L && window.L.poll && typeof window.L.poll.stop === "function") {
         window.L.poll.stop();
       } else if (window.XHR && typeof window.XHR.halt === "function") {
         window.XHR.halt();
@@ -235,11 +221,7 @@ return baseclass.extend({
     };
 
     var startPoll = function () {
-      if (
-        window.L &&
-        window.L.poll &&
-        typeof window.L.poll.start === "function"
-      ) {
+      if (window.L && window.L.poll && typeof window.L.poll.start === "function") {
         window.L.poll.start();
       } else if (window.XHR && typeof window.XHR.run === "function") {
         window.XHR.run();
@@ -253,14 +235,8 @@ return baseclass.extend({
       // Fallback: check if selection is inside an input or textarea
       if (!hasSelection) {
         var activeEl = document.activeElement;
-        if (
-          activeEl &&
-          (activeEl.tagName === "INPUT" || activeEl.tagName === "TEXTAREA")
-        ) {
-          if (
-            typeof activeEl.selectionStart === "number" &&
-            typeof activeEl.selectionEnd === "number"
-          ) {
+        if (activeEl && (activeEl.tagName === "INPUT" || activeEl.tagName === "TEXTAREA")) {
+          if (typeof activeEl.selectionStart === "number" && typeof activeEl.selectionEnd === "number") {
             hasSelection = activeEl.selectionStart !== activeEl.selectionEnd;
           }
         }
@@ -291,9 +267,7 @@ return baseclass.extend({
 
     // Find and render the active main menu item
     for (var i = 0; i < children.length; i++) {
-      var isActive = L.env.requestpath.length
-        ? children[i].name == L.env.requestpath[0]
-        : i == 0;
+      var isActive = L.env.requestpath.length ? children[i].name == L.env.requestpath[0] : i == 0;
 
       if (isActive) {
         this.renderMainMenu(children[i], children[i].name);
@@ -317,16 +291,10 @@ return baseclass.extend({
     var darkMask = document.querySelector(".darkMask");
 
     if (sidebarToggle) {
-      sidebarToggle.addEventListener(
-        "click",
-        ui.createHandlerFn(this, "handleSidebarToggle"),
-      );
+      sidebarToggle.addEventListener("click", ui.createHandlerFn(this, "handleSidebarToggle"));
     }
     if (darkMask) {
-      darkMask.addEventListener(
-        "click",
-        ui.createHandlerFn(this, "handleSidebarToggle"),
-      );
+      darkMask.addEventListener("click", ui.createHandlerFn(this, "handleSidebarToggle"));
     }
     window.addEventListener("resize", L.bind(this.adjustBrandTextSize, this));
   },
@@ -343,9 +311,7 @@ return baseclass.extend({
     var shouldCollapse = false;
 
     // Close all currently active submenus
-    var activeMenus = document.querySelectorAll(
-      ".main .main-left .nav > li > ul.active",
-    );
+    var activeMenus = document.querySelectorAll(".main .main-left .nav > li > ul.active");
     activeMenus.forEach(function (ul) {
       // Stop any running animations and slide up
       SlideAnimations.stop(ul);
@@ -404,16 +370,10 @@ return baseclass.extend({
     // Generate menu items for each child
     for (var i = 0; i < children.length; i++) {
       var child = children[i];
-      var isActive =
-        L.env.dispatchpath[currentLevel] === child.name &&
-        L.env.dispatchpath[currentLevel - 1] === tree.name;
+      var isActive = L.env.dispatchpath[currentLevel] === child.name && L.env.dispatchpath[currentLevel - 1] === tree.name;
 
       // Recursively render submenu
-      var submenu = this.renderMainMenu(
-        child,
-        url + "/" + child.name,
-        currentLevel,
-      );
+      var submenu = this.renderMainMenu(child, url + "/" + child.name, currentLevel);
       var hasChildren = submenu.children.length > 0;
 
       // Determine CSS classes based on state
@@ -432,10 +392,7 @@ return baseclass.extend({
           "a",
           {
             href: L.url(url, child.name),
-            click:
-              currentLevel === 1
-                ? ui.createHandlerFn(this, "handleMenuExpand")
-                : null,
+            click: currentLevel === 1 ? ui.createHandlerFn(this, "handleMenuExpand") : null,
             class: menuClass,
             "data-title": child.title.replace(/ /g, "_"), // More robust space replacement
           },
@@ -487,9 +444,7 @@ return baseclass.extend({
       var activeClass = isActive ? " active" : "";
       var className = "tabmenu-item-%s %s".format(child.name, activeClass);
 
-      var tabItem = E("li", { class: className }, [
-        E("a", { href: L.url(url, child.name) }, [_(child.title)]),
-      ]);
+      var tabItem = E("li", { class: className }, [E("a", { href: L.url(url, child.name) }, [_(child.title)])]);
 
       tabContainer.appendChild(tabItem);
 
@@ -506,11 +461,7 @@ return baseclass.extend({
 
       // Recursively render nested tab menus if there's an active node
       if (activeNode) {
-        var nestedTabs = this.renderTabMenu(
-          activeNode,
-          url + "/" + activeNode.name,
-          currentLevel,
-        );
+        var nestedTabs = this.renderTabMenu(activeNode, url + "/" + activeNode.name, currentLevel);
         if (nestedTabs.children.length > 0) {
           container.appendChild(nestedTabs);
         }

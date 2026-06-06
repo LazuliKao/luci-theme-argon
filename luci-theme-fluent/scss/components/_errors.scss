@@ -28,11 +28,7 @@ $fluent-error-inputs: (
   #{$selector}.cbi-input-invalid {
     border-color: var(--fluent-error) !important;
     border-bottom-color: var(--fluent-error) !important;
-    background-image: linear-gradient(
-      0deg,
-      color-mix(in srgb, var(--fluent-error) 25%, transparent) 0%,
-      color-mix(in srgb, var(--fluent-error) 25%, transparent) 100%
-    ) !important;
+    background-image: linear-gradient(0deg, color-mix(in srgb, var(--fluent-error) 25%, transparent) 0%, color-mix(in srgb, var(--fluent-error) 25%, transparent) 100%) !important;
     background-size: 100% 4px !important;
   }
 
@@ -47,11 +43,7 @@ $fluent-error-inputs: (
     border-color: var(--fluent-error) !important;
     border-bottom-color: var(--fluent-error) !important;
     background-size: 100% 4px !important;
-    box-shadow: 0
-      0
-      0
-      2px
-      color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
   }
 }
 

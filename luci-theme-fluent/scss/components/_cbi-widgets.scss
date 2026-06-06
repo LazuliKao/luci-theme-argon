@@ -78,12 +78,7 @@ span[data-tooltip] .label {
   overflow: hidden;
 
   &::after {
-    background: linear-gradient(
-      90deg,
-      var(--fluent-progress-bar-bg) 0%,
-      var(--fluent-primary-light) 50%,
-      var(--fluent-progress-bar-bg) 100%
-    );
+    background: linear-gradient(90deg, var(--fluent-progress-bar-bg) 0%, var(--fluent-primary-light) 50%, var(--fluent-progress-bar-bg) 100%);
   }
 }
 

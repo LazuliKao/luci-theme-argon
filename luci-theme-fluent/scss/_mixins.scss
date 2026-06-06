@@ -184,8 +184,7 @@ $breakpoint-xxl: 1400px;
   border-bottom-width: 2px;
   border-bottom-color: var(--fluent-input-border);
   border-radius: var(--fluent-radius-md);
-  transition: border-color var(--fluent-duration-fast)
-    var(--fluent-easing-standard);
+  transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
 
   &:hover {
     border-bottom-color: var(--fluent-input-border-hover);

@@ -45,16 +45,10 @@
     --fluent-border-active: #4da6ff; // Brand tint20
 
     // Shadows - Stronger for dark mode
-    --fluent-shadow-sm:
-      0 1.6px 3.6px 0 rgba(0, 0, 0, 0.264), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.216);
-    --fluent-shadow-md:
-      0 3.2px 7.2px 0 rgba(0, 0, 0, 0.264), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.216);
-    --fluent-shadow-lg:
-      0 6.4px 14.4px 0 rgba(0, 0, 0, 0.264),
-      0 1.2px 3.6px 0 rgba(0, 0, 0, 0.216);
-    --fluent-shadow-xl:
-      0 25.6px 57.6px 0 rgba(0, 0, 0, 0.44),
-      0 4.8px 14.4px 0 rgba(0, 0, 0, 0.36);
+    --fluent-shadow-sm: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.264), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.216);
+    --fluent-shadow-md: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.264), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.216);
+    --fluent-shadow-lg: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.264), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.216);
+    --fluent-shadow-xl: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.44), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.36);
 
     // Sidebar
     --fluent-sidebar-bg: #1f1f1f;
@@ -117,8 +111,7 @@
     // Dropdown
     --fluent-dropdown-bg: var(--fluent-bg-card);
     --fluent-dropdown-border: var(--fluent-input-border);
-    --fluent-dropdown-shadow:
-      0 8px 16px rgba(0, 0, 0, 0.28), 0 0 2px rgba(0, 0, 0, 0.24);
+    --fluent-dropdown-shadow: 0 8px 16px rgba(0, 0, 0, 0.28), 0 0 2px rgba(0, 0, 0, 0.24);
     --fluent-dropdown-option-hover: var(--fluent-bg-hover);
     --fluent-dropdown-option-selected: rgba(77, 166, 255, 0.1);
 
@@ -172,14 +165,10 @@
   --fluent-border-active: #4da6ff;
 
   // Shadows
-  --fluent-shadow-sm:
-    0 1.6px 3.6px 0 rgba(0, 0, 0, 0.264), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.216);
-  --fluent-shadow-md:
-    0 3.2px 7.2px 0 rgba(0, 0, 0, 0.264), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.216);
-  --fluent-shadow-lg:
-    0 6.4px 14.4px 0 rgba(0, 0, 0, 0.264), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.216);
-  --fluent-shadow-xl:
-    0 25.6px 57.6px 0 rgba(0, 0, 0, 0.44), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.36);
+  --fluent-shadow-sm: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.264), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.216);
+  --fluent-shadow-md: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.264), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.216);
+  --fluent-shadow-lg: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.264), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.216);
+  --fluent-shadow-xl: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.44), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.36);
 
   // Sidebar
   --fluent-sidebar-bg: #1f1f1f;
@@ -242,8 +231,7 @@
   // Dropdown
   --fluent-dropdown-bg: var(--fluent-bg-card);
   --fluent-dropdown-border: var(--fluent-input-border);
-  --fluent-dropdown-shadow:
-    0 8px 16px rgba(0, 0, 0, 0.28), 0 0 2px rgba(0, 0, 0, 0.24);
+  --fluent-dropdown-shadow: 0 8px 16px rgba(0, 0, 0, 0.28), 0 0 2px rgba(0, 0, 0, 0.24);
   --fluent-dropdown-option-hover: var(--fluent-bg-hover);
   --fluent-dropdown-option-selected: rgba(77, 166, 255, 0.1);
 

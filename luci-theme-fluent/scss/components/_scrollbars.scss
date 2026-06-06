@@ -27,8 +27,7 @@ code {
 // Firefox scrollbar
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--fluent-scrollbar-thumb-bg)
-    var(--fluent-scrollbar-track-bg);
+  scrollbar-color: var(--fluent-scrollbar-thumb-bg) var(--fluent-scrollbar-track-bg);
 }
 
 // Thin scrollbar for sidebars and smaller containers

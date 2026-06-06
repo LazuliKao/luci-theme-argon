@@ -208,8 +208,7 @@
       border-right: 1.5px solid var(--fluent-text-secondary);
       border-bottom: 1.5px solid var(--fluent-text-secondary);
       transform: rotate(45deg) translateY(-1px);
-      transition: border-color var(--fluent-duration-fast)
-        var(--fluent-easing-standard);
+      transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
     }
   }
 
@@ -288,8 +287,7 @@
     list-style: none;
 
     // Animation
-    animation: fluent-dropdown-slide-in 0.2s cubic-bezier(0.4, 0, 0.23, 1)
-      forwards;
+    animation: fluent-dropdown-slide-in 0.2s cubic-bezier(0.4, 0, 0.23, 1) forwards;
     transform-origin: top;
 
     // --------------------------------------------------------
@@ -426,8 +424,7 @@
         color: var(--fluent-text);
 
         outline: none;
-        transition: border-color var(--fluent-duration-fast)
-          var(--fluent-easing-standard);
+        transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
       }
     }
   }

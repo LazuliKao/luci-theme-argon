@@ -13,8 +13,7 @@
   background: var(--fluent-input-bg);
   border: 1px solid var(--fluent-input-border);
   border-radius: var(--fluent-radius-md);
-  transition: border-color var(--fluent-duration-fast)
-    var(--fluent-easing-standard);
+  transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
 
   &:focus-within {
     border-color: var(--fluent-input-border-focus);

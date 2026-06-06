@@ -376,8 +376,7 @@ div[id="view"] > .spinning {
 }
 
 div[id="view"] > *:not(.spinning) {
-  animation: fluent-view-fade-in var(--fluent-duration-slow)
-    var(--fluent-easing-decelerate) forwards;
+  animation: fluent-view-fade-in var(--fluent-duration-slow) var(--fluent-easing-decelerate) forwards;
 }
 
 // Login form fade-in animation

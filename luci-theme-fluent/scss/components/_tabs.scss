@@ -84,8 +84,7 @@ ul.cbi-tabmenu {
       white-space: nowrap;
       transition:
         color var(--fluent-duration-fast) var(--fluent-easing-standard),
-        background-color var(--fluent-duration-fast)
-          var(--fluent-easing-standard);
+        background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
 
       // Animated bottom indicator - scaleX transform
       &::after {
@@ -193,8 +192,7 @@ ul.cbi-tabmenu {
       border-radius: var(--fluent-radius-lg);
       border: 3px solid transparent;
       background-clip: padding-box;
-      transition: background-color var(--fluent-duration-fast)
-        var(--fluent-easing-standard);
+      transition: background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
 
       &:hover {
         background-color: var(--fluent-scrollbar-thumb-bg-hover);
@@ -242,8 +240,7 @@ ul.cbi-tabmenu {
         transition:
           color var(--fluent-duration-fast) var(--fluent-easing-standard),
           border-color var(--fluent-duration-fast) var(--fluent-easing-standard),
-          background-color var(--fluent-duration-fast)
-            var(--fluent-easing-standard);
+          background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
 
         // Hover state
         &:hover {

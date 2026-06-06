@@ -18,8 +18,7 @@
   position: sticky;
   top: 0;
   z-index: var(--fluent-zindex-dropdown, 1000);
-  transition: background var(--fluent-duration-normal)
-    var(--fluent-easing-standard);
+  transition: background var(--fluent-duration-normal) var(--fluent-easing-standard);
 
   // ============================================================
   // BRAND AREA (logo + title)
@@ -65,8 +64,7 @@
     color: var(--fluent-text);
     cursor: pointer;
     border-radius: var(--fluent-radius-md);
-    transition: background var(--fluent-duration-fast)
-      var(--fluent-easing-standard);
+    transition: background var(--fluent-duration-fast) var(--fluent-easing-standard);
 
     &::before {
       @include fluent-icon-content($fluent-icon-menu, 20px, #323130);

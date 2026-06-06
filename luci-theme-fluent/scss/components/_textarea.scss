@@ -12,9 +12,7 @@ textarea {
   resize: vertical;
   box-sizing: border-box;
   line-height: var(--fluent-line-height-relaxed);
-  background-image:
-    linear-gradient(var(--fluent-primary), var(--fluent-primary)),
-    linear-gradient(var(--fluent-primary), var(--fluent-primary));
+  background-image: linear-gradient(var(--fluent-primary), var(--fluent-primary)), linear-gradient(var(--fluent-primary), var(--fluent-primary));
   background-size:
     0 2px,
     100% 1px;

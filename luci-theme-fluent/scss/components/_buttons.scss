@@ -63,8 +63,7 @@
       height: 8px;
       border-right: 2px solid var(--fluent-text-secondary);
       border-bottom: 2px solid var(--fluent-text-secondary);
-      transition: border-color var(--fluent-duration-fast)
-        var(--fluent-easing-standard);
+      transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
     }
 
     &:hover::before {

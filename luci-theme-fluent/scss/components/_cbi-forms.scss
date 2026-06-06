@@ -101,8 +101,7 @@
         cursor: pointer;
         position: relative;
         border-radius: var(--fluent-radius-sm);
-        transition: background-color var(--fluent-duration-fast)
-          var(--fluent-easing-standard);
+        transition: background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
 
         &:hover {
           background-color: var(--fluent-bg-hover) !important;
@@ -117,10 +116,8 @@
           border-bottom: 1.5px solid var(--fluent-text-secondary);
           transform: rotate(-45deg) translate(-1px, -1px); // Points right (>) when collapsed
           transition:
-            transform var(--fluent-duration-normal)
-              var(--fluent-easing-standard),
-            border-color var(--fluent-duration-fast)
-              var(--fluent-easing-standard);
+            transform var(--fluent-duration-normal) var(--fluent-easing-standard),
+            border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
         }
 
         &:hover::before {
@@ -222,8 +219,7 @@
 
 .cbi-rowstyle-1,
 .cbi-rowstyle-2 {
-  transition: background var(--fluent-duration-fast)
-    var(--fluent-easing-standard);
+  transition: background var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
 
 .cbi-rowstyle-1 {

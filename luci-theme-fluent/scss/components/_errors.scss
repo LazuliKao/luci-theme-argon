@@ -1,7 +1,7 @@
 // ============================================================
 // ERRORS - FluentUI Error States and Tooltips
 // ============================================================
-@use '../mixins' as *;
+@use "../mixins" as *;
 
 // ============================================================
 // ERROR INPUT SELECTORS
@@ -15,9 +15,9 @@ $fluent-error-inputs: (
   'input[type="search"]',
   'input[type="tel"]',
   'input[type="url"]',
-  '.cbi-input-text',
-  '.cbi-input-password',
-  '.password-input',
+  ".cbi-input-text",
+  ".cbi-input-password",
+  ".password-input"
 );
 
 // ============================================================
@@ -47,7 +47,11 @@ $fluent-error-inputs: (
     border-color: var(--fluent-error) !important;
     border-bottom-color: var(--fluent-error) !important;
     background-size: 100% 4px !important;
-    box-shadow: 0 0 0 2px color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
+    box-shadow: 0
+      0
+      0
+      2px
+      color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
   }
 }
 

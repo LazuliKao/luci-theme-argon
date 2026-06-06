@@ -2,7 +2,7 @@
 // TABLES - FluentUI 2 Table Styles
 // Content-based column width, centered cells, mobile scroll
 // ============================================================
-@use '../mixins' as *;
+@use "../mixins" as *;
 
 // Standard table
 .table {
@@ -19,7 +19,8 @@
 // LuCI table structure (visual styles for all tables)
 .tr {
   border-bottom: 1px solid var(--fluent-table-border);
-  transition: background var(--fluent-duration-fast) var(--fluent-easing-standard);
+  transition: background var(--fluent-duration-fast)
+    var(--fluent-easing-standard);
 
   &:hover {
     background: var(--fluent-table-row-hover);
@@ -89,7 +90,8 @@ div.th {
   }
 
   .tr.cbi-section-table-row {
-    transition: background var(--fluent-duration-fast) var(--fluent-easing-standard);
+    transition: background var(--fluent-duration-fast)
+      var(--fluent-easing-standard);
 
     &:hover {
       background: var(--fluent-table-row-hover);

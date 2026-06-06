@@ -22,8 +22,9 @@
         font-size: var(--fluent-font-size-base);
         line-height: 1;
         border-radius: var(--fluent-radius-md);
-        transition: background var(--fluent-duration-fast) var(--fluent-easing-standard),
-                    color var(--fluent-duration-fast) var(--fluent-easing-standard);
+        transition:
+          background var(--fluent-duration-fast) var(--fluent-easing-standard),
+          color var(--fluent-duration-fast) var(--fluent-easing-standard);
         height: 36px;
 
         // Icon spacing
@@ -35,7 +36,7 @@
           background: var(--fluent-sidebar-item-hover);
           color: var(--fluent-text);
         }
-        
+
         // Focus indicator (FluentUI: 2px outline)
         &:focus-visible {
           outline: 2px solid var(--fluent-focus-color);
@@ -48,7 +49,7 @@
         background: var(--fluent-sidebar-item-active);
         color: var(--fluent-primary);
         font-weight: var(--fluent-font-weight-semibold);
-        
+
         // Left accent bar
         border-left: 3px solid var(--fluent-primary);
         padding-left: calc(var(--fluent-space-sm) - 3px);
@@ -84,8 +85,9 @@
       text-decoration: none;
       font-size: var(--fluent-font-size-base);
       border-radius: var(--fluent-radius-md);
-      transition: background var(--fluent-duration-fast) var(--fluent-easing-standard),
-                  color var(--fluent-duration-fast) var(--fluent-easing-standard);
+      transition:
+        background var(--fluent-duration-fast) var(--fluent-easing-standard),
+        color var(--fluent-duration-fast) var(--fluent-easing-standard);
       height: 32px;
 
       &:hover {
@@ -98,10 +100,10 @@
       background: var(--fluent-sidebar-item-active);
       color: var(--fluent-primary);
       font-weight: var(--fluent-font-weight-semibold);
-      
+
       // Left accent indicator
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         left: 4px;
         top: 15%;

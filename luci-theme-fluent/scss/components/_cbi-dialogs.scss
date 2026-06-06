@@ -2,7 +2,7 @@
 // CBI DIALOGS - FluentUI 2 LuCI dialogs, alerts, and page actions
 // Radius: 8px, Shadow: xl, Token-only styling
 // ============================================================
-@use '../mixins' as *;
+@use "../mixins" as *;
 
 .uci-dialog {
   @include slide-in-up;
@@ -24,11 +24,9 @@
   gap: var(--fluent-space-xs);
   width: 100%;
   max-height: calc(
-    var(--fluent-space-xxxl) +
-    var(--fluent-space-xxxl) +
-    var(--fluent-space-xxxl) +
-    var(--fluent-space-xxl) +
-    var(--fluent-space-xl)
+    var(--fluent-space-xxxl) + var(--fluent-space-xxxl) +
+      var(--fluent-space-xxxl) + var(--fluent-space-xxl) +
+      var(--fluent-space-xl)
   );
   overflow: auto;
   padding: var(--fluent-space-sm);
@@ -101,9 +99,15 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: calc(var(--fluent-space-sm) + var(--fluent-space-xs) + var(--fluent-space-xxs));
-    height: calc(var(--fluent-space-sm) + var(--fluent-space-xs) + var(--fluent-space-xxs));
-    min-width: calc(var(--fluent-space-sm) + var(--fluent-space-xs) + var(--fluent-space-xxs));
+    width: calc(
+      var(--fluent-space-sm) + var(--fluent-space-xs) + var(--fluent-space-xxs)
+    );
+    height: calc(
+      var(--fluent-space-sm) + var(--fluent-space-xs) + var(--fluent-space-xxs)
+    );
+    min-width: calc(
+      var(--fluent-space-sm) + var(--fluent-space-xs) + var(--fluent-space-xxs)
+    );
     padding: 0;
     border-radius: var(--fluent-radius-sm);
     text-decoration: none;
@@ -139,11 +143,8 @@
   }
 }
 
-
-
 .modal {
-
-  label > input[type='checkbox'] {
+  label > input[type="checkbox"] {
     margin-right: var(--fluent-space-sm);
     vertical-align: middle;
   }
@@ -181,7 +182,7 @@
   border-radius: var(--fluent-radius-lg);
   box-shadow: var(--fluent-shadow-lg);
 
-  > form[method='post'] {
+  > form[method="post"] {
     display: inline-flex;
   }
 
@@ -193,7 +194,8 @@
     @include button-primary;
   }
 
-  .cbi-button-save {
+  .cbi-button-save,
+  .cbi-button-reset {
     @include button-secondary;
   }
 

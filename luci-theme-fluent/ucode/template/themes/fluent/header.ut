@@ -301,7 +301,7 @@
     </div>
     {% } %}
     <div class="main-right">
-      <header class="header bg-primary">
+      <header class="header">
         <div class="header__brand">
           <a class="header__toggle showSide"></a>
           <a class="header__title brand" href="/">{{ brand_name }}</a>

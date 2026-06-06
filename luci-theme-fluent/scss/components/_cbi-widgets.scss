@@ -2,7 +2,7 @@
 // CBI WIDGETS - FluentUI 2 LuCI widget refinements
 // Tooltips, validation, uploads, responsive data-title labels
 // ============================================================
-@use '../mixins' as *;
+@use "../mixins" as *;
 
 .cbi-tooltip-container {
   position: relative;
@@ -105,8 +105,8 @@ span[data-tooltip] .label {
   box-shadow: inset 0 -1px 0 var(--fluent-error);
 }
 
-input[type='text'].cbi-input-invalid,
-input[type='password'].cbi-input-invalid {
+input[type="text"].cbi-input-invalid,
+input[type="password"].cbi-input-invalid {
   background: var(--fluent-input-bg);
   color: var(--fluent-text);
 
@@ -184,7 +184,7 @@ div[depends],
     transform var(--fluent-duration-fast) var(--fluent-easing-standard);
 
   &[hidden],
-  &[style*='display:none'] {
+  &[style*="display:none"] {
     opacity: 0;
     transform: translateY(calc(var(--fluent-space-xs) * -1));
   }
@@ -220,7 +220,7 @@ div.td[data-title]::before {
   line-height: var(--fluent-line-height-normal);
 }
 
-div.td[data-type='button'] {
+div.td[data-type="button"] {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -228,18 +228,18 @@ div.td[data-type='button'] {
   gap: var(--fluent-space-xs);
 }
 
-div.td[data-type='button']::before {
+div.td[data-type="button"]::before {
   width: 100%;
 }
 
-div.td[data-type='fvalue'] {
+div.td[data-type="fvalue"] {
   display: flex;
   flex-direction: column;
   gap: var(--fluent-space-xxs);
   color: var(--fluent-text-secondary);
 }
 
-@include respond-to('md') {
+@include respond-to("md") {
   div.tr[data-title] {
     flex-direction: row;
     gap: 0;
@@ -252,8 +252,8 @@ div.td[data-type='fvalue'] {
   }
 
   div.td[data-title],
-  div.td[data-type='button'],
-  div.td[data-type='fvalue'] {
+  div.td[data-type="button"],
+  div.td[data-type="fvalue"] {
     display: block;
   }
 

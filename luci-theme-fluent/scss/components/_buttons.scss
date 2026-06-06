@@ -2,8 +2,8 @@
 // BUTTONS - FluentUI 2 Button Styles
 // Height: 32px, Radius: 4px, Focus: 2px black outline
 // ============================================================
-@use '../mixins' as *;
-@use '../icons' as *;
+@use "../mixins" as *;
+@use "../icons" as *;
 
 // Base .cbi-button applied to all LuCI buttons
 .cbi-button {
@@ -15,7 +15,9 @@
     @include button-primary;
   }
 
-  &.cbi-button-add {
+  &.cbi-button-add,
+  &.cbi-button-neutral,
+  &.cbi-button-reset {
     @include button-secondary;
   }
 
@@ -37,10 +39,6 @@
     }
   }
 
-  &.cbi-button-neutral {
-    @include button-secondary;
-  }
-
   &.cbi-button-link {
     @include button-text;
     color: var(--fluent-text-link);
@@ -59,13 +57,14 @@
     font-size: 0;
 
     &::before {
-      content: '';
+      content: "";
       display: block;
       width: 8px;
       height: 8px;
       border-right: 2px solid var(--fluent-text-secondary);
       border-bottom: 2px solid var(--fluent-text-secondary);
-      transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+      transition: border-color var(--fluent-duration-fast)
+        var(--fluent-easing-standard);
     }
 
     &:hover::before {

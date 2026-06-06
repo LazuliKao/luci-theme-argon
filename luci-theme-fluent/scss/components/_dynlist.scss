@@ -1,8 +1,8 @@
 // ============================================================
 // DYNLIST - FluentUI Dynamic List Styles
 // ============================================================
-@use '../mixins' as *;
-@use '../icons' as *;
+@use "../mixins" as *;
+@use "../icons" as *;
 
 .cbi-dynlist {
   display: flex;
@@ -13,7 +13,8 @@
   background: var(--fluent-input-bg);
   border: 1px solid var(--fluent-input-border);
   border-radius: var(--fluent-radius-md);
-  transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  transition: border-color var(--fluent-duration-fast)
+    var(--fluent-easing-standard);
 
   &:focus-within {
     border-color: var(--fluent-input-border-focus);
@@ -43,8 +44,9 @@
       cursor: pointer;
       border-radius: var(--fluent-radius-sm);
       flex-shrink: 0;
-      transition: background var(--fluent-duration-fast) var(--fluent-easing-standard),
-                  color var(--fluent-duration-fast) var(--fluent-easing-standard);
+      transition:
+        background var(--fluent-duration-fast) var(--fluent-easing-standard),
+        color var(--fluent-duration-fast) var(--fluent-easing-standard);
 
       &:hover {
         background: var(--fluent-error-light);

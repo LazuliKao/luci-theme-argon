@@ -12,11 +12,14 @@
     table-layout: auto !important;
     box-sizing: border-box;
 
-    thead, tbody, tfoot {
+    thead,
+    tbody,
+    tfoot {
       display: table-header-group !important;
     }
 
-    tr, .tr {
+    tr,
+    .tr {
       display: table-row !important;
       background: transparent;
 
@@ -25,7 +28,10 @@
       }
     }
 
-    th, .th, td, .td {
+    th,
+    .th,
+    td,
+    .td {
       display: table-cell !important;
       padding: 8px 12px !important; // Tighter padding
       font-size: var(--fluent-font-size-sm) !important;

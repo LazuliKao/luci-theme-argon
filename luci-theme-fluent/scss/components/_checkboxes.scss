@@ -158,14 +158,14 @@ input[type="checkbox"] {
 // dropdowns, and other contextual containers
 // ============================================================
 $table-checkbox-contexts: (
-  '.table',
-  '.cbi-section-table',
-  '.modal',
-  '.cbi-dropdown',
-  'td',
-  'th',
-  '.tr .td',
-  '.tr .th'
+  ".table",
+  ".cbi-section-table",
+  ".modal",
+  ".cbi-dropdown",
+  "td",
+  "th",
+  ".tr .td",
+  ".tr .th"
 );
 
 @each $context in $table-checkbox-contexts {
@@ -260,10 +260,11 @@ input[type="radio"] {
   cursor: pointer;
   position: relative;
   flex-shrink: 0;
-  transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  transition: border-color var(--fluent-duration-fast)
+    var(--fluent-easing-standard);
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -272,7 +273,8 @@ input[type="radio"] {
     background: transparent;
     border-radius: var(--fluent-radius-round);
     transform: translate(-50%, -50%);
-    transition: background var(--fluent-duration-fast) var(--fluent-easing-standard);
+    transition: background var(--fluent-duration-fast)
+      var(--fluent-easing-standard);
   }
 
   &:checked {

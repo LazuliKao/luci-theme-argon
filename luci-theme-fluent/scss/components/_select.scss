@@ -2,7 +2,7 @@
 // SELECT - FluentUI 2 Select Dropdown Styles
 // Bottom-border underline indicator, 32px height
 // ============================================================
-@use '../mixins' as *;
+@use "../mixins" as *;
 
 // Native select
 select {
@@ -14,7 +14,7 @@ select {
 
   // Custom chevron
   &::after {
-    content: '';
+    content: "";
   }
 }
 

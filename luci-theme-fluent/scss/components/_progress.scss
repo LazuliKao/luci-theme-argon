@@ -16,7 +16,8 @@
     height: 100%;
     background: var(--fluent-progress-bar-bg);
     border-radius: var(--fluent-radius-md) 0 0 var(--fluent-radius-md);
-    transition: width var(--fluent-duration-normal) var(--fluent-easing-decelerate);
+    transition: width var(--fluent-duration-normal)
+      var(--fluent-easing-decelerate);
     position: relative;
   }
 

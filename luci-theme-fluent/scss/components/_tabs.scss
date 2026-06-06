@@ -82,8 +82,10 @@ ul.cbi-tabmenu {
       cursor: pointer;
       user-select: none;
       white-space: nowrap;
-      transition: color var(--fluent-duration-fast) var(--fluent-easing-standard),
-                  background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+      transition:
+        color var(--fluent-duration-fast) var(--fluent-easing-standard),
+        background-color var(--fluent-duration-fast)
+          var(--fluent-easing-standard);
 
       // Animated bottom indicator - scaleX transform
       &::after {
@@ -104,7 +106,7 @@ ul.cbi-tabmenu {
         color: var(--fluent-text);
         background-color: var(--fluent-bg-hover);
       }
-      
+
       // Focus indicator
       &:focus-visible {
         outline: 2px solid var(--fluent-focus-color);
@@ -191,7 +193,8 @@ ul.cbi-tabmenu {
       border-radius: var(--fluent-radius-lg);
       border: 3px solid transparent;
       background-clip: padding-box;
-      transition: background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+      transition: background-color var(--fluent-duration-fast)
+        var(--fluent-easing-standard);
 
       &:hover {
         background-color: var(--fluent-scrollbar-thumb-bg-hover);
@@ -236,16 +239,18 @@ ul.cbi-tabmenu {
         cursor: pointer;
         user-select: none;
         white-space: nowrap;
-        transition: color var(--fluent-duration-fast) var(--fluent-easing-standard),
-                    border-color var(--fluent-duration-fast) var(--fluent-easing-standard),
-                    background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+        transition:
+          color var(--fluent-duration-fast) var(--fluent-easing-standard),
+          border-color var(--fluent-duration-fast) var(--fluent-easing-standard),
+          background-color var(--fluent-duration-fast)
+            var(--fluent-easing-standard);
 
         // Hover state
         &:hover {
           color: var(--fluent-text);
           background-color: transparent;
         }
-        
+
         // Focus indicator
         &:focus-visible {
           outline: 2px solid var(--fluent-focus-color);

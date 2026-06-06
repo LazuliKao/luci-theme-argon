@@ -3,7 +3,7 @@
 // Complete FluentUI dropdown with animated bottom indicator,
 // preview list, listbox options, and scrollbar styling.
 // ============================================================
-@use '../mixins' as *;
+@use "../mixins" as *;
 
 // ============================================================
 // DROPDOWN KEYFRAMES
@@ -60,7 +60,7 @@
   // ----------------------------------------------------------
   &::after {
     box-sizing: border-box;
-    content: '';
+    content: "";
     position: absolute;
     left: -1px;
     bottom: -2px;
@@ -201,14 +201,15 @@
 
     // FluentUI Chevron Down Icon
     &::before {
-      content: '';
+      content: "";
       display: block;
       width: 6px;
       height: 6px;
       border-right: 1.5px solid var(--fluent-text-secondary);
       border-bottom: 1.5px solid var(--fluent-text-secondary);
       transform: rotate(45deg) translateY(-1px);
-      transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+      transition: border-color var(--fluent-duration-fast)
+        var(--fluent-easing-standard);
     }
   }
 
@@ -287,7 +288,8 @@
     list-style: none;
 
     // Animation
-    animation: fluent-dropdown-slide-in 0.2s cubic-bezier(0.4, 0, 0.23, 1) forwards;
+    animation: fluent-dropdown-slide-in 0.2s cubic-bezier(0.4, 0, 0.23, 1)
+      forwards;
     transform-origin: top;
 
     // --------------------------------------------------------
@@ -344,8 +346,9 @@
       white-space: nowrap;
 
       // Transition
-      transition: background-color 0.05s var(--fluent-easing-standard),
-                  color 0.05s var(--fluent-easing-standard);
+      transition:
+        background-color 0.05s var(--fluent-easing-standard),
+        color 0.05s var(--fluent-easing-standard);
 
       // Ensure inner spans and badges fill width
       > span,
@@ -423,7 +426,8 @@
         color: var(--fluent-text);
 
         outline: none;
-        transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+        transition: border-color var(--fluent-duration-fast)
+          var(--fluent-easing-standard);
       }
     }
   }

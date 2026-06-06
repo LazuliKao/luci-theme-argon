@@ -1,6 +1,6 @@
 // FluentUI 2 Base Styles
 // CSS reset and foundational styles
-@use 'mixins' as *;
+@use "mixins" as *;
 
 // ============================================================
 // CSS RESET
@@ -35,7 +35,12 @@ body {
 // ============================================================
 // TYPOGRAPHY
 // ============================================================
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: var(--fluent-font-weight-semibold);
   line-height: var(--fluent-line-height-tight);
   color: var(--fluent-text);
@@ -72,7 +77,7 @@ p {
 a {
   color: var(--fluent-text-link);
   text-decoration: none;
-  
+
   &:hover {
     color: var(--fluent-text-link-hover);
     text-decoration: underline;
@@ -82,7 +87,8 @@ a {
 // ============================================================
 // LISTS
 // ============================================================
-ul, ol {
+ul,
+ol {
   padding-left: var(--fluent-space-xl);
 }
 
@@ -261,7 +267,8 @@ body {
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -369,7 +376,8 @@ div[id="view"] > .spinning {
 }
 
 div[id="view"] > *:not(.spinning) {
-  animation: fluent-view-fade-in var(--fluent-duration-slow) var(--fluent-easing-decelerate) forwards;
+  animation: fluent-view-fade-in var(--fluent-duration-slow)
+    var(--fluent-easing-decelerate) forwards;
 }
 
 // Login form fade-in animation

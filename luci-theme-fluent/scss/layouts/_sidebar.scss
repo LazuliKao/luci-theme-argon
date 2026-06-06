@@ -1,8 +1,8 @@
 // Layouts - Sidebar
 // FluentUI 2 Tree/Nav pattern with Win11-inspired styling
 // Aligned with @fluentui/react-nav, @fluentui/react-tree
-@use '../mixins' as *;
-@use '../icons' as *;
+@use "../mixins" as *;
+@use "../icons" as *;
 
 // ============================================================
 // SIDEBAR CONTAINER
@@ -18,8 +18,9 @@
   border-right: 1px solid var(--fluent-border);
   z-index: var(--fluent-zindex-dropdown, 1000);
   overflow-y: auto;
-  transition: transform var(--fluent-duration-normal) var(--fluent-easing-standard);
-  
+  transition: transform var(--fluent-duration-normal)
+    var(--fluent-easing-standard);
+
   @include custom-scrollbar;
 
   // Sidenav logo header area
@@ -55,7 +56,8 @@
         text-overflow: ellipsis;
         display: inline-block;
         max-width: 100%;
-        transition: font-size var(--fluent-duration-fast) var(--fluent-easing-standard);
+        transition: font-size var(--fluent-duration-fast)
+          var(--fluent-easing-standard);
       }
     }
 
@@ -72,7 +74,8 @@
 .main-right {
   margin-left: var(--fluent-sidebar-width, 260px);
   min-height: 100vh;
-  transition: margin-left var(--fluent-duration-normal) var(--fluent-easing-standard);
+  transition: margin-left var(--fluent-duration-normal)
+    var(--fluent-easing-standard);
 }
 
 // ============================================================
@@ -103,9 +106,10 @@
     background: transparent;
     box-shadow: none;
     position: relative;
-    transition: background var(--fluent-duration-fast) var(--fluent-easing-standard),
-                color var(--fluent-duration-fast) var(--fluent-easing-standard),
-                border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+    transition:
+      background var(--fluent-duration-fast) var(--fluent-easing-standard),
+      color var(--fluent-duration-fast) var(--fluent-easing-standard),
+      border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
 
     // Icon positioning (via ::before pseudo-element)
     &::before {
@@ -119,7 +123,8 @@
       justify-content: center;
       font-size: 16px;
       color: var(--fluent-text-secondary);
-      transition: color var(--fluent-duration-fast) var(--fluent-easing-standard);
+      transition: color var(--fluent-duration-fast)
+        var(--fluent-easing-standard);
     }
 
     // Subtle FluentUI hover
@@ -195,7 +200,8 @@
         padding: 0 var(--fluent-space-xs);
         background: rgba(0, 0, 0, 0.02);
         border-radius: var(--fluent-radius-md);
-        transition: all var(--fluent-duration-normal) var(--fluent-easing-standard);
+        transition: all var(--fluent-duration-normal)
+          var(--fluent-easing-standard);
 
         // Active submenu - visible
         &.active {
@@ -212,11 +218,12 @@
           margin: 2px 0;
           background: none;
           list-style: none;
-          transition: background var(--fluent-duration-fast) var(--fluent-easing-standard);
+          transition: background var(--fluent-duration-fast)
+            var(--fluent-easing-standard);
 
           // Left indicator bar (FluentUI selected indicator)
           &::before {
-            content: '';
+            content: "";
             position: absolute;
             left: 4px;
             top: 15%;
@@ -224,7 +231,8 @@
             width: 4px;
             background-color: transparent;
             border-radius: 2px;
-            transition: background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+            transition: background-color var(--fluent-duration-fast)
+              var(--fluent-easing-standard);
           }
 
           // Remove underline animation from submenu items
@@ -242,7 +250,8 @@
             align-items: center;
             height: 32px;
             box-shadow: none;
-            transition: color var(--fluent-duration-fast) var(--fluent-easing-standard);
+            transition: color var(--fluent-duration-fast)
+              var(--fluent-easing-standard);
           }
 
           // Submenu item hover
@@ -322,8 +331,9 @@
       background: transparent;
       box-shadow: none;
       position: relative;
-      transition: background var(--fluent-duration-fast) var(--fluent-easing-standard),
-                  color var(--fluent-duration-fast) var(--fluent-easing-standard);
+      transition:
+        background var(--fluent-duration-fast) var(--fluent-easing-standard),
+        color var(--fluent-duration-fast) var(--fluent-easing-standard);
 
       // Icon (via ::before pseudo-element)
       &::before {
@@ -337,7 +347,8 @@
         justify-content: center;
         font-size: 16px;
         color: var(--fluent-text-secondary);
-        transition: color var(--fluent-duration-fast) var(--fluent-easing-standard);
+        transition: color var(--fluent-duration-fast)
+          var(--fluent-easing-standard);
       }
 
       // Expand/collapse arrow (FluentUI ChevronRight)
@@ -346,9 +357,21 @@
         right: var(--fluent-space-sm);
         top: 50%;
         transform: translateY(-50%) rotate(-90deg);
-        transition: transform var(--fluent-duration-fast) var(--fluent-easing-standard),
-                    color var(--fluent-duration-fast) var(--fluent-easing-standard);
-        @include fluent-icon-content($fluent-icon-chevron-down, 14px);
+        transition:
+          transform var(--fluent-duration-fast) var(--fluent-easing-standard),
+          background-image var(--fluent-duration-fast)
+            var(--fluent-easing-standard);
+        @include fluent-icon-content($fluent-icon-chevron-down, 14px, #605e5c);
+
+        [data-theme="dark"] & {
+          @include fluent-icon($fluent-icon-chevron-down, 14px, #a0a0a0);
+        }
+
+        @media (prefers-color-scheme: dark) {
+          :root:not([data-theme="light"]) & {
+            @include fluent-icon($fluent-icon-chevron-down, 14px, #a0a0a0);
+          }
+        }
       }
 
       // Hover state
@@ -385,7 +408,17 @@
         // Rotate arrow when expanded
         &::after {
           transform: translateY(-50%) rotate(0deg);
-          color: var(--fluent-primary);
+          @include fluent-icon($fluent-icon-chevron-down, 14px, #0078d4);
+
+          [data-theme="dark"] & {
+            @include fluent-icon($fluent-icon-chevron-down, 14px, #4da6ff);
+          }
+
+          @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) & {
+              @include fluent-icon($fluent-icon-chevron-down, 14px, #4da6ff);
+            }
+          }
         }
       }
     }
@@ -403,13 +436,15 @@
 @media (max-width: 768px) {
   .main-left {
     transform: translateX(-100%);
-    z-index: calc(var(--fluent-zindex-modal) + 150); // 1250 (above modals and page action footers)
-    
+    z-index: calc(
+      var(--fluent-zindex-modal) + 150
+    ); // 1250 (above modals and page action footers)
+
     &.active {
       transform: translateX(0);
     }
   }
-  
+
   .main-right {
     margin-left: 0;
   }
@@ -425,7 +460,8 @@
     z-index: calc(var(--fluent-zindex-modal) + 149); // 1249
     opacity: 0;
     pointer-events: none;
-    transition: opacity var(--fluent-duration-normal) var(--fluent-easing-standard);
+    transition: opacity var(--fluent-duration-normal)
+      var(--fluent-easing-standard);
 
     &.active {
       opacity: 1;

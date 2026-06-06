@@ -1,7 +1,7 @@
 // ============================================================
 // TEXTAREA - FluentUI Textarea Styles
 // ============================================================
-@use '../mixins' as *;
+@use "../mixins" as *;
 
 textarea {
   @include input-base;
@@ -12,16 +12,24 @@ textarea {
   resize: vertical;
   box-sizing: border-box;
   line-height: var(--fluent-line-height-relaxed);
-  background-image: linear-gradient(var(--fluent-primary), var(--fluent-primary)),
-                    linear-gradient(var(--fluent-primary), var(--fluent-primary));
-  background-size: 0 2px, 100% 1px;
-  background-position: center bottom, center calc(100% - 1px);
+  background-image:
+    linear-gradient(var(--fluent-primary), var(--fluent-primary)),
+    linear-gradient(var(--fluent-primary), var(--fluent-primary));
+  background-size:
+    0 2px,
+    100% 1px;
+  background-position:
+    center bottom,
+    center calc(100% - 1px);
   background-repeat: no-repeat;
-  transition: background-size var(--fluent-duration-fast) var(--fluent-easing-standard),
-              border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  transition:
+    background-size var(--fluent-duration-fast) var(--fluent-easing-standard),
+    border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
 
   &:focus {
-    background-size: 100% 2px, 100% 1px;
+    background-size:
+      100% 2px,
+      100% 1px;
     border-color: var(--fluent-input-border-focus);
     box-shadow: none;
     outline: none;

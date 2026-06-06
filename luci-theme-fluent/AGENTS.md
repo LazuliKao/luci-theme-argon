@@ -38,12 +38,12 @@ pnpm run lint         # SCSS lint check
 ```
 
 ### Build Commands
-| Command | Action |
-|---------|--------|
-| `pnpm run build` | Compile `scss/fluent.scss` → `htdocs/luci-static/fluent/css/fluent.css` |
-| `pnpm run build:min` | Minified build (compressed) |
-| `pnpm run watch` | Watch mode with auto-rebuild |
-| `pnpm run lint` | Run sass-lint |
+| Command              | Action                                                                  |
+| -------------------- | ----------------------------------------------------------------------- |
+| `pnpm run build`     | Compile `scss/fluent.scss` → `htdocs/luci-static/fluent/css/fluent.css` |
+| `pnpm run build:min` | Minified build (compressed)                                             |
+| `pnpm run watch`     | Watch mode with auto-rebuild                                            |
+| `pnpm run lint`      | Run sass-lint                                                           |
 
 ## Project Structure (luci-theme-fluent)
 
@@ -192,27 +192,27 @@ Full token list: `scss/_variables.scss` (249 lines)
 
 ## FluentUI 2 Component Specs
 
-| Component | Height | Radius | Key Feature |
-|-----------|--------|--------|-------------|
-| Button | 32px | 4px | Subtle/Primary/Danger/Outline variants |
-| Input | 32px | 4px | Bottom focus line (2px blue) |
-| Textarea | 52px min | 4px | Same focus line |
-| Checkbox (table) | 18×18 | 3px | SVG checkmark animation |
-| Switch (form) | 20×40 | 10px | Slide toggle animation |
-| Tab | auto | — | 2px bottom indicator + scaleX ripple |
-| Dropdown | 32px | 4px | Arrow rotation, custom input support |
+| Component        | Height   | Radius | Key Feature                            |
+| ---------------- | -------- | ------ | -------------------------------------- |
+| Button           | 32px     | 4px    | Subtle/Primary/Danger/Outline variants |
+| Input            | 32px     | 4px    | Bottom focus line (2px blue)           |
+| Textarea         | 52px min | 4px    | Same focus line                        |
+| Checkbox (table) | 18×18    | 3px    | SVG checkmark animation                |
+| Switch (form)    | 20×40    | 10px   | Slide toggle animation                 |
+| Tab              | auto     | —      | 2px bottom indicator + scaleX ripple   |
+| Dropdown         | 32px     | 4px    | Arrow rotation, custom input support   |
 
 Reference: `prompts.md` has full FluentUI source links.
 
 ## Troubleshooting
 
-| Issue | Check |
-|-------|-------|
-| CSS not loading | `htdocs/luci-static/fluent/css/fluent.css` exists? |
-| Dark mode wrong | UCI `mode` set correctly? CSS vars injected? |
-| Build fails | `pnpm install` first, check SCSS syntax with `pnpm run lint` |
-| Template error | ucode syntax: `{% %}` not `<% %>`, `{{ }}` not `<%= %>` |
-| CI SDK fails | Check `build.sh` — SDK URL returns HTTP 200? |
+| Issue           | Check                                                        |
+| --------------- | ------------------------------------------------------------ |
+| CSS not loading | `htdocs/luci-static/fluent/css/fluent.css` exists?           |
+| Dark mode wrong | UCI `mode` set correctly? CSS vars injected?                 |
+| Build fails     | `pnpm install` first, check SCSS syntax with `pnpm run lint` |
+| Template error  | ucode syntax: `{% %}` not `<% %>`, `{{ }}` not `<%= %>`      |
+| CI SDK fails    | Check `build.sh` — SDK URL returns HTTP 200?                 |
 
 ## Resources
 
@@ -221,3 +221,8 @@ Reference: `prompts.md` has full FluentUI source links.
 - [OpenWrt LuCI Docs](https://openwrt.org/docs/guide-user/luci/luci)
 - [ucode Template Syntax](https://openwrt.org/docs/techref/ucode)
 - [SCSS Documentation](https://sass-lang.com/documentation)
+
+## 额外注意事项
+- ** 不扩散原则**：组件样式只影响自身或者给定区域，避免全局样式污染
+- ** 一致性原则**：同一组件在不同页面/场景保持视觉和交互一致，避免过度添加padding或者margin来适应不同布局，容易导致多层padding叠加过大
+- ** 非必要不添加额外布局**：有些组件OpenWrt有一些基础样式并且正常布局依赖这些样式，避免额外添加flex之类导致布局混乱

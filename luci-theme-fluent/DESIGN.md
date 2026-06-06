@@ -173,12 +173,12 @@ Each component is a standalone SCSS partial:
 
 Templates use ucode syntax (not Lua):
 
-| Feature | Syntax | Example |
-|---------|--------|---------|
-| Comment | `{# ... #}` | `{# This is a comment #}` |
-| Code block | `{% ... %}` | `{% if (mode) { %}` |
-| Output | `{{ ... }}` | `{{ media }}` |
-| Raw output | `{{- ... -}}` | `{{- raw_html -}}` |
+| Feature    | Syntax        | Example                   |
+| ---------- | ------------- | ------------------------- |
+| Comment    | `{# ... #}`   | `{# This is a comment #}` |
+| Code block | `{% ... %}`   | `{% if (mode) { %}`       |
+| Output     | `{{ ... }}`   | `{{ media }}`             |
+| Raw output | `{{- ... -}}` | `{{- raw_html -}}`        |
 
 #### Auto-Available Globals
 
@@ -242,24 +242,24 @@ include $(TOPDIR)/feeds/luci/luci.mk
 
 ### Component Map
 
-| Component | File | Description |
-|-----------|------|-------------|
-| Buttons | `_buttons.scss` | Primary, secondary, ghost, icon buttons |
-| Inputs | `_inputs.scss` | Text, number, email, password fields |
-| Select | `_select.scss` | Dropdown selects |
-| Checkboxes | `_checkboxes.scss` | Checkboxes and radio buttons |
-| Tables | `_tables.scss` | Data tables with sorting |
-| Cards | `_cards.scss` | Content cards |
-| Tabs | `_tabs.scss` | Tab navigation |
-| Header | `_header.scss` | Top header bar |
-| Navigation | `_navigation.scss` | Main navigation |
-| Progress | `_progress.scss` | Progress bars |
-| Modals | `_modals.scss` | Modal dialogs |
-| Login | `_login.scss` | Login page |
-| Dropdown | `_dropdown.scss` | Dropdown menus |
-| Scrollbar | `_scrollbar.scss` | Custom scrollbars |
-| Sidebar | `_sidebar.scss` | Sidebar navigation |
-| Responsive | `_responsive.scss` | Media queries |
+| Component  | File               | Description                             |
+| ---------- | ------------------ | --------------------------------------- |
+| Buttons    | `_buttons.scss`    | Primary, secondary, ghost, icon buttons |
+| Inputs     | `_inputs.scss`     | Text, number, email, password fields    |
+| Select     | `_select.scss`     | Dropdown selects                        |
+| Checkboxes | `_checkboxes.scss` | Checkboxes and radio buttons            |
+| Tables     | `_tables.scss`     | Data tables with sorting                |
+| Cards      | `_cards.scss`      | Content cards                           |
+| Tabs       | `_tabs.scss`       | Tab navigation                          |
+| Header     | `_header.scss`     | Top header bar                          |
+| Navigation | `_navigation.scss` | Main navigation                         |
+| Progress   | `_progress.scss`   | Progress bars                           |
+| Modals     | `_modals.scss`     | Modal dialogs                           |
+| Login      | `_login.scss`      | Login page                              |
+| Dropdown   | `_dropdown.scss`   | Dropdown menus                          |
+| Scrollbar  | `_scrollbar.scss`  | Custom scrollbars                       |
+| Sidebar    | `_sidebar.scss`    | Sidebar navigation                      |
+| Responsive | `_responsive.scss` | Media queries                           |
 
 ## Migration Path
 
@@ -306,3 +306,4 @@ include $(TOPDIR)/feeds/luci/luci.mk
 - [Microsoft Fluent Design System](https://developer.microsoft.com/en-us/fluentui)
 - [LuCI Documentation](https://openwrt.org/docs/techref/luci)
 - [ucode Template Language](https://openwrt.org/docs/techref/utpl)
+- [Design System](https://fluent2.microsoft.design/design-principles)

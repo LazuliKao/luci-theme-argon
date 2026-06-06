@@ -9,7 +9,7 @@
         &,
         #view,
         #view > div {
-          > h2[name="content"] {
+          > h2 {
             position: relative;
             padding-left: 12px;
             &::before {

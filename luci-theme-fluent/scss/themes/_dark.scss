@@ -108,6 +108,10 @@
     --fluent-login-border: rgba(82, 82, 82, 0.7);
     --fluent-login-icon-color: var(--fluent-text-secondary);
 
+    // Tooltip
+    --fluent-tooltip-bg: #292929;
+    --fluent-tooltip-text: #ffffff;
+
     // Dropdown
     --fluent-dropdown-bg: var(--fluent-bg-card);
     --fluent-dropdown-border: var(--fluent-input-border);
@@ -227,6 +231,10 @@
   --fluent-login-bg: rgba(31, 31, 31, 0.92);
   --fluent-login-border: rgba(82, 82, 82, 0.7);
   --fluent-login-icon-color: var(--fluent-text-secondary);
+
+  // Tooltip
+  --fluent-tooltip-bg: #292929;
+  --fluent-tooltip-text: #ffffff;
 
   // Dropdown
   --fluent-dropdown-bg: var(--fluent-bg-card);

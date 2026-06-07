@@ -55,8 +55,7 @@
   // ============================================================
   // TYPOGRAPHY (FluentUI font tokens)
   // ============================================================
-  --fluent-font-family:
-    "Segoe UI", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  --fluent-font-family: "Segoe UI", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
 
   // Font sizes
   --fluent-font-size-base: 14px; // Base1 (body)
@@ -124,7 +123,7 @@
   // ============================================================
   // Z-INDEX
   // ============================================================
-  --fluent-zindex-dropdown: 1400;
+  --fluent-zindex-dropdown: 1000;
   --fluent-zindex-modal: 1100;
   --fluent-zindex-tooltip: 1200;
   --fluent-zindex-toast: 1300;
@@ -233,6 +232,10 @@
   --fluent-login-bg: rgba(255, 255, 255, 0.92);
   --fluent-login-border: rgba(255, 255, 255, 0.7);
   --fluent-login-icon-color: var(--fluent-text-secondary);
+
+  // Tooltip
+  --fluent-tooltip-bg: #242424;
+  --fluent-tooltip-text: #ffffff;
 
   // Dropdown
   --fluent-dropdown-bg: var(--fluent-bg-card);

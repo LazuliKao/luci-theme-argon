@@ -240,6 +240,12 @@ $table-checkbox-contexts: (".table", ".cbi-section-table", ".modal", ".cbi-dropd
 // ============================================================
 // RADIO BUTTONS
 // ============================================================
+label:has(input[type="radio"]) {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: var(--fluent-space-sm) !important;
+  cursor: pointer !important;
+}
 input[type="radio"] {
   -webkit-appearance: none;
   appearance: none;
@@ -252,7 +258,6 @@ input[type="radio"] {
   position: relative;
   flex-shrink: 0;
   transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
-
   &::before {
     content: "";
     position: absolute;

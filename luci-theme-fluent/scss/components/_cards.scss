@@ -44,8 +44,11 @@
     margin-top: var(--fluent-space-sm);
     display: flex;
     justify-content: flex-end;
+    gap: var(--fluent-space-sm);
+
     margin-right: var(--fluent-space-sm);
     margin-bottom: var(--fluent-space-sm);
+
     .cbi-button {
       background: var(--fluent-primary);
       border-color: var(--fluent-primary);

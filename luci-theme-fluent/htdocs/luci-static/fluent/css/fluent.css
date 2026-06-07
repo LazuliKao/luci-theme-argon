@@ -31,7 +31,8 @@
   --fluent-error-light: #fde7e9;
   --fluent-info: #0078d4;
   --fluent-info-light: #f3f9fd;
-  --fluent-font-family: "Segoe UI", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  --fluent-font-family:
+    "Segoe UI", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
   --fluent-font-size-base: 14px;
   --fluent-font-size-xs: 10px;
   --fluent-font-size-sm: 12px;
@@ -73,6 +74,7 @@
   --fluent-easing-decelerate: cubic-bezier(0, 0, 0, 1);
   --fluent-easing-accelerate: cubic-bezier(1, 0, 1, 1);
   --fluent-easing-easy-ease: cubic-bezier(0.33, 0, 0.67, 1);
+  --fluent-zindex-actions: -1000;
   --fluent-zindex-dropdown: 1000;
   --fluent-zindex-modal: 1100;
   --fluent-zindex-tooltip: 1200;
@@ -108,7 +110,7 @@
   --fluent-card-border: #e0e0e0;
   --fluent-card-shadow: var(--fluent-shadow-sm);
   --fluent-card-radius: var(--fluent-radius-lg);
-  --fluent-card-padding: var(--fluent-space-lg);
+  --fluent-card-padding: var(--fluent-space-xss);
   --fluent-table-header-bg: #f5f5f5;
   --fluent-table-row-hover: #f5f5f5;
   --fluent-table-row-selected: #e6f2fb;
@@ -1191,7 +1193,6 @@ input[type=search]::-webkit-search-cancel-button {
   border: 1px solid var(--fluent-card-border);
   border-radius: var(--fluent-card-radius);
   box-shadow: var(--fluent-card-shadow);
-  padding: var(--fluent-card-padding);
   position: relative;
   margin-bottom: var(--fluent-space-lg);
 }
@@ -1219,6 +1220,7 @@ input[type=search]::-webkit-search-cancel-button {
   margin-top: var(--fluent-space-sm);
   display: flex;
   justify-content: flex-end;
+  gap: var(--fluent-space-sm);
   margin-right: var(--fluent-space-sm);
   margin-bottom: var(--fluent-space-sm);
 }
@@ -1254,7 +1256,6 @@ input[type=search]::-webkit-search-cancel-button {
   border: 1px solid var(--fluent-card-border);
   border-radius: var(--fluent-card-radius);
   box-shadow: var(--fluent-card-shadow);
-  padding: var(--fluent-card-padding);
   margin-bottom: var(--fluent-space-lg);
 }
 .panel .panel-title {
@@ -2085,7 +2086,7 @@ body.modal-overlay-active #modal_overlay {
 .cbi-page-actions {
   position: sticky;
   bottom: 0;
-  z-index: calc(var(--fluent-zindex-modal) - 1);
+  z-index: var(--fluent-zindex-actions);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -2643,7 +2644,6 @@ td > .ifacebadge,
   border: 1px solid var(--fluent-card-border);
   border-radius: var(--fluent-card-radius);
   box-shadow: var(--fluent-card-shadow);
-  padding: var(--fluent-card-padding);
   position: relative;
   display: inline-flex;
   flex-direction: column;
@@ -4983,9 +4983,20 @@ code::-webkit-scrollbar-thumb:hover {
   display: flex;
   align-items: center;
   width: 100%;
+  max-width: 100%;
   gap: 0;
+  box-sizing: border-box;
+  min-width: 0;
 }
-.cbi-dynlist > .add-item input {
+.cbi-dynlist > .add-item > input,
+.cbi-dynlist > .add-item > .cbi-dropdown {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.cbi-dynlist > .add-item > input {
   height: var(--fluent-input-height);
   padding: 0 var(--fluent-space-sm);
   font-family: var(--fluent-font-family);
@@ -4999,39 +5010,53 @@ code::-webkit-scrollbar-thumb:hover {
   border-radius: var(--fluent-radius-md);
   transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
-.cbi-dynlist > .add-item input:hover {
+.cbi-dynlist > .add-item > input:hover {
   border-bottom-color: var(--fluent-input-border-hover);
 }
-.cbi-dynlist > .add-item input:focus {
+.cbi-dynlist > .add-item > input:focus {
   border-bottom-color: var(--fluent-input-border-focus);
   outline: none;
 }
-.cbi-dynlist > .add-item input:disabled {
+.cbi-dynlist > .add-item > input:disabled {
   background: var(--fluent-input-bg-disabled);
   color: var(--fluent-text-disabled);
   cursor: not-allowed;
 }
-.cbi-dynlist > .add-item input::placeholder {
+.cbi-dynlist > .add-item > input::placeholder {
   color: var(--fluent-text-disabled);
 }
-.cbi-dynlist > .add-item input {
-  flex: 1;
-  width: 0;
-  min-width: 0;
+.cbi-dynlist > .add-item > input {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-right: none;
 }
-.cbi-dynlist > .add-item input:focus {
+.cbi-dynlist > .add-item > input:focus {
   border-right: none;
 }
-.cbi-dynlist > .add-item input.drag-over {
+.cbi-dynlist > .add-item > input.drag-over {
   border-top: 1px solid var(--fluent-primary);
 }
-.cbi-dynlist > .add-item .cbi-button-add {
+.cbi-dynlist > .add-item > .cbi-dropdown {
   height: var(--fluent-input-height);
+  min-height: var(--fluent-input-height);
+}
+.cbi-dynlist > .add-item > .cbi-dropdown > ul {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.cbi-dynlist > .add-item > .cbi-dropdown > ul > li {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cbi-dynlist > .add-item > .cbi-button-add {
+  flex: 0 0 var(--fluent-input-height);
   width: var(--fluent-input-height) !important;
   min-width: var(--fluent-input-height) !important;
+  max-width: var(--fluent-input-height);
+  height: var(--fluent-input-height);
   padding: 0 !important;
   display: flex;
   align-items: center;
@@ -5048,18 +5073,27 @@ code::-webkit-scrollbar-thumb:hover {
   box-sizing: border-box;
   transition: background-color var(--fluent-duration-fast) var(--fluent-easing-standard), border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
-.cbi-dynlist > .add-item .cbi-button-add:hover {
+.cbi-dynlist > .add-item > .cbi-button-add:hover {
   background-color: var(--fluent-primary-hover);
   border-color: var(--fluent-primary-hover);
   border-bottom-color: var(--fluent-primary-hover);
 }
-.cbi-dynlist > .add-item .cbi-button-add:active {
+.cbi-dynlist > .add-item > .cbi-button-add:active {
   background-color: var(--fluent-primary-active);
   border-color: var(--fluent-primary-active);
   border-bottom-color: var(--fluent-primary-active);
 }
-.cbi-dynlist > .add-item .cbi-button-add.drag-over {
+.cbi-dynlist > .add-item > .cbi-button-add.drag-over {
   border-top: 1px solid var(--fluent-primary);
+}
+.cbi-dynlist > .add-item:has(> .cbi-button-add) > input,
+.cbi-dynlist > .add-item:has(> .cbi-button-add) > .cbi-dropdown {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.cbi-dynlist > .add-item:not(:has(> .cbi-button-add)) > input,
+.cbi-dynlist > .add-item:not(:has(> .cbi-button-add)) > .cbi-dropdown {
+  border-radius: var(--fluent-radius-md);
 }
 .cbi-dynlist > .cbi-dynlist > .add-item[ondrop] > input {
   min-width: 13rem;

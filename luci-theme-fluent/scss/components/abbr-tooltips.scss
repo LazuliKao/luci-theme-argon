@@ -1,0 +1,90 @@
+.cbi-value-description abbr[title] {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+
+    color: #0078d4;
+    text-decoration: none;
+    border-bottom: 1px dotted #605e5c;
+}
+
+/* Fluent UI 风格 tooltip 主体 */
+.cbi-value-description abbr[title]::after {
+    content: attr(title);
+
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 10px);
+    transform: translateX(-50%) translateY(4px);
+
+    box-sizing: border-box;
+    width: max-content;
+    max-width: 280px;
+
+    padding: 6px 10px;
+    border-radius: 4px;
+
+    background: #323130;
+    color: #fff;
+
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 400;
+    text-align: left;
+
+    box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.24),
+        0 0 2px rgba(0, 0, 0, 0.2);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    z-index: 9999;
+
+    transition:
+        opacity 120ms ease,
+        transform 120ms ease,
+        visibility 120ms ease;
+}
+
+/* 小三角 */
+.cbi-value-description abbr[title]::before {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 6px);
+    transform: translateX(-50%) translateY(4px) rotate(45deg);
+
+    width: 8px;
+    height: 8px;
+
+    background: #323130;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    z-index: 9998;
+
+    transition:
+        opacity 120ms ease,
+        transform 120ms ease,
+        visibility 120ms ease;
+}
+
+/* hover 显示 */
+.cbi-value-description abbr[title]:hover::after,
+.cbi-value-description abbr[title]:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cbi-value-description abbr[title]:hover::after {
+    transform: translateX(-50%) translateY(0);
+}
+
+.cbi-value-description abbr[title]:hover::before {
+    transform: translateX(-50%) translateY(0) rotate(45deg);
+}

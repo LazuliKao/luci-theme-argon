@@ -10,12 +10,23 @@
   position: relative;
   margin-bottom: var(--fluent-space-lg);
 
+  .cbi-section-remove.right + .cbi-section-node:has(+ .cbi-section-remove.right + .cbi-section-node) {
+    border-bottom: 2px solid var(--fluent-card-border);
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+  }
+
   // Top-right section remove button
   .cbi-section-remove {
-    position: absolute;
-    top: var(--fluent-space-lg);
-    right: var(--fluent-space-lg);
-    z-index: 2;
+    float: right;
+    position: relative;
+    z-index: 10;
+    margin: 8px 8px 0 0;
+
+    // position: absolute;
+    // top: var(--fluent-space-lg);
+    // right: var(--fluent-space-lg);
+    // z-index: 2;
 
     .cbi-button {
       background: var(--fluent-error);

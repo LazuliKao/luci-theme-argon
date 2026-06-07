@@ -46,17 +46,16 @@ td > .ifacebadge,
 }
 
 .zonebadge {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   flex-wrap: wrap;
   gap: var(--fluent-space-sm);
-  padding: var(--fluent-space-sm) var(--fluent-space-md);
+  padding: var(--fluent-space-xs) var(--fluent-space-sm);
   border: 1px solid var(--fluent-card-border);
-  border-inline-start: var(--fluent-space-xs) solid rgb(var(--zone-color-rgb, 128, 128, 128));
   border-radius: var(--fluent-radius-lg);
   background: var(--fluent-card-bg);
   box-shadow: var(--fluent-card-shadow);
-  color: var(--fluent-text);
+  justify-content: center;
 }
 
 .zonebadge .ifacebadge {
@@ -72,7 +71,7 @@ td > .ifacebadge,
 
 .zonebadge > em,
 .zonebadge > strong {
-  color: var(--fluent-text);
+  // color: var(--fluent-text);
   font-style: normal;
   line-height: var(--fluent-line-height-normal);
 }
@@ -107,14 +106,6 @@ td > .ifacebadge,
   border-radius: var(--fluent-radius-sm);
   background: var(--fluent-bg-page);
   color: var(--fluent-text);
-}
-
-.zone-forwards .zone-src {
-  border-inline-start: var(--fluent-space-xxs) solid var(--fluent-info);
-}
-
-.zone-forwards .zone-dest {
-  border-inline-start: var(--fluent-space-xxs) solid var(--fluent-success);
 }
 
 .ifacebox {

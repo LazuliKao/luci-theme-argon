@@ -63,19 +63,36 @@ $fluent-alert-icon-error: "<svg xmlns='http://www.w3.org/2000/svg' width='20' he
     // float to top right of the alert box and do not take any space
     position: absolute;
     display: flex;
-    top: 12px;
-    right: 12px;
-
-    // display: flex;
-    // justify-content: flex-end;
-    // align-items: flex-start;
-    // float: right;
+    top: 8px;
+    right: 8px;
 
     .btn:not(.cbi-button) {
       &::after {
-        content: "×";
-        font-size: var(--fluent-font-size-lg);
-        color: var(--fluent-text-secondary);
+        content: "";
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        flex: 0 0 20px;
+
+        background:
+          linear-gradient(
+            45deg,
+            transparent calc(50% - 0.75px),
+            var(--fluent-text-secondary) calc(50% - 0.75px),
+            var(--fluent-text-secondary) calc(50% + 0.75px),
+            transparent calc(50% + 0.75px)
+          ),
+          linear-gradient(
+            -45deg,
+            transparent calc(50% - 0.75px),
+            var(--fluent-text-secondary) calc(50% - 0.75px),
+            var(--fluent-text-secondary) calc(50% + 0.75px),
+            transparent calc(50% + 0.75px)
+          );
+
+        background-size: 8px 8px;
+        background-repeat: no-repeat;
+        background-position: center;
       }
       @include button-text;
       font-size: 0 !important;

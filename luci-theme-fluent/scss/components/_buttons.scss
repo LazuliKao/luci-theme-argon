@@ -105,3 +105,8 @@ button {
 .cbi-button-up + .cbi-button-down {
   margin-left: 2px;
 }
+.btns:has(> .cbi-button) {
+  display: inline-flex;
+  gap: var(--fluent-space-sm);
+  margin-bottom: var(--fluent-space-md);
+}

@@ -157,7 +157,7 @@ input[type="checkbox"] {
 // Restores square checkbox appearance inside tables, modals,
 // dropdowns, and other contextual containers
 // ============================================================
-$table-checkbox-contexts: (".table", ".cbi-section-table", ".modal", ".cbi-dropdown", "td", "th", ".tr .td", ".tr .th");
+$table-checkbox-contexts: (".table", ".cbi-section-table", ".cbi-dropdown", "td", "th", ".tr .td", ".tr .th");
 
 @each $context in $table-checkbox-contexts {
   #{$context} input[type="checkbox"] {

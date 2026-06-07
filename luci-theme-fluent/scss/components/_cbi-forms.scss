@@ -7,7 +7,7 @@
 .cbi-map {
   display: flex;
   flex-direction: column;
-  gap: var(--fluent-space-lg);
+  // gap: var(--fluent-space-lg);
   font-family: var(--fluent-font-family);
   color: var(--fluent-text);
 
@@ -49,6 +49,10 @@
   background: var(--fluent-error-light);
   border-color: var(--fluent-error);
   box-shadow: none;
+}
+
+.cbi-section > .cbi-section-node {
+  margin-left: var(--fluent-space-lg);
 }
 
 // .cbi-section-node,

@@ -34,7 +34,7 @@
 @use "components/select";
 @use "components/dashboard";
 @use "components/abbr-tooltips";
-@use "overrides";
+@use "overrides/index";
 
 // Layouts
 @use "layouts/login";

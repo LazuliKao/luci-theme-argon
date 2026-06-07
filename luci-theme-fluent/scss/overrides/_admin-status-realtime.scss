@@ -1,5 +1,5 @@
 @use "overrides-utils" as *;
-@include plugin("admin-status-realtime-*") {
+@include plugin-prefix("admin-status-realtime") {
     .cbi-section {
         div[style*="background:#fff"] {
             background: var(--fluent-card-bg) !important;

@@ -122,7 +122,7 @@ td > .ifacebadge,
   position: relative;
   display: inline-flex;
   flex-direction: column;
-  min-width: 120px;
+  // min-width: 120px;
   padding: 0;
   overflow: visible;
 
@@ -231,9 +231,6 @@ td > .ifacebadge,
 }
 
 .ifacebox-body {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   gap: var(--fluent-space-xs);
   padding: var(--fluent-space-sm) var(--fluent-space-md);
   color: var(--fluent-text-secondary);

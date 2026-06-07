@@ -13,7 +13,7 @@ input[type="search"],
 input[type="tel"],
 input[type="url"] {
   @include input-base;
-  width: 100%;
+
   max-width: 100%;
   box-sizing: border-box;
 }
@@ -22,7 +22,7 @@ input[type="url"] {
 .cbi-input-text,
 .cbi-input-password {
   @include input-base;
-  width: 100%;
+
   max-width: 100%;
   box-sizing: border-box;
 }

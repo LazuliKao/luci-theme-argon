@@ -140,3 +140,8 @@ td.cbi-section-actions {
     flex-wrap: nowrap;
   }
 }
+.table .cbi-section-table {
+  // horizontal full and show scrollbar if needed
+  width: 100%;
+  overflow-x: auto;
+}

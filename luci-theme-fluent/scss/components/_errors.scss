@@ -15,6 +15,8 @@ $fluent-error-inputs: (
   'input[type="search"]',
   'input[type="tel"]',
   'input[type="url"]',
+  "select",
+  ".cbi-dropdown",
   ".cbi-input-text",
   ".cbi-input-password",
   ".password-input"
@@ -48,64 +50,30 @@ $fluent-error-inputs: (
 }
 
 // ============================================================
-// ERROR TOOLTIPS
-// Positioned below input with arrow, animation, and Luci compat
+// FLUENTUI INLINE ERROR MESSAGE
 // ============================================================
+.fluent-error-message {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--fluent-error);
+  font-family: var(--fluent-font-family);
+  font-size: var(--fluent-font-size-sm);
+  font-weight: var(--fluent-font-weight-regular);
+  line-height: 16px;
+  margin-top: 4px;
+  animation: fluent-error-fade-in 0.15s var(--fluent-easing-standard) forwards;
 
-// Tooltip positioning context
-@each $selector in $fluent-error-inputs {
-  #{$selector}[data-tooltip].cbi-input-invalid {
-    position: relative !important;
-  }
-}
-
-// Tooltip body (::after)
-@each $selector in $fluent-error-inputs {
-  #{$selector}[data-tooltip].cbi-input-invalid::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: -32px;
-    left: 0;
-    right: 0;
-    padding: var(--fluent-space-xs) var(--fluent-space-sm);
-    background-color: var(--fluent-error);
-    color: var(--fluent-white);
-    font-size: var(--fluent-font-size-sm);
-    font-weight: 500;
-    line-height: 16px;
-    border-radius: var(--fluent-radius-md);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    z-index: var(--fluent-zindex-tooltip);
-    box-shadow: var(--fluent-shadow-sm);
-    animation: fluent-tooltip-show 0.2s ease-out forwards;
-    pointer-events: none;
-  }
-}
-
-// Tooltip arrow (::before)
-@each $selector in $fluent-error-inputs {
-  #{$selector}[data-tooltip].cbi-input-invalid::before {
-    content: "";
-    position: absolute;
-    bottom: -8px;
-    left: 8px;
-    width: 0;
-    height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 4px solid var(--fluent-error);
-    z-index: calc(var(--fluent-zindex-tooltip) + 1);
-    animation: fluent-tooltip-show 0.2s ease-out forwards;
-    pointer-events: none;
+  svg {
+    flex-shrink: 0;
+    color: var(--fluent-error);
   }
 }
 
 // ============================================================
-// TOOLTIP ANIMATION
+// ERROR ANIMATION
 // ============================================================
-@keyframes fluent-tooltip-show {
+@keyframes fluent-error-fade-in {
   from {
     opacity: 0;
     transform: translateY(-4px);

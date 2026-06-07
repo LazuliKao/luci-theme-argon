@@ -11,9 +11,14 @@
 
 // Table section wrapper — enables horizontal scrolling on mobile
 .cbi-section .cbi-tblsection {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  @include custom-scrollbar;
+  overflow-x: visible;
+  overflow-y: visible;
+
+  @media (max-width: 767px) {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    @include custom-scrollbar;
+  }
 }
 
 // LuCI table structure (visual styles for all tables)

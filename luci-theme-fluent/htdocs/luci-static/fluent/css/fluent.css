@@ -1280,22 +1280,28 @@ input[type=search]::-webkit-search-cancel-button {
 }
 
 .cbi-section .cbi-tblsection {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow-x: visible;
+  overflow-y: visible;
 }
-.cbi-section .cbi-tblsection::-webkit-scrollbar {
-  width: var(--fluent-scrollbar-width);
-  height: var(--fluent-scrollbar-width);
-}
-.cbi-section .cbi-tblsection::-webkit-scrollbar-track {
-  background: var(--fluent-scrollbar-track-bg);
-}
-.cbi-section .cbi-tblsection::-webkit-scrollbar-thumb {
-  background: var(--fluent-scrollbar-thumb-bg);
-  border-radius: 3px;
-}
-.cbi-section .cbi-tblsection::-webkit-scrollbar-thumb:hover {
-  background: var(--fluent-scrollbar-thumb-bg-hover);
+@media (max-width: 767px) {
+  .cbi-section .cbi-tblsection {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .cbi-section .cbi-tblsection::-webkit-scrollbar {
+    width: var(--fluent-scrollbar-width);
+    height: var(--fluent-scrollbar-width);
+  }
+  .cbi-section .cbi-tblsection::-webkit-scrollbar-track {
+    background: var(--fluent-scrollbar-track-bg);
+  }
+  .cbi-section .cbi-tblsection::-webkit-scrollbar-thumb {
+    background: var(--fluent-scrollbar-thumb-bg);
+    border-radius: 3px;
+  }
+  .cbi-section .cbi-tblsection::-webkit-scrollbar-thumb:hover {
+    background: var(--fluent-scrollbar-thumb-bg-hover);
+  }
 }
 
 .tr {
@@ -1674,6 +1680,7 @@ body.modal-overlay-active #modal_overlay {
   box-shadow: none !important;
   padding: 0 !important;
   margin: 0 !important;
+  overflow: visible !important;
 }
 
 .cbi-map {
@@ -1711,7 +1718,7 @@ body.modal-overlay-active #modal_overlay {
   border-radius: var(--fluent-radius-md);
   box-shadow: var(--fluent-shadow-sm);
   margin-bottom: var(--fluent-space-lg);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .cbi-section-error {
@@ -4137,6 +4144,9 @@ code::-webkit-scrollbar-thumb:hover {
   border-bottom-color: var(--fluent-input-border-focus);
   outline: none;
 }
+.cbi-dropdown[open] {
+  z-index: 1005;
+}
 .cbi-dropdown:focus::after, .cbi-dropdown.focus::after, .cbi-dropdown[open]::after {
   transform: scaleX(1);
   transition-duration: 0.2s;
@@ -4404,12 +4414,6 @@ code::-webkit-scrollbar-thumb:hover {
   padding-right: var(--fluent-space-xl);
   cursor: pointer;
 }
-.cbi-dropdown.cbi-button > span.open::before, .cbi-dropdown.btn > span.open::before {
-  border-color: currentColor !important;
-}
-.cbi-dropdown.cbi-button:hover > span.open::before, .cbi-dropdown.btn:hover > span.open::before {
-  border-color: currentColor !important;
-}
 .cbi-dropdown .ifacebadge {
   background: transparent !important;
   border: none !important;
@@ -4417,6 +4421,330 @@ code::-webkit-scrollbar-thumb:hover {
   box-shadow: none !important;
   color: inherit !important;
   min-height: unset !important;
+}
+
+.cbi-dropdown.cbi-button,
+.cbi-dropdown.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--fluent-btn-height);
+  padding: 0 16px;
+  font-family: var(--fluent-font-family);
+  font-size: var(--fluent-font-size-base);
+  font-weight: var(--fluent-font-weight-regular);
+  line-height: 1;
+  border: 1px solid transparent;
+  border-radius: var(--fluent-radius-md);
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  transition: background var(--fluent-duration-fast) var(--fluent-easing-standard), border-color var(--fluent-duration-fast) var(--fluent-easing-standard), color var(--fluent-duration-fast) var(--fluent-easing-standard);
+}
+.cbi-dropdown.cbi-button:disabled,
+.cbi-dropdown.btn:disabled {
+  color: var(--fluent-text-disabled);
+  background: var(--fluent-bg-active);
+  border-color: var(--fluent-bg-active);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.cbi-dropdown.cbi-button:focus-visible,
+.cbi-dropdown.btn:focus-visible {
+  outline: 2px solid var(--fluent-focus-color);
+  outline-offset: 2px;
+}
+.cbi-dropdown.cbi-button,
+.cbi-dropdown.btn {
+  background: var(--fluent-btn-secondary-bg);
+  color: var(--fluent-text);
+  border-color: var(--fluent-btn-secondary-border);
+}
+.cbi-dropdown.cbi-button:hover,
+.cbi-dropdown.btn:hover {
+  background: var(--fluent-btn-secondary-bg-hover);
+  border-color: var(--fluent-btn-secondary-border-hover);
+}
+.cbi-dropdown.cbi-button:active,
+.cbi-dropdown.btn:active {
+  background: var(--fluent-btn-secondary-bg-active);
+  border-color: var(--fluent-btn-secondary-border-active);
+}
+.cbi-dropdown.cbi-button,
+.cbi-dropdown.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+  padding: 0 var(--fluent-space-md) !important;
+  padding-right: 0 !important;
+  border-right: 0 !important;
+  gap: var(--fluent-space-xs);
+  min-width: unset;
+  width: auto;
+}
+.cbi-dropdown.cbi-button::after,
+.cbi-dropdown.btn::after {
+  content: none !important;
+  display: none !important;
+}
+.cbi-dropdown.cbi-button:hover:not([disabled]),
+.cbi-dropdown.btn:hover:not([disabled]) {
+  border-bottom-color: var(--fluent-btn-secondary-border-hover);
+}
+.cbi-dropdown.cbi-button:focus, .cbi-dropdown.cbi-button.focus, .cbi-dropdown.cbi-button[open],
+.cbi-dropdown.btn:focus,
+.cbi-dropdown.btn.focus,
+.cbi-dropdown.btn[open] {
+  border-bottom-color: var(--fluent-btn-secondary-border-active);
+  outline: none;
+}
+.cbi-dropdown.cbi-button.cbi-button-apply, .cbi-dropdown.cbi-button.cbi-button-save, .cbi-dropdown.cbi-button.cbi-button-positive, .cbi-dropdown.cbi-button.important,
+.cbi-dropdown.btn.cbi-button-apply,
+.cbi-dropdown.btn.cbi-button-save,
+.cbi-dropdown.btn.cbi-button-positive,
+.cbi-dropdown.btn.important {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--fluent-btn-height);
+  padding: 0 16px;
+  font-family: var(--fluent-font-family);
+  font-size: var(--fluent-font-size-base);
+  font-weight: var(--fluent-font-weight-regular);
+  line-height: 1;
+  border: 1px solid transparent;
+  border-radius: var(--fluent-radius-md);
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  transition: background var(--fluent-duration-fast) var(--fluent-easing-standard), border-color var(--fluent-duration-fast) var(--fluent-easing-standard), color var(--fluent-duration-fast) var(--fluent-easing-standard);
+}
+.cbi-dropdown.cbi-button.cbi-button-apply:disabled, .cbi-dropdown.cbi-button.cbi-button-save:disabled, .cbi-dropdown.cbi-button.cbi-button-positive:disabled, .cbi-dropdown.cbi-button.important:disabled,
+.cbi-dropdown.btn.cbi-button-apply:disabled,
+.cbi-dropdown.btn.cbi-button-save:disabled,
+.cbi-dropdown.btn.cbi-button-positive:disabled,
+.cbi-dropdown.btn.important:disabled {
+  color: var(--fluent-text-disabled);
+  background: var(--fluent-bg-active);
+  border-color: var(--fluent-bg-active);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.cbi-dropdown.cbi-button.cbi-button-apply:focus-visible, .cbi-dropdown.cbi-button.cbi-button-save:focus-visible, .cbi-dropdown.cbi-button.cbi-button-positive:focus-visible, .cbi-dropdown.cbi-button.important:focus-visible,
+.cbi-dropdown.btn.cbi-button-apply:focus-visible,
+.cbi-dropdown.btn.cbi-button-save:focus-visible,
+.cbi-dropdown.btn.cbi-button-positive:focus-visible,
+.cbi-dropdown.btn.important:focus-visible {
+  outline: 2px solid var(--fluent-focus-color);
+  outline-offset: 2px;
+}
+.cbi-dropdown.cbi-button.cbi-button-apply, .cbi-dropdown.cbi-button.cbi-button-save, .cbi-dropdown.cbi-button.cbi-button-positive, .cbi-dropdown.cbi-button.important,
+.cbi-dropdown.btn.cbi-button-apply,
+.cbi-dropdown.btn.cbi-button-save,
+.cbi-dropdown.btn.cbi-button-positive,
+.cbi-dropdown.btn.important {
+  background: var(--fluent-btn-primary-bg);
+  color: var(--fluent-text-on-primary);
+  border-color: var(--fluent-btn-primary-bg);
+}
+.cbi-dropdown.cbi-button.cbi-button-apply:hover, .cbi-dropdown.cbi-button.cbi-button-save:hover, .cbi-dropdown.cbi-button.cbi-button-positive:hover, .cbi-dropdown.cbi-button.important:hover,
+.cbi-dropdown.btn.cbi-button-apply:hover,
+.cbi-dropdown.btn.cbi-button-save:hover,
+.cbi-dropdown.btn.cbi-button-positive:hover,
+.cbi-dropdown.btn.important:hover {
+  background: var(--fluent-btn-primary-bg-hover);
+  border-color: var(--fluent-btn-primary-bg-hover);
+}
+.cbi-dropdown.cbi-button.cbi-button-apply:active, .cbi-dropdown.cbi-button.cbi-button-save:active, .cbi-dropdown.cbi-button.cbi-button-positive:active, .cbi-dropdown.cbi-button.important:active,
+.cbi-dropdown.btn.cbi-button-apply:active,
+.cbi-dropdown.btn.cbi-button-save:active,
+.cbi-dropdown.btn.cbi-button-positive:active,
+.cbi-dropdown.btn.important:active {
+  background: var(--fluent-btn-primary-bg-active);
+  border-color: var(--fluent-btn-primary-bg-active);
+}
+.cbi-dropdown.cbi-button.cbi-button-apply:hover:not([disabled]), .cbi-dropdown.cbi-button.cbi-button-save:hover:not([disabled]), .cbi-dropdown.cbi-button.cbi-button-positive:hover:not([disabled]), .cbi-dropdown.cbi-button.important:hover:not([disabled]),
+.cbi-dropdown.btn.cbi-button-apply:hover:not([disabled]),
+.cbi-dropdown.btn.cbi-button-save:hover:not([disabled]),
+.cbi-dropdown.btn.cbi-button-positive:hover:not([disabled]),
+.cbi-dropdown.btn.important:hover:not([disabled]) {
+  border-bottom-color: var(--fluent-btn-primary-bg-hover);
+}
+.cbi-dropdown.cbi-button.cbi-button-apply:focus, .cbi-dropdown.cbi-button.cbi-button-apply.focus, .cbi-dropdown.cbi-button.cbi-button-apply[open], .cbi-dropdown.cbi-button.cbi-button-save:focus, .cbi-dropdown.cbi-button.cbi-button-save.focus, .cbi-dropdown.cbi-button.cbi-button-save[open], .cbi-dropdown.cbi-button.cbi-button-positive:focus, .cbi-dropdown.cbi-button.cbi-button-positive.focus, .cbi-dropdown.cbi-button.cbi-button-positive[open], .cbi-dropdown.cbi-button.important:focus, .cbi-dropdown.cbi-button.important.focus, .cbi-dropdown.cbi-button.important[open],
+.cbi-dropdown.btn.cbi-button-apply:focus,
+.cbi-dropdown.btn.cbi-button-apply.focus,
+.cbi-dropdown.btn.cbi-button-apply[open],
+.cbi-dropdown.btn.cbi-button-save:focus,
+.cbi-dropdown.btn.cbi-button-save.focus,
+.cbi-dropdown.btn.cbi-button-save[open],
+.cbi-dropdown.btn.cbi-button-positive:focus,
+.cbi-dropdown.btn.cbi-button-positive.focus,
+.cbi-dropdown.btn.cbi-button-positive[open],
+.cbi-dropdown.btn.important:focus,
+.cbi-dropdown.btn.important.focus,
+.cbi-dropdown.btn.important[open] {
+  border-bottom-color: var(--fluent-btn-primary-bg-active);
+}
+.cbi-dropdown.cbi-button.cbi-button-apply > ul:not(.dropdown) > li, .cbi-dropdown.cbi-button.cbi-button-save > ul:not(.dropdown) > li, .cbi-dropdown.cbi-button.cbi-button-positive > ul:not(.dropdown) > li, .cbi-dropdown.cbi-button.important > ul:not(.dropdown) > li,
+.cbi-dropdown.btn.cbi-button-apply > ul:not(.dropdown) > li,
+.cbi-dropdown.btn.cbi-button-save > ul:not(.dropdown) > li,
+.cbi-dropdown.btn.cbi-button-positive > ul:not(.dropdown) > li,
+.cbi-dropdown.btn.important > ul:not(.dropdown) > li {
+  color: var(--fluent-text-on-primary) !important;
+}
+.cbi-dropdown.cbi-button.cbi-button-apply > span.open::before, .cbi-dropdown.cbi-button.cbi-button-save > span.open::before, .cbi-dropdown.cbi-button.cbi-button-positive > span.open::before, .cbi-dropdown.cbi-button.important > span.open::before,
+.cbi-dropdown.btn.cbi-button-apply > span.open::before,
+.cbi-dropdown.btn.cbi-button-save > span.open::before,
+.cbi-dropdown.btn.cbi-button-positive > span.open::before,
+.cbi-dropdown.btn.important > span.open::before {
+  border-color: var(--fluent-text-on-primary) !important;
+}
+.cbi-dropdown.cbi-button.cbi-button-remove, .cbi-dropdown.cbi-button.cbi-button-negative,
+.cbi-dropdown.btn.cbi-button-remove,
+.cbi-dropdown.btn.cbi-button-negative {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--fluent-btn-height);
+  padding: 0 16px;
+  font-family: var(--fluent-font-family);
+  font-size: var(--fluent-font-size-base);
+  font-weight: var(--fluent-font-weight-regular);
+  line-height: 1;
+  border: 1px solid transparent;
+  border-radius: var(--fluent-radius-md);
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  transition: background var(--fluent-duration-fast) var(--fluent-easing-standard), border-color var(--fluent-duration-fast) var(--fluent-easing-standard), color var(--fluent-duration-fast) var(--fluent-easing-standard);
+}
+.cbi-dropdown.cbi-button.cbi-button-remove:disabled, .cbi-dropdown.cbi-button.cbi-button-negative:disabled,
+.cbi-dropdown.btn.cbi-button-remove:disabled,
+.cbi-dropdown.btn.cbi-button-negative:disabled {
+  color: var(--fluent-text-disabled);
+  background: var(--fluent-bg-active);
+  border-color: var(--fluent-bg-active);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.cbi-dropdown.cbi-button.cbi-button-remove:focus-visible, .cbi-dropdown.cbi-button.cbi-button-negative:focus-visible,
+.cbi-dropdown.btn.cbi-button-remove:focus-visible,
+.cbi-dropdown.btn.cbi-button-negative:focus-visible {
+  outline: 2px solid var(--fluent-focus-color);
+  outline-offset: 2px;
+}
+.cbi-dropdown.cbi-button.cbi-button-remove, .cbi-dropdown.cbi-button.cbi-button-negative,
+.cbi-dropdown.btn.cbi-button-remove,
+.cbi-dropdown.btn.cbi-button-negative {
+  background: var(--fluent-error);
+  color: var(--fluent-text-on-primary);
+  border-color: var(--fluent-error);
+}
+.cbi-dropdown.cbi-button.cbi-button-remove:hover, .cbi-dropdown.cbi-button.cbi-button-negative:hover,
+.cbi-dropdown.btn.cbi-button-remove:hover,
+.cbi-dropdown.btn.cbi-button-negative:hover {
+  background: var(--fluent-error-hover);
+  border-color: var(--fluent-error-hover);
+  border-bottom-color: var(--fluent-error-hover);
+}
+.cbi-dropdown.cbi-button.cbi-button-remove:active, .cbi-dropdown.cbi-button.cbi-button-negative:active,
+.cbi-dropdown.btn.cbi-button-remove:active,
+.cbi-dropdown.btn.cbi-button-negative:active {
+  background: var(--fluent-error-active);
+  border-color: var(--fluent-error-active);
+  border-bottom-color: var(--fluent-error-active);
+}
+.cbi-dropdown.cbi-button.cbi-button-remove > ul:not(.dropdown) > li, .cbi-dropdown.cbi-button.cbi-button-negative > ul:not(.dropdown) > li,
+.cbi-dropdown.btn.cbi-button-remove > ul:not(.dropdown) > li,
+.cbi-dropdown.btn.cbi-button-negative > ul:not(.dropdown) > li {
+  color: var(--fluent-text-on-primary) !important;
+}
+.cbi-dropdown.cbi-button.cbi-button-remove > span.open::before, .cbi-dropdown.cbi-button.cbi-button-negative > span.open::before,
+.cbi-dropdown.btn.cbi-button-remove > span.open::before,
+.cbi-dropdown.btn.cbi-button-negative > span.open::before {
+  border-color: var(--fluent-text-on-primary) !important;
+}
+.cbi-dropdown.cbi-button > ul:not(.dropdown),
+.cbi-dropdown.btn > ul:not(.dropdown) {
+  padding: 0;
+  margin: 0;
+  flex: none !important;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-height: unset;
+}
+.cbi-dropdown.cbi-button > ul:not(.dropdown) > li,
+.cbi-dropdown.btn > ul:not(.dropdown) > li {
+  font-family: var(--fluent-font-family);
+  font-size: var(--fluent-font-size-base);
+  font-weight: var(--fluent-font-weight-regular);
+  color: inherit;
+}
+.cbi-dropdown.cbi-button > ul:not(.dropdown) > li[selected], .cbi-dropdown.cbi-button > ul:not(.dropdown) > li[display],
+.cbi-dropdown.btn > ul:not(.dropdown) > li[selected],
+.cbi-dropdown.btn > ul:not(.dropdown) > li[display] {
+  display: inline-flex;
+  align-items: center;
+}
+.cbi-dropdown.cbi-button > span.open,
+.cbi-dropdown.btn > span.open {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 100%;
+  margin-left: 0 !important;
+  margin-right: 0;
+  font-size: 0;
+  color: transparent;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.23, 1);
+}
+.cbi-dropdown.cbi-button > span.open::before,
+.cbi-dropdown.btn > span.open::before {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  border-left: none !important;
+  border-top: none !important;
+  background: none !important;
+  transform: rotate(45deg) translateY(-1px);
+  transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+}
+.cbi-dropdown.cbi-button[open] > span.open,
+.cbi-dropdown.btn[open] > span.open {
+  transform: rotate(180deg);
+}
+.cbi-dropdown.cbi-button:focus-visible,
+.cbi-dropdown.btn:focus-visible {
+  outline: 2px solid var(--fluent-focus-color);
+  outline-offset: 2px;
+}
+.cbi-dropdown.cbi-button[disabled],
+.cbi-dropdown.btn[disabled] {
+  opacity: 1;
+  cursor: not-allowed;
+  background: var(--fluent-bg-active) !important;
+  border-color: var(--fluent-bg-active) !important;
+  border-bottom-color: var(--fluent-bg-active) !important;
+  color: var(--fluent-text-disabled) !important;
+  pointer-events: none;
+}
+.cbi-dropdown.cbi-button[disabled] > ul:not(.dropdown) > li,
+.cbi-dropdown.btn[disabled] > ul:not(.dropdown) > li {
+  color: var(--fluent-text-disabled) !important;
+}
+.cbi-dropdown.cbi-button[disabled] > span.open::before,
+.cbi-dropdown.btn[disabled] > span.open::before {
+  border-color: var(--fluent-text-disabled) !important;
 }
 
 .cbi-dynlist {
@@ -4958,6 +5286,44 @@ input[type=url].cbi-input-invalid:focus {
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
 }
 
+select.cbi-input-invalid {
+  border-color: var(--fluent-error) !important;
+  border-bottom-color: var(--fluent-error) !important;
+  background-image: linear-gradient(0deg, color-mix(in srgb, var(--fluent-error) 25%, transparent) 0%, color-mix(in srgb, var(--fluent-error) 25%, transparent) 100%) !important;
+  background-size: 100% 4px !important;
+}
+
+select.cbi-input-invalid:hover:not(:focus) {
+  border-color: var(--fluent-error) !important;
+  border-bottom-color: var(--fluent-error) !important;
+}
+
+select.cbi-input-invalid:focus {
+  border-color: var(--fluent-error) !important;
+  border-bottom-color: var(--fluent-error) !important;
+  background-size: 100% 4px !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
+}
+
+.cbi-dropdown.cbi-input-invalid {
+  border-color: var(--fluent-error) !important;
+  border-bottom-color: var(--fluent-error) !important;
+  background-image: linear-gradient(0deg, color-mix(in srgb, var(--fluent-error) 25%, transparent) 0%, color-mix(in srgb, var(--fluent-error) 25%, transparent) 100%) !important;
+  background-size: 100% 4px !important;
+}
+
+.cbi-dropdown.cbi-input-invalid:hover:not(:focus) {
+  border-color: var(--fluent-error) !important;
+  border-bottom-color: var(--fluent-error) !important;
+}
+
+.cbi-dropdown.cbi-input-invalid:focus {
+  border-color: var(--fluent-error) !important;
+  border-bottom-color: var(--fluent-error) !important;
+  background-size: 100% 4px !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
+}
+
 .cbi-input-text.cbi-input-invalid {
   border-color: var(--fluent-error) !important;
   border-bottom-color: var(--fluent-error) !important;
@@ -5015,417 +5381,24 @@ input[type=url].cbi-input-invalid:focus {
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--fluent-error) 12%, transparent) !important;
 }
 
-input[type=text][data-tooltip].cbi-input-invalid {
-  position: relative !important;
-}
-
-input[type=password][data-tooltip].cbi-input-invalid {
-  position: relative !important;
-}
-
-input[type=email][data-tooltip].cbi-input-invalid {
-  position: relative !important;
-}
-
-input[type=number][data-tooltip].cbi-input-invalid {
-  position: relative !important;
-}
-
-input[type=search][data-tooltip].cbi-input-invalid {
-  position: relative !important;
-}
-
-input[type=tel][data-tooltip].cbi-input-invalid {
-  position: relative !important;
-}
-
-input[type=url][data-tooltip].cbi-input-invalid {
-  position: relative !important;
-}
-
-.cbi-input-text[data-tooltip].cbi-input-invalid {
-  position: relative !important;
-}
-
-.cbi-input-password[data-tooltip].cbi-input-invalid {
-  position: relative !important;
-}
-
-.password-input[data-tooltip].cbi-input-invalid {
-  position: relative !important;
-}
-
-input[type=text][data-tooltip].cbi-input-invalid::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: -32px;
-  left: 0;
-  right: 0;
-  padding: var(--fluent-space-xs) var(--fluent-space-sm);
-  background-color: var(--fluent-error);
-  color: var(--fluent-white);
+.fluent-error-message {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--fluent-error);
+  font-family: var(--fluent-font-family);
   font-size: var(--fluent-font-size-sm);
-  font-weight: 500;
+  font-weight: var(--fluent-font-weight-regular);
   line-height: 16px;
-  border-radius: var(--fluent-radius-md);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  z-index: var(--fluent-zindex-tooltip);
-  box-shadow: var(--fluent-shadow-sm);
-  animation: fluent-tooltip-show 0.2s ease-out forwards;
-  pointer-events: none;
+  margin-top: 4px;
+  animation: fluent-error-fade-in 0.15s var(--fluent-easing-standard) forwards;
+}
+.fluent-error-message svg {
+  flex-shrink: 0;
+  color: var(--fluent-error);
 }
 
-input[type=password][data-tooltip].cbi-input-invalid::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: -32px;
-  left: 0;
-  right: 0;
-  padding: var(--fluent-space-xs) var(--fluent-space-sm);
-  background-color: var(--fluent-error);
-  color: var(--fluent-white);
-  font-size: var(--fluent-font-size-sm);
-  font-weight: 500;
-  line-height: 16px;
-  border-radius: var(--fluent-radius-md);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  z-index: var(--fluent-zindex-tooltip);
-  box-shadow: var(--fluent-shadow-sm);
-  animation: fluent-tooltip-show 0.2s ease-out forwards;
-  pointer-events: none;
-}
-
-input[type=email][data-tooltip].cbi-input-invalid::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: -32px;
-  left: 0;
-  right: 0;
-  padding: var(--fluent-space-xs) var(--fluent-space-sm);
-  background-color: var(--fluent-error);
-  color: var(--fluent-white);
-  font-size: var(--fluent-font-size-sm);
-  font-weight: 500;
-  line-height: 16px;
-  border-radius: var(--fluent-radius-md);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  z-index: var(--fluent-zindex-tooltip);
-  box-shadow: var(--fluent-shadow-sm);
-  animation: fluent-tooltip-show 0.2s ease-out forwards;
-  pointer-events: none;
-}
-
-input[type=number][data-tooltip].cbi-input-invalid::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: -32px;
-  left: 0;
-  right: 0;
-  padding: var(--fluent-space-xs) var(--fluent-space-sm);
-  background-color: var(--fluent-error);
-  color: var(--fluent-white);
-  font-size: var(--fluent-font-size-sm);
-  font-weight: 500;
-  line-height: 16px;
-  border-radius: var(--fluent-radius-md);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  z-index: var(--fluent-zindex-tooltip);
-  box-shadow: var(--fluent-shadow-sm);
-  animation: fluent-tooltip-show 0.2s ease-out forwards;
-  pointer-events: none;
-}
-
-input[type=search][data-tooltip].cbi-input-invalid::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: -32px;
-  left: 0;
-  right: 0;
-  padding: var(--fluent-space-xs) var(--fluent-space-sm);
-  background-color: var(--fluent-error);
-  color: var(--fluent-white);
-  font-size: var(--fluent-font-size-sm);
-  font-weight: 500;
-  line-height: 16px;
-  border-radius: var(--fluent-radius-md);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  z-index: var(--fluent-zindex-tooltip);
-  box-shadow: var(--fluent-shadow-sm);
-  animation: fluent-tooltip-show 0.2s ease-out forwards;
-  pointer-events: none;
-}
-
-input[type=tel][data-tooltip].cbi-input-invalid::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: -32px;
-  left: 0;
-  right: 0;
-  padding: var(--fluent-space-xs) var(--fluent-space-sm);
-  background-color: var(--fluent-error);
-  color: var(--fluent-white);
-  font-size: var(--fluent-font-size-sm);
-  font-weight: 500;
-  line-height: 16px;
-  border-radius: var(--fluent-radius-md);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  z-index: var(--fluent-zindex-tooltip);
-  box-shadow: var(--fluent-shadow-sm);
-  animation: fluent-tooltip-show 0.2s ease-out forwards;
-  pointer-events: none;
-}
-
-input[type=url][data-tooltip].cbi-input-invalid::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: -32px;
-  left: 0;
-  right: 0;
-  padding: var(--fluent-space-xs) var(--fluent-space-sm);
-  background-color: var(--fluent-error);
-  color: var(--fluent-white);
-  font-size: var(--fluent-font-size-sm);
-  font-weight: 500;
-  line-height: 16px;
-  border-radius: var(--fluent-radius-md);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  z-index: var(--fluent-zindex-tooltip);
-  box-shadow: var(--fluent-shadow-sm);
-  animation: fluent-tooltip-show 0.2s ease-out forwards;
-  pointer-events: none;
-}
-
-.cbi-input-text[data-tooltip].cbi-input-invalid::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: -32px;
-  left: 0;
-  right: 0;
-  padding: var(--fluent-space-xs) var(--fluent-space-sm);
-  background-color: var(--fluent-error);
-  color: var(--fluent-white);
-  font-size: var(--fluent-font-size-sm);
-  font-weight: 500;
-  line-height: 16px;
-  border-radius: var(--fluent-radius-md);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  z-index: var(--fluent-zindex-tooltip);
-  box-shadow: var(--fluent-shadow-sm);
-  animation: fluent-tooltip-show 0.2s ease-out forwards;
-  pointer-events: none;
-}
-
-.cbi-input-password[data-tooltip].cbi-input-invalid::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: -32px;
-  left: 0;
-  right: 0;
-  padding: var(--fluent-space-xs) var(--fluent-space-sm);
-  background-color: var(--fluent-error);
-  color: var(--fluent-white);
-  font-size: var(--fluent-font-size-sm);
-  font-weight: 500;
-  line-height: 16px;
-  border-radius: var(--fluent-radius-md);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  z-index: var(--fluent-zindex-tooltip);
-  box-shadow: var(--fluent-shadow-sm);
-  animation: fluent-tooltip-show 0.2s ease-out forwards;
-  pointer-events: none;
-}
-
-.password-input[data-tooltip].cbi-input-invalid::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: -32px;
-  left: 0;
-  right: 0;
-  padding: var(--fluent-space-xs) var(--fluent-space-sm);
-  background-color: var(--fluent-error);
-  color: var(--fluent-white);
-  font-size: var(--fluent-font-size-sm);
-  font-weight: 500;
-  line-height: 16px;
-  border-radius: var(--fluent-radius-md);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  z-index: var(--fluent-zindex-tooltip);
-  box-shadow: var(--fluent-shadow-sm);
-  animation: fluent-tooltip-show 0.2s ease-out forwards;
-  pointer-events: none;
-}
-
-input[type=text][data-tooltip].cbi-input-invalid::before {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 8px;
-  width: 0;
-  height: 0;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid var(--fluent-error);
-  z-index: calc(var(--fluent-zindex-tooltip) + 1);
-  animation: fluent-tooltip-show 0.2s ease-out forwards;
-  pointer-events: none;
-}
-
-input[type=password][data-tooltip].cbi-input-invalid::before {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 8px;
-  width: 0;
-  height: 0;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid var(--fluent-error);
-  z-index: calc(var(--fluent-zindex-tooltip) + 1);
-  animation: fluent-tooltip-show 0.2s ease-out forwards;
-  pointer-events: none;
-}
-
-input[type=email][data-tooltip].cbi-input-invalid::before {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 8px;
-  width: 0;
-  height: 0;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid var(--fluent-error);
-  z-index: calc(var(--fluent-zindex-tooltip) + 1);
-  animation: fluent-tooltip-show 0.2s ease-out forwards;
-  pointer-events: none;
-}
-
-input[type=number][data-tooltip].cbi-input-invalid::before {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 8px;
-  width: 0;
-  height: 0;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid var(--fluent-error);
-  z-index: calc(var(--fluent-zindex-tooltip) + 1);
-  animation: fluent-tooltip-show 0.2s ease-out forwards;
-  pointer-events: none;
-}
-
-input[type=search][data-tooltip].cbi-input-invalid::before {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 8px;
-  width: 0;
-  height: 0;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid var(--fluent-error);
-  z-index: calc(var(--fluent-zindex-tooltip) + 1);
-  animation: fluent-tooltip-show 0.2s ease-out forwards;
-  pointer-events: none;
-}
-
-input[type=tel][data-tooltip].cbi-input-invalid::before {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 8px;
-  width: 0;
-  height: 0;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid var(--fluent-error);
-  z-index: calc(var(--fluent-zindex-tooltip) + 1);
-  animation: fluent-tooltip-show 0.2s ease-out forwards;
-  pointer-events: none;
-}
-
-input[type=url][data-tooltip].cbi-input-invalid::before {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 8px;
-  width: 0;
-  height: 0;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid var(--fluent-error);
-  z-index: calc(var(--fluent-zindex-tooltip) + 1);
-  animation: fluent-tooltip-show 0.2s ease-out forwards;
-  pointer-events: none;
-}
-
-.cbi-input-text[data-tooltip].cbi-input-invalid::before {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 8px;
-  width: 0;
-  height: 0;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid var(--fluent-error);
-  z-index: calc(var(--fluent-zindex-tooltip) + 1);
-  animation: fluent-tooltip-show 0.2s ease-out forwards;
-  pointer-events: none;
-}
-
-.cbi-input-password[data-tooltip].cbi-input-invalid::before {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 8px;
-  width: 0;
-  height: 0;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid var(--fluent-error);
-  z-index: calc(var(--fluent-zindex-tooltip) + 1);
-  animation: fluent-tooltip-show 0.2s ease-out forwards;
-  pointer-events: none;
-}
-
-.password-input[data-tooltip].cbi-input-invalid::before {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 8px;
-  width: 0;
-  height: 0;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid var(--fluent-error);
-  z-index: calc(var(--fluent-zindex-tooltip) + 1);
-  animation: fluent-tooltip-show 0.2s ease-out forwards;
-  pointer-events: none;
-}
-
-@keyframes fluent-tooltip-show {
+@keyframes fluent-error-fade-in {
   from {
     opacity: 0;
     transform: translateY(-4px);

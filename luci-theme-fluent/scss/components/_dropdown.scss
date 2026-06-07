@@ -93,6 +93,10 @@
     outline: none;
   }
 
+  &[open] {
+    z-index: 1005; // Ensure open dropdown stacks on top of modal footers/headers (z-index 10) and subsequent fields
+  }
+
   &:focus::after,
   &.focus::after,
   &[open]::after {
@@ -439,17 +443,6 @@
     box-sizing: border-box;
     padding-right: var(--fluent-space-xl);
     cursor: pointer;
-  }
-
-  // Button dropdown overrides to ensure chevron matches text color (e.g. white on blue/red buttons)
-  &.cbi-button,
-  &.btn {
-    > span.open::before {
-      border-color: currentColor !important;
-    }
-    &:hover > span.open::before {
-      border-color: currentColor !important;
-    }
   }
 
   // Remove border, background and padding of ifacebadge inside dropdown to keep text inline and clean

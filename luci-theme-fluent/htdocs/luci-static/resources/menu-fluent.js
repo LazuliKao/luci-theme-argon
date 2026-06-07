@@ -194,6 +194,7 @@ return baseclass.extend({
   __init__: function () {
     ui.menu.load().then(L.bind(this.render, this));
     this.setupSelectionPause();
+    this.setupErrorTooltips();
   },
 
   /**
@@ -521,6 +522,93 @@ return baseclass.extend({
       scrollbarArea.classList.add("active");
       darkMask.classList.add("active");
       this.adjustBrandTextSize();
+    }
+  },
+
+  /**
+   * Monitor input elements for validation errors and dynamically
+   * display/hide FluentUI-style inline error messages below them.
+   */
+  setupErrorTooltips: function () {
+    // 1. Render errors on initial load
+    document.querySelectorAll(".cbi-input-invalid").forEach((el) => this.showFluentError(el));
+
+    // 2. Observe class and data-tooltip attribute changes to display errors reactively
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === "attributes") {
+          const target = mutation.target;
+          if (mutation.attributeName === "class") {
+            if (target.classList.contains("cbi-input-invalid")) {
+              this.showFluentError(target);
+            } else {
+              this.hideFluentError(target);
+            }
+          } else if (mutation.attributeName === "data-tooltip") {
+            if (target.classList.contains("cbi-input-invalid")) {
+              this.showFluentError(target);
+            }
+          }
+        } else if (mutation.type === "childList") {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeType === Node.ELEMENT_NODE) {
+              if (node.classList.contains("cbi-input-invalid")) {
+                this.showFluentError(node);
+              }
+              node.querySelectorAll(".cbi-input-invalid").forEach((el) => this.showFluentError(el));
+            }
+          });
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      attributes: true,
+      childList: true,
+      subtree: true,
+      attributeFilter: ["class", "data-tooltip"],
+    });
+  },
+
+  /**
+   * Create and insert the inline FluentUI error message under an invalid field
+   * @param {Element} target - The invalid input, select, or dropdown container element
+   */
+  showFluentError: function (target) {
+    const tooltipText = target.getAttribute("data-tooltip");
+    if (!tooltipText) return;
+
+    // Check if error message element already exists for this target
+    let errorEl = target.nextElementSibling;
+    if (errorEl && errorEl.classList.contains("fluent-error-message")) {
+      const textSpan = errorEl.querySelector(".fluent-error-text");
+      if (textSpan && textSpan.textContent !== tooltipText) {
+        textSpan.textContent = tooltipText;
+      }
+      errorEl.style.display = "";
+      return;
+    }
+
+    // Create FluentUI error message element
+    errorEl = document.createElement("div");
+    errorEl.className = "fluent-error-message";
+
+    // FluentUI warning/error icon SVG (small circular error icon)
+    const svgIcon = `<svg fill="currentColor" width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;"><path d="M6 1a5 5 0 1 0 0 10A5 5 0 0 0 6 1Zm2.12 3.28a.5.5 0 0 1 0 .7L6.7 6.42l1.41 1.41a.5.5 0 1 1-.7.7L6 7.12 4.59 8.53a.5.5 0 0 1-.7-.7L5.3 6.42 3.88 5.01a.5.5 0 0 1 .7-.7L6 5.72l1.41-1.41a.5.5 0 0 1 .71 0Z" fill="currentColor"></path></svg>`;
+    errorEl.innerHTML = `${svgIcon}<span class="fluent-error-text">${tooltipText}</span>`;
+
+    // Insert the error message directly after the target input/dropdown
+    target.parentNode.insertBefore(errorEl, target.nextSibling);
+  },
+
+  /**
+   * Remove the inline error message associated with the valid field
+   * @param {Element} target - The valid element
+   */
+  hideFluentError: function (target) {
+    const errorEl = target.nextElementSibling;
+    if (errorEl && errorEl.classList.contains("fluent-error-message")) {
+      errorEl.remove();
     }
   },
 });

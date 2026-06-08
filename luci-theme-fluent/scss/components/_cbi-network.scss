@@ -3,7 +3,7 @@
 // FluentUI 2 badges, zone indicators, interface cards, log output
 // ============================================================
 @use "../mixins" as *;
-
+$indicator-left-offset: 10px;
 .ifacebadge {
   display: inline-flex;
   align-items: center;
@@ -141,24 +141,19 @@ td > .ifacebadge,
   }
 
   // Zone badge stripe inside ifacebox (cbi-tooltip-container)
-  > .ifacebox-head.cbi-tooltip-container {
+  > .ifacebox-body {
     padding: 0;
     border-bottom: none;
     background: none;
 
-    > .zonebadge {
-      padding: 0;
-      border: none;
-      border-radius: 0;
-      box-shadow: none;
-    }
-
-    // Position tooltip relative to ifacebox, not the stripe
-    > .cbi-tooltip {
+    .cbi-tooltip {
       left: 0;
       right: 0;
       transform: translateY(var(--fluent-space-xs));
       white-space: normal;
+      &::before {
+        left: $indicator-left-offset;
+      }
     }
 
     &:hover > .cbi-tooltip:not(:empty) {
@@ -332,10 +327,6 @@ td[data-name="_ifacebox"],
       .cbi-tooltip-container {
         display: inline-flex;
         vertical-align: middle;
-      }
-
-      .cbi-tooltip {
-        white-space: normal;
       }
 
       small {

@@ -493,6 +493,12 @@ body.login-page {
             outline: 1px solid var(--fluent-primary) !important;
             background-color: rgba(128, 128, 128, 0.1) !important;
           }
+
+          svg {
+            color: inherit !important;
+            stroke: currentColor !important;
+            pointer-events: none !important;
+          }
         }
       }
 

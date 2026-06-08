@@ -16,7 +16,7 @@
   height: 100vh;
   background: var(--fluent-sidebar-bg);
   border-right: 1px solid var(--fluent-border);
-  z-index: var(--fluent-zindex-dropdown, 1000);
+  z-index: var(--fluent-zindex-menu);
   overflow-y: auto;
   transition: transform var(--fluent-duration-normal) var(--fluent-easing-standard);
 

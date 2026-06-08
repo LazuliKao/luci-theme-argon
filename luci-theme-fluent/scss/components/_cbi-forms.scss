@@ -7,9 +7,13 @@
 .cbi-map {
   display: flex;
   flex-direction: column;
-  // gap: var(--fluent-space-lg);
   font-family: var(--fluent-font-family);
   color: var(--fluent-text);
+
+  // gap: var(--fluent-space-lg);
+  > .cbi-section + .cbi-section {
+    margin-top: 5px;
+  }
 
   h2,
   h3 {
@@ -36,29 +40,11 @@
   line-height: var(--fluent-line-height-relaxed);
 }
 
-.cbi-section {
-  background: var(--fluent-bg-card);
-  border: 1px solid var(--fluent-card-border);
-  border-radius: var(--fluent-radius-md);
-  box-shadow: var(--fluent-shadow-sm);
-  margin-bottom: var(--fluent-space-lg);
-  overflow: visible;
-}
-
 .cbi-section-error {
   background: var(--fluent-error-light);
   border-color: var(--fluent-error);
   box-shadow: none;
 }
-
-.cbi-section > .cbi-section-node {
-  margin-left: var(--fluent-space-lg);
-}
-
-// .cbi-section-node,
-// .cbi-section-node-tabbed {
-//   padding: var(--fluent-space-lg);
-// }
 
 .cbi-section-node-tabbed {
   display: flex;

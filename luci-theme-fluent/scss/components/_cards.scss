@@ -8,8 +8,12 @@
 .cbi-section {
   @include card;
   position: relative;
-  margin-bottom: var(--fluent-space-lg);
-
+  > * .cbi-section {
+    padding: 0;
+  }
+  .cbi-section-node {
+    padding-top: var(--fluent-space-lg);
+  }
   .cbi-section-remove.right + .cbi-section-node:has(+ .cbi-section-remove.right + .cbi-section-node) {
     border-bottom: 2px solid var(--fluent-card-border);
     margin-bottom: 8px;
@@ -97,11 +101,6 @@
     margin-bottom: var(--fluent-space-lg);
     border-bottom: 1px solid var(--fluent-card-border);
   }
-}
-
-// Inline section within forms
-.cbi-section-node {
-  padding: var(--fluent-space-lg) 0;
 }
 
 // Tab content sections

@@ -94,7 +94,7 @@
   }
 
   &[open] {
-    z-index: 1005; // Ensure open dropdown stacks on top of modal footers/headers (z-index 10) and subsequent fields
+    z-index: var(--fluent-zindex-dropdown);
   }
 
   &:focus::after,
@@ -455,4 +455,15 @@
     color: inherit !important;
     min-height: unset !important;
   }
+}
+/* 当下拉框打开时，大幅提升该表单域容器的层叠上下文 */
+.cbi-value-field.cbi-dropdown-open {
+  position: relative; /* 确保 z-index 生效 */
+  z-index: 99999 !important; /* 它的层级变高了，里面的子元素自然就能骑在按钮栏上方 */
+}
+
+/* 如果上面的方案没有生效，说明是更外层的“整行”被遮挡了，可以用下面这个 */
+.cbi-value:has(.cbi-dropdown-open) {
+  position: relative;
+  z-index: 99999 !important;
 }

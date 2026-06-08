@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --fluent-primary: #0078d4;
   --fluent-primary-hover: #106ebe;
@@ -74,11 +75,12 @@
   --fluent-easing-decelerate: cubic-bezier(0, 0, 0, 1);
   --fluent-easing-accelerate: cubic-bezier(1, 0, 1, 1);
   --fluent-easing-easy-ease: cubic-bezier(0.33, 0, 0.67, 1);
-  --fluent-zindex-actions: -1000;
-  --fluent-zindex-dropdown: 1000;
+  --fluent-zindex-actions: 1000;
   --fluent-zindex-modal: 1100;
   --fluent-zindex-tooltip: 1200;
   --fluent-zindex-toast: 1300;
+  --fluent-zindex-dropdown: 1500;
+  --fluent-zindex-menu: 1050;
   --fluent-sidebar-width: 260px;
   --fluent-sidebar-collapsed-width: 48px;
   --fluent-sidebar-bg: #ffffff;
@@ -110,7 +112,7 @@
   --fluent-card-border: #e0e0e0;
   --fluent-card-shadow: var(--fluent-shadow-sm);
   --fluent-card-radius: var(--fluent-radius-lg);
-  --fluent-card-padding: var(--fluent-space-xss);
+  --fluent-card-padding: var(--fluent-space-lg);
   --fluent-table-header-bg: #f5f5f5;
   --fluent-table-row-hover: #f5f5f5;
   --fluent-table-row-selected: #e6f2fb;
@@ -525,8 +527,7 @@ div[id=view] > *:not(.spinning) {
   }
 }
 .cbi-button,
-.btn,
-button {
+.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -544,8 +545,7 @@ button {
   transition: background var(--fluent-duration-fast) var(--fluent-easing-standard), border-color var(--fluent-duration-fast) var(--fluent-easing-standard), color var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
 .cbi-button:disabled,
-.btn:disabled,
-button:disabled {
+.btn:disabled {
   color: var(--fluent-text-disabled);
   background: var(--fluent-bg-active);
   border-color: var(--fluent-bg-active);
@@ -553,37 +553,30 @@ button:disabled {
   pointer-events: none;
 }
 .cbi-button:focus-visible,
-.btn:focus-visible,
-button:focus-visible {
+.btn:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .cbi-button,
-.btn,
-button {
+.btn {
   background: var(--fluent-btn-secondary-bg);
   color: var(--fluent-text);
   border-color: var(--fluent-btn-secondary-border);
 }
 .cbi-button:hover,
-.btn:hover,
-button:hover {
+.btn:hover {
   background: var(--fluent-btn-secondary-bg-hover);
   border-color: var(--fluent-btn-secondary-border-hover);
 }
 .cbi-button:active,
-.btn:active,
-button:active {
+.btn:active {
   background: var(--fluent-btn-secondary-bg-active);
   border-color: var(--fluent-btn-secondary-border-active);
 }
 .cbi-button.cbi-button-save, .cbi-button.cbi-button-apply, .cbi-button.cbi-button-positive,
 .btn.cbi-button-save,
 .btn.cbi-button-apply,
-.btn.cbi-button-positive,
-button.cbi-button-save,
-button.cbi-button-apply,
-button.cbi-button-positive {
+.btn.cbi-button-positive {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -603,10 +596,7 @@ button.cbi-button-positive {
 .cbi-button.cbi-button-save:disabled, .cbi-button.cbi-button-apply:disabled, .cbi-button.cbi-button-positive:disabled,
 .btn.cbi-button-save:disabled,
 .btn.cbi-button-apply:disabled,
-.btn.cbi-button-positive:disabled,
-button.cbi-button-save:disabled,
-button.cbi-button-apply:disabled,
-button.cbi-button-positive:disabled {
+.btn.cbi-button-positive:disabled {
   color: var(--fluent-text-disabled);
   background: var(--fluent-bg-active);
   border-color: var(--fluent-bg-active);
@@ -616,20 +606,14 @@ button.cbi-button-positive:disabled {
 .cbi-button.cbi-button-save:focus-visible, .cbi-button.cbi-button-apply:focus-visible, .cbi-button.cbi-button-positive:focus-visible,
 .btn.cbi-button-save:focus-visible,
 .btn.cbi-button-apply:focus-visible,
-.btn.cbi-button-positive:focus-visible,
-button.cbi-button-save:focus-visible,
-button.cbi-button-apply:focus-visible,
-button.cbi-button-positive:focus-visible {
+.btn.cbi-button-positive:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .cbi-button.cbi-button-save, .cbi-button.cbi-button-apply, .cbi-button.cbi-button-positive,
 .btn.cbi-button-save,
 .btn.cbi-button-apply,
-.btn.cbi-button-positive,
-button.cbi-button-save,
-button.cbi-button-apply,
-button.cbi-button-positive {
+.btn.cbi-button-positive {
   background: var(--fluent-btn-primary-bg);
   color: var(--fluent-text-on-primary);
   border-color: var(--fluent-btn-primary-bg);
@@ -637,30 +621,21 @@ button.cbi-button-positive {
 .cbi-button.cbi-button-save:hover, .cbi-button.cbi-button-apply:hover, .cbi-button.cbi-button-positive:hover,
 .btn.cbi-button-save:hover,
 .btn.cbi-button-apply:hover,
-.btn.cbi-button-positive:hover,
-button.cbi-button-save:hover,
-button.cbi-button-apply:hover,
-button.cbi-button-positive:hover {
+.btn.cbi-button-positive:hover {
   background: var(--fluent-btn-primary-bg-hover);
   border-color: var(--fluent-btn-primary-bg-hover);
 }
 .cbi-button.cbi-button-save:active, .cbi-button.cbi-button-apply:active, .cbi-button.cbi-button-positive:active,
 .btn.cbi-button-save:active,
 .btn.cbi-button-apply:active,
-.btn.cbi-button-positive:active,
-button.cbi-button-save:active,
-button.cbi-button-apply:active,
-button.cbi-button-positive:active {
+.btn.cbi-button-positive:active {
   background: var(--fluent-btn-primary-bg-active);
   border-color: var(--fluent-btn-primary-bg-active);
 }
 .cbi-button.cbi-button-add, .cbi-button.cbi-button-neutral, .cbi-button.cbi-button-reset,
 .btn.cbi-button-add,
 .btn.cbi-button-neutral,
-.btn.cbi-button-reset,
-button.cbi-button-add,
-button.cbi-button-neutral,
-button.cbi-button-reset {
+.btn.cbi-button-reset {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -680,10 +655,7 @@ button.cbi-button-reset {
 .cbi-button.cbi-button-add:disabled, .cbi-button.cbi-button-neutral:disabled, .cbi-button.cbi-button-reset:disabled,
 .btn.cbi-button-add:disabled,
 .btn.cbi-button-neutral:disabled,
-.btn.cbi-button-reset:disabled,
-button.cbi-button-add:disabled,
-button.cbi-button-neutral:disabled,
-button.cbi-button-reset:disabled {
+.btn.cbi-button-reset:disabled {
   color: var(--fluent-text-disabled);
   background: var(--fluent-bg-active);
   border-color: var(--fluent-bg-active);
@@ -693,20 +665,14 @@ button.cbi-button-reset:disabled {
 .cbi-button.cbi-button-add:focus-visible, .cbi-button.cbi-button-neutral:focus-visible, .cbi-button.cbi-button-reset:focus-visible,
 .btn.cbi-button-add:focus-visible,
 .btn.cbi-button-neutral:focus-visible,
-.btn.cbi-button-reset:focus-visible,
-button.cbi-button-add:focus-visible,
-button.cbi-button-neutral:focus-visible,
-button.cbi-button-reset:focus-visible {
+.btn.cbi-button-reset:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .cbi-button.cbi-button-add, .cbi-button.cbi-button-neutral, .cbi-button.cbi-button-reset,
 .btn.cbi-button-add,
 .btn.cbi-button-neutral,
-.btn.cbi-button-reset,
-button.cbi-button-add,
-button.cbi-button-neutral,
-button.cbi-button-reset {
+.btn.cbi-button-reset {
   background: var(--fluent-btn-secondary-bg);
   color: var(--fluent-text);
   border-color: var(--fluent-btn-secondary-border);
@@ -714,28 +680,20 @@ button.cbi-button-reset {
 .cbi-button.cbi-button-add:hover, .cbi-button.cbi-button-neutral:hover, .cbi-button.cbi-button-reset:hover,
 .btn.cbi-button-add:hover,
 .btn.cbi-button-neutral:hover,
-.btn.cbi-button-reset:hover,
-button.cbi-button-add:hover,
-button.cbi-button-neutral:hover,
-button.cbi-button-reset:hover {
+.btn.cbi-button-reset:hover {
   background: var(--fluent-btn-secondary-bg-hover);
   border-color: var(--fluent-btn-secondary-border-hover);
 }
 .cbi-button.cbi-button-add:active, .cbi-button.cbi-button-neutral:active, .cbi-button.cbi-button-reset:active,
 .btn.cbi-button-add:active,
 .btn.cbi-button-neutral:active,
-.btn.cbi-button-reset:active,
-button.cbi-button-add:active,
-button.cbi-button-neutral:active,
-button.cbi-button-reset:active {
+.btn.cbi-button-reset:active {
   background: var(--fluent-btn-secondary-bg-active);
   border-color: var(--fluent-btn-secondary-border-active);
 }
 .cbi-button.cbi-button-remove, .cbi-button.cbi-button-negative,
 .btn.cbi-button-remove,
-.btn.cbi-button-negative,
-button.cbi-button-remove,
-button.cbi-button-negative {
+.btn.cbi-button-negative {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -754,9 +712,7 @@ button.cbi-button-negative {
 }
 .cbi-button.cbi-button-remove:disabled, .cbi-button.cbi-button-negative:disabled,
 .btn.cbi-button-remove:disabled,
-.btn.cbi-button-negative:disabled,
-button.cbi-button-remove:disabled,
-button.cbi-button-negative:disabled {
+.btn.cbi-button-negative:disabled {
   color: var(--fluent-text-disabled);
   background: var(--fluent-bg-active);
   border-color: var(--fluent-bg-active);
@@ -765,40 +721,31 @@ button.cbi-button-negative:disabled {
 }
 .cbi-button.cbi-button-remove:focus-visible, .cbi-button.cbi-button-negative:focus-visible,
 .btn.cbi-button-remove:focus-visible,
-.btn.cbi-button-negative:focus-visible,
-button.cbi-button-remove:focus-visible,
-button.cbi-button-negative:focus-visible {
+.btn.cbi-button-negative:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .cbi-button.cbi-button-remove, .cbi-button.cbi-button-negative,
 .btn.cbi-button-remove,
-.btn.cbi-button-negative,
-button.cbi-button-remove,
-button.cbi-button-negative {
+.btn.cbi-button-negative {
   background: var(--fluent-error);
   color: var(--fluent-text-on-primary);
   border-color: var(--fluent-error);
 }
 .cbi-button.cbi-button-remove:hover, .cbi-button.cbi-button-negative:hover,
 .btn.cbi-button-remove:hover,
-.btn.cbi-button-negative:hover,
-button.cbi-button-remove:hover,
-button.cbi-button-negative:hover {
+.btn.cbi-button-negative:hover {
   background: var(--fluent-error-hover);
   border-color: var(--fluent-error-hover);
 }
 .cbi-button.cbi-button-remove:active, .cbi-button.cbi-button-negative:active,
 .btn.cbi-button-remove:active,
-.btn.cbi-button-negative:active,
-button.cbi-button-remove:active,
-button.cbi-button-negative:active {
+.btn.cbi-button-negative:active {
   background: var(--fluent-error-active);
   border-color: var(--fluent-error-active);
 }
 .cbi-button.cbi-button-link,
-.btn.cbi-button-link,
-button.cbi-button-link {
+.btn.cbi-button-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -816,8 +763,7 @@ button.cbi-button-link {
   transition: background var(--fluent-duration-fast) var(--fluent-easing-standard), border-color var(--fluent-duration-fast) var(--fluent-easing-standard), color var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
 .cbi-button.cbi-button-link:disabled,
-.btn.cbi-button-link:disabled,
-button.cbi-button-link:disabled {
+.btn.cbi-button-link:disabled {
   color: var(--fluent-text-disabled);
   background: var(--fluent-bg-active);
   border-color: var(--fluent-bg-active);
@@ -825,44 +771,36 @@ button.cbi-button-link:disabled {
   pointer-events: none;
 }
 .cbi-button.cbi-button-link:focus-visible,
-.btn.cbi-button-link:focus-visible,
-button.cbi-button-link:focus-visible {
+.btn.cbi-button-link:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .cbi-button.cbi-button-link,
-.btn.cbi-button-link,
-button.cbi-button-link {
+.btn.cbi-button-link {
   background: transparent;
   color: var(--fluent-text);
   border-color: transparent;
 }
 .cbi-button.cbi-button-link:hover,
-.btn.cbi-button-link:hover,
-button.cbi-button-link:hover {
+.btn.cbi-button-link:hover {
   background: var(--fluent-bg-hover);
 }
 .cbi-button.cbi-button-link:active,
-.btn.cbi-button-link:active,
-button.cbi-button-link:active {
+.btn.cbi-button-link:active {
   background: var(--fluent-bg-active);
 }
 .cbi-button.cbi-button-link,
-.btn.cbi-button-link,
-button.cbi-button-link {
+.btn.cbi-button-link {
   color: var(--fluent-text-link);
 }
 .cbi-button.cbi-button-link:hover,
-.btn.cbi-button-link:hover,
-button.cbi-button-link:hover {
+.btn.cbi-button-link:hover {
   color: var(--fluent-text-link-hover);
   text-decoration: underline;
 }
 .cbi-button.cbi-button-up, .cbi-button.cbi-button-down,
 .btn.cbi-button-up,
-.btn.cbi-button-down,
-button.cbi-button-up,
-button.cbi-button-down {
+.btn.cbi-button-down {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -881,9 +819,7 @@ button.cbi-button-down {
 }
 .cbi-button.cbi-button-up:disabled, .cbi-button.cbi-button-down:disabled,
 .btn.cbi-button-up:disabled,
-.btn.cbi-button-down:disabled,
-button.cbi-button-up:disabled,
-button.cbi-button-down:disabled {
+.btn.cbi-button-down:disabled {
   color: var(--fluent-text-disabled);
   background: var(--fluent-bg-active);
   border-color: var(--fluent-bg-active);
@@ -892,51 +828,39 @@ button.cbi-button-down:disabled {
 }
 .cbi-button.cbi-button-up:focus-visible, .cbi-button.cbi-button-down:focus-visible,
 .btn.cbi-button-up:focus-visible,
-.btn.cbi-button-down:focus-visible,
-button.cbi-button-up:focus-visible,
-button.cbi-button-down:focus-visible {
+.btn.cbi-button-down:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .cbi-button.cbi-button-up, .cbi-button.cbi-button-down,
 .btn.cbi-button-up,
-.btn.cbi-button-down,
-button.cbi-button-up,
-button.cbi-button-down {
+.btn.cbi-button-down {
   background: var(--fluent-btn-secondary-bg);
   color: var(--fluent-text);
   border-color: var(--fluent-btn-secondary-border);
 }
 .cbi-button.cbi-button-up:hover, .cbi-button.cbi-button-down:hover,
 .btn.cbi-button-up:hover,
-.btn.cbi-button-down:hover,
-button.cbi-button-up:hover,
-button.cbi-button-down:hover {
+.btn.cbi-button-down:hover {
   background: var(--fluent-btn-secondary-bg-hover);
   border-color: var(--fluent-btn-secondary-border-hover);
 }
 .cbi-button.cbi-button-up:active, .cbi-button.cbi-button-down:active,
 .btn.cbi-button-up:active,
-.btn.cbi-button-down:active,
-button.cbi-button-up:active,
-button.cbi-button-down:active {
+.btn.cbi-button-down:active {
   background: var(--fluent-btn-secondary-bg-active);
   border-color: var(--fluent-btn-secondary-border-active);
 }
 .cbi-button.cbi-button-up, .cbi-button.cbi-button-down,
 .btn.cbi-button-up,
-.btn.cbi-button-down,
-button.cbi-button-up,
-button.cbi-button-down {
+.btn.cbi-button-down {
   padding: 0;
   width: var(--fluent-btn-height);
   font-size: 0;
 }
 .cbi-button.cbi-button-up::before, .cbi-button.cbi-button-down::before,
 .btn.cbi-button-up::before,
-.btn.cbi-button-down::before,
-button.cbi-button-up::before,
-button.cbi-button-down::before {
+.btn.cbi-button-down::before {
   content: "";
   display: block;
   width: 8px;
@@ -947,26 +871,21 @@ button.cbi-button-down::before {
 }
 .cbi-button.cbi-button-up:hover::before, .cbi-button.cbi-button-down:hover::before,
 .btn.cbi-button-up:hover::before,
-.btn.cbi-button-down:hover::before,
-button.cbi-button-up:hover::before,
-button.cbi-button-down:hover::before {
+.btn.cbi-button-down:hover::before {
   border-color: var(--fluent-text);
 }
 .cbi-button.cbi-button-up::before,
-.btn.cbi-button-up::before,
-button.cbi-button-up::before {
+.btn.cbi-button-up::before {
   transform: rotate(-135deg);
   margin-top: 3px;
 }
 .cbi-button.cbi-button-down::before,
-.btn.cbi-button-down::before,
-button.cbi-button-down::before {
+.btn.cbi-button-down::before {
   transform: rotate(45deg);
   margin-bottom: 3px;
 }
 .cbi-button.cbi-button-find,
-.btn.cbi-button-find,
-button.cbi-button-find {
+.btn.cbi-button-find {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -984,8 +903,7 @@ button.cbi-button-find {
   transition: background var(--fluent-duration-fast) var(--fluent-easing-standard), border-color var(--fluent-duration-fast) var(--fluent-easing-standard), color var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
 .cbi-button.cbi-button-find:disabled,
-.btn.cbi-button-find:disabled,
-button.cbi-button-find:disabled {
+.btn.cbi-button-find:disabled {
   color: var(--fluent-text-disabled);
   background: var(--fluent-bg-active);
   border-color: var(--fluent-bg-active);
@@ -993,33 +911,28 @@ button.cbi-button-find:disabled {
   pointer-events: none;
 }
 .cbi-button.cbi-button-find:focus-visible,
-.btn.cbi-button-find:focus-visible,
-button.cbi-button-find:focus-visible {
+.btn.cbi-button-find:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 .cbi-button.cbi-button-find,
-.btn.cbi-button-find,
-button.cbi-button-find {
+.btn.cbi-button-find {
   background: var(--fluent-btn-secondary-bg);
   color: var(--fluent-text);
   border-color: var(--fluent-btn-secondary-border);
 }
 .cbi-button.cbi-button-find:hover,
-.btn.cbi-button-find:hover,
-button.cbi-button-find:hover {
+.btn.cbi-button-find:hover {
   background: var(--fluent-btn-secondary-bg-hover);
   border-color: var(--fluent-btn-secondary-border-hover);
 }
 .cbi-button.cbi-button-find:active,
-.btn.cbi-button-find:active,
-button.cbi-button-find:active {
+.btn.cbi-button-find:active {
   background: var(--fluent-btn-secondary-bg-active);
   border-color: var(--fluent-btn-secondary-border-active);
 }
 .cbi-button.cbi-button-find::before,
-.btn.cbi-button-find::before,
-button.cbi-button-find::before {
+.btn.cbi-button-find::before {
   content: "";
   display: inline-block;
   width: 16px;
@@ -1193,8 +1106,14 @@ input[type=search]::-webkit-search-cancel-button {
   border: 1px solid var(--fluent-card-border);
   border-radius: var(--fluent-card-radius);
   box-shadow: var(--fluent-card-shadow);
+  padding: var(--fluent-card-padding);
   position: relative;
-  margin-bottom: var(--fluent-space-lg);
+}
+.cbi-section > * .cbi-section {
+  padding: 0;
+}
+.cbi-section .cbi-section-node {
+  padding-top: var(--fluent-space-lg);
 }
 .cbi-section .cbi-section-remove.right + .cbi-section-node:has(+ .cbi-section-remove.right + .cbi-section-node) {
   border-bottom: 2px solid var(--fluent-card-border);
@@ -1256,6 +1175,7 @@ input[type=search]::-webkit-search-cancel-button {
   border: 1px solid var(--fluent-card-border);
   border-radius: var(--fluent-card-radius);
   box-shadow: var(--fluent-card-shadow);
+  padding: var(--fluent-card-padding);
   margin-bottom: var(--fluent-space-lg);
 }
 .panel .panel-title {
@@ -1265,10 +1185,6 @@ input[type=search]::-webkit-search-cancel-button {
   padding-bottom: var(--fluent-space-sm);
   margin-bottom: var(--fluent-space-lg);
   border-bottom: 1px solid var(--fluent-card-border);
-}
-
-.cbi-section-node {
-  padding: var(--fluent-space-lg) 0;
 }
 
 [data-tab-title] {
@@ -1597,7 +1513,6 @@ body.modal-overlay-active #modal_overlay {
   margin-top: calc(var(--fluent-modal-padding) * -1);
   margin-left: calc(var(--fluent-modal-padding) * -1);
   margin-right: calc(var(--fluent-modal-padding) * -1);
-  margin-bottom: var(--fluent-space-lg);
   padding: var(--fluent-modal-padding) var(--fluent-modal-padding) var(--fluent-space-lg);
   border-bottom: 1px solid var(--fluent-border);
   font-size: var(--fluent-font-size-lg);
@@ -1721,6 +1636,9 @@ body.modal-overlay-active #modal_overlay {
   font-family: var(--fluent-font-family);
   color: var(--fluent-text);
 }
+.cbi-map > .cbi-section + .cbi-section {
+  margin-top: 5px;
+}
 .cbi-map h2,
 .cbi-map h3 {
   margin: 0;
@@ -1742,23 +1660,10 @@ body.modal-overlay-active #modal_overlay {
   line-height: var(--fluent-line-height-relaxed);
 }
 
-.cbi-section {
-  background: var(--fluent-bg-card);
-  border: 1px solid var(--fluent-card-border);
-  border-radius: var(--fluent-radius-md);
-  box-shadow: var(--fluent-shadow-sm);
-  margin-bottom: var(--fluent-space-lg);
-  overflow: visible;
-}
-
 .cbi-section-error {
   background: var(--fluent-error-light);
   border-color: var(--fluent-error);
   box-shadow: none;
-}
-
-.cbi-section > .cbi-section-node {
-  margin-left: var(--fluent-space-lg);
 }
 
 .cbi-section-node-tabbed {
@@ -2644,6 +2549,7 @@ td > .ifacebadge,
   border: 1px solid var(--fluent-card-border);
   border-radius: var(--fluent-card-radius);
   box-shadow: var(--fluent-card-shadow);
+  padding: var(--fluent-card-padding);
   position: relative;
   display: inline-flex;
   flex-direction: column;
@@ -2668,24 +2574,21 @@ td > .ifacebadge,
   height: 48px;
   object-fit: contain;
 }
-.ifacebox > .ifacebox-head.cbi-tooltip-container {
+.ifacebox > .ifacebox-body {
   padding: 0;
   border-bottom: none;
   background: none;
 }
-.ifacebox > .ifacebox-head.cbi-tooltip-container > .zonebadge {
-  padding: 0;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-}
-.ifacebox > .ifacebox-head.cbi-tooltip-container > .cbi-tooltip {
+.ifacebox > .ifacebox-body .cbi-tooltip {
   left: 0;
   right: 0;
   transform: translateY(var(--fluent-space-xs));
   white-space: normal;
 }
-.ifacebox > .ifacebox-head.cbi-tooltip-container:hover > .cbi-tooltip:not(:empty) {
+.ifacebox > .ifacebox-body .cbi-tooltip::before {
+  left: 10px;
+}
+.ifacebox > .ifacebox-body:hover > .cbi-tooltip:not(:empty) {
   transform: translateY(0);
 }
 .ifacebox .ifacebox {
@@ -2879,10 +2782,6 @@ td[data-name=_ifacebox] .ifacebox .ifacebox-body .cbi-tooltip-container,
 .td[data-name=_ifacebox] .ifacebox .ifacebox-body .cbi-tooltip-container {
   display: inline-flex;
   vertical-align: middle;
-}
-td[data-name=_ifacebox] .ifacebox .ifacebox-body .cbi-tooltip,
-.td[data-name=_ifacebox] .ifacebox .ifacebox-body .cbi-tooltip {
-  white-space: normal;
 }
 td[data-name=_ifacebox] .ifacebox .ifacebox-body small,
 .td[data-name=_ifacebox] .ifacebox .ifacebox-body small {
@@ -4246,7 +4145,7 @@ code::-webkit-scrollbar-thumb:hover {
   outline: none;
 }
 .cbi-dropdown[open] {
-  z-index: 1005;
+  z-index: var(--fluent-zindex-dropdown);
 }
 .cbi-dropdown:focus::after, .cbi-dropdown.focus::after, .cbi-dropdown[open]::after {
   transform: scaleX(1);
@@ -4523,6 +4422,18 @@ code::-webkit-scrollbar-thumb:hover {
   box-shadow: none !important;
   color: inherit !important;
   min-height: unset !important;
+}
+
+/* 当下拉框打开时，大幅提升该表单域容器的层叠上下文 */
+.cbi-value-field.cbi-dropdown-open {
+  position: relative; /* 确保 z-index 生效 */
+  z-index: 99999 !important; /* 它的层级变高了，里面的子元素自然就能骑在按钮栏上方 */
+}
+
+/* 如果上面的方案没有生效，说明是更外层的“整行”被遮挡了，可以用下面这个 */
+.cbi-value:has(.cbi-dropdown-open) {
+  position: relative;
+  z-index: 99999 !important;
 }
 
 .cbi-dropdown.cbi-button,
@@ -6509,6 +6420,11 @@ body.login-page {
   outline: 1px solid var(--fluent-primary) !important;
   background-color: rgba(128, 128, 128, 0.1) !important;
 }
+.login-page .login-container .login-form .form-login .ms-password-toggle svg {
+  color: inherit !important;
+  stroke: currentColor !important;
+  pointer-events: none !important;
+}
 .login-page .login-container .login-form .button-container {
   display: flex !important;
   justify-content: center !important;
@@ -6755,7 +6671,7 @@ body.login-page {
   height: 100vh;
   background: var(--fluent-sidebar-bg);
   border-right: 1px solid var(--fluent-border);
-  z-index: var(--fluent-zindex-dropdown, 1000);
+  z-index: var(--fluent-zindex-menu);
   overflow-y: auto;
   transition: transform var(--fluent-duration-normal) var(--fluent-easing-standard);
 }
@@ -7114,7 +7030,7 @@ body.login-page {
     pointer-events: auto;
   }
 }
-.header {
+body > div.main > div.main-right > header.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -7127,27 +7043,27 @@ body.login-page {
   z-index: var(--fluent-zindex-dropdown, 1000);
   transition: background var(--fluent-duration-normal) var(--fluent-easing-standard);
 }
-.header__brand {
+body > div.main > div.main-right > header.header__brand {
   display: flex;
   align-items: center;
   gap: var(--fluent-space-sm);
 }
-.header__logo {
+body > div.main > div.main-right > header.header__logo {
   height: 28px;
   width: auto;
 }
-.header__title {
+body > div.main > div.main-right > header.header__title {
   font-size: var(--fluent-font-size-md);
   font-weight: var(--fluent-font-weight-bold, 700);
   color: var(--fluent-text);
   line-height: var(--fluent-line-height-tight);
 }
-.header__actions {
+body > div.main > div.main-right > header.header__actions {
   display: flex;
   align-items: center;
   gap: var(--fluent-space-sm);
 }
-.header__toggle {
+body > div.main > div.main-right > header.header__toggle {
   display: none;
   align-items: center;
   justify-content: center;
@@ -7160,7 +7076,7 @@ body.login-page {
   border-radius: var(--fluent-radius-md);
   transition: background var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
-.header__toggle::before {
+body > div.main > div.main-right > header.header__toggle::before {
   content: "";
   display: inline-block;
   width: 20px;
@@ -7171,17 +7087,17 @@ body.login-page {
   background-repeat: no-repeat;
   background-position: center;
 }
-.header__toggle:hover {
+body > div.main > div.main-right > header.header__toggle:hover {
   background: var(--fluent-bg-hover);
 }
-[data-theme=dark] .header__toggle::before {
+[data-theme=dark] body > div.main > div.main-right > header.header__toggle::before {
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M3 5C3 4.44772 3.44772 4 4 4H16C16.5523 4 17 4.44772 17 5C17 5.55228 16.5523 6 16 6H4C3.44772 6 3 5.55228 3 5ZM3 10C3 9.44772 3.44772 9 4 9H16C16.5523 9 17 9.44772 17 10C17 10.5523 16.5523 11 16 11H4C3.44772 11 3 10.5523 3 10ZM3 15C3 14.4477 3.44772 14 4 14H16C16.5523 14 17 14.4477 17 15C17 15.5523 16.5523 16 16 16H4C3.44772 16 3 15.5523 3 15Z' fill='%23ffffff'/></svg>");
   background-size: 20px 20px;
   background-repeat: no-repeat;
   background-position: center;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme=light]) .header__toggle::before {
+  :root:not([data-theme=light]) body > div.main > div.main-right > header.header__toggle::before {
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M3 5C3 4.44772 3.44772 4 4 4H16C16.5523 4 17 4.44772 17 5C17 5.55228 16.5523 6 16 6H4C3.44772 6 3 5.55228 3 5ZM3 10C3 9.44772 3.44772 9 4 9H16C16.5523 9 17 9.44772 17 10C17 10.5523 16.5523 11 16 11H4C3.44772 11 3 10.5523 3 10ZM3 15C3 14.4477 3.44772 14 4 14H16C16.5523 14 17 14.4477 17 15C17 15.5523 16.5523 16 16 16H4C3.44772 16 3 15.5523 3 15Z' fill='%23ffffff'/></svg>");
     background-size: 20px 20px;
     background-repeat: no-repeat;
@@ -7189,12 +7105,11 @@ body.login-page {
   }
 }
 @media (max-width: 768px) {
-  .header__toggle {
+  body > div.main > div.main-right > header.header__toggle {
     display: flex;
   }
 }
-
-.theme-toggle {
+body > div.main > div.main-right > header.header .theme-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -7209,49 +7124,47 @@ body.login-page {
   transition: all var(--fluent-transition-fast, 150ms ease);
   position: relative;
 }
-.theme-toggle:hover {
+body > div.main > div.main-right > header.header .theme-toggle:hover {
   background: var(--fluent-bg-hover, #f3f2f1);
   color: var(--fluent-text, #323130);
 }
-.theme-toggle:active {
+body > div.main > div.main-right > header.header .theme-toggle:active {
   transform: scale(0.95);
 }
-.theme-toggle .theme-toggle-icon {
+body > div.main > div.main-right > header.header .theme-toggle .theme-toggle-icon {
   width: 18px;
   height: 18px;
   transition: opacity var(--fluent-transition-fast, 150ms ease), transform var(--fluent-transition-fast, 150ms ease);
 }
-.theme-toggle .theme-toggle-icon.sun {
+body > div.main > div.main-right > header.header .theme-toggle .theme-toggle-icon.sun {
   opacity: 1;
   transform: rotate(0deg);
 }
-.theme-toggle .theme-toggle-icon.moon {
+body > div.main > div.main-right > header.header .theme-toggle .theme-toggle-icon.moon {
   opacity: 0;
   transform: rotate(-90deg);
   position: absolute;
 }
-.theme-toggle[data-active-theme=dark] .theme-toggle-icon.sun {
+body > div.main > div.main-right > header.header .theme-toggle[data-active-theme=dark] .theme-toggle-icon.sun {
   opacity: 0;
   transform: rotate(90deg);
   position: absolute;
 }
-.theme-toggle[data-active-theme=dark] .theme-toggle-icon.moon {
+body > div.main > div.main-right > header.header .theme-toggle[data-active-theme=dark] .theme-toggle-icon.moon {
   opacity: 1;
   transform: rotate(0deg);
   position: relative;
 }
-
-.header-actions {
+body > div.main > div.main-right > header.header .header-actions {
   display: flex;
   align-items: center;
   gap: var(--fluent-space-sm, 8px);
 }
-
-.status {
+body > div.main > div.main-right > header.header .status {
   display: flex;
   align-items: center;
 }
-.status #xhr_poll_status {
+body > div.main > div.main-right > header.header .status #xhr_poll_status {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -7264,77 +7177,75 @@ body.login-page {
   user-select: none;
   transition: all var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
-.status #xhr_poll_status[data-style=active] {
+body > div.main > div.main-right > header.header .status #xhr_poll_status[data-style=active] {
   background-color: var(--fluent-bg-hover, #f3f2f1);
   color: var(--fluent-primary);
   border: 1px solid var(--fluent-border);
 }
-.status #xhr_poll_status[data-style=active]:hover {
+body > div.main > div.main-right > header.header .status #xhr_poll_status[data-style=active]:hover {
   background-color: var(--fluent-primary-lightest, #eff6fc);
 }
-.status #xhr_poll_status[data-style=inactive] {
+body > div.main > div.main-right > header.header .status #xhr_poll_status[data-style=inactive] {
   background-color: var(--fluent-warning-light, #fff4ce);
   color: var(--fluent-warning, #795707);
   border: 1px solid var(--fluent-warning, #795707);
 }
-.status #xhr_poll_status[data-style=inactive]:hover {
+body > div.main > div.main-right > header.header .status #xhr_poll_status[data-style=inactive]:hover {
   background-color: #fde7aa;
 }
-
-[data-theme=dark] .status #xhr_poll_status[data-style=active] {
+body > div.main > div.main-right > header.header [data-theme=dark] .status #xhr_poll_status[data-style=active] {
   background-color: rgba(255, 255, 255, 0.06);
   color: var(--fluent-primary);
   border-color: rgba(255, 255, 255, 0.15);
 }
-[data-theme=dark] .status #xhr_poll_status[data-style=active]:hover {
+body > div.main > div.main-right > header.header [data-theme=dark] .status #xhr_poll_status[data-style=active]:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
-[data-theme=dark] .status #xhr_poll_status[data-style=inactive] {
+body > div.main > div.main-right > header.header [data-theme=dark] .status #xhr_poll_status[data-style=inactive] {
   background-color: rgba(251, 99, 64, 0.15);
   color: #ff8f73;
   border-color: #ff8f73;
 }
-[data-theme=dark] .status #xhr_poll_status[data-style=inactive]:hover {
+body > div.main > div.main-right > header.header [data-theme=dark] .status #xhr_poll_status[data-style=inactive]:hover {
   background-color: rgba(251, 99, 64, 0.25);
 }
-
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme=light]) .status #xhr_poll_status[data-style=active] {
+  body > div.main > div.main-right > header.header :root:not([data-theme=light]) .status #xhr_poll_status[data-style=active] {
     background-color: rgba(255, 255, 255, 0.06);
     color: var(--fluent-primary);
     border-color: rgba(255, 255, 255, 0.15);
   }
-  :root:not([data-theme=light]) .status #xhr_poll_status[data-style=active]:hover {
+  body > div.main > div.main-right > header.header :root:not([data-theme=light]) .status #xhr_poll_status[data-style=active]:hover {
     background-color: rgba(255, 255, 255, 0.1);
   }
-  :root:not([data-theme=light]) .status #xhr_poll_status[data-style=inactive] {
+  body > div.main > div.main-right > header.header :root:not([data-theme=light]) .status #xhr_poll_status[data-style=inactive] {
     background-color: rgba(251, 99, 64, 0.15);
     color: #ff8f73;
     border-color: #ff8f73;
   }
-  :root:not([data-theme=light]) .status #xhr_poll_status[data-style=inactive]:hover {
+  body > div.main > div.main-right > header.header :root:not([data-theme=light]) .status #xhr_poll_status[data-style=inactive]:hover {
     background-color: rgba(251, 99, 64, 0.25);
   }
 }
-[data-theme=dark] .theme-toggle,
-.theme-toggle[data-active-theme=dark] {
+body > div.main > div.main-right > header.header [data-theme=dark] .theme-toggle,
+body > div.main > div.main-right > header.header .theme-toggle[data-active-theme=dark] {
   color: var(--fluent-text-secondary, #a0a0a0);
 }
-[data-theme=dark] .theme-toggle:hover,
-.theme-toggle[data-active-theme=dark]:hover {
+body > div.main > div.main-right > header.header [data-theme=dark] .theme-toggle:hover,
+body > div.main > div.main-right > header.header .theme-toggle[data-active-theme=dark]:hover {
   background: rgba(255, 255, 255, 0.08);
   color: var(--fluent-text, #f3f2f1);
 }
-
 @media (max-width: 768px) {
-  .header {
+  body > div.main > div.main-right > header.header {
     padding: 0 var(--fluent-space-sm);
   }
-  .theme-toggle {
+  body > div.main > div.main-right > header.header .theme-toggle {
     width: 28px;
     height: 28px;
   }
 }
+
 .main > .main-right > #maincontent {
   padding: 10px;
 }

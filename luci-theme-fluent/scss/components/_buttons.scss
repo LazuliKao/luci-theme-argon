@@ -7,8 +7,7 @@
 
 // Base .cbi-button applied to all LuCI buttons
 .cbi-button,
-.btn,
-button {
+.btn {
   @include button-secondary;
 
   &.cbi-button-save,

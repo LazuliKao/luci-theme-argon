@@ -2,7 +2,7 @@
 // FluentUI 2 Toolbar pattern with brand, actions, mobile toggle
 @use "../mixins" as *;
 @use "../icons" as *;
-body > div.main > div.main-right > header.header {
+body > div.main > div.main-right > header {
   // ============================================================
   // HEADER CONTAINER
   // FluentUI Toolbar: 48px height, flex layout, bottom border
@@ -19,7 +19,8 @@ body > div.main > div.main-right > header.header {
     top: 0;
     z-index: var(--fluent-zindex-dropdown, 1000);
     transition: background var(--fluent-duration-normal) var(--fluent-easing-standard);
-
+  }
+  .header {
     // ============================================================
     // BRAND AREA (logo + title)
     // ============================================================

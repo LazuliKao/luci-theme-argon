@@ -9,6 +9,7 @@
   @include card;
   position: relative;
   > * .cbi-section {
+    // Override nested sections (e.g. in Portweaver)
     padding: 0;
   }
   .cbi-section-node {
@@ -101,11 +102,6 @@
     margin-bottom: var(--fluent-space-lg);
     border-bottom: 1px solid var(--fluent-card-border);
   }
-}
-
-// Tab content sections
-[data-tab-title] {
-  padding: var(--fluent-space-lg);
 }
 
 // Network/Interface section overrides

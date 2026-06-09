@@ -4270,7 +4270,6 @@ code::-webkit-scrollbar-thumb:hover {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  min-width: 100%;
   max-width: 400px;
   overflow-y: auto;
   background-color: var(--fluent-dropdown-bg);
@@ -4281,7 +4280,6 @@ code::-webkit-scrollbar-thumb:hover {
   position: absolute;
   left: 0;
   right: 0;
-  top: 100%;
   z-index: var(--fluent-zindex-dropdown);
   padding: var(--fluent-space-xxs);
   margin: 0;

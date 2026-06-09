@@ -282,3 +282,6 @@ label[data-tooltip] {
   cursor: help !important;
   color: var(--fluent-text-secondary) !important;
 }
+.cbi-section:has(.cbi-tooltip-container:hover) {
+  z-index: 10;
+}

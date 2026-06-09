@@ -1,4 +1,3 @@
-@charset "UTF-8";
 :root {
   --fluent-primary: #0078d4;
   --fluent-primary-hover: #106ebe;
@@ -4431,18 +4430,6 @@ code::-webkit-scrollbar-thumb:hover {
   min-height: unset !important;
 }
 
-/* 当下拉框打开时，大幅提升该表单域容器的层叠上下文 */
-.cbi-value-field.cbi-dropdown-open {
-  position: relative; /* 确保 z-index 生效 */
-  z-index: 99999 !important; /* 它的层级变高了，里面的子元素自然就能骑在按钮栏上方 */
-}
-
-/* 如果上面的方案没有生效，说明是更外层的“整行”被遮挡了，可以用下面这个 */
-.cbi-value:has(.cbi-dropdown-open) {
-  position: relative;
-  z-index: 99999 !important;
-}
-
 .cbi-dropdown.cbi-button,
 .cbi-dropdown.btn {
   display: inline-flex;
@@ -5906,6 +5893,10 @@ label[data-tooltip] {
   gap: var(--fluent-space-sm) !important;
   cursor: help !important;
   color: var(--fluent-text-secondary) !important;
+}
+
+.cbi-section:has(.cbi-tooltip-container:hover) {
+  z-index: 10;
 }
 
 body[data-page=admin-dashboard] .main > .main-right > #maincontent {

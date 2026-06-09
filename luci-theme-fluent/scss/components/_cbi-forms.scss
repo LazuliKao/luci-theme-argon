@@ -4,7 +4,8 @@
 // ============================================================
 @use "../mixins" as *;
 
-.cbi-map {
+.cbi-map,
+#view {
   display: flex;
   flex-direction: column;
   font-family: var(--fluent-font-family);

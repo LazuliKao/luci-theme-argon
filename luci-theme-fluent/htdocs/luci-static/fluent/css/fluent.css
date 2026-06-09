@@ -1626,27 +1626,33 @@ body.modal-overlay-active #modal_overlay {
   overflow: visible !important;
 }
 
-.cbi-map {
+.cbi-map,
+#view {
   display: flex;
   flex-direction: column;
   font-family: var(--fluent-font-family);
   color: var(--fluent-text);
 }
-.cbi-map > .cbi-section + .cbi-section {
+.cbi-map > .cbi-section + .cbi-section,
+#view > .cbi-section + .cbi-section {
   margin-top: 5px;
 }
 .cbi-map h2,
-.cbi-map h3 {
+.cbi-map h3,
+#view h2,
+#view h3 {
   margin: 0;
   color: var(--fluent-text);
   font-family: var(--fluent-font-family);
   font-weight: var(--fluent-font-weight-semibold);
   line-height: var(--fluent-line-height-tight);
 }
-.cbi-map h2 {
+.cbi-map h2,
+#view h2 {
   font-size: var(--fluent-font-size-xxl);
 }
-.cbi-map h3 {
+.cbi-map h3,
+#view h3 {
   font-size: var(--fluent-font-size-lg);
 }
 

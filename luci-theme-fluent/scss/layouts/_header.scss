@@ -9,6 +9,7 @@ body > div.main > div.main-right > header {
   // ============================================================
   & {
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: space-between;
     padding: 0 var(--fluent-space-lg);

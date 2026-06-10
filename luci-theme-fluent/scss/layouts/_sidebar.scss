@@ -71,7 +71,10 @@
 // ============================================================
 .main-right {
   margin-left: var(--fluent-sidebar-width, 260px);
-  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   transition: margin-left var(--fluent-duration-normal) var(--fluent-easing-standard);
 }
 

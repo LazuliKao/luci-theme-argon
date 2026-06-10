@@ -157,7 +157,15 @@ td > .ifacebadge,
     }
 
     &:hover > .cbi-tooltip:not(:empty) {
+      display: block;
+      opacity: 1;
       transform: translateY(0);
+      pointer-events: auto;
+      
+      @starting-style {
+        opacity: 0;
+        transform: translateY(var(--fluent-space-xs));
+      }
     }
   }
 

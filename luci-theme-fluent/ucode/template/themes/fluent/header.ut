@@ -290,12 +290,16 @@
         const activeA = activeLi.querySelector('a');
         if (!activeA) return;
         
+        const rectA = activeA.getBoundingClientRect();
+        const rectUl = ul.getBoundingClientRect();
+        
         const style = window.getComputedStyle(activeA);
         const paddingLeft = parseFloat(style.paddingLeft) || 16;
         const paddingRight = parseFloat(style.paddingRight) || 16;
         
-        const left = activeA.offsetLeft + paddingLeft;
-        const width = activeA.offsetWidth - paddingLeft - paddingRight;
+        // Calculate offset relative to the ul scroll container boundary
+        const left = rectA.left - rectUl.left + ul.scrollLeft + paddingLeft;
+        const width = rectA.width - paddingLeft - paddingRight;
         
         slider.style.left = left + 'px';
         slider.style.width = width + 'px';

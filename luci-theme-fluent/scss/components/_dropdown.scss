@@ -576,7 +576,9 @@
       background-image: none !important;
       -webkit-mask-image: none !important;
       mask-image: none !important;
-      transition: background-color 0.1s ease, border-color 0.1s ease !important;
+      transition:
+        background-color 0.1s ease,
+        border-color 0.1s ease !important;
 
       &::before {
         content: none !important;
@@ -597,7 +599,9 @@
         background-image: none !important;
       }
     }
-
+    input[type="checkbox"] {
+      pointer-events: none;
+    }
     // Selected state: applied if the checkbox itself is checked, OR if the parent li is selected.
     // Explicitly define background-image for hover, focus, active, and parent focus/hover states to prevent the tick from disappearing.
     &[selected] input[type="checkbox"],
@@ -706,7 +710,9 @@
       padding: 5px var(--fluent-space-xs) !important;
       color: #111 !important; // Dark text for pastel contrast
 
-      strong, em, span {
+      strong,
+      em,
+      span {
         color: #111 !important;
       }
 
@@ -773,7 +779,9 @@
       border: none !important;
       color: #111 !important;
 
-      strong, em, span {
+      strong,
+      em,
+      span {
         color: #111 !important;
         font-size: inherit !important;
       }

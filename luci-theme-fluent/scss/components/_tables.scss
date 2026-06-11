@@ -41,7 +41,8 @@
   word-break: break-word;
   overflow-wrap: break-word;
 
-  &.nowrap {
+  &.nowrap,
+  &:has(> span.ifacebadge) {
     white-space: nowrap !important;
     word-break: normal !important;
     overflow-wrap: normal !important;

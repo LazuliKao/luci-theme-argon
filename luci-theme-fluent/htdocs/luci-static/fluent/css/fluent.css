@@ -1290,8 +1290,9 @@ input[type=search]::-webkit-search-cancel-button {
   word-break: break-word;
   overflow-wrap: break-word;
 }
-.td.nowrap,
-.th.nowrap {
+.td.nowrap, .td:has(> span.ifacebadge),
+.th.nowrap,
+.th:has(> span.ifacebadge) {
   white-space: nowrap !important;
   word-break: normal !important;
   overflow-wrap: normal !important;
@@ -4589,6 +4590,9 @@ code::-webkit-scrollbar-thumb:hover {
   opacity: 1 !important;
   background-image: none !important;
 }
+.cbi-dropdown ul.dropdown > li input[type=checkbox] {
+  pointer-events: none;
+}
 .cbi-dropdown ul.dropdown > li[selected] input[type=checkbox],
 .cbi-dropdown ul.dropdown > li input[type=checkbox]:checked, .cbi-dropdown ul.dropdown > li[selected] input[type=checkbox]:hover,
 .cbi-dropdown ul.dropdown > li input[type=checkbox]:checked:hover, .cbi-dropdown ul.dropdown > li[selected] input[type=checkbox]:focus,
@@ -4668,7 +4672,9 @@ code::-webkit-scrollbar-thumb:hover {
   padding: 5px var(--fluent-space-xs) !important;
   color: #111 !important;
 }
-.cbi-dropdown ul.dropdown > li:has(.zonebadge) .zonebadge strong, .cbi-dropdown ul.dropdown > li:has(.zonebadge) .zonebadge em, .cbi-dropdown ul.dropdown > li:has(.zonebadge) .zonebadge span {
+.cbi-dropdown ul.dropdown > li:has(.zonebadge) .zonebadge strong,
+.cbi-dropdown ul.dropdown > li:has(.zonebadge) .zonebadge em,
+.cbi-dropdown ul.dropdown > li:has(.zonebadge) .zonebadge span {
   color: #111 !important;
 }
 .cbi-dropdown ul.dropdown > li:has(.zonebadge) .zonebadge .ifacebadge {
@@ -4721,7 +4727,9 @@ code::-webkit-scrollbar-thumb:hover {
   border: none !important;
   color: #111 !important;
 }
-.cbi-dropdown > ul:not(.dropdown) > li:has(.zonebadge) .zonebadge strong, .cbi-dropdown > ul:not(.dropdown) > li:has(.zonebadge) .zonebadge em, .cbi-dropdown > ul:not(.dropdown) > li:has(.zonebadge) .zonebadge span {
+.cbi-dropdown > ul:not(.dropdown) > li:has(.zonebadge) .zonebadge strong,
+.cbi-dropdown > ul:not(.dropdown) > li:has(.zonebadge) .zonebadge em,
+.cbi-dropdown > ul:not(.dropdown) > li:has(.zonebadge) .zonebadge span {
   color: #111 !important;
   font-size: inherit !important;
 }

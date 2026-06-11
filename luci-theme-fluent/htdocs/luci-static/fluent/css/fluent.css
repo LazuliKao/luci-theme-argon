@@ -1135,6 +1135,7 @@ input[type=search]::-webkit-search-cancel-button {
   position: relative;
   width: 100%;
   max-width: 100%;
+  min-width: 0;
   box-sizing: border-box;
 }
 .cbi-section > * .cbi-section {
@@ -1702,6 +1703,8 @@ body.modal-overlay-active #modal_overlay {
   flex-direction: column;
   font-family: var(--fluent-font-family);
   color: var(--fluent-text);
+  min-width: 0;
+  max-width: 100%;
 }
 .cbi-map > .cbi-section + .cbi-section,
 #view > .cbi-section + .cbi-section {

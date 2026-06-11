@@ -168,6 +168,44 @@
       gap: var(--fluent-space-sm) var(--fluent-space-xl);
     }
   }
+
+  // Mobile-only switch layout (label on left, toggle switch on right)
+  @media (max-width: 767px) {
+    &[data-widget="CBI.FlagValue"],
+    &:has(.cbi-checkbox) {
+      display: grid !important;
+      grid-template-columns: 1fr auto;
+      grid-template-areas:
+        "title switch"
+        "desc desc";
+      gap: var(--fluent-space-xs) var(--fluent-space-md);
+      align-items: center;
+
+      .cbi-value-title {
+        grid-area: title;
+        margin: 0;
+        align-self: center;
+      }
+
+      .cbi-value-field {
+        display: contents !important;
+      }
+
+      .cbi-checkbox {
+        grid-area: switch;
+        justify-self: end;
+        margin: 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .cbi-value-description {
+        grid-area: desc;
+        margin: 0;
+      }
+    }
+  }
+
   .cbi-value-title {
     align-self: start;
   }

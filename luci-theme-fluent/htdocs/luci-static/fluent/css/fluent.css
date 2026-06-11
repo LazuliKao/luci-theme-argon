@@ -1849,6 +1849,34 @@ body.modal-overlay-active #modal_overlay {
     gap: var(--fluent-space-sm) var(--fluent-space-xl);
   }
 }
+@media (max-width: 767px) {
+  .cbi-value[data-widget="CBI.FlagValue"], .cbi-value:has(.cbi-checkbox) {
+    display: grid !important;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "title switch" "desc desc";
+    gap: var(--fluent-space-xs) var(--fluent-space-md);
+    align-items: center;
+  }
+  .cbi-value[data-widget="CBI.FlagValue"] .cbi-value-title, .cbi-value:has(.cbi-checkbox) .cbi-value-title {
+    grid-area: title;
+    margin: 0;
+    align-self: center;
+  }
+  .cbi-value[data-widget="CBI.FlagValue"] .cbi-value-field, .cbi-value:has(.cbi-checkbox) .cbi-value-field {
+    display: contents !important;
+  }
+  .cbi-value[data-widget="CBI.FlagValue"] .cbi-checkbox, .cbi-value:has(.cbi-checkbox) .cbi-checkbox {
+    grid-area: switch;
+    justify-self: end;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+  .cbi-value[data-widget="CBI.FlagValue"] .cbi-value-description, .cbi-value:has(.cbi-checkbox) .cbi-value-description {
+    grid-area: desc;
+    margin: 0;
+  }
+}
 .cbi-value .cbi-value-title {
   align-self: start;
 }

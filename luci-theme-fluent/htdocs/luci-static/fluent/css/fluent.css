@@ -4632,6 +4632,7 @@ code::-webkit-scrollbar-thumb:hover {
   height: 16px !important;
   background-color: transparent !important;
   transition: background-color 0.1s ease !important;
+  z-index: 2 !important;
 }
 .cbi-dropdown:not([multiple]) > ul.dropdown > li[selected]::before {
   background-color: var(--fluent-text) !important;
@@ -4646,6 +4647,87 @@ code::-webkit-scrollbar-thumb:hover {
 }
 .cbi-dropdown:not([multiple]) > ul.dropdown > li[disabled][selected]::before, .cbi-dropdown:not([multiple]) > ul.dropdown > li[unselectable][selected]::before {
   background-color: var(--fluent-text-disabled) !important;
+}
+.cbi-dropdown ul.dropdown > li:has(.zonebadge) {
+  padding: 0 !important;
+  background: transparent !important;
+}
+.cbi-dropdown ul.dropdown > li:has(.zonebadge) .zonebadge {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: var(--fluent-space-sm) !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: var(--fluent-input-height) !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: inherit !important;
+  box-shadow: none !important;
+  padding: 5px var(--fluent-space-xs) !important;
+  color: #111 !important;
+}
+.cbi-dropdown ul.dropdown > li:has(.zonebadge) .zonebadge strong, .cbi-dropdown ul.dropdown > li:has(.zonebadge) .zonebadge em, .cbi-dropdown ul.dropdown > li:has(.zonebadge) .zonebadge span {
+  color: #111 !important;
+}
+.cbi-dropdown ul.dropdown > li:has(.zonebadge) .zonebadge .ifacebadge {
+  color: var(--fluent-text) !important;
+  background: rgba(255, 255, 255, 0.6) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 2px !important;
+  padding: 1px 4px !important;
+  border-radius: var(--fluent-radius-sm) !important;
+  font-size: var(--fluent-font-size-xs) !important;
+}
+.cbi-dropdown ul.dropdown > li:has(.zonebadge) .zonebadge .ifacebadge img {
+  background: transparent !important;
+  filter: brightness(0.2) !important;
+}
+.cbi-dropdown ul.dropdown > li:has(.zonebadge):hover .zonebadge {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)) !important;
+}
+.cbi-dropdown ul.dropdown > li:has(.zonebadge).focus .zonebadge {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08)) !important;
+}
+.cbi-dropdown:not([multiple]) > ul.dropdown > li:has(.zonebadge) .zonebadge {
+  padding-left: 32px !important;
+}
+.cbi-dropdown:not([multiple]) > ul.dropdown > li:has(.zonebadge)[selected]::before {
+  background-color: #111 !important;
+}
+.cbi-dropdown > ul:not(.dropdown) > li:has(.zonebadge) {
+  display: none;
+}
+.cbi-dropdown > ul:not(.dropdown) > li:has(.zonebadge)[selected], .cbi-dropdown > ul:not(.dropdown) > li:has(.zonebadge)[display] {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 0 !important;
+  margin: 2px !important;
+  border-radius: var(--fluent-radius-sm) !important;
+  border: none !important;
+  background: transparent !important;
+}
+.cbi-dropdown > ul:not(.dropdown) > li:has(.zonebadge) .zonebadge {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 2px var(--fluent-space-sm) !important;
+  min-height: 20px !important;
+  height: 20px !important;
+  border-radius: var(--fluent-radius-sm) !important;
+  font-size: var(--fluent-font-size-sm) !important;
+  box-shadow: none !important;
+  border: none !important;
+  color: #111 !important;
+}
+.cbi-dropdown > ul:not(.dropdown) > li:has(.zonebadge) .zonebadge strong, .cbi-dropdown > ul:not(.dropdown) > li:has(.zonebadge) .zonebadge em, .cbi-dropdown > ul:not(.dropdown) > li:has(.zonebadge) .zonebadge span {
+  color: #111 !important;
+  font-size: inherit !important;
+}
+.cbi-dropdown > ul:not(.dropdown) > li:has(.zonebadge) .zonebadge .ifacebadge {
+  display: none !important;
 }
 
 .cbi-dropdown.cbi-button,

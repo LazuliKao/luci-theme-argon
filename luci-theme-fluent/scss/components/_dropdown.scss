@@ -661,6 +661,7 @@
       height: 16px !important;
       background-color: transparent !important;
       transition: background-color 0.1s ease !important;
+      z-index: 2 !important; // Ensure checkmark is always on top of the zonebadge background
     }
 
     &[selected]::before {
@@ -678,6 +679,109 @@
     &[disabled][selected]::before,
     &[unselectable][selected]::before {
       background-color: var(--fluent-text-disabled) !important;
+    }
+  }
+
+  // ----------------------------------------------------------
+  // ZONEBADGE STYLING SPECIAL ADAPTATION
+  // ----------------------------------------------------------
+  // Style zonebadge elements inside the dropdown options list
+  ul.dropdown > li:has(.zonebadge) {
+    padding: 0 !important;
+    background: transparent !important;
+
+    .zonebadge {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      gap: var(--fluent-space-sm) !important; // Add gap spacing between badge name and interface badges
+      width: 100% !important;
+      height: 100% !important;
+      min-height: var(--fluent-input-height) !important;
+      box-sizing: border-box !important;
+      margin: 0 !important;
+      border: none !important;
+      border-radius: inherit !important;
+      box-shadow: none !important;
+      padding: 5px var(--fluent-space-xs) !important;
+      color: #111 !important; // Dark text for pastel contrast
+
+      strong, em, span {
+        color: #111 !important;
+      }
+
+      .ifacebadge {
+        color: var(--fluent-text) !important;
+        background: rgba(255, 255, 255, 0.6) !important;
+        border-color: rgba(0, 0, 0, 0.1) !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 2px !important;
+        padding: 1px 4px !important;
+        border-radius: var(--fluent-radius-sm) !important;
+        font-size: var(--fluent-font-size-xs) !important;
+
+        img {
+          background: transparent !important; // Remove black square background
+          filter: brightness(0.2) !important; // Force dark icon shape on pastel backgrounds
+        }
+      }
+    }
+
+    &:hover .zonebadge {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)) !important;
+    }
+    &.focus .zonebadge {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08)) !important;
+    }
+  }
+
+  // Adjust padding for checkmark space in single-select zonebadge options
+  &:not([multiple]) > ul.dropdown > li:has(.zonebadge) {
+    .zonebadge {
+      padding-left: 32px !important;
+    }
+
+    &[selected]::before {
+      background-color: #111 !important; // Force dark checkmark color on pastel background
+    }
+  }
+
+  // Style selected zone badges inside the collapsed preview bar as neat tags
+  > ul:not(.dropdown) > li:has(.zonebadge) {
+    display: none; // Unselected items stay hidden
+
+    &[selected],
+    &[display] {
+      display: inline-flex !important;
+      align-items: center !important;
+      padding: 0 !important;
+      margin: 2px !important;
+      border-radius: var(--fluent-radius-sm) !important;
+      border: none !important;
+      background: transparent !important;
+    }
+
+    .zonebadge {
+      display: inline-flex !important;
+      align-items: center !important;
+      padding: 2px var(--fluent-space-sm) !important;
+      min-height: 20px !important;
+      height: 20px !important;
+      border-radius: var(--fluent-radius-sm) !important;
+      font-size: var(--fluent-font-size-sm) !important;
+      box-shadow: none !important;
+      border: none !important;
+      color: #111 !important;
+
+      strong, em, span {
+        color: #111 !important;
+        font-size: inherit !important;
+      }
+
+      .ifacebadge {
+        display: none !important; // Hide interface list inside collapsed preview
+      }
     }
   }
 }

@@ -321,8 +321,10 @@
 
     // Position
     position: absolute;
-    left: 0;
-    right: 0;
+    left: 0 !important;
+    right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
     z-index: var(--fluent-zindex-dropdown);
 
     // Padding

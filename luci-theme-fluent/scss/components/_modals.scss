@@ -150,26 +150,20 @@ body.modal-overlay-active {
 }
 
 // ============================================================
-// SPINNING / TOAST MODAL OVERRIDES
-// Transform the apply/spinning modal into a top Toast,
-// remove the dark overlay, allow page scroll, and disable inputs
+// TOAST / ALERT MODAL OVERRIDES
+// Transform notice/apply modals into top Toasts,
+// remove the dark overlay, and allow page scroll.
+// If the modal is active and spinning (saving), disable page inputs.
 // ============================================================
 
-// 1. Override body restriction to allow page scrolling
-body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role="dialog"]) {
-  // Alert message as a modal dialog layout optimization
-  .modal.alert-message {
-    flex-direction: row;
-    align-items: center;
-    p {
-      margin: 0;
-    }
-  }
-
+// 1. Override body restriction to allow page scrolling for all alert/notice modals
+body.modal-overlay-active:has(#modal_overlay .modal.alert-message) {
   overflow: auto !important;
   height: auto !important;
+}
 
-  // 2. Temporarily disable all form interaction on the page using pure CSS
+// 2. Temporarily disable all form interaction on the page ONLY during saving/spinning
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) {
   button,
   input,
   select,
@@ -185,7 +179,7 @@ body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay >
     filter: grayscale(0.5) opacity(0.6) !important;
   }
 
-  // 3. Ensure the Toast itself is still clickable if needed
+  // Ensure the Toast itself is still clickable if needed
   #modal_overlay .modal.spinning {
     button,
     input,
@@ -200,15 +194,16 @@ body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay >
   }
 }
 
-// 4. Transform modal overlay to a transparent top-aligned container
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay {
+// 3. Transform modal overlay to a transparent top-aligned container for all alert modals
+body.modal-overlay-active:has(#modal_overlay .modal.alert-message) #modal_overlay {
   background: transparent !important;
   pointer-events: none !important;
   align-items: flex-start !important;
   padding-top: var(--fluent-space-xl) !important;
 }
 
-// 5. Style the spinning modal as a top Toast
+// 4. Style all alert/notice/spinning modals as top Toasts
+.modal.alert-message,
 .modal.spinning {
   pointer-events: auto !important;
   max-width: 480px !important;

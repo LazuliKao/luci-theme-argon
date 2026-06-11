@@ -1729,30 +1729,37 @@ body.modal-overlay-active #modal_overlay {
   overflow: visible !important;
 }
 
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) {
+body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role=dialog]) .modal.alert-message {
+  flex-direction: row;
+  align-items: center;
+}
+body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role=dialog]) .modal.alert-message p {
+  margin: 0;
+}
+body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role=dialog]) {
   overflow: auto !important;
   height: auto !important;
 }
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) button,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) input,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) select,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) textarea,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) label,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) .cbi-button,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) .cbi-dropdown,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) .cbi-checkbox,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) .drag-handle,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) a.btn {
+body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role=dialog]) button,
+body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role=dialog]) input,
+body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role=dialog]) select,
+body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role=dialog]) textarea,
+body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role=dialog]) label,
+body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role=dialog]) .cbi-button,
+body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role=dialog]) .cbi-dropdown,
+body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role=dialog]) .cbi-checkbox,
+body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role=dialog]) .drag-handle,
+body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role=dialog]) a.btn {
   pointer-events: none !important;
   cursor: not-allowed !important;
   filter: grayscale(0.5) opacity(0.6) !important;
 }
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay .modal.spinning button,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay .modal.spinning input,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay .modal.spinning select,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay .modal.spinning textarea,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay .modal.spinning label,
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay .modal.spinning .cbi-button {
+body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role=dialog]) #modal_overlay .modal.spinning button,
+body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role=dialog]) #modal_overlay .modal.spinning input,
+body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role=dialog]) #modal_overlay .modal.spinning select,
+body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role=dialog]) #modal_overlay .modal.spinning textarea,
+body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role=dialog]) #modal_overlay .modal.spinning label,
+body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role=dialog]) #modal_overlay .modal.spinning .cbi-button {
   pointer-events: auto !important;
   cursor: default !important;
   filter: none !important;
@@ -2595,14 +2602,6 @@ body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay {
   background-size: 18px 18px;
   background-repeat: no-repeat;
   background-position: center;
-}
-
-.modal.alert-message {
-  flex-direction: row;
-  align-items: center;
-}
-.modal.alert-message p {
-  margin: 0;
 }
 
 .ifacebadge {

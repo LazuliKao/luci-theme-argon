@@ -156,7 +156,16 @@ body.modal-overlay-active {
 // ============================================================
 
 // 1. Override body restriction to allow page scrolling
-body.modal-overlay-active:has(#modal_overlay .modal.spinning) {
+body.modal-overlay-active:has(#modal_overlay > .modal.spinning, #modal_overlay > .modal.alert-message[role="dialog"]) {
+  // Alert message as a modal dialog layout optimization
+  .modal.alert-message {
+    flex-direction: row;
+    align-items: center;
+    p {
+      margin: 0;
+    }
+  }
+
   overflow: auto !important;
   height: auto !important;
 

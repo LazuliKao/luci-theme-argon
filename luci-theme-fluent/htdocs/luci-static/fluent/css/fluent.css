@@ -2551,6 +2551,16 @@ body.modal-overlay-active #modal_overlay {
   background-position: center;
 }
 
+.modal.alert-message {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.modal.alert-message p {
+  margin: 0;
+}
+
 .ifacebadge {
   display: inline-flex;
   align-items: center;

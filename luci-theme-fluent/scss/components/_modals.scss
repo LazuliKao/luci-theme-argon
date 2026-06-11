@@ -148,3 +148,64 @@ body.modal-overlay-active {
     overflow: visible !important;
   }
 }
+
+// ============================================================
+// SPINNING / TOAST MODAL OVERRIDES
+// Transform the apply/spinning modal into a top Toast,
+// remove the dark overlay, allow page scroll, and disable inputs
+// ============================================================
+
+// 1. Override body restriction to allow page scrolling
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) {
+  overflow: auto !important;
+  height: auto !important;
+
+  // 2. Temporarily disable all form interaction on the page using pure CSS
+  button,
+  input,
+  select,
+  textarea,
+  label,
+  .cbi-button,
+  .cbi-dropdown,
+  .cbi-checkbox,
+  .drag-handle,
+  a.btn {
+    pointer-events: none !important;
+    cursor: not-allowed !important;
+    filter: grayscale(0.5) opacity(0.6) !important;
+  }
+
+  // 3. Ensure the Toast itself is still clickable if needed
+  #modal_overlay .modal.spinning {
+    button,
+    input,
+    select,
+    textarea,
+    label,
+    .cbi-button {
+      pointer-events: auto !important;
+      cursor: default !important;
+      filter: none !important;
+    }
+  }
+}
+
+// 4. Transform modal overlay to a transparent top-aligned container
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay {
+  background: transparent !important;
+  pointer-events: none !important;
+  align-items: flex-start !important;
+  padding-top: var(--fluent-space-xl) !important;
+}
+
+// 5. Style the spinning modal as a top Toast
+.modal.spinning {
+  pointer-events: auto !important;
+  max-width: 480px !important;
+  width: auto !important;
+  margin: 0 auto !important;
+  box-shadow: var(--fluent-shadow-lg) !important;
+  border: 1px solid var(--fluent-border) !important;
+  background: var(--fluent-bg-card) !important;
+}

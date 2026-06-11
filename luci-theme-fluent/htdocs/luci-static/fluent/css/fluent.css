@@ -1729,6 +1729,52 @@ body.modal-overlay-active #modal_overlay {
   overflow: visible !important;
 }
 
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) {
+  overflow: auto !important;
+  height: auto !important;
+}
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) button,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) input,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) select,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) textarea,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) label,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) .cbi-button,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) .cbi-dropdown,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) .cbi-checkbox,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) .drag-handle,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) a.btn {
+  pointer-events: none !important;
+  cursor: not-allowed !important;
+  filter: grayscale(0.5) opacity(0.6) !important;
+}
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay .modal.spinning button,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay .modal.spinning input,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay .modal.spinning select,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay .modal.spinning textarea,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay .modal.spinning label,
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay .modal.spinning .cbi-button {
+  pointer-events: auto !important;
+  cursor: default !important;
+  filter: none !important;
+}
+
+body.modal-overlay-active:has(#modal_overlay .modal.spinning) #modal_overlay {
+  background: transparent !important;
+  pointer-events: none !important;
+  align-items: flex-start !important;
+  padding-top: var(--fluent-space-xl) !important;
+}
+
+.modal.spinning {
+  pointer-events: auto !important;
+  max-width: 480px !important;
+  width: auto !important;
+  margin: 0 auto !important;
+  box-shadow: var(--fluent-shadow-lg) !important;
+  border: 1px solid var(--fluent-border) !important;
+  background: var(--fluent-bg-card) !important;
+}
+
 .cbi-map,
 #view {
   display: flex;

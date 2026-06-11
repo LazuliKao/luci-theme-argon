@@ -3234,6 +3234,17 @@ ul.tabs::-webkit-scrollbar-thumb:hover,
 ul.cbi-tabmenu::-webkit-scrollbar-thumb:hover {
   background-color: var(--fluent-scrollbar-thumb-bg-hover);
 }
+ul.tabs .fluent-tab-slider,
+ul.cbi-tabmenu .fluent-tab-slider {
+  position: absolute;
+  bottom: 0;
+  height: var(--fluent-tab-indicator-height, 3px);
+  background-color: var(--fluent-primary);
+  border-radius: calc(var(--fluent-tab-indicator-height, 3px) / 2);
+  transition: left var(--fluent-duration-normal) var(--fluent-easing-standard), width var(--fluent-duration-normal) var(--fluent-easing-standard);
+  pointer-events: none;
+  z-index: 1;
+}
 ul.tabs > li,
 ul.cbi-tabmenu > li {
   display: flex;
@@ -3306,8 +3317,7 @@ ul.cbi-tabmenu > li.active > a {
 ul.tabs > li.cbi-tab > a::after, ul.tabs > li.active > a::after,
 ul.cbi-tabmenu > li.cbi-tab > a::after,
 ul.cbi-tabmenu > li.active > a::after {
-  transform: scaleX(1);
-  background-color: var(--fluent-primary);
+  display: none !important;
 }
 ul.tabs > li.cbi-tab > a:hover, ul.tabs > li.active > a:hover,
 ul.cbi-tabmenu > li.cbi-tab > a:hover,
@@ -3318,7 +3328,7 @@ ul.cbi-tabmenu > li.active > a:hover {
 ul.tabs > li.cbi-tab > a:hover::after, ul.tabs > li.active > a:hover::after,
 ul.cbi-tabmenu > li.cbi-tab > a:hover::after,
 ul.cbi-tabmenu > li.active > a:hover::after {
-  background-color: var(--fluent-primary);
+  display: none !important;
 }
 ul.tabs > li.cbi-tab-disabled > a,
 ul.cbi-tabmenu > li.cbi-tab-disabled > a {

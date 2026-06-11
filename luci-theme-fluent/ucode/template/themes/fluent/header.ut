@@ -267,8 +267,70 @@
             var dark = e.matches;
             document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
             toggle.setAttribute('data-active-theme', dark ? 'dark' : 'light');
-          });
+      });
+    })();
+  </script>
+  <script>
+    // FluentUI 2 sliding tab indicator logic
+    (function() {
+      function updateSlider(ul) {
+        let slider = ul.querySelector('.fluent-tab-slider');
+        if (!slider) {
+          slider = document.createElement('div');
+          slider.className = 'fluent-tab-slider';
+          ul.appendChild(slider);
         }
+        
+        const activeLi = ul.querySelector('li.cbi-tab, li.active');
+        if (!activeLi) {
+          slider.style.width = '0px';
+          return;
+        }
+        
+        const activeA = activeLi.querySelector('a');
+        if (!activeA) return;
+        
+        const style = window.getComputedStyle(activeA);
+        const paddingLeft = parseFloat(style.paddingLeft) || 16;
+        const paddingRight = parseFloat(style.paddingRight) || 16;
+        
+        const left = activeA.offsetLeft + paddingLeft;
+        const width = activeA.offsetWidth - paddingLeft - paddingRight;
+        
+        slider.style.left = left + 'px';
+        slider.style.width = width + 'px';
+      }
+
+      function initTabs() {
+        const tabLists = document.querySelectorAll('ul.cbi-tabmenu, ul.tabs');
+        tabLists.forEach(ul => {
+          if (ul.dataset.sliderInit) {
+            updateSlider(ul);
+            return;
+          }
+          ul.dataset.sliderInit = 'true';
+          
+          updateSlider(ul);
+          
+          ul.addEventListener('click', () => {
+            setTimeout(() => updateSlider(ul), 10);
+          });
+          
+          const observer = new MutationObserver(() => {
+            updateSlider(ul);
+          });
+          observer.observe(ul, { attributes: true, subtree: true, attributeFilter: ['class'] });
+        });
+      }
+
+      window.addEventListener('DOMContentLoaded', () => {
+        initTabs();
+        const bodyObserver = new MutationObserver(() => initTabs());
+        bodyObserver.observe(document.body, { childList: true, subtree: true });
+      });
+
+      window.addEventListener('resize', () => {
+        document.querySelectorAll('ul.cbi-tabmenu, ul.tabs').forEach(updateSlider);
       });
     })();
   </script>

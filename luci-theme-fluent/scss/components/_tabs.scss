@@ -45,6 +45,19 @@ ul.cbi-tabmenu {
     }
   }
 
+  .fluent-tab-slider {
+    position: absolute;
+    bottom: 0;
+    height: var(--fluent-tab-indicator-height, 3px);
+    background-color: var(--fluent-primary);
+    border-radius: calc(var(--fluent-tab-indicator-height, 3px) / 2);
+    transition:
+      left var(--fluent-duration-normal) var(--fluent-easing-standard),
+      width var(--fluent-duration-normal) var(--fluent-easing-standard);
+    pointer-events: none;
+    z-index: 1;
+  }
+
   > li {
     display: flex;
     align-items: center;
@@ -121,8 +134,7 @@ ul.cbi-tabmenu {
       background-color: transparent !important;
 
       &::after {
-        transform: scaleX(1);
-        background-color: var(--fluent-primary);
+        display: none !important; // Handled by sliding .fluent-tab-slider
       }
 
       &:hover {
@@ -130,7 +142,7 @@ ul.cbi-tabmenu {
         background-color: transparent !important;
 
         &::after {
-          background-color: var(--fluent-primary);
+          display: none !important;
         }
       }
     }

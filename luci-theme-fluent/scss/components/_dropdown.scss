@@ -200,8 +200,6 @@
     margin-right: 0;
     transition: transform 0.2s cubic-bezier(0.4, 0, 0.23, 1);
     position: relative;
-    font-size: 0;
-    color: transparent;
 
     // FluentUI Chevron Down Icon
     &::before {
@@ -214,16 +212,42 @@
       transform: rotate(45deg) translateY(-1px);
       transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
     }
+
+    svg {
+      width: 12px;
+      height: 12px;
+      fill: currentColor;
+      color: var(--fluent-text-secondary);
+      transition: color var(--fluent-duration-fast) var(--fluent-easing-standard);
+      
+      path {
+        fill: currentColor;
+      }
+    }
+
+    &:has(svg)::before {
+      display: none !important;
+    }
   }
 
   // Chevron hover color
-  &:hover > span.open::before {
-    border-color: var(--fluent-text);
+  &:hover > span.open {
+    &::before {
+      border-color: var(--fluent-text);
+    }
+    svg {
+      color: var(--fluent-text);
+    }
   }
 
   // Chevron disabled color
-  &[disabled] > span.open::before {
-    border-color: var(--fluent-border-hover);
+  &[disabled] > span.open {
+    &::before {
+      border-color: var(--fluent-border-hover);
+    }
+    svg {
+      color: var(--fluent-border-hover);
+    }
   }
 
   // Rotate chevron when open
@@ -468,6 +492,125 @@
     }
     .hide-close {
       display: block !important;
+    }
+  }
+
+  // ----------------------------------------------------------
+  // MULTI-SELECT DROPDOWN OPTIMIZATION (FluentUI Style Checkboxes)
+  // ----------------------------------------------------------
+  li {
+    form {
+      display: inline-flex !important;
+      align-items: center !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      flex-shrink: 0;
+    }
+
+    label {
+      display: inline-flex !important;
+      align-items: center !important;
+      flex: 1;
+      margin: 0 !important;
+      padding: 0 !important;
+      cursor: pointer !important;
+      font-weight: inherit;
+      color: inherit;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    input[type="checkbox"] {
+      appearance: none !important;
+      -webkit-appearance: none !important;
+      -moz-appearance: none !important;
+      position: relative !important;
+      width: 16px !important;
+      height: 16px !important;
+      min-width: 16px !important;
+      min-height: 16px !important;
+      border: none !important;
+      background-color: transparent !important;
+      margin: 0 !important;
+      margin-right: var(--fluent-space-sm) !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      vertical-align: middle !important;
+      box-sizing: border-box !important;
+      background-image: none !important;
+      transition: background-color 0.1s ease !important;
+
+      &::before {
+        content: none !important;
+        display: none !important;
+      }
+
+      &:checked {
+        border: none !important;
+        background-color: var(--fluent-text) !important;
+        -webkit-mask-image: url('data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3e%3cpath d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/%3e%3c/svg%3e') !important;
+        mask-image: url('data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3e%3cpath d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/%3e%3c/svg%3e') !important;
+        -webkit-mask-size: 12px 12px !important;
+        mask-size: 12px 12px !important;
+        -webkit-mask-repeat: no-repeat !important;
+        mask-repeat: no-repeat !important;
+        -webkit-mask-position: center !important;
+        mask-position: center !important;
+        background-image: none !important;
+      }
+
+      &:hover:not(:disabled) {
+        background-image: none !important;
+        &:checked {
+          background-color: var(--fluent-text) !important;
+        }
+      }
+
+      &:disabled {
+        background-color: transparent !important;
+        cursor: not-allowed !important;
+        opacity: 0.5 !important;
+        background-image: none !important;
+
+        &:checked {
+          background-color: var(--fluent-text-disabled) !important;
+          background-image: none !important;
+        }
+      }
+    }
+  }
+
+  // Single-select dropdown option checkmark (FluentUI style)
+  &:not([multiple]) > ul.dropdown > li,
+  &:not([multiple]) > ul.preview > li {
+    position: relative !important;
+    padding-left: 32px !important;
+
+    &::before {
+      content: "" !important;
+      position: absolute !important;
+      left: 10px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      width: 12px !important;
+      height: 12px !important;
+      background-color: transparent !important;
+      transition: background-color 0.1s ease !important;
+    }
+
+    &[selected]::before {
+      background-color: var(--fluent-text) !important;
+      -webkit-mask-image: url('data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3e%3cpath d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/%3e%3c/svg%3e') !important;
+      mask-image: url('data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3e%3cpath d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/%3e%3c/svg%3e') !important;
+      -webkit-mask-size: 12px 12px !important;
+      mask-size: 12px 12px !important;
+      -webkit-mask-repeat: no-repeat !important;
+      mask-repeat: no-repeat !important;
+      -webkit-mask-position: center !important;
+      mask-position: center !important;
     }
   }
 }

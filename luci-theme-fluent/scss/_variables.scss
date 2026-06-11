@@ -152,7 +152,8 @@
 
   // Input
   --fluent-input-height: var(--fluent-control-height, 42px);
-  --fluent-input-border: #616161; // Grey38 (FluentUI default)
+  --fluent-input-border: #d1d1d1; // --colorNeutralStroke1: #d1d1d1;
+  --fluent-input-border-bottom: #616161; // Grey38 (FluentUI default)
   --fluent-input-border-hover: #242424; // Grey14
   --fluent-input-border-focus: #0078d4; // BrandBlue
   --fluent-input-bg: #ffffff;

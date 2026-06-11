@@ -90,7 +90,8 @@
   --fluent-header-text: #ffffff;
   --fluent-control-height: 42px;
   --fluent-input-height: var(--fluent-control-height, 42px);
-  --fluent-input-border: #616161;
+  --fluent-input-border: #d1d1d1;
+  --fluent-input-border-bottom: #616161;
   --fluent-input-border-hover: #242424;
   --fluent-input-border-focus: #0078d4;
   --fluent-input-bg: #ffffff;
@@ -1002,10 +1003,11 @@ input[type=url] {
   color: var(--fluent-text);
   background: var(--fluent-input-bg);
   border: 1px solid var(--fluent-input-border);
-  border-bottom-width: 2px;
-  border-bottom-color: var(--fluent-input-border);
+  border-bottom-width: 1px;
+  border-bottom-color: var(--fluent-input-border-bottom);
   border-radius: var(--fluent-radius-md);
   transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  padding-bottom: 1px;
 }
 input[type=text]:hover,
 input[type=password]:hover,
@@ -1014,6 +1016,8 @@ input[type=number]:hover,
 input[type=search]:hover,
 input[type=tel]:hover,
 input[type=url]:hover {
+  border-bottom-width: 2px;
+  padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-hover);
 }
 input[type=text]:focus,
@@ -1023,6 +1027,8 @@ input[type=number]:focus,
 input[type=search]:focus,
 input[type=tel]:focus,
 input[type=url]:focus {
+  border-bottom-width: 2px;
+  padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-focus);
   outline: none;
 }
@@ -1067,17 +1073,22 @@ input[type=url] {
   color: var(--fluent-text);
   background: var(--fluent-input-bg);
   border: 1px solid var(--fluent-input-border);
-  border-bottom-width: 2px;
-  border-bottom-color: var(--fluent-input-border);
+  border-bottom-width: 1px;
+  border-bottom-color: var(--fluent-input-border-bottom);
   border-radius: var(--fluent-radius-md);
   transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  padding-bottom: 1px;
 }
 .cbi-input-text:hover,
 .cbi-input-password:hover {
+  border-bottom-width: 2px;
+  padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-hover);
 }
 .cbi-input-text:focus,
 .cbi-input-password:focus {
+  border-bottom-width: 2px;
+  padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-focus);
   outline: none;
 }
@@ -2586,15 +2597,20 @@ td > .ifacebadge,
   color: var(--fluent-text);
   background: var(--fluent-input-bg);
   border: 1px solid var(--fluent-input-border);
-  border-bottom-width: 2px;
-  border-bottom-color: var(--fluent-input-border);
+  border-bottom-width: 1px;
+  border-bottom-color: var(--fluent-input-border-bottom);
   border-radius: var(--fluent-radius-md);
   transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  padding-bottom: 1px;
 }
 .zonebadge > input[type=text]:hover {
+  border-bottom-width: 2px;
+  padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-hover);
 }
 .zonebadge > input[type=text]:focus {
+  border-bottom-width: 2px;
+  padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-focus);
   outline: none;
 }
@@ -4206,15 +4222,20 @@ code::-webkit-scrollbar-thumb:hover {
   color: var(--fluent-text);
   background: var(--fluent-input-bg);
   border: 1px solid var(--fluent-input-border);
-  border-bottom-width: 2px;
-  border-bottom-color: var(--fluent-input-border);
+  border-bottom-width: 1px;
+  border-bottom-color: var(--fluent-input-border-bottom);
   border-radius: var(--fluent-radius-md);
   transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  padding-bottom: 1px;
 }
 .cbi-dropdown:hover {
+  border-bottom-width: 2px;
+  padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-hover);
 }
 .cbi-dropdown:focus {
+  border-bottom-width: 2px;
+  padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-focus);
   outline: none;
 }
@@ -4546,17 +4567,22 @@ code::-webkit-scrollbar-thumb:hover {
   color: var(--fluent-text);
   background: var(--fluent-input-bg);
   border: 1px solid var(--fluent-input-border);
-  border-bottom-width: 2px;
-  border-bottom-color: var(--fluent-input-border);
+  border-bottom-width: 1px;
+  border-bottom-color: var(--fluent-input-border-bottom);
   border-radius: var(--fluent-radius-md);
   transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  padding-bottom: 1px;
 }
 .cbi-dropdown > select:hover,
 .cbi-dropdown > .cbi-input-select:hover {
+  border-bottom-width: 2px;
+  padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-hover);
 }
 .cbi-dropdown > select:focus,
 .cbi-dropdown > .cbi-input-select:focus {
+  border-bottom-width: 2px;
+  padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-focus);
   outline: none;
 }
@@ -5293,15 +5319,20 @@ code::-webkit-scrollbar-thumb:hover {
   color: var(--fluent-text);
   background: var(--fluent-input-bg);
   border: 1px solid var(--fluent-input-border);
-  border-bottom-width: 2px;
-  border-bottom-color: var(--fluent-input-border);
+  border-bottom-width: 1px;
+  border-bottom-color: var(--fluent-input-border-bottom);
   border-radius: var(--fluent-radius-md);
   transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  padding-bottom: 1px;
 }
 .cbi-dynlist > .add-item > input:hover {
+  border-bottom-width: 2px;
+  padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-hover);
 }
 .cbi-dynlist > .add-item > input:focus {
+  border-bottom-width: 2px;
+  padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-focus);
   outline: none;
 }
@@ -5479,15 +5510,20 @@ code::-webkit-scrollbar-thumb:hover {
   color: var(--fluent-text);
   background: var(--fluent-input-bg);
   border: 1px solid var(--fluent-input-border);
-  border-bottom-width: 2px;
-  border-bottom-color: var(--fluent-input-border);
+  border-bottom-width: 1px;
+  border-bottom-color: var(--fluent-input-border-bottom);
   border-radius: var(--fluent-radius-md);
   transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  padding-bottom: 1px;
 }
 .password-input input:hover {
+  border-bottom-width: 2px;
+  padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-hover);
 }
 .password-input input:focus {
+  border-bottom-width: 2px;
+  padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-focus);
   outline: none;
 }
@@ -5861,15 +5897,20 @@ textarea, .cbi-input-textarea {
   color: var(--fluent-text);
   background: var(--fluent-input-bg);
   border: 1px solid var(--fluent-input-border);
-  border-bottom-width: 2px;
-  border-bottom-color: var(--fluent-input-border);
+  border-bottom-width: 1px;
+  border-bottom-color: var(--fluent-input-border-bottom);
   border-radius: var(--fluent-radius-md);
   transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  padding-bottom: 1px;
 }
 textarea:hover, .cbi-input-textarea:hover {
+  border-bottom-width: 2px;
+  padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-hover);
 }
 textarea:focus, .cbi-input-textarea:focus {
+  border-bottom-width: 2px;
+  padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-focus);
   outline: none;
 }
@@ -5934,15 +5975,20 @@ select, select.cbi-input-select {
   color: var(--fluent-text);
   background: var(--fluent-input-bg);
   border: 1px solid var(--fluent-input-border);
-  border-bottom-width: 2px;
-  border-bottom-color: var(--fluent-input-border);
+  border-bottom-width: 1px;
+  border-bottom-color: var(--fluent-input-border-bottom);
   border-radius: var(--fluent-radius-md);
   transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  padding-bottom: 1px;
 }
 select:hover {
+  border-bottom-width: 2px;
+  padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-hover);
 }
 select:focus {
+  border-bottom-width: 2px;
+  padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-focus);
   outline: none;
 }

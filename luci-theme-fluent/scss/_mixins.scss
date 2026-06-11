@@ -181,16 +181,21 @@ $breakpoint-xxl: 1400px;
   color: var(--fluent-text);
   background: var(--fluent-input-bg);
   border: 1px solid var(--fluent-input-border);
-  border-bottom-width: 2px;
-  border-bottom-color: var(--fluent-input-border);
+  border-bottom-width: 1px;
+  border-bottom-color: var(--fluent-input-border-bottom);
   border-radius: var(--fluent-radius-md);
   transition: border-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  padding-bottom: 1px;
 
   &:hover {
+    border-bottom-width: 2px;
+    padding-bottom: 0px;
     border-bottom-color: var(--fluent-input-border-hover);
   }
 
   &:focus {
+    border-bottom-width: 2px;
+    padding-bottom: 0px;
     border-bottom-color: var(--fluent-input-border-focus);
     outline: none;
   }

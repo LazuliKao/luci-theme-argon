@@ -3117,6 +3117,8 @@ ul.tabs,
 ul.cbi-tabmenu {
   display: flex;
   align-items: stretch;
+  width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
   position: relative;
   padding: 0;
@@ -3242,11 +3244,15 @@ ul.cbi-tabmenu > li.cbi-tab-disabled > a:hover {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  width: 100%;
+  max-width: 100%;
 }
 #tabmenu > ul.tabs,
 .tabmenu > ul.tabs {
   display: flex;
   align-items: stretch;
+  width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
   position: relative;
   padding: 0;

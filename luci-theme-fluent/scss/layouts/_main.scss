@@ -2,11 +2,18 @@
   > .main-right {
     > #maincontent {
       flex-grow: 1;
-      overflow: auto;
+      overflow-y: auto;
+      overflow-x: hidden;
       width: 100%;
+      max-width: 100%;
       padding: 10px;
+      box-sizing: border-box;
+
       // Title styling for content pages
       > .container {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
         > h2[name="content"] {
           margin-bottom: 15px;
         }

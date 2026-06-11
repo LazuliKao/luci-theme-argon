@@ -1703,6 +1703,7 @@ body.modal-overlay-active #modal_overlay {
   flex-direction: column;
   font-family: var(--fluent-font-family);
   color: var(--fluent-text);
+  width: 100%;
   min-width: 0;
   max-width: 100%;
 }
@@ -7621,9 +7622,17 @@ body > div.main > div.main-right > header .theme-toggle[data-active-theme=dark]:
 
 .main > .main-right > #maincontent {
   flex-grow: 1;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   width: 100%;
+  max-width: 100%;
   padding: 10px;
+  box-sizing: border-box;
+}
+.main > .main-right > #maincontent > .container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .main > .main-right > #maincontent > .container > h2[name=content] {
   margin-bottom: 15px;

@@ -1957,7 +1957,7 @@ body.modal-overlay-active #modal_overlay {
 .uci-dialog {
   animation: slideInUp var(--fluent-duration-normal) var(--fluent-easing-decelerate);
   background: var(--fluent-modal-bg);
-  border: 1px solid var(--fluent-border);
+  border: none;
   border-radius: var(--fluent-radius-lg);
   box-shadow: var(--fluent-shadow-xl);
   color: var(--fluent-text);
@@ -2116,7 +2116,7 @@ body.modal-overlay-active #modal_overlay {
   margin-top: var(--fluent-space-xl);
   padding: var(--fluent-space-md) var(--fluent-space-lg);
   background: color-mix(in srgb, var(--fluent-bg-card) 92%, transparent);
-  border: 1px solid var(--fluent-border);
+  border: none;
   border-radius: var(--fluent-radius-lg);
   box-shadow: var(--fluent-shadow-lg);
 }

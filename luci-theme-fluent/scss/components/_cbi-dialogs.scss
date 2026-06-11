@@ -7,7 +7,7 @@
 .uci-dialog {
   @include slide-in-up;
   background: var(--fluent-modal-bg);
-  border: 1px solid var(--fluent-border);
+  border: none; // FluentUI borderless style
   border-radius: var(--fluent-radius-lg);
   box-shadow: var(--fluent-shadow-xl);
   color: var(--fluent-text);
@@ -171,7 +171,7 @@
   margin-top: var(--fluent-space-xl);
   padding: var(--fluent-space-md) var(--fluent-space-lg);
   background: color-mix(in srgb, var(--fluent-bg-card) 92%, transparent);
-  border: 1px solid var(--fluent-border);
+  border: none; // FluentUI borderless style
   border-radius: var(--fluent-radius-lg);
   box-shadow: var(--fluent-shadow-lg);
 

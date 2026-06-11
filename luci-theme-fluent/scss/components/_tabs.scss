@@ -1,31 +1,21 @@
 // ============================================================
-// TABS - FluentUI 2 Tab Styles
-// Tab height: 44px, Indicator: 3px, Focus: 2px black outline
-// ============================================================
-
-// Two tab structures:
-//   1. ul.cbi-tabmenu (LuCI form tabs) - uses ::after indicator with scaleX animation
-//   2. #tabmenu/.tabmenu > ul.tabs (header tabs) - uses border-bottom indicator
-// ============================================================
-
-// ============================================================
-// STRUCTURE 1: ul.cbi-tabmenu (LuCI form tabs)
-// Animated bottom indicator using scaleX transform
+// TABS - FluentUI 2 Tab / Pivot Styles
+// Clean transparent background, underline indicators on hover/active
 // ============================================================
 
 ul.tabs,
 ul.cbi-tabmenu {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
   position: relative;
   padding: 0;
   margin: 0;
-  gap: 0;
+  gap: var(--fluent-space-sm, 8px);
   list-style: none;
-  border-bottom: 1px solid var(--fluent-border);
+  border-bottom: none !important; // Clean floating look, no divider line
   font-family: var(--fluent-font-family);
   font-size: var(--fluent-font-size-base);
   font-weight: var(--fluent-font-weight-regular);
@@ -71,10 +61,9 @@ ul.cbi-tabmenu {
       justify-content: center;
       box-sizing: border-box;
       position: relative;
-      min-height: var(--fluent-tab-height);
-      padding: var(--fluent-space-xs) var(--fluent-space-lg);
-      margin-bottom: -1px;
-      background-color: transparent;
+      min-height: var(--fluent-tab-height, 44px);
+      padding: var(--fluent-space-xs, 4px) var(--fluent-space-lg, 16px);
+      background-color: transparent !important;
       border: none;
       font-family: var(--fluent-font-family);
       font-size: var(--fluent-font-size-base);
@@ -87,26 +76,34 @@ ul.cbi-tabmenu {
       white-space: nowrap;
       transition:
         color var(--fluent-duration-fast) var(--fluent-easing-standard),
-        background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+        font-weight var(--fluent-duration-fast) var(--fluent-easing-standard);
 
-      // Animated bottom indicator - scaleX transform
+      // FluentUI 2 Pivot indicator (underlines matching text width)
       &::after {
         content: "";
         position: absolute;
-        left: 0;
-        right: 0;
-        bottom: -1px;
-        height: var(--fluent-tab-indicator-height);
-        background-color: var(--fluent-primary);
+        left: var(--fluent-space-lg, 16px);
+        right: var(--fluent-space-lg, 16px);
+        bottom: 0;
+        height: var(--fluent-tab-indicator-height, 3px);
+        background-color: transparent;
+        border-radius: calc(var(--fluent-tab-indicator-height, 3px) / 2);
         transform: scaleX(0);
         transform-origin: center;
-        transition: transform 0.2s cubic-bezier(0.4, 0, 0.23, 1);
+        transition:
+          transform var(--fluent-duration-fast) var(--fluent-easing-standard),
+          background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
       }
 
       // Hover state
       &:hover {
         color: var(--fluent-text);
-        background-color: var(--fluent-bg-hover);
+        background-color: transparent !important;
+
+        &::after {
+          transform: scaleX(1);
+          background-color: var(--fluent-border-hover);
+        }
       }
 
       // Focus indicator
@@ -116,33 +113,48 @@ ul.cbi-tabmenu {
       }
     }
 
-    // Active/selected state (.cbi-tab)
+    // Active/selected state (.cbi-tab, .active)
     &.cbi-tab > a,
     &.active > a {
-      color: var(--fluent-primary);
+      color: var(--fluent-text);
       font-weight: var(--fluent-font-weight-semibold);
-      background-color: transparent;
+      background-color: transparent !important;
 
-      // Expand indicator on active tab
       &::after {
         transform: scaleX(1);
+        background-color: var(--fluent-primary);
       }
 
-      // Active + hover state
       &:hover {
-        color: var(--fluent-primary);
-        background-color: rgba(0, 120, 212, 0.04);
+        color: var(--fluent-text);
+        background-color: transparent !important;
+
+        &::after {
+          background-color: var(--fluent-primary);
+        }
       }
     }
 
-    // Disabled/unselected state (.cbi-tab-disabled)
+    // Unselected state (.cbi-tab-disabled)
     &.cbi-tab-disabled > a {
       color: var(--fluent-text-secondary);
       cursor: pointer;
 
       &:hover {
         color: var(--fluent-text);
-        background-color: var(--fluent-bg-hover);
+        background-color: transparent !important;
+      }
+    }
+
+    // Truly disabled state
+    &.disabled > a,
+    &[disabled] > a {
+      color: var(--fluent-text-disabled);
+      cursor: not-allowed;
+      pointer-events: none;
+
+      &::after {
+        display: none !important;
       }
     }
   }
@@ -150,7 +162,7 @@ ul.cbi-tabmenu {
 
 // ============================================================
 // STRUCTURE 2: #tabmenu / .tabmenu > ul.tabs (header tabs)
-// Border-bottom indicator with horizontal scrollbar
+// Shared layout structure, keep wrapper constraints if any
 // ============================================================
 
 #tabmenu,
@@ -160,135 +172,12 @@ ul.cbi-tabmenu {
   padding: 0;
   width: 100%;
   max-width: 100%;
-
-  > ul.tabs {
-    display: flex;
-    align-items: stretch;
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    position: relative;
-    padding: 0;
-    margin: 0;
-    gap: 0;
-    list-style: none;
-    border-bottom: 2px solid var(--fluent-border);
-    font-family: var(--fluent-font-family);
-    font-size: var(--fluent-font-size-base);
-    font-weight: var(--fluent-font-weight-regular);
-    line-height: var(--fluent-line-height-normal);
-
-    // Horizontal scrolling for overflow
-    overflow-x: auto;
-    overflow-y: hidden;
-    scrollbar-width: thin;
-    scrollbar-color: var(--fluent-scrollbar-thumb-bg) transparent;
-
-    // Horizontal scrollbar styling - Webkit
-    &::-webkit-scrollbar {
-      height: 16px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: transparent;
-      margin: 0 6px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--fluent-scrollbar-thumb-bg);
-      border-radius: var(--fluent-radius-lg);
-      border: 3px solid transparent;
-      background-clip: padding-box;
-      transition: background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
-
-      &:hover {
-        background-color: var(--fluent-scrollbar-thumb-bg-hover);
-      }
-    }
-
-    &:hover::-webkit-scrollbar-thumb {
-      background-color: var(--fluent-scrollbar-thumb-bg);
-
-      &:hover {
-        background-color: var(--fluent-scrollbar-thumb-bg-hover);
-      }
-    }
-
-    > li {
-      display: flex;
-      align-items: center;
-      box-sizing: border-box;
-      position: relative;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      flex-shrink: 0; // Prevent tabs from squishing
-
-      > a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-sizing: border-box;
-        position: relative;
-        min-height: var(--fluent-tab-height);
-        padding: 6px var(--fluent-space-sm);
-        background-color: transparent;
-        border: none;
-        border-bottom: 2px solid transparent;
-        font-family: var(--fluent-font-family);
-        font-size: var(--fluent-font-size-base);
-        font-weight: var(--fluent-font-weight-regular);
-        line-height: var(--fluent-line-height-normal);
-        color: var(--fluent-text-secondary);
-        text-decoration: none;
-        cursor: pointer;
-        user-select: none;
-        white-space: nowrap;
-        transition:
-          color var(--fluent-duration-fast) var(--fluent-easing-standard),
-          border-color var(--fluent-duration-fast) var(--fluent-easing-standard),
-          background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
-
-        // Hover state
-        &:hover {
-          color: var(--fluent-text);
-          background-color: transparent;
-        }
-
-        // Focus indicator
-        &:focus-visible {
-          outline: 2px solid var(--fluent-focus-color);
-          outline-offset: -2px;
-        }
-      }
-
-      // Active/selected state
-      &.active > a {
-        color: var(--fluent-primary);
-        font-weight: var(--fluent-font-weight-semibold);
-        border-bottom-color: var(--fluent-primary);
-
-        &:hover {
-          color: var(--fluent-primary);
-        }
-      }
-
-      // Disabled state
-      &.disabled > a,
-      &[disabled] > a {
-        color: var(--fluent-text-disabled);
-        cursor: not-allowed;
-        pointer-events: none;
-      }
-    }
-  }
 }
 
 // ============================================================
 // Tab content panels
 // ============================================================
 
-// Tab content sections
 [data-tab-title] {
   padding: var(--fluent-space-sm);
 }
@@ -303,6 +192,7 @@ ul.cbi-tabmenu {
   height: auto;
   opacity: 1;
 }
+
 .cbi-tabcontainer {
   padding: var(--fluent-space-lg) 0;
 }

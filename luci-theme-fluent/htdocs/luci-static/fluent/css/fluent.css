@@ -3197,16 +3197,16 @@ div.td[data-type=fvalue] {
 ul.tabs,
 ul.cbi-tabmenu {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
   position: relative;
   padding: 0;
   margin: 0;
-  gap: 0;
+  gap: var(--fluent-space-sm, 8px);
   list-style: none;
-  border-bottom: 1px solid var(--fluent-border);
+  border-bottom: none !important;
   font-family: var(--fluent-font-family);
   font-size: var(--fluent-font-size-base);
   font-weight: var(--fluent-font-weight-regular);
@@ -3252,10 +3252,9 @@ ul.cbi-tabmenu > li > a {
   justify-content: center;
   box-sizing: border-box;
   position: relative;
-  min-height: var(--fluent-tab-height);
-  padding: var(--fluent-space-xs) var(--fluent-space-lg);
-  margin-bottom: -1px;
-  background-color: transparent;
+  min-height: var(--fluent-tab-height, 44px);
+  padding: var(--fluent-space-xs, 4px) var(--fluent-space-lg, 16px);
+  background-color: transparent !important;
   border: none;
   font-family: var(--fluent-font-family);
   font-size: var(--fluent-font-size-base);
@@ -3266,25 +3265,31 @@ ul.cbi-tabmenu > li > a {
   cursor: pointer;
   user-select: none;
   white-space: nowrap;
-  transition: color var(--fluent-duration-fast) var(--fluent-easing-standard), background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  transition: color var(--fluent-duration-fast) var(--fluent-easing-standard), font-weight var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
 ul.tabs > li > a::after,
 ul.cbi-tabmenu > li > a::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: var(--fluent-tab-indicator-height);
-  background-color: var(--fluent-primary);
+  left: var(--fluent-space-lg, 16px);
+  right: var(--fluent-space-lg, 16px);
+  bottom: 0;
+  height: var(--fluent-tab-indicator-height, 3px);
+  background-color: transparent;
+  border-radius: calc(var(--fluent-tab-indicator-height, 3px) / 2);
   transform: scaleX(0);
   transform-origin: center;
-  transition: transform 0.2s cubic-bezier(0.4, 0, 0.23, 1);
+  transition: transform var(--fluent-duration-fast) var(--fluent-easing-standard), background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
 ul.tabs > li > a:hover,
 ul.cbi-tabmenu > li > a:hover {
   color: var(--fluent-text);
-  background-color: var(--fluent-bg-hover);
+  background-color: transparent !important;
+}
+ul.tabs > li > a:hover::after,
+ul.cbi-tabmenu > li > a:hover::after {
+  transform: scaleX(1);
+  background-color: var(--fluent-border-hover);
 }
 ul.tabs > li > a:focus-visible,
 ul.cbi-tabmenu > li > a:focus-visible {
@@ -3294,20 +3299,26 @@ ul.cbi-tabmenu > li > a:focus-visible {
 ul.tabs > li.cbi-tab > a, ul.tabs > li.active > a,
 ul.cbi-tabmenu > li.cbi-tab > a,
 ul.cbi-tabmenu > li.active > a {
-  color: var(--fluent-primary);
+  color: var(--fluent-text);
   font-weight: var(--fluent-font-weight-semibold);
-  background-color: transparent;
+  background-color: transparent !important;
 }
 ul.tabs > li.cbi-tab > a::after, ul.tabs > li.active > a::after,
 ul.cbi-tabmenu > li.cbi-tab > a::after,
 ul.cbi-tabmenu > li.active > a::after {
   transform: scaleX(1);
+  background-color: var(--fluent-primary);
 }
 ul.tabs > li.cbi-tab > a:hover, ul.tabs > li.active > a:hover,
 ul.cbi-tabmenu > li.cbi-tab > a:hover,
 ul.cbi-tabmenu > li.active > a:hover {
-  color: var(--fluent-primary);
-  background-color: rgba(0, 120, 212, 0.04);
+  color: var(--fluent-text);
+  background-color: transparent !important;
+}
+ul.tabs > li.cbi-tab > a:hover::after, ul.tabs > li.active > a:hover::after,
+ul.cbi-tabmenu > li.cbi-tab > a:hover::after,
+ul.cbi-tabmenu > li.active > a:hover::after {
+  background-color: var(--fluent-primary);
 }
 ul.tabs > li.cbi-tab-disabled > a,
 ul.cbi-tabmenu > li.cbi-tab-disabled > a {
@@ -3317,7 +3328,19 @@ ul.cbi-tabmenu > li.cbi-tab-disabled > a {
 ul.tabs > li.cbi-tab-disabled > a:hover,
 ul.cbi-tabmenu > li.cbi-tab-disabled > a:hover {
   color: var(--fluent-text);
-  background-color: var(--fluent-bg-hover);
+  background-color: transparent !important;
+}
+ul.tabs > li.disabled > a, ul.tabs > li[disabled] > a,
+ul.cbi-tabmenu > li.disabled > a,
+ul.cbi-tabmenu > li[disabled] > a {
+  color: var(--fluent-text-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+ul.tabs > li.disabled > a::after, ul.tabs > li[disabled] > a::after,
+ul.cbi-tabmenu > li.disabled > a::after,
+ul.cbi-tabmenu > li[disabled] > a::after {
+  display: none !important;
 }
 
 #tabmenu,
@@ -3327,118 +3350,6 @@ ul.cbi-tabmenu > li.cbi-tab-disabled > a:hover {
   padding: 0;
   width: 100%;
   max-width: 100%;
-}
-#tabmenu > ul.tabs,
-.tabmenu > ul.tabs {
-  display: flex;
-  align-items: stretch;
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  position: relative;
-  padding: 0;
-  margin: 0;
-  gap: 0;
-  list-style: none;
-  border-bottom: 2px solid var(--fluent-border);
-  font-family: var(--fluent-font-family);
-  font-size: var(--fluent-font-size-base);
-  font-weight: var(--fluent-font-weight-regular);
-  line-height: var(--fluent-line-height-normal);
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: var(--fluent-scrollbar-thumb-bg) transparent;
-}
-#tabmenu > ul.tabs::-webkit-scrollbar,
-.tabmenu > ul.tabs::-webkit-scrollbar {
-  height: 16px;
-}
-#tabmenu > ul.tabs::-webkit-scrollbar-track,
-.tabmenu > ul.tabs::-webkit-scrollbar-track {
-  background: transparent;
-  margin: 0 6px;
-}
-#tabmenu > ul.tabs::-webkit-scrollbar-thumb,
-.tabmenu > ul.tabs::-webkit-scrollbar-thumb {
-  background-color: var(--fluent-scrollbar-thumb-bg);
-  border-radius: var(--fluent-radius-lg);
-  border: 3px solid transparent;
-  background-clip: padding-box;
-  transition: background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
-}
-#tabmenu > ul.tabs::-webkit-scrollbar-thumb:hover,
-.tabmenu > ul.tabs::-webkit-scrollbar-thumb:hover {
-  background-color: var(--fluent-scrollbar-thumb-bg-hover);
-}
-#tabmenu > ul.tabs:hover::-webkit-scrollbar-thumb,
-.tabmenu > ul.tabs:hover::-webkit-scrollbar-thumb {
-  background-color: var(--fluent-scrollbar-thumb-bg);
-}
-#tabmenu > ul.tabs:hover::-webkit-scrollbar-thumb:hover,
-.tabmenu > ul.tabs:hover::-webkit-scrollbar-thumb:hover {
-  background-color: var(--fluent-scrollbar-thumb-bg-hover);
-}
-#tabmenu > ul.tabs > li,
-.tabmenu > ul.tabs > li {
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-  position: relative;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  flex-shrink: 0;
-}
-#tabmenu > ul.tabs > li > a,
-.tabmenu > ul.tabs > li > a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  position: relative;
-  min-height: var(--fluent-tab-height);
-  padding: 6px var(--fluent-space-sm);
-  background-color: transparent;
-  border: none;
-  border-bottom: 2px solid transparent;
-  font-family: var(--fluent-font-family);
-  font-size: var(--fluent-font-size-base);
-  font-weight: var(--fluent-font-weight-regular);
-  line-height: var(--fluent-line-height-normal);
-  color: var(--fluent-text-secondary);
-  text-decoration: none;
-  cursor: pointer;
-  user-select: none;
-  white-space: nowrap;
-  transition: color var(--fluent-duration-fast) var(--fluent-easing-standard), border-color var(--fluent-duration-fast) var(--fluent-easing-standard), background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
-}
-#tabmenu > ul.tabs > li > a:hover,
-.tabmenu > ul.tabs > li > a:hover {
-  color: var(--fluent-text);
-  background-color: transparent;
-}
-#tabmenu > ul.tabs > li > a:focus-visible,
-.tabmenu > ul.tabs > li > a:focus-visible {
-  outline: 2px solid var(--fluent-focus-color);
-  outline-offset: -2px;
-}
-#tabmenu > ul.tabs > li.active > a,
-.tabmenu > ul.tabs > li.active > a {
-  color: var(--fluent-primary);
-  font-weight: var(--fluent-font-weight-semibold);
-  border-bottom-color: var(--fluent-primary);
-}
-#tabmenu > ul.tabs > li.active > a:hover,
-.tabmenu > ul.tabs > li.active > a:hover {
-  color: var(--fluent-primary);
-}
-#tabmenu > ul.tabs > li.disabled > a, #tabmenu > ul.tabs > li[disabled] > a,
-.tabmenu > ul.tabs > li.disabled > a,
-.tabmenu > ul.tabs > li[disabled] > a {
-  color: var(--fluent-text-disabled);
-  cursor: not-allowed;
-  pointer-events: none;
 }
 
 [data-tab-title] {

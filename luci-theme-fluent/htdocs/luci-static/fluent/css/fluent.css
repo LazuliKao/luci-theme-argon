@@ -1311,11 +1311,16 @@ input[type=search]::-webkit-search-cancel-button {
   min-width: 120px;
   max-width: 320px;
 }
-.td.nowrap, .td:has(.ifacebadge), .td:has(input[type=checkbox]), .td:has(input[type=radio]), .td.cbi-section-actions,
+.td.nowrap, .td:has(.ifacebadge), .td:has(input[type=checkbox]), .td:has(input[type=radio]), .td:has(.cbi-button), .td:has(.btn), .td:has(button), .td[data-widget="CBI.ButtonValue"], .td[data-widget="CBI.FlagValue"], .td.cbi-section-actions,
 .th.nowrap,
 .th:has(.ifacebadge),
 .th:has(input[type=checkbox]),
 .th:has(input[type=radio]),
+.th:has(.cbi-button),
+.th:has(.btn),
+.th:has(button),
+.th[data-widget="CBI.ButtonValue"],
+.th[data-widget="CBI.FlagValue"],
 .th.cbi-section-actions {
   white-space: nowrap !important;
   word-break: normal !important;

@@ -138,6 +138,8 @@
   --fluent-scrollbar-track-bg: transparent;
   --fluent-scrollbar-thumb-bg: #c2c2c2;
   --fluent-scrollbar-thumb-bg-hover: #a0a0a0;
+  --fluent-scrollbar-thumb-horizontal-bg: rgba(0, 0, 0, 0.15);
+  --fluent-scrollbar-thumb-horizontal-bg-hover: rgba(0, 0, 0, 0.35);
   --fluent-progress-height: 4px;
   --fluent-progress-bg: #e0e0e0;
   --fluent-progress-bar-bg: #0078d4;
@@ -305,6 +307,9 @@ body::-webkit-scrollbar {
   width: var(--fluent-scrollbar-width);
   height: var(--fluent-scrollbar-width);
 }
+body::-webkit-scrollbar:horizontal {
+  height: var(--fluent-scrollbar-horizontal-height, 5px);
+}
 body::-webkit-scrollbar-track {
   background: var(--fluent-scrollbar-track-bg);
 }
@@ -314,6 +319,12 @@ body::-webkit-scrollbar-thumb {
 }
 body::-webkit-scrollbar-thumb:hover {
   background: var(--fluent-scrollbar-thumb-bg-hover);
+}
+body::-webkit-scrollbar-thumb:horizontal {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg, rgba(0, 0, 0, 0.15));
+}
+body::-webkit-scrollbar-thumb:horizontal:hover {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, rgba(0, 0, 0, 0.35));
 }
 
 .sr-only {
@@ -1277,6 +1288,10 @@ input[type=search]::-webkit-search-cancel-button {
     width: var(--fluent-scrollbar-width);
     height: var(--fluent-scrollbar-width);
   }
+  .cbi-tblsection::-webkit-scrollbar:horizontal,
+  .cbi-section.cbi-tblsection::-webkit-scrollbar:horizontal {
+    height: var(--fluent-scrollbar-horizontal-height, 5px);
+  }
   .cbi-tblsection::-webkit-scrollbar-track,
   .cbi-section.cbi-tblsection::-webkit-scrollbar-track {
     background: var(--fluent-scrollbar-track-bg);
@@ -1289,6 +1304,14 @@ input[type=search]::-webkit-search-cancel-button {
   .cbi-tblsection::-webkit-scrollbar-thumb:hover,
   .cbi-section.cbi-tblsection::-webkit-scrollbar-thumb:hover {
     background: var(--fluent-scrollbar-thumb-bg-hover);
+  }
+  .cbi-tblsection::-webkit-scrollbar-thumb:horizontal,
+  .cbi-section.cbi-tblsection::-webkit-scrollbar-thumb:horizontal {
+    background: var(--fluent-scrollbar-thumb-horizontal-bg, rgba(0, 0, 0, 0.15));
+  }
+  .cbi-tblsection::-webkit-scrollbar-thumb:horizontal:hover,
+  .cbi-section.cbi-tblsection::-webkit-scrollbar-thumb:horizontal:hover {
+    background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, rgba(0, 0, 0, 0.35));
   }
 }
 
@@ -1446,6 +1469,10 @@ td.cbi-section-actions > div {
     width: var(--fluent-scrollbar-width);
     height: var(--fluent-scrollbar-width);
   }
+  .table::-webkit-scrollbar:horizontal,
+  .cbi-section-table::-webkit-scrollbar:horizontal {
+    height: var(--fluent-scrollbar-horizontal-height, 5px);
+  }
   .table::-webkit-scrollbar-track,
   .cbi-section-table::-webkit-scrollbar-track {
     background: var(--fluent-scrollbar-track-bg);
@@ -1458,6 +1485,14 @@ td.cbi-section-actions > div {
   .table::-webkit-scrollbar-thumb:hover,
   .cbi-section-table::-webkit-scrollbar-thumb:hover {
     background: var(--fluent-scrollbar-thumb-bg-hover);
+  }
+  .table::-webkit-scrollbar-thumb:horizontal,
+  .cbi-section-table::-webkit-scrollbar-thumb:horizontal {
+    background: var(--fluent-scrollbar-thumb-horizontal-bg, rgba(0, 0, 0, 0.15));
+  }
+  .table::-webkit-scrollbar-thumb:horizontal:hover,
+  .cbi-section-table::-webkit-scrollbar-thumb:horizontal:hover {
+    background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, rgba(0, 0, 0, 0.35));
   }
 }
 .main-left .nav {
@@ -1593,6 +1628,9 @@ body.modal-overlay-active #modal_overlay {
   width: var(--fluent-scrollbar-width);
   height: var(--fluent-scrollbar-width);
 }
+.modal::-webkit-scrollbar:horizontal {
+  height: var(--fluent-scrollbar-horizontal-height, 5px);
+}
 .modal::-webkit-scrollbar-track {
   background: var(--fluent-scrollbar-track-bg);
 }
@@ -1602,6 +1640,12 @@ body.modal-overlay-active #modal_overlay {
 }
 .modal::-webkit-scrollbar-thumb:hover {
   background: var(--fluent-scrollbar-thumb-bg-hover);
+}
+.modal::-webkit-scrollbar-thumb:horizontal {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg, rgba(0, 0, 0, 0.15));
+}
+.modal::-webkit-scrollbar-thumb:horizontal:hover {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, rgba(0, 0, 0, 0.35));
 }
 .modal h4,
 .modal .modal-header {
@@ -2044,6 +2088,9 @@ body.modal-overlay-active:has(#modal_overlay .modal.alert-message) #modal_overla
   width: var(--fluent-scrollbar-width);
   height: var(--fluent-scrollbar-width);
 }
+.uci-change-list::-webkit-scrollbar:horizontal {
+  height: var(--fluent-scrollbar-horizontal-height, 5px);
+}
 .uci-change-list::-webkit-scrollbar-track {
   background: var(--fluent-scrollbar-track-bg);
 }
@@ -2053,6 +2100,12 @@ body.modal-overlay-active:has(#modal_overlay .modal.alert-message) #modal_overla
 }
 .uci-change-list::-webkit-scrollbar-thumb:hover {
   background: var(--fluent-scrollbar-thumb-bg-hover);
+}
+.uci-change-list::-webkit-scrollbar-thumb:horizontal {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg, rgba(0, 0, 0, 0.15));
+}
+.uci-change-list::-webkit-scrollbar-thumb:horizontal:hover {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, rgba(0, 0, 0, 0.35));
 }
 .uci-change-list {
   display: flex;
@@ -2892,6 +2945,9 @@ td > .ifacebadge,
   width: var(--fluent-scrollbar-width);
   height: var(--fluent-scrollbar-width);
 }
+#syslog::-webkit-scrollbar:horizontal {
+  height: var(--fluent-scrollbar-horizontal-height, 5px);
+}
 #syslog::-webkit-scrollbar-track {
   background: var(--fluent-scrollbar-track-bg);
 }
@@ -2901,6 +2957,12 @@ td > .ifacebadge,
 }
 #syslog::-webkit-scrollbar-thumb:hover {
   background: var(--fluent-scrollbar-thumb-bg-hover);
+}
+#syslog::-webkit-scrollbar-thumb:horizontal {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg, rgba(0, 0, 0, 0.15));
+}
+#syslog::-webkit-scrollbar-thumb:horizontal:hover {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, rgba(0, 0, 0, 0.35));
 }
 #syslog {
   width: 100%;
@@ -2926,6 +2988,10 @@ td > .ifacebadge,
   width: var(--fluent-scrollbar-width);
   height: var(--fluent-scrollbar-width);
 }
+#diag-rc-output > pre::-webkit-scrollbar:horizontal,
+#command-rc-output > pre::-webkit-scrollbar:horizontal {
+  height: var(--fluent-scrollbar-horizontal-height, 5px);
+}
 #diag-rc-output > pre::-webkit-scrollbar-track,
 #command-rc-output > pre::-webkit-scrollbar-track {
   background: var(--fluent-scrollbar-track-bg);
@@ -2938,6 +3004,14 @@ td > .ifacebadge,
 #diag-rc-output > pre::-webkit-scrollbar-thumb:hover,
 #command-rc-output > pre::-webkit-scrollbar-thumb:hover {
   background: var(--fluent-scrollbar-thumb-bg-hover);
+}
+#diag-rc-output > pre::-webkit-scrollbar-thumb:horizontal,
+#command-rc-output > pre::-webkit-scrollbar-thumb:horizontal {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg, rgba(0, 0, 0, 0.15));
+}
+#diag-rc-output > pre::-webkit-scrollbar-thumb:horizontal:hover,
+#command-rc-output > pre::-webkit-scrollbar-thumb:horizontal:hover {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, rgba(0, 0, 0, 0.35));
 }
 #diag-rc-output > pre,
 #command-rc-output > pre {
@@ -3275,7 +3349,7 @@ ul.cbi-tabmenu {
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
-  scrollbar-color: var(--fluent-scrollbar-thumb-bg) transparent;
+  scrollbar-color: var(--fluent-scrollbar-thumb-horizontal-bg, var(--fluent-scrollbar-thumb-bg)) transparent;
 }
 ul.tabs::-webkit-scrollbar,
 ul.cbi-tabmenu::-webkit-scrollbar {
@@ -3287,12 +3361,12 @@ ul.cbi-tabmenu::-webkit-scrollbar-track {
 }
 ul.tabs::-webkit-scrollbar-thumb,
 ul.cbi-tabmenu::-webkit-scrollbar-thumb {
-  background-color: var(--fluent-scrollbar-thumb-bg);
+  background-color: var(--fluent-scrollbar-thumb-horizontal-bg, var(--fluent-scrollbar-thumb-bg));
   border-radius: var(--fluent-radius-md);
 }
 ul.tabs::-webkit-scrollbar-thumb:hover,
 ul.cbi-tabmenu::-webkit-scrollbar-thumb:hover {
-  background-color: var(--fluent-scrollbar-thumb-bg-hover);
+  background-color: var(--fluent-scrollbar-thumb-horizontal-bg-hover, var(--fluent-scrollbar-thumb-bg-hover));
 }
 ul.tabs .fluent-tab-slider,
 ul.cbi-tabmenu .fluent-tab-slider {
@@ -4048,6 +4122,9 @@ html::-webkit-scrollbar {
   width: var(--fluent-scrollbar-width);
   height: var(--fluent-scrollbar-width);
 }
+html::-webkit-scrollbar:horizontal {
+  height: var(--fluent-scrollbar-horizontal-height, 5px);
+}
 html::-webkit-scrollbar-track {
   background: var(--fluent-scrollbar-track-bg);
 }
@@ -4058,6 +4135,12 @@ html::-webkit-scrollbar-thumb {
 html::-webkit-scrollbar-thumb:hover {
   background: var(--fluent-scrollbar-thumb-bg-hover);
 }
+html::-webkit-scrollbar-thumb:horizontal {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg, rgba(0, 0, 0, 0.15));
+}
+html::-webkit-scrollbar-thumb:horizontal:hover {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, rgba(0, 0, 0, 0.35));
+}
 
 .cbi-section::-webkit-scrollbar,
 .modal::-webkit-scrollbar,
@@ -4067,6 +4150,14 @@ pre::-webkit-scrollbar,
 code::-webkit-scrollbar {
   width: var(--fluent-scrollbar-width);
   height: var(--fluent-scrollbar-width);
+}
+.cbi-section::-webkit-scrollbar:horizontal,
+.modal::-webkit-scrollbar:horizontal,
+.main-content::-webkit-scrollbar:horizontal,
+.sidebar::-webkit-scrollbar:horizontal,
+pre::-webkit-scrollbar:horizontal,
+code::-webkit-scrollbar:horizontal {
+  height: var(--fluent-scrollbar-horizontal-height, 5px);
 }
 .cbi-section::-webkit-scrollbar-track,
 .modal::-webkit-scrollbar-track,
@@ -4093,10 +4184,29 @@ pre::-webkit-scrollbar-thumb:hover,
 code::-webkit-scrollbar-thumb:hover {
   background: var(--fluent-scrollbar-thumb-bg-hover);
 }
+.cbi-section::-webkit-scrollbar-thumb:horizontal,
+.modal::-webkit-scrollbar-thumb:horizontal,
+.main-content::-webkit-scrollbar-thumb:horizontal,
+.sidebar::-webkit-scrollbar-thumb:horizontal,
+pre::-webkit-scrollbar-thumb:horizontal,
+code::-webkit-scrollbar-thumb:horizontal {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg, rgba(0, 0, 0, 0.15));
+}
+.cbi-section::-webkit-scrollbar-thumb:horizontal:hover,
+.modal::-webkit-scrollbar-thumb:horizontal:hover,
+.main-content::-webkit-scrollbar-thumb:horizontal:hover,
+.sidebar::-webkit-scrollbar-thumb:horizontal:hover,
+pre::-webkit-scrollbar-thumb:horizontal:hover,
+code::-webkit-scrollbar-thumb:horizontal:hover {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, rgba(0, 0, 0, 0.35));
+}
 
 .cbi-dropdown ul.dropdown::-webkit-scrollbar {
   width: var(--fluent-scrollbar-width);
   height: var(--fluent-scrollbar-width);
+}
+.cbi-dropdown ul.dropdown::-webkit-scrollbar:horizontal {
+  height: var(--fluent-scrollbar-horizontal-height, 5px);
 }
 .cbi-dropdown ul.dropdown::-webkit-scrollbar-track {
   background: var(--fluent-scrollbar-track-bg);
@@ -4107,6 +4217,12 @@ code::-webkit-scrollbar-thumb:hover {
 }
 .cbi-dropdown ul.dropdown::-webkit-scrollbar-thumb:hover {
   background: var(--fluent-scrollbar-thumb-bg-hover);
+}
+.cbi-dropdown ul.dropdown::-webkit-scrollbar-thumb:horizontal {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg, rgba(0, 0, 0, 0.15));
+}
+.cbi-dropdown ul.dropdown::-webkit-scrollbar-thumb:horizontal:hover {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, rgba(0, 0, 0, 0.35));
 }
 
 * {
@@ -7126,6 +7242,9 @@ body.login-page {
   width: var(--fluent-scrollbar-width);
   height: var(--fluent-scrollbar-width);
 }
+.main-left::-webkit-scrollbar:horizontal {
+  height: var(--fluent-scrollbar-horizontal-height, 5px);
+}
 .main-left::-webkit-scrollbar-track {
   background: var(--fluent-scrollbar-track-bg);
 }
@@ -7135,6 +7254,12 @@ body.login-page {
 }
 .main-left::-webkit-scrollbar-thumb:hover {
   background: var(--fluent-scrollbar-thumb-bg-hover);
+}
+.main-left::-webkit-scrollbar-thumb:horizontal {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg, rgba(0, 0, 0, 0.15));
+}
+.main-left::-webkit-scrollbar-thumb:horizontal:hover {
+  background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, rgba(0, 0, 0, 0.35));
 }
 .main-left .sidenav-header {
   display: flex;
@@ -7797,6 +7922,8 @@ body > div.main > div.main-right > header .theme-toggle[data-active-theme=dark]:
     --fluent-checkbox-hover-border: #ffffff;
     --fluent-scrollbar-thumb-bg: #525252;
     --fluent-scrollbar-thumb-bg-hover: #7a7a7a;
+    --fluent-scrollbar-thumb-horizontal-bg: rgba(255, 255, 255, 0.15);
+    --fluent-scrollbar-thumb-horizontal-bg-hover: rgba(255, 255, 255, 0.35);
     --fluent-progress-bg: #3d3d3d;
     --fluent-progress-bar-bg: #4da6ff;
     --fluent-login-bg: rgba(31, 31, 31, 0.92);
@@ -7884,6 +8011,8 @@ body > div.main > div.main-right > header .theme-toggle[data-active-theme=dark]:
   --fluent-checkbox-hover-border: #ffffff;
   --fluent-scrollbar-thumb-bg: #525252;
   --fluent-scrollbar-thumb-bg-hover: #7a7a7a;
+  --fluent-scrollbar-thumb-horizontal-bg: rgba(255, 255, 255, 0.15);
+  --fluent-scrollbar-thumb-horizontal-bg-hover: rgba(255, 255, 255, 0.35);
   --fluent-progress-bg: #3d3d3d;
   --fluent-progress-bar-bg: #4da6ff;
   --fluent-login-bg: rgba(31, 31, 31, 0.92);

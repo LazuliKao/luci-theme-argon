@@ -254,6 +254,10 @@ $breakpoint-xxl: 1400px;
   &::-webkit-scrollbar {
     width: var(--fluent-scrollbar-width);
     height: var(--fluent-scrollbar-width);
+
+    &:horizontal {
+      height: var(--fluent-scrollbar-horizontal-height, 5px);
+    }
   }
 
   &::-webkit-scrollbar-track {
@@ -266,6 +270,14 @@ $breakpoint-xxl: 1400px;
 
     &:hover {
       background: var(--fluent-scrollbar-thumb-bg-hover);
+    }
+
+    &:horizontal {
+      background: var(--fluent-scrollbar-thumb-horizontal-bg, rgba(0, 0, 0, 0.15));
+
+      &:hover {
+        background: var(--fluent-scrollbar-thumb-horizontal-bg-hover, rgba(0, 0, 0, 0.35));
+      }
     }
   }
 }

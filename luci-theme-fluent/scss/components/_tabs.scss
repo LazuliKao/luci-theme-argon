@@ -26,7 +26,7 @@ ul.cbi-tabmenu {
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
-  scrollbar-color: var(--fluent-scrollbar-thumb-bg) transparent;
+  scrollbar-color: var(--fluent-scrollbar-thumb-horizontal-bg, var(--fluent-scrollbar-thumb-bg)) transparent;
 
   // Horizontal scrollbar styling - Webkit
   &::-webkit-scrollbar {
@@ -38,10 +38,10 @@ ul.cbi-tabmenu {
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--fluent-scrollbar-thumb-bg);
+    background-color: var(--fluent-scrollbar-thumb-horizontal-bg, var(--fluent-scrollbar-thumb-bg));
     border-radius: var(--fluent-radius-md);
     &:hover {
-      background-color: var(--fluent-scrollbar-thumb-bg-hover);
+      background-color: var(--fluent-scrollbar-thumb-horizontal-bg-hover, var(--fluent-scrollbar-thumb-bg-hover));
     }
   }
 

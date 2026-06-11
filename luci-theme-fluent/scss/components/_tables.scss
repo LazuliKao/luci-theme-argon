@@ -40,6 +40,8 @@
   font-size: var(--fluent-font-size-base);
   color: var(--fluent-text);
   line-height: var(--fluent-line-height-normal);
+  text-align: center;
+  vertical-align: middle;
 
   // Avoid text being squeezed into a single column (Option 3)
   word-break: keep-all;

@@ -9,8 +9,8 @@
   @include card;
   position: relative;
 
-  width: fit-content;
-  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
 
   > * .cbi-section {

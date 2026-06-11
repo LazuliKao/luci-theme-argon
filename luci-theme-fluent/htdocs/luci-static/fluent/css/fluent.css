@@ -1133,8 +1133,8 @@ input[type=search]::-webkit-search-cancel-button {
   box-shadow: var(--fluent-card-shadow);
   padding: var(--fluent-card-padding);
   position: relative;
-  width: fit-content;
-  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
 }
 .cbi-section > * .cbi-section {
@@ -1810,14 +1810,16 @@ body.modal-overlay-active #modal_overlay {
   border-bottom: 0;
 }
 .cbi-value:has(> .cbi-value-title) {
-  display: grid;
-  grid-template-columns: minmax(5em, max-content) minmax(0, 1fr);
-  gap: var(--fluent-space-sm) var(--fluent-space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--fluent-space-xs);
 }
 @media (min-width: 768px) {
   .cbi-value:has(> .cbi-value-title) {
+    display: grid;
     grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
     align-items: start;
+    gap: var(--fluent-space-sm) var(--fluent-space-xl);
   }
 }
 .cbi-value .cbi-value-title {

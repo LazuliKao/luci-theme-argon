@@ -156,12 +156,14 @@
   }
 
   &:has(> .cbi-value-title) {
-    display: grid;
-    grid-template-columns: minmax(5em, max-content) minmax(0, 1fr);
-    gap: var(--fluent-space-sm) var(--fluent-space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--fluent-space-xs);
     @include respond-to("md") {
+      display: grid;
       grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
       align-items: start;
+      gap: var(--fluent-space-sm) var(--fluent-space-xl);
     }
   }
   .cbi-value-title {

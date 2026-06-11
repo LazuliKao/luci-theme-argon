@@ -4,17 +4,6 @@
 // ============================================================
 @use "../mixins" as *;
 
-.cbi-progressbar::after {
-  content: attr(title);
-  position: absolute;
-  left: 0;
-  top: calc(var(--fluent-space-md) * -1);
-  color: var(--fluent-text-secondary);
-  font-size: var(--fluent-font-size-sm);
-  font-weight: var(--fluent-font-weight-semibold);
-  line-height: var(--fluent-line-height-normal);
-  white-space: nowrap;
-}
 
 .cbi-input-invalid {
   border-color: var(--fluent-error);

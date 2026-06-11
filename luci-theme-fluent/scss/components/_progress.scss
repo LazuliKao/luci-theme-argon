@@ -4,59 +4,55 @@
 // ============================================================
 
 .cbi-progressbar {
-  isolation: isolate;
-  border: 1px solid var(--fluent-table-border);
-  box-shadow: inset 0 0 0 1px var(--fluent-progress-bg);
-}
-
-.cbi-progressbar > div {
-  overflow: hidden;
-
-  &::after {
-    background: linear-gradient(
-      90deg,
-      var(--fluent-progress-bar-bg) 0%,
-      var(--fluent-primary-light) 50%,
-      var(--fluent-progress-bar-bg) 100%
-    );
-  }
-}
-
-.cbi-progressbar {
-  height: 16px;
-  background: var(--fluent-progress-bg);
-  border-radius: var(--fluent-radius-md);
-  overflow: hidden;
   position: relative;
   width: 100%;
+  height: 24px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
   box-sizing: border-box;
+  isolation: isolate;
 
-  > div {
-    height: 100%;
-    background: var(--fluent-progress-bar-bg);
-    border-radius: var(--fluent-radius-md) 0 0 var(--fluent-radius-md);
-    transition: width var(--fluent-duration-normal) var(--fluent-easing-decelerate);
-    position: relative;
-  }
-
-  // Centered progress text using title attribute
-  &::after {
-    content: attr(title);
+  // Track (background bar)
+  &::before {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: var(--fluent-progress-height, 4px);
+    background: var(--fluent-progress-bg);
+    border-radius: var(--fluent-radius-circular, 10000px);
+  }
+
+  // Progress Fill
+  > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: var(--fluent-progress-height, 4px);
+    background: var(--fluent-progress-bar-bg);
+    border-radius: var(--fluent-radius-circular, 10000px);
+    transition: width var(--fluent-duration-normal) var(--fluent-easing-decelerate);
+    overflow: hidden;
+  }
+
+  // Label Text (title attribute)
+  &::after {
+    content: attr(title);
+    position: absolute;
+    top: 8px;
+    left: 0;
+    max-width: 100%;
+    color: var(--fluent-text-secondary);
     font-family: var(--fluent-font-family);
-    font-size: var(--fluent-font-size-xs);
-    font-weight: var(--fluent-font-weight-semibold);
-    color: #ffffff;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    font-size: var(--fluent-font-size-sm, 12px);
+    font-weight: var(--fluent-font-weight-regular, 400);
+    line-height: var(--fluent-line-height-normal, 1.43);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     pointer-events: none;
-    line-height: 1;
   }
 }
 

@@ -7773,7 +7773,8 @@ body > div.main > div.main-right > header .theme-toggle[data-active-theme=dark]:
     --fluent-sidebar-item-hover: rgba(255, 255, 255, 0.06);
     --fluent-sidebar-item-active: rgba(77, 166, 255, 0.08);
     --fluent-input-bg: #292929;
-    --fluent-input-border: #adadad;
+    --fluent-input-border: #666666;
+    --fluent-input-border-bottom: #adadad;
     --fluent-input-border-hover: #ffffff;
     --fluent-input-border-focus: #4da6ff;
     --fluent-input-bg-disabled: #333333;
@@ -7859,7 +7860,8 @@ body > div.main > div.main-right > header .theme-toggle[data-active-theme=dark]:
   --fluent-sidebar-item-hover: rgba(255, 255, 255, 0.06);
   --fluent-sidebar-item-active: rgba(77, 166, 255, 0.08);
   --fluent-input-bg: #292929;
-  --fluent-input-border: #adadad;
+  --fluent-input-border: #666666;
+  --fluent-input-border-bottom: #adadad;
   --fluent-input-border-hover: #ffffff;
   --fluent-input-border-focus: #4da6ff;
   --fluent-input-bg-disabled: #333333;

@@ -205,6 +205,10 @@ body.modal-overlay-active:has(#modal_overlay .modal.alert-message) #modal_overla
 // 4. Style all alert/notice/spinning modals as top Toasts
 .modal.alert-message,
 .modal.spinning {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: var(--fluent-space-md) !important;
   pointer-events: auto !important;
   max-width: 480px !important;
   width: auto !important;
@@ -212,4 +216,8 @@ body.modal-overlay-active:has(#modal_overlay .modal.alert-message) #modal_overla
   box-shadow: var(--fluent-shadow-lg) !important;
   border: 1px solid var(--fluent-border) !important;
   background: var(--fluent-bg-card) !important;
+
+  p {
+    margin: 0 !important;
+  }
 }

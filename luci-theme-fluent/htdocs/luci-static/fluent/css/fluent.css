@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --fluent-primary: #0078d4;
   --fluent-primary-hover: #106ebe;
@@ -1768,6 +1769,10 @@ body.modal-overlay-active:has(#modal_overlay .modal.alert-message) #modal_overla
 
 .modal.alert-message,
 .modal.spinning {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: var(--fluent-space-md) !important;
   pointer-events: auto !important;
   max-width: 480px !important;
   width: auto !important;
@@ -1775,6 +1780,10 @@ body.modal-overlay-active:has(#modal_overlay .modal.alert-message) #modal_overla
   box-shadow: var(--fluent-shadow-lg) !important;
   border: 1px solid var(--fluent-border) !important;
   background: var(--fluent-bg-card) !important;
+}
+.modal.alert-message p,
+.modal.spinning p {
+  margin: 0 !important;
 }
 
 .cbi-map,
@@ -3005,20 +3014,6 @@ div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body
   justify-content: center !important;
 }
 
-.cbi-progressbar {
-  position: relative;
-  isolation: isolate;
-  border: 1px solid var(--fluent-table-border);
-  box-shadow: inset 0 0 0 1px var(--fluent-progress-bg);
-}
-
-.cbi-progressbar > div {
-  overflow: hidden;
-}
-.cbi-progressbar > div::after {
-  background: linear-gradient(90deg, var(--fluent-progress-bar-bg) 0%, var(--fluent-primary-light) 50%, var(--fluent-progress-bar-bg) 100%);
-}
-
 .cbi-progressbar::after {
   content: attr(title);
   position: absolute;
@@ -4128,6 +4123,19 @@ code::-webkit-scrollbar-thumb:hover {
 }
 
 .cbi-progressbar {
+  isolation: isolate;
+  border: 1px solid var(--fluent-table-border);
+  box-shadow: inset 0 0 0 1px var(--fluent-progress-bg);
+}
+
+.cbi-progressbar > div {
+  overflow: hidden;
+}
+.cbi-progressbar > div::after {
+  background: linear-gradient(90deg, var(--fluent-progress-bar-bg) 0%, var(--fluent-primary-light) 50%, var(--fluent-progress-bar-bg) 100%);
+}
+
+.cbi-progressbar {
   height: 16px;
   background: var(--fluent-progress-bg);
   border-radius: var(--fluent-radius-md);
@@ -4182,6 +4190,71 @@ code::-webkit-scrollbar-thumb:hover {
   background: var(--fluent-error);
 }
 
+.cbi-progressbar {
+  position: relative;
+  width: 100%;
+  height: 14px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, #ffffff 72%, #dbe4f0);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.cbi-progressbar > div {
+  height: 100%;
+  min-width: 2px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #0078d4 0%, #2899f5 50%, #5cc8ff 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 0 8px rgba(0, 120, 212, 0.35);
+  transition: width 220ms cubic-bezier(0.1, 0.9, 0.2, 1), background-color 220ms ease, box-shadow 220ms ease;
+}
+
+/* 高亮扫光效果 */
+.cbi-progressbar > div::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: translateX(-100%);
+  animation: fluent-progress-shine 2.4s ease-in-out infinite;
+}
+
+@keyframes fluent-progress-shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  55% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+/* 深色模式 */
+@media (prefers-color-scheme: dark) {
+  .cbi-progressbar {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+  .cbi-progressbar > div {
+    background: linear-gradient(90deg, #2899f5 0%, #4cc2ff 50%, #8de1ff 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 0 10px rgba(76, 194, 255, 0.42);
+  }
+}
+/* 减少动态效果 */
+@media (prefers-reduced-motion: reduce) {
+  .cbi-progressbar > div {
+    transition: none;
+  }
+  .cbi-progressbar > div::after {
+    animation: none;
+  }
+}
 @keyframes fluent-dropdown-slide-in {
   from {
     opacity: 0;

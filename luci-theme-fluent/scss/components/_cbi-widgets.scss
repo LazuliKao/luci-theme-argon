@@ -4,21 +4,6 @@
 // ============================================================
 @use "../mixins" as *;
 
-.cbi-progressbar {
-  position: relative;
-  isolation: isolate;
-  border: 1px solid var(--fluent-table-border);
-  box-shadow: inset 0 0 0 1px var(--fluent-progress-bg);
-}
-
-.cbi-progressbar > div {
-  overflow: hidden;
-
-  &::after {
-    background: linear-gradient(90deg, var(--fluent-progress-bar-bg) 0%, var(--fluent-primary-light) 50%, var(--fluent-progress-bar-bg) 100%);
-  }
-}
-
 .cbi-progressbar::after {
   content: attr(title);
   position: absolute;

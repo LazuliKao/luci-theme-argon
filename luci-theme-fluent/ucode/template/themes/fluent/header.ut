@@ -54,12 +54,12 @@
     'none': '0ms'
   };
 
-  // Shadow mapping
+  // Shadow mapping (utilizing CSS variables for dynamic mode-aware soft shadows)
   let shadow_map = {
     'none': 'none',
-    'small': '0 2px 4px rgba(0,0,0,0.1)',
-    'medium': '0 4px 8px rgba(0,0,0,0.12)',
-    'large': '0 8px 16px rgba(0,0,0,0.14)'
+    'small': 'var(--fluent-shadow-sm)',
+    'medium': 'var(--fluent-shadow-md)',
+    'large': 'var(--fluent-shadow-lg)'
   };
 
   if (access('/etc/config/fluent')) {

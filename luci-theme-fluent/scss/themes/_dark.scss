@@ -44,11 +44,11 @@
     --fluent-border-hover: #7a7a7a; // Grey48
     --fluent-border-active: #4da6ff; // Brand tint20
 
-    // Shadows - Stronger for dark mode
-    --fluent-shadow-sm: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.264), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.216);
-    --fluent-shadow-md: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.264), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.216);
-    --fluent-shadow-lg: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.264), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.216);
-    --fluent-shadow-xl: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.44), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.36);
+    // Shadows - Stronger, soft multi-layer for dark mode
+    --fluent-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2), 0 2px 10px rgba(0, 0, 0, 0.3);
+    --fluent-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.25), 0 4px 18px rgba(0, 0, 0, 0.35);
+    --fluent-shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3), 0 8px 32px rgba(0, 0, 0, 0.4);
+    --fluent-shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.4), 0 10px 20px rgba(0, 0, 0, 0.3);
 
     // Sidebar
     --fluent-sidebar-bg: #1f1f1f;
@@ -169,11 +169,11 @@
   --fluent-border-hover: #7a7a7a;
   --fluent-border-active: #4da6ff;
 
-  // Shadows
-  --fluent-shadow-sm: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.264), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.216);
-  --fluent-shadow-md: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.264), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.216);
-  --fluent-shadow-lg: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.264), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.216);
-  --fluent-shadow-xl: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.44), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.36);
+  // Shadows - Stronger, soft multi-layer for dark mode
+  --fluent-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2), 0 2px 10px rgba(0, 0, 0, 0.3);
+  --fluent-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.25), 0 4px 18px rgba(0, 0, 0, 0.35);
+  --fluent-shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3), 0 8px 32px rgba(0, 0, 0, 0.4);
+  --fluent-shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.4), 0 10px 20px rgba(0, 0, 0, 0.3);
 
   // Sidebar
   --fluent-sidebar-bg: #1f1f1f;

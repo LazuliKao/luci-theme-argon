@@ -213,11 +213,11 @@ $breakpoint-xxl: 1400px;
 
 // ============================================================
 // CARD (FluentUI Card)
-// Radius: 8px, Border: 1px, Shadow: sm
+// Radius: 8px, Border: None, Shadow: sm
 // ============================================================
 @mixin card {
   background: var(--fluent-card-bg);
-  border: 1px solid var(--fluent-card-border);
+  border: none; // FluentUI / Windows 11 style: no borders on cards
   border-radius: var(--fluent-card-radius);
   box-shadow: var(--fluent-card-shadow);
   padding: var(--fluent-card-padding);

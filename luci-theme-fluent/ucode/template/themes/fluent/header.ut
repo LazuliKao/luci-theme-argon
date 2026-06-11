@@ -267,6 +267,8 @@
             var dark = e.matches;
             document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
             toggle.setAttribute('data-active-theme', dark ? 'dark' : 'light');
+          });
+        }
       });
     })();
   </script>

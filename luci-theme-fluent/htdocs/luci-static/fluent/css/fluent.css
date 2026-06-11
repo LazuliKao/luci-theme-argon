@@ -1137,6 +1137,30 @@ input[type=search]::-webkit-search-cancel-button {
   max-width: 100%;
   box-sizing: border-box;
 }
+.cbi-section > div:not(.cbi-title) {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+@media (max-width: 767px) {
+  .cbi-section > div:not(.cbi-title) {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .cbi-section > div:not(.cbi-title)::-webkit-scrollbar {
+    width: var(--fluent-scrollbar-width);
+    height: var(--fluent-scrollbar-width);
+  }
+  .cbi-section > div:not(.cbi-title)::-webkit-scrollbar-track {
+    background: var(--fluent-scrollbar-track-bg);
+  }
+  .cbi-section > div:not(.cbi-title)::-webkit-scrollbar-thumb {
+    background: var(--fluent-scrollbar-thumb-bg);
+    border-radius: 3px;
+  }
+  .cbi-section > div:not(.cbi-title)::-webkit-scrollbar-thumb:hover {
+    background: var(--fluent-scrollbar-thumb-bg-hover);
+  }
+}
 .cbi-section > * .cbi-section {
   padding: 0;
 }

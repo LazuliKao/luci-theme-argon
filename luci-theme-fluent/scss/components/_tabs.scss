@@ -291,23 +291,17 @@ ul.cbi-tabmenu {
 // Tab content sections
 [data-tab-title] {
   padding: var(--fluent-space-sm);
-  overflow: hidden;
-  height: 0;
-  opacity: 0;
-  // padding-top: 0 !important;
-  padding-bottom: 0 !important;
 }
 
 [data-tab-active="false"] {
-  margin: 0 !important;
-  padding: 0 !important;
+  display: none !important;
 }
 
 [data-tab-active="true"] {
+  display: block;
   overflow: visible;
   height: auto;
   opacity: 1;
-  transition: opacity var(--fluent-transition-normal);
 }
 .cbi-tabcontainer {
   padding: var(--fluent-space-lg) 0;

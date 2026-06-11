@@ -10,9 +10,12 @@
 }
 
 // Table section wrapper — enables horizontal scrolling on mobile
-.cbi-section .cbi-tblsection {
+.cbi-tblsection,
+.cbi-section.cbi-tblsection {
   overflow-x: visible;
   overflow-y: visible;
+  max-width: 100%;
+  box-sizing: border-box;
 
   @media (max-width: 767px) {
     overflow-x: auto;

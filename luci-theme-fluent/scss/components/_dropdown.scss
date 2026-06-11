@@ -266,9 +266,9 @@
     flex-direction: column;
     box-sizing: border-box;
     // min-width: 100%;
-    max-width: min(400px, 80vw) !important;
+    max-width: 80vw !important;
     overflow-y: auto;
-    max-height: min(800px, 80vh) !important;
+    max-height: min(800px, 80vh);
     // Appearance
     background-color: var(--fluent-dropdown-bg);
     border: 1px solid var(--fluent-dropdown-border);
@@ -453,6 +453,22 @@
     box-shadow: none !important;
     color: inherit !important;
     min-height: unset !important;
+  }
+
+  // Support for LuCI's hide-open and hide-close elements in dropdown lists
+  li .hide-close {
+    display: none !important;
+  }
+  li .hide-open {
+    display: inline-block;
+  }
+  &[open] > ul.dropdown > li {
+    .hide-open {
+      display: none !important;
+    }
+    .hide-close {
+      display: block !important;
+    }
   }
 }
 // /* 当下拉框打开时，大幅提升该表单域容器的层叠上下文 */

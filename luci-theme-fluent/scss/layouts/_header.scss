@@ -18,7 +18,7 @@ body > div.main > div.main-right > header {
     height: var(--fluent-header-height, 48px);
     position: sticky;
     top: 0;
-    z-index: var(--fluent-zindex-dropdown, 1000);
+    z-index: var(--fluent-zindex-actions, 1000);
     transition: background var(--fluent-duration-normal) var(--fluent-easing-standard);
   }
   .header {

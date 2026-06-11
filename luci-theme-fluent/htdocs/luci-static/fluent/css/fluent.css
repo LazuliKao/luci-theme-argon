@@ -349,6 +349,32 @@ body::-webkit-scrollbar-thumb:hover {
   display: block;
 }
 
+.nowrap {
+  white-space: nowrap !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+@media (max-width: 575.98px) {
+  .hide-xs {
+    display: none !important;
+  }
+}
+@media (max-width: 767.98px) {
+  .hide-sm {
+    display: none !important;
+  }
+}
+@media (max-width: 991.98px) {
+  .hide-md {
+    display: none !important;
+  }
+}
+@media (max-width: 1199.98px) {
+  .hide-lg {
+    display: none !important;
+  }
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -1107,6 +1133,9 @@ input[type=search]::-webkit-search-cancel-button {
   box-shadow: var(--fluent-card-shadow);
   padding: var(--fluent-card-padding);
   position: relative;
+  width: fit-content;
+  min-width: 100%;
+  box-sizing: border-box;
 }
 .cbi-section > * .cbi-section {
   padding: 0;
@@ -1257,6 +1286,15 @@ input[type=search]::-webkit-search-cancel-button {
   font-size: var(--fluent-font-size-base);
   color: var(--fluent-text);
   line-height: var(--fluent-line-height-normal);
+  word-break: break-all;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+.td.nowrap,
+.th.nowrap {
+  white-space: nowrap !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
 }
 .td.left,
 .th.left {
@@ -4279,9 +4317,9 @@ code::-webkit-scrollbar-thumb:hover {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  max-width: min(400px, 80vw) !important;
+  max-width: 80vw !important;
   overflow-y: auto;
-  max-height: min(800px, 80vh) !important;
+  max-height: min(800px, 80vh);
   background-color: var(--fluent-dropdown-bg);
   border: 1px solid var(--fluent-dropdown-border);
   border-radius: var(--fluent-radius-md);
@@ -4436,6 +4474,18 @@ code::-webkit-scrollbar-thumb:hover {
   box-shadow: none !important;
   color: inherit !important;
   min-height: unset !important;
+}
+.cbi-dropdown li .hide-close {
+  display: none !important;
+}
+.cbi-dropdown li .hide-open {
+  display: inline-block;
+}
+.cbi-dropdown[open] > ul.dropdown > li .hide-open {
+  display: none !important;
+}
+.cbi-dropdown[open] > ul.dropdown > li .hide-close {
+  display: block !important;
 }
 
 .cbi-dropdown.cbi-button,
@@ -7076,7 +7126,7 @@ body > div.main > div.main-right > header {
   height: var(--fluent-header-height, 48px);
   position: sticky;
   top: 0;
-  z-index: var(--fluent-zindex-dropdown, 1000);
+  z-index: var(--fluent-zindex-actions, 1000);
   transition: background var(--fluent-duration-normal) var(--fluent-easing-standard);
 }
 body > div.main > div.main-right > header .header__brand {

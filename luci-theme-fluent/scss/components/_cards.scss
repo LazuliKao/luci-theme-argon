@@ -8,6 +8,11 @@
 .cbi-section {
   @include card;
   position: relative;
+
+  width: fit-content;
+  min-width: 100%;
+  box-sizing: border-box;
+
   > * .cbi-section {
     // Override nested sections (e.g. in Portweaver)
     padding: 0;

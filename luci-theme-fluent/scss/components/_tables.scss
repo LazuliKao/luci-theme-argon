@@ -37,6 +37,15 @@
   font-size: var(--fluent-font-size-base);
   color: var(--fluent-text);
   line-height: var(--fluent-line-height-normal);
+  word-break: break-all;
+  word-break: break-word;
+  overflow-wrap: break-word;
+
+  &.nowrap {
+    white-space: nowrap !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+  }
 
   &.left {
     text-align: left;

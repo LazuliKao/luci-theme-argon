@@ -4684,7 +4684,6 @@ code::-webkit-scrollbar-thumb:hover {
 }
 .cbi-dropdown ul.dropdown > li:has(.zonebadge) .zonebadge .ifacebadge img {
   background: transparent !important;
-  filter: brightness(0.2) !important;
 }
 .cbi-dropdown ul.dropdown > li:has(.zonebadge):hover .zonebadge {
   background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)) !important;

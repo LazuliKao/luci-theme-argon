@@ -4061,14 +4061,36 @@ label:has(input[type=radio]) {
   align-items: center !important;
   gap: var(--fluent-space-sm) !important;
   cursor: pointer !important;
+  color: var(--fluent-text-secondary);
+  font-family: var(--fluent-font-family);
+  font-size: var(--fluent-font-size-base);
+  line-height: var(--fluent-line-height-normal);
+  transition: color var(--fluent-duration-fast) var(--fluent-easing-standard);
+  user-select: none;
+}
+label:has(input[type=radio]):has(input[type=radio]:checked) {
+  color: var(--fluent-text) !important;
+}
+label:has(input[type=radio]):hover:not(:has(input[type=radio]:disabled)) {
+  color: var(--fluent-text);
+}
+label:has(input[type=radio]):hover:not(:has(input[type=radio]:disabled)) input[type=radio] {
+  border-color: var(--fluent-checkbox-hover-border);
+}
+label:has(input[type=radio]):hover:not(:has(input[type=radio]:disabled)) input[type=radio]:checked {
+  border-color: var(--fluent-primary-hover);
+}
+label:has(input[type=radio]):hover:not(:has(input[type=radio]:disabled)) input[type=radio]:checked::before {
+  background: var(--fluent-primary-hover);
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
 input[type=radio] {
   -webkit-appearance: none;
   appearance: none;
-  width: var(--fluent-checkbox-size);
-  height: var(--fluent-checkbox-size);
-  border: 2px solid var(--fluent-checkbox-border);
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid var(--fluent-checkbox-border);
   border-radius: var(--fluent-radius-round);
   background: var(--fluent-checkbox-bg);
   cursor: pointer;
@@ -4083,26 +4105,32 @@ input[type=radio]::before {
   left: 50%;
   width: 10px;
   height: 10px;
-  background: transparent;
+  background: var(--fluent-checkbox-checked-bg);
   border-radius: var(--fluent-radius-round);
-  transform: translate(-50%, -50%);
-  transition: background var(--fluent-duration-fast) var(--fluent-easing-standard);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform var(--fluent-duration-fast) var(--fluent-easing-standard), background-color var(--fluent-duration-fast) var(--fluent-easing-standard);
 }
 input[type=radio]:checked {
   border-color: var(--fluent-checkbox-checked-bg);
 }
 input[type=radio]:checked::before {
-  background: var(--fluent-checkbox-checked-bg);
+  transform: translate(-50%, -50%) scale(1);
 }
 input[type=radio]:hover {
   border-color: var(--fluent-checkbox-hover-border);
+}
+input[type=radio]:hover:checked {
+  border-color: var(--fluent-primary-hover);
+}
+input[type=radio]:hover:checked::before {
+  background: var(--fluent-primary-hover);
 }
 input[type=radio]:focus-visible {
   outline: 2px solid var(--fluent-focus-color);
   outline-offset: 2px;
 }
 input[type=radio]:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
 }
 

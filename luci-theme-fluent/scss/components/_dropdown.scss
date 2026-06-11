@@ -794,14 +794,12 @@
     }
   }
 }
-// /* 当下拉框打开时，大幅提升该表单域容器的层叠上下文 */
-// .cbi-value-field.cbi-dropdown-open {
-//   position: relative; /* 确保 z-index 生效 */
-//   z-index: 99999 !important; /* 它的层级变高了，里面的子元素自然就能骑在按钮栏上方 */
-// }
-
-// /* 如果上面的方案没有生效，说明是更外层的“整行”被遮挡了，可以用下面这个 */
-// .cbi-value:has(.cbi-dropdown-open) {
-//   position: relative;
-//   z-index: 99999 !important;
-// }
+// Elevate the stacking context of the dropdown parent elements when a dropdown is open
+// so that the dropdown list renders on top of the sticky .cbi-page-actions footer.
+.cbi-value-field.cbi-dropdown-open,
+.cbi-value:has(.cbi-dropdown-open),
+.cbi-section:has(.cbi-dropdown-open),
+.cbi-map:has(.cbi-dropdown-open) {
+  position: relative;
+  z-index: 2000 !important;
+}

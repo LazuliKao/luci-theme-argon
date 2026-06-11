@@ -4777,6 +4777,14 @@ code::-webkit-scrollbar-thumb:hover {
   display: none !important;
 }
 
+.cbi-value-field.cbi-dropdown-open,
+.cbi-value:has(.cbi-dropdown-open),
+.cbi-section:has(.cbi-dropdown-open),
+.cbi-map:has(.cbi-dropdown-open) {
+  position: relative;
+  z-index: 2000 !important;
+}
+
 .cbi-dropdown.cbi-button,
 .cbi-dropdown.btn {
   display: inline-flex;

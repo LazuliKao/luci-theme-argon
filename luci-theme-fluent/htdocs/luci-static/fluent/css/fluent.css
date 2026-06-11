@@ -2554,8 +2554,6 @@ body.modal-overlay-active #modal_overlay {
 .modal.alert-message {
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  text-align: center;
 }
 .modal.alert-message p {
   margin: 0;

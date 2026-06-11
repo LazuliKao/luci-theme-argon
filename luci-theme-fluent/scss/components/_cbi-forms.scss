@@ -172,7 +172,7 @@
   // Mobile-only switch layout (label on left, toggle switch on right)
   @media (max-width: 767px) {
     &[data-widget="CBI.FlagValue"],
-    &:has(.cbi-checkbox) {
+    &:has(.cbi-checkbox:not(td *):not(th *)) {
       display: grid !important;
       grid-template-columns: 1fr auto;
       grid-template-areas:
@@ -186,11 +186,11 @@
         margin: 0;
       }
 
-      .cbi-value-field {
+      .cbi-value-field:not(td):not(th) {
         display: contents !important;
       }
 
-      .cbi-checkbox {
+      .cbi-checkbox:not(td *):not(th *) {
         grid-area: switch;
         justify-self: end;
         margin: 0;
@@ -198,7 +198,7 @@
         align-items: center;
       }
 
-      .cbi-value-description {
+      .cbi-value-description:not(td *):not(th *) {
         grid-area: desc;
         margin: 0;
       }

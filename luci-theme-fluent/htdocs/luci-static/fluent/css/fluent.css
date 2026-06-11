@@ -1137,30 +1137,6 @@ input[type=search]::-webkit-search-cancel-button {
   max-width: 100%;
   box-sizing: border-box;
 }
-.cbi-section > div:not(.cbi-title) {
-  max-width: 100%;
-  box-sizing: border-box;
-}
-@media (max-width: 767px) {
-  .cbi-section > div:not(.cbi-title) {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .cbi-section > div:not(.cbi-title)::-webkit-scrollbar {
-    width: var(--fluent-scrollbar-width);
-    height: var(--fluent-scrollbar-width);
-  }
-  .cbi-section > div:not(.cbi-title)::-webkit-scrollbar-track {
-    background: var(--fluent-scrollbar-track-bg);
-  }
-  .cbi-section > div:not(.cbi-title)::-webkit-scrollbar-thumb {
-    background: var(--fluent-scrollbar-thumb-bg);
-    border-radius: 3px;
-  }
-  .cbi-section > div:not(.cbi-title)::-webkit-scrollbar-thumb:hover {
-    background: var(--fluent-scrollbar-thumb-bg-hover);
-  }
-}
 .cbi-section > * .cbi-section {
   padding: 0;
 }
@@ -1422,11 +1398,35 @@ td.cbi-section-actions > div {
   flex-wrap: nowrap;
 }
 
-.table .cbi-section-table {
-  width: 100%;
-  overflow-x: auto;
+@media (max-width: 767px) {
+  .table,
+  .cbi-section-table {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+  }
+  .table::-webkit-scrollbar,
+  .cbi-section-table::-webkit-scrollbar {
+    width: var(--fluent-scrollbar-width);
+    height: var(--fluent-scrollbar-width);
+  }
+  .table::-webkit-scrollbar-track,
+  .cbi-section-table::-webkit-scrollbar-track {
+    background: var(--fluent-scrollbar-track-bg);
+  }
+  .table::-webkit-scrollbar-thumb,
+  .cbi-section-table::-webkit-scrollbar-thumb {
+    background: var(--fluent-scrollbar-thumb-bg);
+    border-radius: 3px;
+  }
+  .table::-webkit-scrollbar-thumb:hover,
+  .cbi-section-table::-webkit-scrollbar-thumb:hover {
+    background: var(--fluent-scrollbar-thumb-bg-hover);
+  }
 }
-
 .main-left .nav {
   list-style: none;
   margin: 0;

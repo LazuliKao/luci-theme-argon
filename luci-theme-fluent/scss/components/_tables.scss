@@ -40,15 +40,31 @@
   font-size: var(--fluent-font-size-base);
   color: var(--fluent-text);
   line-height: var(--fluent-line-height-normal);
-  word-break: break-all;
-  word-break: break-word;
+
+  // Avoid text being squeezed into a single column (Option 3)
+  word-break: keep-all;
   overflow-wrap: break-word;
+  min-width: 120px;
+  max-width: 320px;
 
   &.nowrap,
-  &:has(> span.ifacebadge) {
+  &:has(.ifacebadge),
+  &:has(input[type="checkbox"]),
+  &:has(input[type="radio"]),
+  &.cbi-section-actions {
     white-space: nowrap !important;
     word-break: normal !important;
     overflow-wrap: normal !important;
+    min-width: auto;
+    max-width: none;
+  }
+
+  // Ensure cell content/wrapper height does not exceed width using aspect-ratio
+  .cell-content,
+  .td-content {
+    aspect-ratio: 1 / 1;
+    max-height: 100%;
+    overflow: hidden;
   }
 
   &.left {

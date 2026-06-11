@@ -1306,16 +1306,30 @@ input[type=search]::-webkit-search-cancel-button {
   font-size: var(--fluent-font-size-base);
   color: var(--fluent-text);
   line-height: var(--fluent-line-height-normal);
-  word-break: break-all;
-  word-break: break-word;
+  word-break: keep-all;
   overflow-wrap: break-word;
+  min-width: 120px;
+  max-width: 320px;
 }
-.td.nowrap, .td:has(> span.ifacebadge),
+.td.nowrap, .td:has(.ifacebadge), .td:has(input[type=checkbox]), .td:has(input[type=radio]), .td.cbi-section-actions,
 .th.nowrap,
-.th:has(> span.ifacebadge) {
+.th:has(.ifacebadge),
+.th:has(input[type=checkbox]),
+.th:has(input[type=radio]),
+.th.cbi-section-actions {
   white-space: nowrap !important;
   word-break: normal !important;
   overflow-wrap: normal !important;
+  min-width: auto;
+  max-width: none;
+}
+.td .cell-content,
+.td .td-content,
+.th .cell-content,
+.th .td-content {
+  aspect-ratio: 1/1;
+  max-height: 100%;
+  overflow: hidden;
 }
 .td.left,
 .th.left {
@@ -1871,7 +1885,6 @@ body.modal-overlay-active #modal_overlay {
   .cbi-value[data-widget="CBI.FlagValue"] .cbi-value-title, .cbi-value:has(.cbi-checkbox) .cbi-value-title {
     grid-area: title;
     margin: 0;
-    align-self: center;
   }
   .cbi-value[data-widget="CBI.FlagValue"] .cbi-value-field, .cbi-value:has(.cbi-checkbox) .cbi-value-field {
     display: contents !important;

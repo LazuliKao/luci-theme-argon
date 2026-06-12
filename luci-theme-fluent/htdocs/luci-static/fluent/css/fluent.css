@@ -97,6 +97,7 @@
   --fluent-input-bg: #ffffff;
   --fluent-input-bg-disabled: #f0f0f0;
   --fluent-input-bg-hover: #f5f5f5;
+  --fluent-calendar-picker-invert: 0;
   --fluent-btn-height: var(--fluent-control-height, 42px);
   --fluent-btn-padding: 0 16px;
   --fluent-btn-primary-bg: #0078d4;
@@ -104,10 +105,10 @@
   --fluent-btn-primary-bg-active: #005a9e;
   --fluent-btn-secondary-bg: #ffffff;
   --fluent-btn-secondary-bg-hover: #f5f5f5;
-  --fluent-btn-secondary-bg-active: #ebebeb;
+  --fluent-btn-secondary-bg-active: #e0e0e0;
   --fluent-btn-secondary-border: #d1d1d1;
-  --fluent-btn-secondary-border-hover: #a0a0a0;
-  --fluent-btn-secondary-border-active: #0078d4;
+  --fluent-btn-secondary-border-hover: #d1d1d1;
+  --fluent-btn-secondary-border-active: #d1d1d1;
   --fluent-card-bg: #ffffff;
   --fluent-card-border: #e0e0e0;
   --fluent-card-shadow: var(--fluent-shadow-sm);
@@ -1005,7 +1006,12 @@ input[type=email],
 input[type=number],
 input[type=search],
 input[type=tel],
-input[type=url] {
+input[type=url],
+input[type=date],
+input[type=time],
+input[type=datetime-local],
+input[type=month],
+input[type=week] {
   height: var(--fluent-input-height);
   padding: 0 var(--fluent-space-sm);
   font-family: var(--fluent-font-family);
@@ -1026,7 +1032,12 @@ input[type=email]:hover,
 input[type=number]:hover,
 input[type=search]:hover,
 input[type=tel]:hover,
-input[type=url]:hover {
+input[type=url]:hover,
+input[type=date]:hover,
+input[type=time]:hover,
+input[type=datetime-local]:hover,
+input[type=month]:hover,
+input[type=week]:hover {
   border-bottom-width: 2px;
   padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-hover);
@@ -1037,7 +1048,12 @@ input[type=email]:focus,
 input[type=number]:focus,
 input[type=search]:focus,
 input[type=tel]:focus,
-input[type=url]:focus {
+input[type=url]:focus,
+input[type=date]:focus,
+input[type=time]:focus,
+input[type=datetime-local]:focus,
+input[type=month]:focus,
+input[type=week]:focus {
   border-bottom-width: 2px;
   padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-focus);
@@ -1049,7 +1065,12 @@ input[type=email]:disabled,
 input[type=number]:disabled,
 input[type=search]:disabled,
 input[type=tel]:disabled,
-input[type=url]:disabled {
+input[type=url]:disabled,
+input[type=date]:disabled,
+input[type=time]:disabled,
+input[type=datetime-local]:disabled,
+input[type=month]:disabled,
+input[type=week]:disabled {
   background: var(--fluent-input-bg-disabled);
   color: var(--fluent-text-disabled);
   cursor: not-allowed;
@@ -1060,7 +1081,12 @@ input[type=email]::placeholder,
 input[type=number]::placeholder,
 input[type=search]::placeholder,
 input[type=tel]::placeholder,
-input[type=url]::placeholder {
+input[type=url]::placeholder,
+input[type=date]::placeholder,
+input[type=time]::placeholder,
+input[type=datetime-local]::placeholder,
+input[type=month]::placeholder,
+input[type=week]::placeholder {
   color: var(--fluent-text-disabled);
 }
 input[type=text],
@@ -1069,13 +1095,21 @@ input[type=email],
 input[type=number],
 input[type=search],
 input[type=tel],
-input[type=url] {
+input[type=url],
+input[type=date],
+input[type=time],
+input[type=datetime-local],
+input[type=month],
+input[type=week] {
   max-width: 100%;
   box-sizing: border-box;
 }
 
 .cbi-input-text,
-.cbi-input-password {
+.cbi-input-password,
+.cbi-input-date,
+.cbi-input-time,
+.cbi-input-datetime {
   height: var(--fluent-input-height);
   padding: 0 var(--fluent-space-sm);
   font-family: var(--fluent-font-family);
@@ -1091,30 +1125,45 @@ input[type=url] {
   padding-bottom: 1px;
 }
 .cbi-input-text:hover,
-.cbi-input-password:hover {
+.cbi-input-password:hover,
+.cbi-input-date:hover,
+.cbi-input-time:hover,
+.cbi-input-datetime:hover {
   border-bottom-width: 2px;
   padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-hover);
 }
 .cbi-input-text:focus,
-.cbi-input-password:focus {
+.cbi-input-password:focus,
+.cbi-input-date:focus,
+.cbi-input-time:focus,
+.cbi-input-datetime:focus {
   border-bottom-width: 2px;
   padding-bottom: 0px;
   border-bottom-color: var(--fluent-input-border-focus);
   outline: none;
 }
 .cbi-input-text:disabled,
-.cbi-input-password:disabled {
+.cbi-input-password:disabled,
+.cbi-input-date:disabled,
+.cbi-input-time:disabled,
+.cbi-input-datetime:disabled {
   background: var(--fluent-input-bg-disabled);
   color: var(--fluent-text-disabled);
   cursor: not-allowed;
 }
 .cbi-input-text::placeholder,
-.cbi-input-password::placeholder {
+.cbi-input-password::placeholder,
+.cbi-input-date::placeholder,
+.cbi-input-time::placeholder,
+.cbi-input-datetime::placeholder {
   color: var(--fluent-text-disabled);
 }
 .cbi-input-text,
-.cbi-input-password {
+.cbi-input-password,
+.cbi-input-date,
+.cbi-input-time,
+.cbi-input-datetime {
   max-width: 100%;
   box-sizing: border-box;
 }
@@ -1127,7 +1176,10 @@ input[type=url] {
 
 input:disabled,
 .cbi-input-text:disabled,
-.cbi-input-password:disabled {
+.cbi-input-password:disabled,
+.cbi-input-date:disabled,
+.cbi-input-time:disabled,
+.cbi-input-datetime:disabled {
   background-color: var(--fluent-input-bg-disabled);
   color: var(--fluent-text-disabled);
   cursor: not-allowed;
@@ -1146,6 +1198,30 @@ input[type=search]::-webkit-search-cancel-button {
   cursor: pointer;
   background: none;
   border: none;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator,
+input[type=time]::-webkit-calendar-picker-indicator,
+input[type=datetime-local]::-webkit-calendar-picker-indicator,
+input[type=month]::-webkit-calendar-picker-indicator,
+input[type=week]::-webkit-calendar-picker-indicator,
+.cbi-input-date::-webkit-calendar-picker-indicator,
+.cbi-input-time::-webkit-calendar-picker-indicator,
+.cbi-input-datetime::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+  filter: invert(var(--fluent-calendar-picker-invert, 0));
+  transition: opacity var(--fluent-duration-fast) var(--fluent-easing-standard);
+}
+input[type=date]::-webkit-calendar-picker-indicator:hover,
+input[type=time]::-webkit-calendar-picker-indicator:hover,
+input[type=datetime-local]::-webkit-calendar-picker-indicator:hover,
+input[type=month]::-webkit-calendar-picker-indicator:hover,
+input[type=week]::-webkit-calendar-picker-indicator:hover,
+.cbi-input-date::-webkit-calendar-picker-indicator:hover,
+.cbi-input-time::-webkit-calendar-picker-indicator:hover,
+.cbi-input-datetime::-webkit-calendar-picker-indicator:hover {
+  opacity: 0.9;
 }
 
 .cbi-section {
@@ -4088,8 +4164,10 @@ label:has(input[type=radio]):hover:not(:has(input[type=radio]:disabled)) input[t
 input[type=radio] {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 16px !important;
+  height: 16px !important;
+  inline-size: 16px !important;
+  block-size: 16px !important;
   border: 1.5px solid var(--fluent-checkbox-border);
   border-radius: var(--fluent-radius-round);
   background: var(--fluent-checkbox-bg);
@@ -4103,8 +4181,8 @@ input[type=radio]::before {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background: var(--fluent-checkbox-checked-bg);
   border-radius: var(--fluent-radius-round);
   transform: translate(-50%, -50%) scale(0);
@@ -6475,7 +6553,8 @@ label[data-tooltip] {
   color: var(--fluent-text-secondary) !important;
 }
 
-.cbi-section:has(.cbi-tooltip-container:hover) {
+.cbi-section:has(.cbi-tooltip-container:hover),
+.controls:has(label[data-tooltip]:hover) {
   z-index: 100 !important;
 }
 
@@ -7913,15 +7992,16 @@ body > div.main > div.main-right > header .theme-toggle[data-active-theme=dark]:
     --fluent-input-border-focus: #4da6ff;
     --fluent-input-bg-disabled: #333333;
     --fluent-input-bg-hover: #333333;
+    --fluent-calendar-picker-invert: 1;
     --fluent-btn-primary-bg: #4da6ff;
     --fluent-btn-primary-bg-hover: #80c4ff;
     --fluent-btn-primary-bg-active: #b3d9ff;
     --fluent-btn-secondary-bg: #292929;
-    --fluent-btn-secondary-bg-hover: #383838;
-    --fluent-btn-secondary-bg-active: #242424;
-    --fluent-btn-secondary-border: #adadad;
-    --fluent-btn-secondary-border-hover: #ffffff;
-    --fluent-btn-secondary-border-active: #4da6ff;
+    --fluent-btn-secondary-bg-hover: #3d3d3d;
+    --fluent-btn-secondary-bg-active: #1f1f1f;
+    --fluent-btn-secondary-border: #666666;
+    --fluent-btn-secondary-border-hover: #666666;
+    --fluent-btn-secondary-border-active: #666666;
     --fluent-card-bg: #292929;
     --fluent-card-border: #3d3d3d;
     --fluent-table-header-bg: #292929;
@@ -8002,6 +8082,7 @@ body > div.main > div.main-right > header .theme-toggle[data-active-theme=dark]:
   --fluent-input-border-focus: #4da6ff;
   --fluent-input-bg-disabled: #333333;
   --fluent-input-bg-hover: #333333;
+  --fluent-calendar-picker-invert: 1;
   --fluent-btn-primary-bg: #4da6ff;
   --fluent-btn-primary-bg-hover: #80c4ff;
   --fluent-btn-primary-bg-active: #b3d9ff;

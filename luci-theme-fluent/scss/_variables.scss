@@ -159,6 +159,7 @@
   --fluent-input-bg: #ffffff;
   --fluent-input-bg-disabled: #f0f0f0; // Grey94
   --fluent-input-bg-hover: #f5f5f5; // Grey96
+  --fluent-calendar-picker-invert: 0;
 
   // Button
   --fluent-btn-height: var(--fluent-control-height, 42px);
@@ -168,10 +169,10 @@
   --fluent-btn-primary-bg-active: #005a9e;
   --fluent-btn-secondary-bg: #ffffff;
   --fluent-btn-secondary-bg-hover: #f5f5f5;
-  --fluent-btn-secondary-bg-active: #ebebeb;
+  --fluent-btn-secondary-bg-active: #e0e0e0;
   --fluent-btn-secondary-border: #d1d1d1; // Grey82
-  --fluent-btn-secondary-border-hover: #a0a0a0; // Grey62
-  --fluent-btn-secondary-border-active: #0078d4;
+  --fluent-btn-secondary-border-hover: #d1d1d1;
+  --fluent-btn-secondary-border-active: #d1d1d1;
 
   // Card
   --fluent-card-bg: #ffffff;

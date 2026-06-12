@@ -63,17 +63,18 @@
     --fluent-input-border-focus: #4da6ff; // Brand tint20
     --fluent-input-bg-disabled: #333333; // Grey20
     --fluent-input-bg-hover: #333333; // Grey20
+    --fluent-calendar-picker-invert: 1;
 
     // Button
     --fluent-btn-primary-bg: #4da6ff; // Brand tint20
     --fluent-btn-primary-bg-hover: #80c4ff; // Brand tint30
     --fluent-btn-primary-bg-active: #b3d9ff; // Brand tint40
     --fluent-btn-secondary-bg: #292929;
-    --fluent-btn-secondary-bg-hover: #383838;
-    --fluent-btn-secondary-bg-active: #242424;
-    --fluent-btn-secondary-border: #adadad; // Grey68
-    --fluent-btn-secondary-border-hover: #ffffff; // White
-    --fluent-btn-secondary-border-active: #4da6ff; // Brand tint20
+    --fluent-btn-secondary-bg-hover: #3d3d3d;
+    --fluent-btn-secondary-bg-active: #1f1f1f;
+    --fluent-btn-secondary-border: #666666; // Grey68
+    --fluent-btn-secondary-border-hover: #666666; // White
+    --fluent-btn-secondary-border-active: #666666; // Brand tint20
 
     // Card
     --fluent-card-bg: #292929; // Grey16
@@ -190,6 +191,7 @@
   --fluent-input-border-focus: #4da6ff;
   --fluent-input-bg-disabled: #333333;
   --fluent-input-bg-hover: #333333;
+  --fluent-calendar-picker-invert: 1;
 
   // Button
   --fluent-btn-primary-bg: #4da6ff;

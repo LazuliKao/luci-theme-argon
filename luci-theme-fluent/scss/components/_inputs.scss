@@ -11,7 +11,12 @@ input[type="email"],
 input[type="number"],
 input[type="search"],
 input[type="tel"],
-input[type="url"] {
+input[type="url"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"] {
   @include input-base;
 
   max-width: 100%;
@@ -20,7 +25,10 @@ input[type="url"] {
 
 // LuCI-specific input classes
 .cbi-input-text,
-.cbi-input-password {
+.cbi-input-password,
+.cbi-input-date,
+.cbi-input-time,
+.cbi-input-datetime {
   @include input-base;
 
   max-width: 100%;
@@ -37,7 +45,10 @@ input[type="url"] {
 // Disabled state
 input:disabled,
 .cbi-input-text:disabled,
-.cbi-input-password:disabled {
+.cbi-input-password:disabled,
+.cbi-input-date:disabled,
+.cbi-input-time:disabled,
+.cbi-input-datetime:disabled {
   background-color: var(--fluent-input-bg-disabled);
   color: var(--fluent-text-disabled);
   cursor: not-allowed;
@@ -57,5 +68,26 @@ input[type="search"] {
     cursor: pointer;
     background: none;
     border: none;
+  }
+}
+
+// Webkit date/time picker adjustments
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+.cbi-input-date,
+.cbi-input-time,
+.cbi-input-datetime {
+  &::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.6;
+    filter: invert(var(--fluent-calendar-picker-invert, 0));
+    transition: opacity var(--fluent-duration-fast) var(--fluent-easing-standard);
+
+    &:hover {
+      opacity: 0.9;
+    }
   }
 }

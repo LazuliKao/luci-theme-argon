@@ -272,11 +272,14 @@ label:has(input[type="radio"]) {
     }
   }
 }
+
 input[type="radio"] {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 16px !important;
+  height: 16px !important;
+  inline-size: 16px !important;
+  block-size: 16px !important;
   border: 1.5px solid var(--fluent-checkbox-border);
   border-radius: var(--fluent-radius-round);
   background: var(--fluent-checkbox-bg);
@@ -289,8 +292,8 @@ input[type="radio"] {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     background: var(--fluent-checkbox-checked-bg);
     border-radius: var(--fluent-radius-round);
     transform: translate(-50%, -50%) scale(0);
